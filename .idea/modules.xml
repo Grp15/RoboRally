@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Robo-project.iml" filepath="$PROJECT_DIR$/.idea/Robo-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roborally-initial/roborally.iml" filepath="$PROJECT_DIR$/roborally-initial/roborally.iml" />
+    </modules>
+  </component>
+</project>
