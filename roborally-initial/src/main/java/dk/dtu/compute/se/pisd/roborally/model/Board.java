@@ -57,6 +57,8 @@ public class Board extends Subject {
 
     private boolean stepMode;
 
+    private int counter;
+
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
         this.width = width;
@@ -211,11 +213,22 @@ public class Board extends Subject {
         //      which is counted up every time a player makes a move; the
         //      status line should show the current player and the number
         //      of the current move!
-        return "Player = " + getCurrentPlayer().getName();
+        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter();
     }
 
     // TODO Assignment V1: add a counter along with a getter and a setter, so the
     //      state the board (game) contains the number of moves, which then can
     //      be used to extend the status message including the number of
+    public int getCounter() {
+        return counter;
+    }
+
+    // NOTE: if-statement? -> notifyChange() is only needed if counter value changes.
+    public void setCounter(int counter) {
+        if (this.counter != counter) {
+            this.counter = counter;
+            notifyChange();
+        }
+    }
 
 }
