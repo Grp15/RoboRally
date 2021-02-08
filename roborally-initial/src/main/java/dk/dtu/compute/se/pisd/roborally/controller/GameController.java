@@ -53,6 +53,16 @@ public class GameController {
         //   - the counter of moves in the game should be increased by one
         //     if the player is moved
 
+        Player current = board.getCurrentPlayer();
+        if(current == null) return;
+        int currentInt = board.getPlayerNumber(current);
+        Player nextPlayer = board.getPlayer((currentInt+1) % board.getPlayersNumber());
+
+        if (space.getPlayer() == null){
+            current.setSpace(space);
+            board.setCurrentPlayer(nextPlayer);
+            board.setCounter(board.getCounter()+1);
+        }
     }
 
     // XXX: V2
