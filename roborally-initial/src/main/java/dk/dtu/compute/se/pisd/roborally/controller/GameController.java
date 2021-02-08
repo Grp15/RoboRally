@@ -207,22 +207,32 @@ public class GameController {
 
     // TODO Assignment V2
     public void moveForward(@NotNull Player player) {
+        Player currentPlayer = board.getCurrentPlayer();
+        Heading heading = currentPlayer.getHeading();
+        Space currentSpace = currentPlayer.getSpace();
+        Space newSpace = board.getNeighbour(currentSpace, heading);
 
+        currentPlayer.setSpace(newSpace);
     }
 
-    // TODO Assignment V2
+    // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
     public void fastForward(@NotNull Player player) {
-
+        moveForward(player);
+        moveForward(player);
     }
 
     // TODO Assignment V2
     public void turnRight(@NotNull Player player) {
-
+        Player currentPlayer = board.getCurrentPlayer();
+        Heading heading = currentPlayer.getHeading();
+        currentPlayer.setHeading(heading.next());
     }
 
-    // TODO Assignment V2
+    // TODO Assignment V2-
     public void turnLeft(@NotNull Player player) {
-
+        Player currentPlayer = board.getCurrentPlayer();
+        Heading heading = currentPlayer.getHeading();
+        currentPlayer.setHeading(heading.prev());
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
