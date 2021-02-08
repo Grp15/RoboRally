@@ -92,13 +92,13 @@ public class PlayerView extends Tab implements ViewObserver {
 
         // XXX the respective GameController operations are not yet implemented
         finishButton = new Button("Finish Programming");
-        finishButton.setOnAction( e -> gameController.notImplememted());
+        finishButton.setOnAction( e -> gameController.notImplemented());
 
         executeButton = new Button("Execute Program");
-        executeButton.setOnAction( e-> gameController.notImplememted());
+        executeButton.setOnAction( e-> gameController.notImplemented());
 
         stepButton = new Button("Execute Current Register");
-        stepButton.setOnAction( e-> gameController.notImplememted());
+        stepButton.setOnAction( e-> gameController.notImplemented());
 
         buttonPanel = new VBox(finishButton, executeButton, stepButton);
         buttonPanel.setAlignment(Pos.CENTER_LEFT);
@@ -205,12 +205,12 @@ public class PlayerView extends Tab implements ViewObserver {
                     //      the player's choices of the interactive command card. The
                     //      following is just a mockup showing two options
                     Button optionButton = new Button("Option1");
-                    optionButton.setOnAction( e -> gameController.notImplememted());
+                    optionButton.setOnAction( e -> gameController.notImplemented());
                     optionButton.setDisable(false);
                     playerInteractionPanel.getChildren().add(optionButton);
 
                     optionButton = new Button("Option 2");
-                    optionButton.setOnAction( e -> gameController.notImplememted());
+                    optionButton.setOnAction( e -> gameController.notImplemented());
                     optionButton.setDisable(false);
                     playerInteractionPanel.getChildren().add(optionButton);
                 }
