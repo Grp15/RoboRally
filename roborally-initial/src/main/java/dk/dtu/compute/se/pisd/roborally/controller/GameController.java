@@ -223,7 +223,9 @@ public class GameController {
 
     // TODO Assignment V2
     public void turnRight(@NotNull Player player) {
-
+        Player currentPlayer = board.getCurrentPlayer();
+        Heading heading = currentPlayer.getHeading();
+        currentPlayer.setHeading(heading.next());
     }
 
     // TODO Assignment V2
