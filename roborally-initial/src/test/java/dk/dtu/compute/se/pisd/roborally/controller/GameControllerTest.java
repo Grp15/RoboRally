@@ -44,4 +44,53 @@ class GameControllerTest {
         Assertions.assertEquals(player, board.getSpace(0, 4).getPlayer(), "Player " + player.getName() + " should beSpace (0,4)!");
     }
 
+    @Test
+    void moveForward() {
+        Board board = gameController.board;
+        Player current = board.getCurrentPlayer();
+
+        current.setSpace(board.getSpace(0, 4));
+        current.setHeading(Heading.SOUTH);
+
+        gameController.moveForward(current);
+
+        Assertions.assertEquals(board.getSpace(0, 5),current.getSpace(),"Player " + current.getName() + " should be at space (0,5) " + "Player is at " + current.getSpace());
+    }
+
+    @Test
+    void fastForward() {
+        Board board = gameController.board;
+        Player current = board.getCurrentPlayer();
+
+        current.setSpace(board.getSpace(0, 4));
+        current.setHeading(Heading.SOUTH);
+
+        gameController.fastForward(current);
+
+        Assertions.assertEquals(board.getSpace(0, 6),current.getSpace());
+    }
+
+    @Test
+    void turnRight() {
+        Board board = gameController.board;
+        Player current = board.getCurrentPlayer();
+
+        current.setHeading(Heading.SOUTH);
+
+        gameController.turnRight(current);
+
+        Assertions.assertEquals(Heading.WEST,current.getHeading()); //South -> West
+    }
+
+    @Test
+    void turnLeft() {
+        Board board = gameController.board;
+        Player current = board.getCurrentPlayer();
+
+        current.setHeading(Heading.SOUTH);
+
+        gameController.turnLeft(current);
+
+        Assertions.assertEquals(Heading.EAST,current.getHeading()); //South -> East
+    }
 }
