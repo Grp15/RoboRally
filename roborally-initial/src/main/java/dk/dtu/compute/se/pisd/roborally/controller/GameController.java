@@ -215,6 +215,10 @@ public class GameController {
         currentPlayer.setSpace(newSpace);
     }
 
+    /**
+     * Moves a player forward 2 spaces towards the direction the player is currently facing
+     * @param player
+     */
     // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
     public void fastForward(@NotNull Player player) {
         moveForward(player);
