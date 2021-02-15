@@ -200,9 +200,8 @@ public class PlayerView extends Tab implements ViewObserver {
                 playerInteractionPanel.getChildren().clear();
 
 
-                /**
-                 *  Creates buttons from commands listed in options
-                 */
+
+                // Creates buttons from commands listed in options
                 if (player.board.getCurrentPlayer() == player) {
                     // TODO Assignment V3: these buttons should be shown only when there is
                     //      an interactive command card, and the buttons should represent
