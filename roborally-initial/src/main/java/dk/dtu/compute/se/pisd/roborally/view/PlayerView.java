@@ -200,8 +200,36 @@ public class PlayerView extends Tab implements ViewObserver {
                 playerInteractionPanel.getChildren().clear();
 
 
+                /**
+                 *  Creates buttons from commands listed in options
+                 */
+                /*
 
-                // Creates buttons from commands listed in options
+
+                CommandCardField field = player.getProgramField(player.board.getStep());
+                if (field != null){
+                    CommandCard card = field.getCard();
+
+                if (card != null){
+                    for(Command option : card.command.getOptions()){
+                        Button optionsbutton = new Button(option.displayName);
+                        optionsbutton.setOnAction(e -> gameController.executeCommandAndContinue(option));
+                        optionsbutton.setDisable(false);
+                        playerInteractionPanel.getChildren().add(optionsbutton);
+                    }
+                }
+}
+ */
+
+
+                /**
+                 *     --- note : Hvorfor er vi dumme og kan ikke gennemskue hvorfor det ikke virker?
+                 *
+                 *     - Det burde basically være det samme som løsningsforslaget.
+                 *
+                 *     Er det fordi det går galt i vores Command command linjen?
+                 *
+                 */
                 if (player.board.getCurrentPlayer() == player) {
                     // TODO Assignment V3: these buttons should be shown only when there is
                     //      an interactive command card, and the buttons should represent
@@ -212,10 +240,11 @@ public class PlayerView extends Tab implements ViewObserver {
                     int cardOptions = command.getOptions().size();
 
                     for (int i = 0; i < cardOptions; i++) {
-                        Command newCommand = command.getOptions().get(i);
+                        String displayName = command.getOptions().get(i).getDisplayName();
+                        System.out.println(displayName +" "+ i);
 
-                        Button optionButton = new Button(newCommand.displayName);
-                        optionButton.setOnAction(e -> gameController.executeCommandAndContinue(newCommand));
+                        Button optionButton = new Button(displayName);
+                        optionButton.setOnAction(e -> gameController.executeCommandAndContinue(command));
                         optionButton.setDisable(false);
                         playerInteractionPanel.getChildren().add(optionButton);
                     }
