@@ -54,6 +54,12 @@ public enum Command {
 
     final private List<Command> options;
 
+
+    /**
+     * Displays the name of the command along with a list of options
+     * @param displayName
+     * @param options
+     */
     Command(String displayName, Command... options) {
         this.displayName = displayName;
         this.options = Collections.unmodifiableList(Arrays.asList(options));
