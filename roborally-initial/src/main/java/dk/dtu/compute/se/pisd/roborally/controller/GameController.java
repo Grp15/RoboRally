@@ -154,7 +154,10 @@ public class GameController {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 if (card != null) {
                     Command command = card.command;
-                    executeCommand(currentPlayer, command);
+                    if(command.isInteractive()){
+                        board.setPhase(Phase.PLAYER_INTERACTION);
+                        return;
+                    } else executeCommand(currentPlayer, command);
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
@@ -180,6 +183,12 @@ public class GameController {
     }
 
     // XXX: V2
+
+    /**
+     * Runs the method connected to the command card
+     * @param player
+     * @param command
+     */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
             // XXX This is a very simplistic way of dealing with some basic cards and
@@ -205,7 +214,35 @@ public class GameController {
         }
     }
 
-    // TODO Assignment V2
+    /**
+     * .....
+     * Changes the phrase to Activation (with options) and executes command card
+     * @param command executed option
+     */
+    public void executeCommandAndContinue(Command command){
+        board.setPhase(Phase.ACTIVATION);
+        Player currentPlayer = board.getCurrentPlayer();
+        executeCommand(currentPlayer, command);
+
+        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        if (nextPlayerNumber < board.getPlayersNumber()) {
+            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        } else {
+            int step = board.getStep()+1;
+            if (step < Player.NO_REGISTERS) {
+                makeProgramFieldsVisible(step);
+                board.setStep(step);
+                board.setCurrentPlayer(board.getPlayer(0));
+            } else {
+                startProgrammingPhase();
+            }
+        }
+    }
+
+    /**
+     * Moves a player forward in the direction he is facing.
+     * @param player
+     */
     public void moveForward(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
@@ -215,20 +252,30 @@ public class GameController {
         currentPlayer.setSpace(newSpace);
     }
 
+    /**
+     * Moves a player forward 2 spaces towards the direction the player is currently facing
+     * @param player
+     */
     // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
     public void fastForward(@NotNull Player player) {
         moveForward(player);
         moveForward(player);
     }
 
-    // TODO Assignment V2
+    /**
+     * Set a current players direction to turn right of current heading.
+     * @param player current player
+     */
     public void turnRight(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
         currentPlayer.setHeading(heading.next());
     }
 
-    // TODO Assignment V2-
+    /**
+     * Set a current players direction to turn left of current heading.
+     * @param player current player
+     */
     public void turnLeft(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
