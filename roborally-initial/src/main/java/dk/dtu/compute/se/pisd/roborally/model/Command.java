@@ -73,4 +73,8 @@ public enum Command {
         return options;
     }
 
+    public String getDisplayName(){
+        return displayName;
+    }
+
 }

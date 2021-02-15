@@ -214,7 +214,35 @@ public class GameController {
         }
     }
 
-    // TODO Assignment V2
+    /**
+     * .....
+     * Changes the phrase to Activation (with options) and executes command card
+     * @param command executed option
+     */
+    public void executeCommandAndContinue(Command command){
+        board.setPhase(Phase.ACTIVATION);
+        Player currentPlayer = board.getCurrentPlayer();
+        executeCommand(currentPlayer, command);
+
+        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        if (nextPlayerNumber < board.getPlayersNumber()) {
+            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        } else {
+            int step = board.getStep()+1;
+            if (step < Player.NO_REGISTERS) {
+                makeProgramFieldsVisible(step);
+                board.setStep(step);
+                board.setCurrentPlayer(board.getPlayer(0));
+            } else {
+                startProgrammingPhase();
+            }
+        }
+    }
+
+    /**
+     * Moves a player forward in the direction he is facing.
+     * @param player
+     */
     public void moveForward(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
