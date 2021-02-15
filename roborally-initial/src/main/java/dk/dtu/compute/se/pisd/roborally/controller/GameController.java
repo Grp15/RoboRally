@@ -154,7 +154,10 @@ public class GameController {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 if (card != null) {
                     Command command = card.command;
-                    executeCommand(currentPlayer, command);
+                    if(command.isInteractive()){
+                    board.setPhase(Phase.PLAYER_INTERACTION);
+                    return;
+                    } else executeCommand(currentPlayer, command);
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
@@ -231,14 +234,20 @@ public class GameController {
         moveForward(player);
     }
 
-    // TODO Assignment V2
+    /**
+     * Set a current players direction to turn right of current heading.
+     * @param player current player
+     */
     public void turnRight(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
         currentPlayer.setHeading(heading.next());
     }
 
-    // TODO Assignment V2-
+    /**
+     * Set a current players direction to turn left of current heading.
+     * @param player current player
+     */
     public void turnLeft(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
