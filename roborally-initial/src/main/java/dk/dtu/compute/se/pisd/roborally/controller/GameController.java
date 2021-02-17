@@ -220,24 +220,24 @@ public class GameController {
      * Changes the phrase to Activation (with options) and executes command card
      * @param command executed option
      */
-    public void executeCommandAndContinue(Command command){
+    public void executeCommandAndContinue(Command command) {
         board.setPhase(Phase.ACTIVATION);
         Player currentPlayer = board.getCurrentPlayer();
         executeCommand(currentPlayer, command);
 
-            int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
-            if (nextPlayerNumber < board.getPlayersNumber()) {
-                board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        if (nextPlayerNumber < board.getPlayersNumber()) {
+            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        } else {
+            int step = board.getStep() + 1;
+            if (step < Player.NO_REGISTERS) {
+                makeProgramFieldsVisible(step);
+                board.setStep(step);
+                board.setCurrentPlayer(board.getPlayer(0));
             } else {
-                int step = board.getStep() + 1;
-                if (step < Player.NO_REGISTERS) {
-                    makeProgramFieldsVisible(step);
-                    board.setStep(step);
-                    board.setCurrentPlayer(board.getPlayer(0));
-                } else {
-                    startProgrammingPhase();
-                }
+                startProgrammingPhase();
             }
+        }
 
         continuePrograms(); // V3.5 (continue)
 
