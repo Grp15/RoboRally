@@ -102,6 +102,7 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
+        executePrograms(); // V3.5
     }
 
     // XXX: V2
@@ -224,19 +225,22 @@ public class GameController {
         Player currentPlayer = board.getCurrentPlayer();
         executeCommand(currentPlayer, command);
 
-        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
-        if (nextPlayerNumber < board.getPlayersNumber()) {
-            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
-        } else {
-            int step = board.getStep()+1;
-            if (step < Player.NO_REGISTERS) {
-                makeProgramFieldsVisible(step);
-                board.setStep(step);
-                board.setCurrentPlayer(board.getPlayer(0));
+            int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+            if (nextPlayerNumber < board.getPlayersNumber()) {
+                board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
             } else {
-                startProgrammingPhase();
+                int step = board.getStep() + 1;
+                if (step < Player.NO_REGISTERS) {
+                    makeProgramFieldsVisible(step);
+                    board.setStep(step);
+                    board.setCurrentPlayer(board.getPlayer(0));
+                } else {
+                    startProgrammingPhase();
+                }
             }
-        }
+
+        continuePrograms(); // V3.5 (continue)
+
     }
 
     /**
