@@ -43,7 +43,7 @@ public enum Command {
     // XXX Assignment V3
     OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
 
-    final public String displayName;
+    final private String displayName;
 
     // XXX Assignment V3
     // Command(String displayName) {
