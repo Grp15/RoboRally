@@ -39,7 +39,7 @@ public class CommandCard extends Subject {
     }
 
     public String getName() {
-        return command.displayName;
+        return command.getDisplayName();
     }
 
     public Command getCommand() {
