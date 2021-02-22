@@ -22,7 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
+ * The Phase classe is an enum and is responsible for different phases for the game (board)
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
