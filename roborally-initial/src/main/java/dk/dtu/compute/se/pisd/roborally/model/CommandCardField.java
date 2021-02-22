@@ -24,7 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 /**
- * ...
+ * The CommandCardField class inheritance from Subject and is responsible for a players command cards.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -37,16 +37,31 @@ public class CommandCardField extends Subject {
 
     private boolean visible;
 
+    /**
+     * Constructor for CommandCardField
+     *
+     * @param player the player whose command card fields it is
+     */
     public CommandCardField(Player player) {
         this.player = player;
-        this. card = null;
+        this.card = null;
         this.visible = true;
     }
 
+    /**
+     * Returns a CommandCard
+     *
+     * @return command card
+     */
     public CommandCard getCard() {
         return card;
     }
 
+    /**
+     * Set a new command card and notify changes.
+     *
+     * @param card new command card
+     */
     public void setCard(CommandCard card) {
         if (card != this.card) {
             this.card = card;
@@ -54,10 +69,21 @@ public class CommandCardField extends Subject {
         }
     }
 
+    /**
+     * Get visability of command card field
+     *
+     * @return if command card field is visible return true or else false
+     */
     public boolean isVisible() {
         return visible;
     }
 
+    /**
+     * Set visablity for command card field
+     *
+     * @param visible if visible (true)
+     *                if not visible (false)
+     */
     public void setVisible(boolean visible) {
         if (visible != this.visible) {
             this.visible = visible;

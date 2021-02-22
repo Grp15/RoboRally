@@ -51,6 +51,7 @@ public class CommandCard extends Subject {
     }
 
     /**
+     * @author s205436
      * Returns command for the command card
      *
      * @return command card's command

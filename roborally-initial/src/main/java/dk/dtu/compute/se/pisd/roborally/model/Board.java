@@ -30,7 +30,7 @@ import java.util.List;
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
 /**
- * The Board class is responsible for keeping information regarding elements in the game.
+ * The Board class is responsible for keeping information regarding elements in the game and inheritanceses from Subject.
  * Here are some of the information Board has: width and height, players, phases, rounds and gameId.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
