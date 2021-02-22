@@ -102,6 +102,7 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
+        executePrograms(); // V3.5
     }
 
     // XXX: V2
@@ -153,7 +154,7 @@ public class GameController {
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 if (card != null) {
-                    Command command = card.command;
+                    Command command = card.getCommand();
                     if(command.isInteractive()){
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
@@ -219,7 +220,7 @@ public class GameController {
      * Changes the phrase to Activation (with options) and executes command card
      * @param command executed option
      */
-    public void executeCommandAndContinue(Command command){
+    public void executeCommandAndContinue(Command command) {
         board.setPhase(Phase.ACTIVATION);
         Player currentPlayer = board.getCurrentPlayer();
         executeCommand(currentPlayer, command);
@@ -228,7 +229,7 @@ public class GameController {
         if (nextPlayerNumber < board.getPlayersNumber()) {
             board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
         } else {
-            int step = board.getStep()+1;
+            int step = board.getStep() + 1;
             if (step < Player.NO_REGISTERS) {
                 makeProgramFieldsVisible(step);
                 board.setStep(step);
@@ -237,6 +238,9 @@ public class GameController {
                 startProgrammingPhase();
             }
         }
+
+        continuePrograms(); // V3.5 (continue)
+
     }
 
     /**
