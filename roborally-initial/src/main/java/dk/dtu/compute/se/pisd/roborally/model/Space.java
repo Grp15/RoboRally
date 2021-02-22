@@ -24,10 +24,9 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 /**
- * ...
+ * The Space class inheritance from Subject and is responsible for the spaces in board.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class Space extends Subject {
 
@@ -38,6 +37,13 @@ public class Space extends Subject {
 
     private Player player;
 
+    /**
+     * Constructor for space takes a board and coordinates as parameters
+     *
+     * @param board affiliated board
+     * @param x x-coordinate for placement of space
+     * @param y y-coordinate for placement of space
+     */
     public Space(Board board, int x, int y) {
         this.board = board;
         this.x = x;
@@ -45,10 +51,20 @@ public class Space extends Subject {
         player = null;
     }
 
+    /**
+     * Return player that are on space
+     *
+     * @return player placed on space
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * Place a new player on space if there are any and notify changes
+     *
+     * @param player player to place on space
+     */
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
         if (player != oldPlayer &&
