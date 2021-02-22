@@ -22,19 +22,28 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
+ * The Heading class is an enum and is responsible for the heading of the direction for the players.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public enum Heading {
 
     SOUTH, WEST, NORTH, EAST;
 
+    /**
+     * Return the next heading based on current heading
+     *
+     * @return next heading
+     */
     public Heading next() {
         return values()[(this.ordinal() + 1) % values().length];
     }
 
+    /**
+     * Return the previous heading based on current heading
+     *
+     * @return next heading
+     */
     public Heading prev() {
         return values()[(this.ordinal() + values().length - 1) % values().length];
     }
