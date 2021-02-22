@@ -44,7 +44,7 @@ public enum Command {
 
     OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
 
-    final public String displayName;
+    final private String displayName;
 
     final private List<Command> options;
 
