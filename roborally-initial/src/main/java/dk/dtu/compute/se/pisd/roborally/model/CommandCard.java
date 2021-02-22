@@ -25,7 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * The class CommandCard inheritance from Subject and is responsible for the command cards in the game (board)
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
