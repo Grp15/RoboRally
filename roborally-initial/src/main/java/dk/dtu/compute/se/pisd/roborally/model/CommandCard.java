@@ -25,23 +25,36 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * The CommandCard class is responsible for the command cards in the game and inheritance from Subject.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
  */
 public class CommandCard extends Subject {
 
-    final public Command command;
+    final public Command command; // enum
 
+    /**
+     * Constructor for CommandCard
+     * @param command command for given command card
+     */
     public CommandCard(@NotNull Command command) {
         this.command = command;
     }
 
+    /**
+     * Returns name for command card
+     *
+     * @return displayName for command
+     */
     public String getName() {
         return command.displayName;
     }
 
+    /**
+     * Returns command for the command card
+     *
+     * @return command card's command
+     */
     public Command getCommand() {
         return command;
     }

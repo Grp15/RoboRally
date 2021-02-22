@@ -26,7 +26,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The Command class is responsible for the different commands for the CommandCards.
+ * The Command class is an enumiration and is responsible for the different commands for the CommandCards.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  * @author s205436
