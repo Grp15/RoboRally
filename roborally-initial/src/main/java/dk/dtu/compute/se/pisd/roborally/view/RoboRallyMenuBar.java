@@ -27,7 +27,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 /**
- * ...
+ * From here new games and settings are chosen
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
