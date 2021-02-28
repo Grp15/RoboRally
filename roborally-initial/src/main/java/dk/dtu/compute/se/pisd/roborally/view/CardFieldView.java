@@ -173,6 +173,9 @@ public class CardFieldView extends GridPane implements ViewObserver {
         }
     }
 
+    /**
+     * This class handles view when detecting drag of player with mouse
+     */
     private class OnDragDetectedHandler implements EventHandler<MouseEvent> {
 
         @Override
