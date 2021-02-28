@@ -67,6 +67,12 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     private GameController gameController;
 
+    /**
+     * THis method sets the details of the squares on the board
+     * @param gameController
+     * @param field
+     */
+
     public CardFieldView(@NotNull GameController gameController, @NotNull CommandCardField field) {
         this.gameController = gameController;
         this.field = field;
