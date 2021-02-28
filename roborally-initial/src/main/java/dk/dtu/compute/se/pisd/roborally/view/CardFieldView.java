@@ -268,6 +268,9 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * When drag has been exited by player
+     */
     private class OnDragExitedHandler implements EventHandler<DragEvent> {
 
         @Override
