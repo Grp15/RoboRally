@@ -38,7 +38,7 @@ import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * This class handles the view to the player of the fields on the board
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
