@@ -62,6 +62,13 @@ public class PlayerView extends Tab implements ViewObserver {
 
     private GameController gameController;
 
+    /**
+     * Checks for dependencies from GameController and updates the view of player according to the GameController
+     *
+     * @param gameController
+     * @param player
+     */
+
     public PlayerView(@NotNull GameController gameController, @NotNull Player player) {
         super(player.getName());
         this.setStyle("-fx-text-base-color: " + player.getColor() + ";");
@@ -132,6 +139,12 @@ public class PlayerView extends Tab implements ViewObserver {
             update(player.board);
         }
     }
+
+    /**
+     *
+     *
+     * @param subject
+     */
 
     @Override
     public void updateView(Subject subject) {
