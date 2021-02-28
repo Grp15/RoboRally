@@ -34,7 +34,7 @@ import javafx.scene.shape.StrokeLineCap;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * Handles the view of different spaces on the board and colors and sizes hereof
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
