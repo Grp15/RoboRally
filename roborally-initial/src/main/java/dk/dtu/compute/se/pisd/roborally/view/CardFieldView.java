@@ -298,6 +298,9 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * When drag has been dropped class
+     */
     private class OnDragDroppedHandler implements EventHandler<DragEvent> {
 
         @Override
