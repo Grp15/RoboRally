@@ -46,6 +46,10 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     public final Space space;
 
+    /**
+     * Changes sizes and oclors of spaces view
+     * @param space
+     */
 
     public SpaceView(@NotNull Space space) {
         this.space = space;
