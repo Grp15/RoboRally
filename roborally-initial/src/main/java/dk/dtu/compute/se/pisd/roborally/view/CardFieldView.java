@@ -106,6 +106,11 @@ public class CardFieldView extends GridPane implements ViewObserver {
         update(field);
     }
 
+    /**
+     * This method checks if there are any cards or registers left in order to representate squares
+     * @param cardField
+     * @return
+     */
     private String cardFieldRepresentation(CommandCardField cardField) {
         if (cardField.player != null) {
 
