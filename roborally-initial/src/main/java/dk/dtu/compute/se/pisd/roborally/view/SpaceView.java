@@ -100,6 +100,11 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
 
+    /**
+     * If player is not on space, then update player
+     * @param subject
+     */
+
     @Override
     public void updateView(Subject subject) {
         if (subject == this.space) {
