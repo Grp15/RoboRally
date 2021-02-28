@@ -33,7 +33,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 /**
- * ...
+ * Handles the view which the Player sees with the different Labels and button panels
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
