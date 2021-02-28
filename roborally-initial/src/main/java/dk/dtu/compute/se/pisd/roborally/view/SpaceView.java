@@ -76,6 +76,11 @@ public class SpaceView extends StackPane implements ViewObserver {
         update(space);
     }
 
+    /**
+     * Updates the positions of the player on the board
+     *
+     */
+
     private void updatePlayer() {
         this.getChildren().clear();
 
