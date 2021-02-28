@@ -28,7 +28,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.scene.control.TabPane;
 
 /**
- * ...
+ * This updates the view for the specific players of the board game
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
