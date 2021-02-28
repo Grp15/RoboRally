@@ -209,6 +209,9 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * Handles interactions when dragged over another player
+     */
     private class OnDragOverHandler implements EventHandler<DragEvent> {
 
         @Override
