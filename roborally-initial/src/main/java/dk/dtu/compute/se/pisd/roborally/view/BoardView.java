@@ -87,6 +87,12 @@ public class BoardView extends VBox implements ViewObserver {
         update(board);
     }
 
+    /**
+     * Updates the view of the board at different phases
+     *
+     * @param subject
+     */
+
     @Override
     public void updateView(Subject subject) {
         if (subject == board) {
