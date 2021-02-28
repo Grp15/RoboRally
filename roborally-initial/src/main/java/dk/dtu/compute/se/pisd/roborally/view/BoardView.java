@@ -35,7 +35,7 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * This class stands for handling the physical view of the board which is shown to the players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
