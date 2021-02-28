@@ -57,6 +57,10 @@ public class PlayersView extends TabPane implements ViewObserver {
         update(board);
     }
 
+    /**
+     * Checks if update of view is needed
+     * @param subject
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == board) {
