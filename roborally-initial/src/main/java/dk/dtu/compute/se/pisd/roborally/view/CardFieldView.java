@@ -214,6 +214,10 @@ public class CardFieldView extends GridPane implements ViewObserver {
      */
     private class OnDragOverHandler implements EventHandler<DragEvent> {
 
+        /**
+         * Handle method for different events possible by mouse interaction and updating the view of the board
+         * @param event
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
