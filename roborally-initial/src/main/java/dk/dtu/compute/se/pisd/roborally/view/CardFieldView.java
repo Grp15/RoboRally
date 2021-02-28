@@ -157,6 +157,10 @@ public class CardFieldView extends GridPane implements ViewObserver {
         return null;
     }
 
+    /**
+     * This updates the view of commandcard squares
+     * @param subject
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == field && subject != null) {
