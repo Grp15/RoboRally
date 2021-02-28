@@ -83,6 +83,9 @@ public class RoboRallyMenuBar extends MenuBar {
         update();
     }
 
+    /**
+     * This method checks if game is running and show necessary buttons depending on whether game is running
+     */
     public void update() {
         if (appController.isGameRunning()) {
             newGame.setVisible(false);
