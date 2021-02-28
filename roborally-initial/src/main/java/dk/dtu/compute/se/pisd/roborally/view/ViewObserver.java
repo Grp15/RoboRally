@@ -26,7 +26,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import javafx.application.Platform;
 
 /**
- * ...
+ * Show ViewObserver implementations on updates of view
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
