@@ -141,7 +141,7 @@ public class PlayerView extends Tab implements ViewObserver {
     }
 
     /**
-     *
+     * Updates the view of the board depending on the different individual views of the current player
      *
      * @param subject
      */
