@@ -132,6 +132,12 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * This method checks player interaction with command card squares on the board
+     *
+     * @param rep
+     * @return
+     */
     private CommandCardField cardFieldFromRepresentation(String rep) {
         if (rep != null && field.player != null) {
             String[] strings = rep.split(",");
