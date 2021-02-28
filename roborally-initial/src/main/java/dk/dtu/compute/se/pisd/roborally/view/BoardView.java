@@ -115,6 +115,10 @@ public class BoardView extends VBox implements ViewObserver {
             this.gameController = gameController;
         }
 
+        /**
+         * Method which handles view upon certain events by player
+         * @param event
+         */
         @Override
         public void handle(MouseEvent event) {
             Object source = event.getSource();
