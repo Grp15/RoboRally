@@ -28,7 +28,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import javafx.scene.control.TabPane;
 
 /**
- * ...
+ * This updates the view for the specific players of the board game
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -39,6 +39,10 @@ public class PlayersView extends TabPane implements ViewObserver {
 
     private PlayerView[] playerViews;
 
+    /**
+     * Updates board for the players depending on the gameController
+     * @param gameController
+     */
     public PlayersView(GameController gameController) {
         board = gameController.board;
 
@@ -53,6 +57,10 @@ public class PlayersView extends TabPane implements ViewObserver {
         update(board);
     }
 
+    /**
+     * Checks if update of view is needed
+     * @param subject
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == board) {

@@ -38,7 +38,7 @@ import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * This class handles the view to the player of the fields on the board
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -66,6 +66,12 @@ public class CardFieldView extends GridPane implements ViewObserver {
     private Label label;
 
     private GameController gameController;
+
+    /**
+     * THis method sets the details of the squares on the board
+     * @param gameController
+     * @param field
+     */
 
     public CardFieldView(@NotNull GameController gameController, @NotNull CommandCardField field) {
         this.gameController = gameController;
@@ -100,6 +106,11 @@ public class CardFieldView extends GridPane implements ViewObserver {
         update(field);
     }
 
+    /**
+     * This method checks if there are any cards or registers left in order to representate squares
+     * @param cardField
+     * @return
+     */
     private String cardFieldRepresentation(CommandCardField cardField) {
         if (cardField.player != null) {
 
@@ -121,6 +132,12 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * This method checks player interaction with command card squares on the board
+     *
+     * @param rep
+     * @return
+     */
     private CommandCardField cardFieldFromRepresentation(String rep) {
         if (rep != null && field.player != null) {
             String[] strings = rep.split(",");
@@ -140,6 +157,10 @@ public class CardFieldView extends GridPane implements ViewObserver {
         return null;
     }
 
+    /**
+     * This updates the view of commandcard squares
+     * @param subject
+     */
     @Override
     public void updateView(Subject subject) {
         if (subject == field && subject != null) {
@@ -152,8 +173,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
         }
     }
 
+    /**
+     * This class handles view when detecting drag of player with mouse
+     */
     private class OnDragDetectedHandler implements EventHandler<MouseEvent> {
 
+        /**
+         * Handle method for different events possible by mouse interaction and updating the view of the board
+         * @param event
+         */
         @Override
         public void handle(MouseEvent event) {
             Object t = event.getTarget();
@@ -181,8 +209,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * Handles interactions when dragged over another player
+     */
     private class OnDragOverHandler implements EventHandler<DragEvent> {
 
+        /**
+         * Handle method for different events possible by mouse interaction and updating the view of the board
+         * @param event
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
@@ -203,8 +238,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * When drag has been entered
+     */
     private class OnDragEnteredHandler implements EventHandler<DragEvent> {
 
+        /**
+         * Handle method for different events possible by mouse interaction and updating the view of the board
+         * @param event
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
@@ -226,8 +268,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * When drag has been exited by player
+     */
     private class OnDragExitedHandler implements EventHandler<DragEvent> {
 
+        /**
+         * Handle method for different events possible by mouse interaction and updating the view of the board
+         * @param event
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
@@ -249,8 +298,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * When drag has been dropped class
+     */
     private class OnDragDroppedHandler implements EventHandler<DragEvent> {
 
+        /**
+         * Handle method for different events possible by mouse interaction and updating the view of the board
+         * @param event
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
@@ -288,8 +344,15 @@ public class CardFieldView extends GridPane implements ViewObserver {
 
     }
 
+    /**
+     * When drag is done handler
+     */
     private class OnDragDoneHandler implements EventHandler<DragEvent> {
 
+        /**
+         * Handle method for different events possible by mouse interaction and updating the view of the board
+         * @param event
+         */
         @Override
         public void handle(DragEvent event) {
             Object t = event.getTarget();
