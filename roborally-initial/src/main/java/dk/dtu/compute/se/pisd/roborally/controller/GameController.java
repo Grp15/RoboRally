@@ -25,9 +25,10 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * Gamecontroller conatains method for all the game logic like initiating phases and moving players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author
  *
  */
 public class GameController {
