@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
- * ...
+ * The Player class inheritance from Subject and is responsible for every information regarding the player.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -48,6 +48,14 @@ public class Player extends Subject {
     private CommandCardField[] program;
     private CommandCardField[] cards;
 
+    /**
+     * Constructor for player that sets affiliated board, color and name
+     * and creates a new command card field for the given player.
+     *
+     * @param board affiliated board
+     * @param color color of player
+     * @param name name of player
+     */
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
         this.name = name;
@@ -66,10 +74,20 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Returns player name
+     *
+     * @return player name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set a player name if not empty and is not already taken and notify Changes.
+     *
+     * @param name wished name for player
+     */
     public void setName(String name) {
         if (name != null && !name.equals(this.name)) {
             this.name = name;
@@ -80,10 +98,18 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * @return color of player
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Set a player color and if player is on a space notify change.
+     *
+     * @param color wished player color
+     */
     public void setColor(String color) {
         this.color = color;
         notifyChange();
@@ -92,10 +118,20 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Returns players current space (placement)
+     *
+     * @return space
+     */
     public Space getSpace() {
         return space;
     }
 
+    /**
+     * Set a players space if space is on the board and player has moved
+     *
+     * @param space new space for player placement
+     */
     public void setSpace(Space space) {
         Space oldSpace = this.space;
         if (space != oldSpace &&
@@ -111,10 +147,20 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Returns a players direction heading
+     *
+     * @return heading of player
+     */
     public Heading getHeading() {
         return heading;
     }
 
+    /**
+     * Set a players heading if changed and notify changes
+     *
+     * @param heading new heading for player
+     */
     public void setHeading(@NotNull Heading heading) {
         if (heading != this.heading) {
             this.heading = heading;
@@ -125,10 +171,22 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Returns a player's program command card field from index
+     *
+     * @param i index of command card field
+     * @return players program field
+     */
     public CommandCardField getProgramField(int i) {
         return program[i];
     }
 
+    /**
+     * Returns a player's command card field from index
+     *
+     * @param i index of command card field
+     * @return players card program field
+     */
     public CommandCardField getCardField(int i) {
         return cards[i];
     }
