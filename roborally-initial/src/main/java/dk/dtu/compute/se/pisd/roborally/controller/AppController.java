@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * ...
+ * AppController is the game controller which controls the game
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
