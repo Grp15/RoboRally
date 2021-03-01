@@ -43,6 +43,7 @@ import java.util.Optional;
 /**
  * AppController is the game controller which controls the game
  *
+ *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
@@ -58,6 +59,11 @@ public class AppController implements Observer {
     public AppController(@NotNull RoboRally roboRally) {
         this.roboRally = roboRally;
     }
+
+
+    /**
+     * newGame creates a new instance of a game controller
+     */
 
     public void newGame() {
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
@@ -93,9 +99,17 @@ public class AppController implements Observer {
         }
     }
 
+    /**
+     * Savaegame saves a game to be played later
+     */
+
     public void saveGame() {
         // XXX needs to be implemented eventually
     }
+
+    /**
+     * LoadGame loads a saved game
+     */
 
     public void loadGame() {
         // XXX needs to be implememted eventually
@@ -126,6 +140,10 @@ public class AppController implements Observer {
         }
         return false;
     }
+
+    /**
+     * Exits the game and gives the player an opportunity to save
+     */
 
     public void exit() {
         if (gameController != null) {
