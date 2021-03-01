@@ -28,7 +28,11 @@ import org.jetbrains.annotations.NotNull;
  * Gamecontroller conatains method for all the game logic like initiating phases and moving players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author
+ * @author s205436
+ * @author s164539
+ * @author s152780
+ * @author s205472
+ * @author s194612
  *
  */
 public class GameController {
@@ -66,6 +70,11 @@ public class GameController {
         }
     }
 
+    /**
+     * This method initiates the programmingphase
+     *
+     */
+
     // XXX: V2
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
@@ -89,12 +98,22 @@ public class GameController {
         }
     }
 
+    /**
+     * This method generates one random of the games command card for the player
+     *
+     * @return CommandCard
+     */
+
     // XXX: V2
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
     }
+
+    /**
+     * This method ends the programming phase
+     */
 
     // XXX: V2
     public void finishProgrammingPhase() {
@@ -105,6 +124,11 @@ public class GameController {
         board.setStep(0);
         executePrograms(); // V3.5
     }
+
+    /**
+     * This method makes the programfield visible
+     * @param register
+     */
 
     // XXX: V2
     private void makeProgramFieldsVisible(int register) {
@@ -117,6 +141,10 @@ public class GameController {
         }
     }
 
+    /**
+     * This method makes the programfield invisible
+     */
+
     // XXX: V2
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -128,11 +156,19 @@ public class GameController {
         }
     }
 
+    /**
+     * This method execute all programming cards in the register
+     */
+
     // XXX: V2
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
     }
+
+    /**
+     * This method executes the first step in the register
+     */
 
     // XXX: V2
     public void executeStep() {
@@ -140,12 +176,20 @@ public class GameController {
         continuePrograms();
     }
 
+    /**
+     * Executes program as long as activation phase is on and stepmode is off
+     */
+
     // XXX: V2
     private void continuePrograms() {
         do {
             executeNextStep();
         } while (board.getPhase() == Phase.ACTIVATION && !board.isStepMode());
     }
+
+    /**
+     * Executes next step from a players register
+     */
 
     // XXX: V2
     private void executeNextStep() {
