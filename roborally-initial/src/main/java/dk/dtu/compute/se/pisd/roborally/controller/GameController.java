@@ -302,8 +302,13 @@ public class GameController {
         }
     }
 
-
-
+    /**
+     * .....
+     * @param player player which is moved
+     * @param space space to move to
+     * @param heading direction player is facing
+     * @throws ImpossibleMoveException
+     */
     private void moveToSpace(
             @NotNull Player player,
             @NotNull Space space,
@@ -322,11 +327,9 @@ public class GameController {
         player.setSpace(space);
 }
 
-    // /todo A3: få kommandokort til at skifte til næste spiller
-
     /**
      * Moves a player forward in the direction he is facing.
-     * @param currentPlayer
+     * @param currentPlayer current player
      */
     public void moveForward(@NotNull Player currentPlayer){
         //Player currentPlayer = board.getCurrentPlayer();
