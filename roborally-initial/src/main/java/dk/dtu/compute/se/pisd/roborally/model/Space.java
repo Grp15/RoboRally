@@ -36,6 +36,7 @@ public class Space extends Subject {
     public final int x;
     public final int y;
 
+    private Space space;
     private Player player;
 
     public Space(Board board, int x, int y) {
@@ -44,6 +45,23 @@ public class Space extends Subject {
         this.y = y;
         player = null;
     }
+
+    public void wall(Player player, Board board) {
+        Heading wallHeading = new Heading;
+        Heading playerHeading = new Heading;
+       // player.getSpace();
+
+        test = space;
+        this.space = player.getSpace();
+        if(playerHeading == wallHeading) {
+            PlayerSpace == player.getSpace();
+
+            //this.space != PlayerSpace
+        }
+
+
+    }
+
 
     public Player getPlayer() {
         return player;
