@@ -328,13 +328,18 @@ public class GameController {
      * Moves a player forward in the direction he is facing.
      * @param currentPlayer
      */
-    public void moveForward(@NotNull Player currentPlayer) {
+    public void moveForward(@NotNull Player currentPlayer){
         //Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
         Space currentSpace = currentPlayer.getSpace();
         Space newSpace = board.getNeighbour(currentSpace, heading);
 
-        currentPlayer.setSpace(newSpace);
+        //currentPlayer.setSpace(newSpace);
+        try {
+            moveToSpace(currentPlayer, newSpace, heading);
+        } catch (ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
