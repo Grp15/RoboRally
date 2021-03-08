@@ -288,6 +288,41 @@ public class GameController {
 
     }
 
+    class ImpossibleMoveException extends Exception {
+        private Player player;
+        private Space space;
+        private Heading heading;
+        public ImpossibleMoveException(Player player,
+                                       Space space,
+                                       Heading heading) {
+            super("Move impossible");
+            this.player = player;
+            this.space = space;
+            this.heading = heading;
+        }
+    }
+
+
+
+    private void moveToSpace(
+            @NotNull Player player,
+            @NotNull Space space,
+            @NotNull Heading heading) throws ImpossibleMoveException {
+        Player other = space.getPlayer();
+        if (other != null){
+            Space target = board.getNeighbour(space, heading);
+            if (target != null) {
+                // XXX Note that there might be additional problems
+                // with infinite recursion here!
+                moveToSpace(other, target, heading);
+            } else {
+                throw new ImpossibleMoveException(player, space, heading);
+            }
+        }
+        player.setSpace(space);
+    }
+
+
     /**
      * Moves a player forward in the direction he is facing.
      * @param player
