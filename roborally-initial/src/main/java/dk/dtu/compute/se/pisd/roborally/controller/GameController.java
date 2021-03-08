@@ -320,15 +320,16 @@ public class GameController {
             }
         }
         player.setSpace(space);
-    }
+}
 
+    // /todo få move forward til at skifte spiller (tælle ture)
 
     /**
      * Moves a player forward in the direction he is facing.
-     * @param player
+     * @param currentPlayer
      */
-    public void moveForward(@NotNull Player player) {
-        Player currentPlayer = board.getCurrentPlayer();
+    public void moveForward(@NotNull Player currentPlayer) {
+        //Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
         Space currentSpace = currentPlayer.getSpace();
         Space newSpace = board.getNeighbour(currentSpace, heading);
