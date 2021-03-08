@@ -322,7 +322,7 @@ public class GameController {
         player.setSpace(space);
 }
 
-    // /todo få move forward til at skifte spiller (tælle ture)
+    // /todo A3: få kommandokort til at skifte til næste spiller
 
     /**
      * Moves a player forward in the direction he is facing.
