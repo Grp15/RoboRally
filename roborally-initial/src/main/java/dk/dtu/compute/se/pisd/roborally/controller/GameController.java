@@ -25,9 +25,14 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * Gamecontroller conatains method for all the game logic like initiating phases and moving players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author s205436
+ * @author s164539
+ * @author s152780
+ * @author s205472
+ * @author s194612
  *
  */
 public class GameController {
@@ -65,6 +70,11 @@ public class GameController {
         }
     }
 
+    /**
+     * This method initiates the programmingphase
+     *
+     */
+
     // XXX: V2
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
@@ -88,12 +98,22 @@ public class GameController {
         }
     }
 
+    /**
+     * This method generates one random of the games command card for the player
+     *
+     * @return CommandCard
+     */
+
     // XXX: V2
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
     }
+
+    /**
+     * This method ends the programming phase
+     */
 
     // XXX: V2
     public void finishProgrammingPhase() {
@@ -102,7 +122,13 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
+        executePrograms(); // V3.5
     }
+
+    /**
+     * This method makes the programfield visible
+     * @param register
+     */
 
     // XXX: V2
     private void makeProgramFieldsVisible(int register) {
@@ -115,6 +141,10 @@ public class GameController {
         }
     }
 
+    /**
+     * This method makes the programfield invisible
+     */
+
     // XXX: V2
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -126,11 +156,19 @@ public class GameController {
         }
     }
 
+    /**
+     * This method execute all programming cards in the register
+     */
+
     // XXX: V2
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
     }
+
+    /**
+     * This method executes the first step in the register
+     */
 
     // XXX: V2
     public void executeStep() {
@@ -138,12 +176,20 @@ public class GameController {
         continuePrograms();
     }
 
+    /**
+     * Executes program as long as activation phase is on and stepmode is off
+     */
+
     // XXX: V2
     private void continuePrograms() {
         do {
             executeNextStep();
         } while (board.getPhase() == Phase.ACTIVATION && !board.isStepMode());
     }
+
+    /**
+     * Executes next step from a players register
+     */
 
     // XXX: V2
     private void executeNextStep() {
@@ -153,8 +199,11 @@ public class GameController {
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 if (card != null) {
-                    Command command = card.command;
-                    executeCommand(currentPlayer, command);
+                    Command command = card.getCommand();
+                    if(command.isInteractive()){
+                        board.setPhase(Phase.PLAYER_INTERACTION);
+                        return;
+                    } else executeCommand(currentPlayer, command);
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
@@ -180,6 +229,12 @@ public class GameController {
     }
 
     // XXX: V2
+
+    /**
+     * Runs the method connected to the command card
+     * @param player
+     * @param command
+     */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
             // XXX This is a very simplistic way of dealing with some basic cards and
@@ -205,30 +260,112 @@ public class GameController {
         }
     }
 
-    // TODO Assignment V2
-    public void moveForward(@NotNull Player player) {
+    /**
+     * .....
+     * Changes the phrase to Activation (with options) and executes command card
+     * @param command executed option
+     */
+    public void executeCommandAndContinue(Command command) {
+        board.setPhase(Phase.ACTIVATION);
         Player currentPlayer = board.getCurrentPlayer();
+        executeCommand(currentPlayer, command);
+
+        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        if (nextPlayerNumber < board.getPlayersNumber()) {
+            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+        } else {
+            int step = board.getStep() + 1;
+            if (step < Player.NO_REGISTERS) {
+                makeProgramFieldsVisible(step);
+                board.setStep(step);
+                board.setCurrentPlayer(board.getPlayer(0));
+            } else {
+                startProgrammingPhase();
+            }
+        }
+
+        continuePrograms(); // V3.5 (continue)
+
+    }
+
+    class ImpossibleMoveException extends Exception {
+        private Player player;
+        private Space space;
+        private Heading heading;
+        public ImpossibleMoveException(Player player,
+                                       Space space,
+                                       Heading heading) {
+            super("Move impossible");
+            this.player = player;
+            this.space = space;
+            this.heading = heading;
+        }
+    }
+
+
+
+    private void moveToSpace(
+            @NotNull Player player,
+            @NotNull Space space,
+            @NotNull Heading heading) throws ImpossibleMoveException {
+        Player other = space.getPlayer();
+        if (other != null){
+            Space target = board.getNeighbour(space, heading);
+            if (target != null) {
+                // XXX Note that there might be additional problems
+                // with infinite recursion here!
+                moveToSpace(other, target, heading);
+            } else {
+                throw new ImpossibleMoveException(player, space, heading);
+            }
+        }
+        player.setSpace(space);
+}
+
+    // /todo A3: få kommandokort til at skifte til næste spiller
+
+    /**
+     * Moves a player forward in the direction he is facing.
+     * @param currentPlayer
+     */
+    public void moveForward(@NotNull Player currentPlayer){
+        //Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
         Space currentSpace = currentPlayer.getSpace();
         Space newSpace = board.getNeighbour(currentSpace, heading);
 
-        currentPlayer.setSpace(newSpace);
+        //currentPlayer.setSpace(newSpace);
+        try {
+            moveToSpace(currentPlayer, newSpace, heading);
+        } catch (ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Moves a player forward 2 spaces towards the direction the player is currently facing
+     * @param player
+     */
     // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
     public void fastForward(@NotNull Player player) {
         moveForward(player);
         moveForward(player);
     }
 
-    // TODO Assignment V2
+    /**
+     * Set a current players direction to turn right of current heading.
+     * @param player current player
+     */
     public void turnRight(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
         currentPlayer.setHeading(heading.next());
     }
 
-    // TODO Assignment V2-
+    /**
+     * Set a current players direction to turn left of current heading.
+     * @param player current player
+     */
     public void turnLeft(@NotNull Player player) {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();

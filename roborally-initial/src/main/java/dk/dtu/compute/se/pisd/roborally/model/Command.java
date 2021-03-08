@@ -43,7 +43,7 @@ public enum Command {
     // XXX Assignment V3
     OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
 
-    final public String displayName;
+    final private String displayName;
 
     // XXX Assignment V3
     // Command(String displayName) {
@@ -54,6 +54,12 @@ public enum Command {
 
     final private List<Command> options;
 
+
+    /**
+     * Displays the name of the command along with a list of options
+     * @param displayName
+     * @param options
+     */
     Command(String displayName, Command... options) {
         this.displayName = displayName;
         this.options = Collections.unmodifiableList(Arrays.asList(options));
@@ -65,6 +71,10 @@ public enum Command {
 
     public List<Command> getOptions() {
         return options;
+    }
+
+    public String getDisplayName(){
+        return displayName;
     }
 
 }

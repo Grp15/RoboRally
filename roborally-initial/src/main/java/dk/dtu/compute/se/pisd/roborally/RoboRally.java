@@ -32,10 +32,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * ...
+ *This class when run starts up the 'Roborally' application.
+ *The class is responsible for setting up the window
+ * shown to the players of the game.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author S164539
  */
 public class RoboRally extends Application {
 
