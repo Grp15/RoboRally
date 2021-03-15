@@ -53,15 +53,17 @@ public class Space extends Subject {
 
         test = space;
         this.space = player.getSpace();
-        if(playerHeading == wallHeading) {
-            PlayerSpace == player.getSpace();
+        PlayerSpace == player.getSpace();
 
-            //this.space != PlayerSpace
-        }
+        //TODO : benyt getNeighbour (Board) og tjek om der er wall foran/bagved felt og returner i så fald Null
+        //Angiv felter og nyt board under SpaceView/GameController (indtil JSON benyttes)
 
 
     }
 
+    public void checkpoint() {
+        //TODO antallet af checkpoints varierer fra board til board
+    }
 
     public Player getPlayer() {
         return player;
