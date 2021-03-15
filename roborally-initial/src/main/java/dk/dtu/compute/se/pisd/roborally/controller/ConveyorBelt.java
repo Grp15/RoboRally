@@ -21,6 +21,7 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -47,12 +48,23 @@ public class ConveyorBelt extends FieldAction {
 
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        // TODO needs to be implemented
+        // TODO Skub en spiller i den retning ConveyorBelt peger
+        // TODO Step by step
+        /**
+         *  1) Find ud af hvordan spilleren skal rykkes (Husk at tænke på exceptions
+         *  2) Hvad var det nu han sagde? Vi skulle fikse doAction i gameController og opsætte
+         *  det ordenligt i view.
+         *  3) Vi skal implementere hvor hen spilleren rykkes til
+         *  4) Vi skal fange exceptions og så returnerer metoden False
+         *  5) ellers skal den returnere True
+         */
 
-        // 1) Find ud af om det felt der er landet på har en action
+        Player current = space.getPlayer();
+
+        gameController.moveCurrentPlayerToSpace(); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
 
-        return false;
+        return false; // True hvis det lykkedes, false hvis ikke.
     }
 
 }
