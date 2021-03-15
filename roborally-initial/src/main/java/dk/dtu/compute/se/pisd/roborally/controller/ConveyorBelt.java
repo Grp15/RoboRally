@@ -48,6 +48,10 @@ public class ConveyorBelt extends FieldAction {
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         // TODO needs to be implemented
+
+        // 1) Find ud af om det felt der er landet på har en action
+
+
         return false;
     }
 
