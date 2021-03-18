@@ -47,13 +47,38 @@ public class Space extends Subject {
     }
 
     public void wall(Player player, Board board) {
-        //Heading wallHeading = new Heading;
-        //Heading playerHeading = new Heading;
-       // player.getSpace();
+        Heading wallHeading = new Heading;
+        Heading playerHeading = new Heading;
+        Space playerSpace = player.getSpace();
+        Space wallSpace = board.getSpace(x, y);
 
         //test = space;
         //this.space = player.getSpace();
         //PlayerSpace == player.getSpace();
+
+
+        if (playerSpace == board.getNeighbour(wallSpace, playerHeading)) {
+
+                switch (wallHeading) {
+                case SOUTH:
+                    if (playerHeading.SOUTH || playerHeading.NORTH == true) {
+
+                    }
+                    break;
+                case WEST:
+
+                    break;
+                case NORTH:
+                    if (playerHeading.SOUTH || playerHeading.NORTH) {
+
+                    }
+                    break;
+                case EAST:
+
+                    break;
+            }
+        }
+
 
         //TODO : benyt getNeighbour (Board) og tjek om der er wall foran/bagved felt og returner i så fald Null
         //Angiv felter og nyt board under SpaceView/GameController (indtil JSON benyttes)
