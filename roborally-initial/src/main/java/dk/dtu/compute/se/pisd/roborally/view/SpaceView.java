@@ -25,11 +25,17 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeLineCap;
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +51,6 @@ public class SpaceView extends StackPane implements ViewObserver {
     final public static int SPACE_WIDTH = 75;  // 60; // 75;
 
     public final Space space;
-
 
     public SpaceView(@NotNull Space space) {
         this.space = space;
@@ -95,7 +100,57 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
+
+
+
+            /*
+            Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
+
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            gc.setStroke(Color.RED);
+            gc.setLineWidth(5);
+            gc.setLineCap(StrokeLineCap.ROUND);
+
+            gc.strokeLine(2, SPACE_HEIGHT-2, SPACE_WIDTH-2, SPACE_HEIGHT-2); //(x1, y1, x2, y2)
+            this.getChildren().add(canvas);
+            */
         }
+
+        Polygon wallTest = new Polygon(0.0, 0.0,
+                10.0, 20.0,
+                20.0, 0.0 );
+
+        /*
+        Pane pane = new Pane();
+        Rectangle rectangle = new Rectangle(0.0, 0.0, SPACE_WIDTH, SPACE_HEIGHT);
+        rectangle.setFill(Color.TRANSPARENT);
+        pane.getChildren().add(rectangle);
+*/
+        /*
+        Line line = new Line(2, SPACE_HEIGHT-2, SPACE_WIDTH-2, SPACE_HEIGHT-2);
+        line.setStroke(Color.RED);
+        line.setStrokeWidth(5);
+        this.getChildren().add(line); //Er måske årsagen til rekursion af linjer
+        //this.getChildren().add(pane);
+*/
+
+        Line line = new Line();
+        line.setStroke(Color.RED);
+        line.setStrokeWidth(5);
+        line.setStartX(10.0);
+        line.setStartY(15.0);
+        line.setEndX(20.0);
+        line.setEndY(25.0);
+        this.getChildren().add(line);
+
+        //Group root = new Group(line);
+
+        //Scene scene = new Scene(root, SPACE_WIDTH, SPACE_HEIGHT);
+
+        //Stage stage.setScene(scene);
+
+       // stage.show();
+
     }
 
 }
