@@ -213,7 +213,7 @@ public class GameController {
 
                     // Mener det skal kaldes her inden step kaldes op, således at der altid bliver kaldt doaction
                     // Når en spiller lander på et felt, og hvis der så ikke er nogen action sker der ikke noget.
-                    // DoAction er en boolean, hvilket betyder at man kan checke om den er true
+                    // DoAction er en boolean, kan man så checke om den er true eller false?
 
                     step++;
                     if (step < Player.NO_REGISTERS) {
