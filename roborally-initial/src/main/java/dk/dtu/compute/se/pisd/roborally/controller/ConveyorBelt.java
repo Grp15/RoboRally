@@ -52,16 +52,16 @@ public class ConveyorBelt extends FieldAction {
         // TODO Step by step
         /**
          *  1) Find ud af hvordan spilleren skal rykkes (Husk at tænke på exceptions
-         *  2) Hvad var det nu han sagde? Vi skulle fikse doAction i gameController og opsætte
+         *  2) Vi skulle fikse doAction i gameController og opsætte
          *  det ordenligt i view.
          *  3) Vi skal implementere hvor hen spilleren rykkes til
          *  4) Vi skal fange exceptions og så returnerer metoden False
          *  5) ellers skal den returnere True
          */
 
-        Player current = space.getPlayer();
+        Player current = space.getPlayer(); // Tror ikke det her skal bruges
 
-        gameController.moveCurrentPlayerToSpace(); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
+        gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,heading)); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
 
         return false; // True hvis det lykkedes, false hvis ikke.
