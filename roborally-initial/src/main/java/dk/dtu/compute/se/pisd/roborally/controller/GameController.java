@@ -210,6 +210,11 @@ public class GameController {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
                     // TODO : Kald DoAction det rette sted.
+
+                    // Mener det skal kaldes her inden step kaldes op, således at der altid bliver kaldt doaction
+                    // Når en spiller lander på et felt, og hvis der så ikke er nogen action sker der ikke noget.
+                    // DoAction er en boolean, hvilket betyder at man kan checke om den er true
+
                     step++;
                     if (step < Player.NO_REGISTERS) {
                         makeProgramFieldsVisible(step);

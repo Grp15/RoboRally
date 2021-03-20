@@ -48,7 +48,7 @@ public class ConveyorBelt extends FieldAction {
 
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        // TODO Skub en spiller i den retning ConveyorBelt peger
+        // TODO Skub en spiller i den retning ConveyorBelt peger. (Husk at spillet eksekvere 1 register pr. spiller ad gangen)
         // TODO Step by step
         /**
          *  1) Find ud af hvordan spilleren skal rykkes (Husk at tænke på exceptions
