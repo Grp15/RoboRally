@@ -22,11 +22,13 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
 /**
@@ -64,11 +66,14 @@ public class Board extends Subject {
         this.width = width;
         this.height = height;
         spaces = new Space[width][height];
+
         for (int x = 0; x < width; x++) {
             for(int y = 0; y < height; y++) {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
+
             }
+
         }
         this.stepMode = false;
     }
@@ -182,6 +187,17 @@ public class Board extends Subject {
      * @return the space in the given direction; null if there is no (reachable) neighbour
      */
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading) {
+        if (space.getWalls().contains(heading)) {
+            return null;
+        }
+        // TODO needs to be implemented based on the actual spaces
+        //      and obstacles and walls placed there. For now it,
+        //      just calculates the next space in the respective
+        //      direction in a cyclic way.
+
+        // XXX an other option (not for now) would be that null represents a hole
+        //     or the edge of the board in which the players can fall
+
         int x = space.x;
         int y = space.y;
         switch (heading) {
@@ -198,8 +214,14 @@ public class Board extends Subject {
                 x = (x + 1) % width;
                 break;
         }
-
-        return getSpace(x, y);
+        Heading reverse = Heading.values()[(heading.ordinal() + 2)% Heading.values().length];
+        Space result = getSpace(x, y);
+        if (result != null) {
+            if (result.getWalls().contains(reverse)) {
+                return null;
+            }
+        }
+        return result;
     }
 
     public String getStatusMessage() {
