@@ -33,6 +33,8 @@ public class ConveyorBelt extends Space {
          *  5) ellers skal den returnere True
 
 
+
+
         //Player current = space.getPlayer(); // Tror ikke det her skal bruges
 
         gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,heading)); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
@@ -41,5 +43,6 @@ public class ConveyorBelt extends Space {
         return true; // True hvis det lykkedes, false hvis ikke.
 
     }
-     **/
+     */
+
 }
