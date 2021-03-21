@@ -21,7 +21,7 @@ public class ConveyorBelt extends Space {
         this.heading = heading;
     }
 
-    public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
+    /**public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         // TODO Skub en spiller i den retning ConveyorBelt peger. (Husk at spillet eksekvere 1 register pr. spiller ad gangen)
         // TODO Step by step
         /**
@@ -31,7 +31,7 @@ public class ConveyorBelt extends Space {
          *  3) Vi skal implementere hvor hen spilleren rykkes til
          *  4) Vi skal fange exceptions og så returnerer metoden False
          *  5) ellers skal den returnere True
-         */
+
 
         //Player current = space.getPlayer(); // Tror ikke det her skal bruges
 
@@ -39,5 +39,7 @@ public class ConveyorBelt extends Space {
 
 
         return true; // True hvis det lykkedes, false hvis ikke.
+
     }
+     **/
 }
