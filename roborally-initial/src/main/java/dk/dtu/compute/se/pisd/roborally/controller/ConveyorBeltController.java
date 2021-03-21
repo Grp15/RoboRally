@@ -22,10 +22,8 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import com.sun.xml.internal.bind.v2.TODO;
-import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.view.SpaceView;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,24 +32,22 @@ import org.jetbrains.annotations.NotNull;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
-public class ConveyorBelt extends FieldAction {
+public class ConveyorBeltController extends FieldAction {
 
-    private Heading heading;
-    private int x;
-    private int y;
+    ConveyorBelt conveyorBelt;
+    SpaceView spaceView;
 
-    public ConveyorBelt(int x, int y, Heading heading){
-        this.x = x;
-        this.y = y;
-        this.heading = heading;
+    public ConveyorBeltController(ConveyorBelt conveyorBelt, SpaceView spaceView){
+        this.conveyorBelt = conveyorBelt;
+        this.spaceView = spaceView;
     }
 
     public Heading getHeading() {
-        return heading;
+        return conveyorBelt.getHeading();
     }
 
     public void setHeading(Heading heading) {
-        this.heading = heading;
+        conveyorBelt.setHeading(heading);
     }
 
     @Override
@@ -69,7 +65,7 @@ public class ConveyorBelt extends FieldAction {
 
         //Player current = space.getPlayer(); // Tror ikke det her skal bruges
 
-        gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,heading)); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
+        gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,conveyorBelt.getHeading())); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
 
         return true; // True hvis det lykkedes, false hvis ikke.
