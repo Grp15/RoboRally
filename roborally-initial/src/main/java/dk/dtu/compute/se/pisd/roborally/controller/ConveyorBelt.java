@@ -37,6 +37,14 @@ import org.jetbrains.annotations.NotNull;
 public class ConveyorBelt extends FieldAction {
 
     private Heading heading;
+    private int x;
+    private int y;
+
+    public ConveyorBelt(int x, int y, Heading heading){
+        this.x = x;
+        this.y = y;
+        this.heading = heading;
+    }
 
     public Heading getHeading() {
         return heading;
@@ -59,12 +67,12 @@ public class ConveyorBelt extends FieldAction {
          *  5) ellers skal den returnere True
          */
 
-        Player current = space.getPlayer(); // Tror ikke det her skal bruges
+        //Player current = space.getPlayer(); // Tror ikke det her skal bruges
 
         gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,heading)); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
 
-        return false; // True hvis det lykkedes, false hvis ikke.
+        return true; // True hvis det lykkedes, false hvis ikke.
     }
 
 }

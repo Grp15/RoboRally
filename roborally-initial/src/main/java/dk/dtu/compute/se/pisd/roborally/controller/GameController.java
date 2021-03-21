@@ -204,6 +204,8 @@ public class GameController {
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
                     } else executeCommand(currentPlayer, command);
+
+                    // Kan måske også indsættes her så der checkes efter der er udført en executeCommand
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
@@ -211,12 +213,21 @@ public class GameController {
                 } else {
                     // TODO : Kald DoAction det rette sted.
 
-                    // Mener det skal kaldes her inden step kaldes op, således at der altid bliver kaldt doaction
+                    // Mener det skal kaldes her inden step tælles op, således at der altid bliver kaldt doaction
                     // Når en spiller lander på et felt, og hvis der så ikke er nogen action sker der ikke noget.
-                    // DoAction er en boolean, kan man så checke om den er true eller false?
+
+                    /**
+                    Space space = currentPlayer.getSpace();
+
+                    ConveyorBelt Conveyorbelt; //space.getActions();
+
+                    Conveyorbelt.doAction(currentPlayer, currentPlayer.getSpace());
+
                     Space ActionSpace = currentPlayer.getSpace();
                     FieldAction action  = (FieldAction) ActionSpace.getActions();
                     action.doAction(GameController controller, action); // Forestiller mig noget i den her stil, det her virker obviously ikke
+
+                     **/
 
                     step++;
                     if (step < Player.NO_REGISTERS) {
