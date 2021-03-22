@@ -74,6 +74,8 @@ public class Space extends Subject {
             notifyChange();
         }
     }
+
+    //TODO: Implement these perhaps.
     /*public List<Heading> getWalls() {
         return walls;
 
@@ -92,5 +94,7 @@ public class Space extends Subject {
         notifyChange();
     }
 
-    public abstract boolean doAction(GameController gameController, Space space);
+    public boolean doAction(GameController gameController, Space space) {
+        return false;
+    }
 }

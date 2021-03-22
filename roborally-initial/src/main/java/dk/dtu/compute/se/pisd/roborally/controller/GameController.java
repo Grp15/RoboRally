@@ -20,7 +20,6 @@
  *
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
-
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
@@ -218,8 +217,9 @@ public class GameController {
                     // Når en spiller lander på et felt, og hvis der så ikke er nogen action sker der ikke noget.
 
 
+                    // currentplayer er måske ikke den rigtige måde at tilgå et felt på. Måske der skal itereres over spillerne
                     Space space = currentPlayer.getSpace();
-                    GameController gameController = AppController.getGameController();
+                    GameController gameController = this;
 
                     space.doAction(gameController, space);
 
