@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 public class ConveyorBelt extends Space {
 
     private Heading heading;
+    private SpaceType type = SpaceType.CONVEYORBELT;
 
     public ConveyorBelt(Board board, int x, int y, Heading heading) {
         super(board, x, y);
