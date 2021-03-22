@@ -174,4 +174,8 @@ public class AppController implements Observer {
         // XXX do nothing for now
     }
 
+    public GameController getGameController(){
+        return gameController;
+    }
+
 }

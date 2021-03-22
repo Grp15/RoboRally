@@ -23,6 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
+import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains method for all the game logic like initiating phases and moving players
@@ -216,8 +217,14 @@ public class GameController {
                     // Mener det skal kaldes her inden step tælles op, således at der altid bliver kaldt doaction
                     // Når en spiller lander på et felt, og hvis der så ikke er nogen action sker der ikke noget.
 
-                    /**
+
                     Space space = currentPlayer.getSpace();
+                    GameController gameController = AppController.getGameController();
+
+                    space.doAction(gameController, space);
+
+
+                    /*
 
                     ConveyorBelt Conveyorbelt; //space.getActions();
 
@@ -227,7 +234,9 @@ public class GameController {
                     FieldAction action  = (FieldAction) ActionSpace.getActions();
                     action.doAction(GameController controller, action); // Forestiller mig noget i den her stil, det her virker obviously ikke
 
-                     **/
+                     */
+
+
 
                     step++;
                     if (step < Player.NO_REGISTERS) {
