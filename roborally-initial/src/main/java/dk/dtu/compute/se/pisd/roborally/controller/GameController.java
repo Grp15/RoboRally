@@ -219,14 +219,19 @@ public class GameController {
 
                     // currentplayer er måske ikke den rigtige måde at tilgå et felt på. Måske der skal itereres over spillerne
 
-                    for(int i = 0; i < board.getPlayersNumber(); i++){
+                    for(int i = 0; i < board.getPlayersNumber(); i++) {
 
+                        if (currentPlayer == null) return;
+
+                        int currentInt = board.getPlayerNumber(board.getCurrentPlayer());
+                        Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
+
+                        Space space = board.getCurrentPlayer().getSpace();
+                        GameController gameController = this;
+                        space.doAction(gameController, space);
+
+                        board.setCurrentPlayer(nextPlayer);
                     }
-
-                    Space space = currentPlayer.getSpace();
-                    GameController gameController = this;
-
-                    space.doAction(gameController, space);
 
 
                     /*
