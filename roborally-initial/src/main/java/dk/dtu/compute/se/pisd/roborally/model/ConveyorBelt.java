@@ -41,7 +41,7 @@ public class ConveyorBelt extends Space {
 
 
 
-        //Player current = space.getPlayer(); // Tror ikke det her skal bruges
+        //Ser ud til at virke, kaster bare ikke nogle exceptions såsom impossible move
 
         gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,heading)); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
