@@ -218,6 +218,11 @@ public class GameController {
 
 
                     // currentplayer er måske ikke den rigtige måde at tilgå et felt på. Måske der skal itereres over spillerne
+
+                    for(int i = 0; i < board.getPlayersNumber(); i++){
+
+                    }
+
                     Space space = currentPlayer.getSpace();
                     GameController gameController = this;
 
