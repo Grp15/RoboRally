@@ -22,6 +22,10 @@ public class ConveyorBelt extends Space {
         this.heading = heading;
     }
 
+    public SpaceType getSpaceType(){
+        return type;
+    }
+
     /**public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         // TODO Skub en spiller i den retning ConveyorBelt peger. (Husk at spillet eksekvere 1 register pr. spiller ad gangen)
         // TODO Step by step

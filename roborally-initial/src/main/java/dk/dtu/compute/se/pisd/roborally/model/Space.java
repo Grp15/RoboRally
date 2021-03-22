@@ -55,6 +55,10 @@ public class Space extends Subject {
         return player;
     }
 
+    public SpaceType getSpaceType(){
+        return type;
+    }
+
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
         if (player != oldPlayer &&
@@ -70,7 +74,7 @@ public class Space extends Subject {
             notifyChange();
         }
     }
-    public List<Heading> getWalls() {
+    /*public List<Heading> getWalls() {
         return walls;
 
     }
@@ -78,6 +82,8 @@ public class Space extends Subject {
     public List<FieldAction> getActions() {
         return actions;
     }
+
+     */
 
     void playerChanged() {
         // This is a minor hack; since some views that are registered with the space
