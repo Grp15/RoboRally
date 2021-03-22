@@ -74,10 +74,14 @@ class Repository implements IRepository {
 			try {
 				connection.setAutoCommit(false);
 
+				/*Note: PreparedStatement is used for setting something
+				* ResultSet is used for getting/updating something*/
+
 				PreparedStatement ps = getInsertGameStatementRGK();
 				// TODO: the name should eventually set by the user
 				//       for the game and should be then used 
-				//       game.getName();
+				//       game.getName
+				//ps.setString(1, "Name: " + game.setGameId(game.getGameId()) + "");
 				ps.setString(1, "Date: " +  new Date()); // instead of name
 				ps.setNull(2, Types.TINYINT); // game.getPlayerNumber(game.getCurrentPlayer())); is inserted after players!
 				ps.setInt(3, game.getPhase().ordinal());
