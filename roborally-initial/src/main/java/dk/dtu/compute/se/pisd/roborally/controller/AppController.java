@@ -26,6 +26,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
 
+import dk.dtu.compute.se.pisd.roborally.dal.IRepository;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
@@ -39,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
 
 /**
  * AppController controls the app and is responsible to create a game controller
@@ -104,7 +107,16 @@ public class AppController implements Observer {
      */
 
     public void saveGame() {
-        // XXX needs to be implemented eventually
+        Board board = gameController.getBoard();
+
+
+        RepositoryAccess rep = new RepositoryAccess();
+        rep.getRepository();
+
+
+        rep.getRepository().createGameInDB(board);
+
+
     }
 
     /**
