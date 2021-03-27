@@ -41,6 +41,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
+
 /**
  * AppController controls the app and is responsible to create a game controller
  *
@@ -112,7 +114,17 @@ public class AppController implements Observer {
         rep.getRepository();
 
 
-        rep.getRepository().createGameInDB(board);
+        if(board.getGameId() == null) {
+            rep.getRepository().createGameInDB(board);
+        }
+
+        else if(board.getGameId() != null){
+            rep.getRepository().updateGameInDB(board);
+        }
+        else{
+            //Something defensive / error handling
+            //This shouldn't be possible
+        }
 
 
     }
@@ -124,9 +136,14 @@ public class AppController implements Observer {
     public void loadGame() {
         // XXX needs to be implememted eventually
         // for now, we just create a new game
+
+        // TODO: Finish this
+        RepositoryAccess rep = new RepositoryAccess();
         if (gameController == null) {
             newGame();
+            rep.getRepository().loadGameFromDB(21);
         }
+
     }
 
     /**
