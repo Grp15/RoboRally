@@ -123,6 +123,8 @@ class Repository implements IRepository {
 					rs.updateRow();
 				} else {
 					// TODO error handling
+					//return false; //Also an idea
+
 				}
 				rs.close();
 
@@ -131,6 +133,7 @@ class Repository implements IRepository {
 				return true;
 			} catch (SQLException e) {
 				// TODO error handling
+				//connection.setAutoCommit(false); //An idea
 				e.printStackTrace();
 				System.err.println("Some DB error");
 				
