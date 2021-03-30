@@ -146,9 +146,9 @@ public class AppController implements Observer {
 
         Game_IDs = rep.getRepository().getGames();
 
-        /*
-        This forloop gets the IDs as int
-         */
+
+        //This forloop gets the IDs as int
+
         for (int i = 0; i <= Game_IDs.size()-1; i++) {
             GAME_int_IDs.add(Game_IDs.get(i).getId());
             //System.out.println(GAME_int_IDs.get())
