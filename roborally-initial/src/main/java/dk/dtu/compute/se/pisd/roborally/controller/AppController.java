@@ -39,6 +39,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
@@ -55,6 +56,9 @@ public class AppController implements Observer {
 
     final private List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
     final private List<String> PLAYER_COLORS = Arrays.asList("red", "green", "blue", "orange", "grey", "magenta");
+    private List<GameInDB> Game_IDs = new ArrayList<GameInDB>();
+    private List<Integer> GAME_int_IDs = new ArrayList<Integer>();
+
 
     final private RoboRally roboRally;
 
@@ -135,22 +139,41 @@ public class AppController implements Observer {
      */
 
     public void loadGame() {
-        // XXX needs to be implememted eventually
-        // for now, we just create a new game
 
-        // TODO: Find board id uden at hard code
+        //TODO: Skal ændres når man gemmer spilnavne til at vise navne i stedet for id
+
         RepositoryAccess rep = new RepositoryAccess();
-        if (gameController == null) {
-           // newGame();
-            gameController = new GameController(rep.getRepository().loadGameFromDB(21));
 
-            gameController.startProgrammingPhase();
+        Game_IDs = rep.getRepository().getGames();
 
-            roboRally.createBoardView(gameController);
-
+        /*
+        This forloop gets the IDs as int
+         */
+        for (int i = 0; i <= Game_IDs.size()-1; i++) {
+            GAME_int_IDs.add(Game_IDs.get(i).getId());
+            //System.out.println(GAME_int_IDs.get())
         }
-        else{
-            rep.getRepository().loadGameFromDB(21);
+
+        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(Game_IDs.get(0).getId(), GAME_int_IDs);
+        dialog.setTitle("Load game");
+        dialog.setHeaderText("Select board id to load");
+        Optional<Integer> result = dialog.showAndWait();
+
+
+
+        if(result.isPresent()) {
+
+            if (gameController == null) {
+
+                gameController = new GameController(rep.getRepository().loadGameFromDB(result.get()));
+
+                gameController.startProgrammingPhase();
+
+                roboRally.createBoardView(gameController);
+
+            } else {
+                rep.getRepository().loadGameFromDB(result.get());
+            }
         }
 
     }
