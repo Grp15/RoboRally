@@ -140,8 +140,13 @@ public class AppController implements Observer {
         // TODO: Finish this
         RepositoryAccess rep = new RepositoryAccess();
         if (gameController == null) {
-            newGame();
-            rep.getRepository().loadGameFromDB(21);
+           // newGame();
+            gameController = new GameController(rep.getRepository().loadGameFromDB(21));
+
+            gameController.startProgrammingPhase();
+
+            roboRally.createBoardView(gameController);
+
         }
 
     }
