@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Optional;
 
 import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
+import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
 
 /**
  * AppController controls the app and is responsible to create a game controller
