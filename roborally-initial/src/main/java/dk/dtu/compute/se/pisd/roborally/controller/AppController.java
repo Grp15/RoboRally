@@ -137,7 +137,7 @@ public class AppController implements Observer {
         // XXX needs to be implememted eventually
         // for now, we just create a new game
 
-        // TODO: Finish this
+        // TODO: Find board id uden at hard code
         RepositoryAccess rep = new RepositoryAccess();
         if (gameController == null) {
            // newGame();
@@ -147,6 +147,9 @@ public class AppController implements Observer {
 
             roboRally.createBoardView(gameController);
 
+        }
+        else{
+            rep.getRepository().loadGameFromDB(21);
         }
 
     }
