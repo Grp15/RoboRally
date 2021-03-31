@@ -110,9 +110,9 @@ class Repository implements IRepository {
 				// statement.close();
 
 				createPlayersInDB(game);
-				/* TODO this method needs to be implemented first
-				createCardFieldsInDB(game);
-				 */
+				// TODO this method needs to be implemented first
+				//createCardFieldsInDB(game);
+
 
 				// since current player is a foreign key, it can oly be
 				// inserted after the players are created, since MySQL does
@@ -281,6 +281,53 @@ class Repository implements IRepository {
 		return result;		
 	}
 
+
+
+
+
+	/**
+	 * /Todo:
+	 * 1) Få fat i spillerens korts displayname
+	 * 2) Gem displayname i DB som String
+	 *
+	 *
+	 *
+	 *
+	 * @param game
+	 * @throws SQLException
+	 */
+
+/*
+	private void createCardFieldsInDB(Board game) throws SQLException {
+
+	PreparedStatement ps = select_cards_stmt();
+	ps.setInt(1, game.getGameId());
+
+	ResultSet rs = ps.executeQuery();
+		for (int i = 0; i < game.getPlayersNumber(); i++) {
+		Player player = game.getPlayer(i);
+		rs.moveToInsertRow();
+		rs.updateInt(PLAYER_GAMEID, game.getGameId());
+		rs.updateInt(PLAYER_PLAYERID, i);
+		rs.updateString(PLAYER_NAME, player.getName());
+		rs.updateString(PLAYER_COLOUR, player.getColor());
+		rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
+		rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
+		rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
+
+		rs.insertRow();
+	}
+
+		rs.close();
+}
+
+ */
+
+
+
+
+
+
 	private void createPlayersInDB(Board game) throws SQLException {
 		// TODO code should be more defensive
 		PreparedStatement ps = getSelectPlayersStatementU();
@@ -418,6 +465,32 @@ class Repository implements IRepository {
 		}
 		return select_players_stmt;
 	}
+
+
+/*
+	private static final String SQL_SELECT_CARDS =
+			"SELECT * FROM Player WHERE gameID = ?"; // Todo: Sikkert her det skal ændres til hvad vi har i vores table
+
+	private PreparedStatement select_cards_stmt = null;
+
+	private PreparedStatement select_cards_stmt(){
+		if (select_cards_stmt == null){
+			Connection connection = connector.getConnection();
+
+			try{
+			select_cards_stmt = connection.prepareStatement(
+					SQL_SELECT_CARDS,
+					ResultSet.TYPE_FORWARD_ONLY,
+					ResultSet.CONCUR_UPDATABLE);
+
+			} catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		return select_cards_stmt;
+	}
+
+ */
 
 	private static final String SQL_SELECT_PLAYERS_ASC =
 			"SELECT * FROM Player WHERE gameID = ? ORDER BY playerID ASC";
