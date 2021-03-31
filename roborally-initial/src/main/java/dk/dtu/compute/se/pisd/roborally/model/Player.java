@@ -133,4 +133,36 @@ public class Player extends Subject {
         return cards[i];
     }
 
+    public String getCardsProgram(){
+        String ProgrammingCards = "";
+
+        for(int i = 0; i <= (cards.length-1); i++) {
+            if(cards[i] == null){
+                i++;
+            }
+            if (i == (cards.length-1)){
+                ProgrammingCards += getCardField(i).getCard().getCommand().getDisplayName();
+                break;
+            }
+            ProgrammingCards += getCardField(i).getCard().getCommand().getDisplayName() + ",";
+        }
+            System.out.println("Programming = " + ProgrammingCards);
+        return ProgrammingCards;
+    }
+
+    public String getCardsRegister(){
+        String RegisterCards = "";
+
+        for(int i = 0; i <= (program.length-1); i++) {
+
+            if (i == (program.length-1)){
+                RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName();
+                break;
+            }
+            RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName() + ",";
+        }
+        System.out.println("Register = " + RegisterCards);
+        return RegisterCards;
+    }
+
 }
