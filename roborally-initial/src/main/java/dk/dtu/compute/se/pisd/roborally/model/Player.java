@@ -24,6 +24,9 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
@@ -147,7 +150,7 @@ public class Player extends Subject {
             }
             catch(NullPointerException e){
             ProgrammingCards += " ,";
-            i++;
+            continue;
         }
     }
         System.out.println("Programming = " + ProgrammingCards);
@@ -164,7 +167,6 @@ public class Player extends Subject {
 
                 if (i == (program.length - 1)) {
                     RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName();
-                    System.out.println(RegisterCards);
                     break;
                 }
                 RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName() + ",";
@@ -172,7 +174,7 @@ public class Player extends Subject {
 
             catch(NullPointerException e){
                 RegisterCards += " ,";
-                i++;
+                continue;
             }
 
         }
@@ -180,6 +182,21 @@ public class Player extends Subject {
         return RegisterCards;
     }
 
+    public ArrayList<String> splitCardsRegisterString(String load_register) {
+        boolean isCommaLast = load_register.endsWith(",");
+        ArrayList<String> register = new ArrayList<>(Arrays.asList(load_register.split(",")));
 
+        if (isCommaLast == true){
+
+
+
+
+        }
+
+        else{
+
+        }
+        return register;
+    }
 
 }
