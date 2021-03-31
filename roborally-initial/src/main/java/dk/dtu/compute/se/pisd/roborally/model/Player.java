@@ -153,7 +153,7 @@ public class Player extends Subject {
             continue;
         }
     }
-        System.out.println("Programming = " + ProgrammingCards);
+       // System.out.println("Programming = " + ProgrammingCards);
         return ProgrammingCards;
 }
 
@@ -178,14 +178,16 @@ public class Player extends Subject {
             }
 
         }
-        System.out.println("Register = " + RegisterCards);
+        //System.out.println("Register = " + RegisterCards);
         return RegisterCards;
     }
 
     public ArrayList<String> splitCardsRegisterString(String load_register) {
         boolean isCommaLast = load_register.endsWith(",");
+
         ArrayList<String> register = new ArrayList<>(Arrays.asList(load_register.split(",")));
 
+        System.out.println("register = " +register);
         if (isCommaLast == true){
 
 

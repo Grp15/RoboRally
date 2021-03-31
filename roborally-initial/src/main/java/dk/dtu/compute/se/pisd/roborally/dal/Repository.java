@@ -373,6 +373,7 @@ class Repository implements IRepository {
 				int heading = rs.getInt(PLAYER_HEADING);
 				player.setHeading(Heading.values()[heading]);
 				String load_register = rs.getString(PLAYER_CARDS_REGISTER);
+//insert den splittede string her
 				String load_program = rs.getString(PLAYER_CARDS_PROGRAM);
 
 
