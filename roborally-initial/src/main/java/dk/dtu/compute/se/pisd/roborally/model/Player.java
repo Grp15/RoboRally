@@ -133,36 +133,53 @@ public class Player extends Subject {
         return cards[i];
     }
 
-    public String getCardsProgram(){
+    public String getCardsProgram() {
         String ProgrammingCards = "";
 
-        for(int i = 0; i <= (cards.length-1); i++) {
-            if(cards[i] == null){
-                i++;
-            }
-            if (i == (cards.length-1)){
-                ProgrammingCards += getCardField(i).getCard().getCommand().getDisplayName();
-                break;
-            }
-            ProgrammingCards += getCardField(i).getCard().getCommand().getDisplayName() + ",";
-        }
-            System.out.println("Programming = " + ProgrammingCards);
-        return ProgrammingCards;
-    }
+        for (int i = 0; i <= (cards.length - 1); i++) {
+            try {
 
-    public String getCardsRegister(){
+                if (i == (cards.length - 1)) {
+                    ProgrammingCards += getCardField(i).getCard().getCommand().getDisplayName();
+                    break;
+                }
+                ProgrammingCards += getCardField(i).getCard().getCommand().getDisplayName() + ",";
+            }
+            catch(NullPointerException e){
+            ProgrammingCards += " ,";
+            i++;
+        }
+    }
+        System.out.println("Programming = " + ProgrammingCards);
+        return ProgrammingCards;
+}
+
+
+    public String getCardsRegister() {
         String RegisterCards = "";
 
-        for(int i = 0; i <= (program.length-1); i++) {
+        for (int i = 0; i <= (program.length - 1); i++) {
 
-            if (i == (program.length-1)){
-                RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName();
-                break;
+            try {
+
+                if (i == (program.length - 1)) {
+                    RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName();
+                    System.out.println(RegisterCards);
+                    break;
+                }
+                RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName() + ",";
             }
-            RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName() + ",";
+
+            catch(NullPointerException e){
+                RegisterCards += " ,";
+                i++;
+            }
+
         }
         System.out.println("Register = " + RegisterCards);
         return RegisterCards;
     }
+
+
 
 }
