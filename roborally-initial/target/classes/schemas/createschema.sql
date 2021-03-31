@@ -20,11 +20,14 @@ CREATE TABLE IF NOT EXISTS Player (
 
   name varchar(255),
   colour varchar(31),
+
   
   positionX int,
   positionY int,
   heading tinyint,
-  
+  cardProgram VARCHAR(150),
+  cardRegister VARCHAR(150),
+
   PRIMARY KEY (gameID, playerID),
   FOREIGN KEY (gameID) REFERENCES Game(gameID)
 );;
