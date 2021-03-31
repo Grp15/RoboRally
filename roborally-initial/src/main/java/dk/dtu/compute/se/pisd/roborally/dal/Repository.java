@@ -293,6 +293,8 @@ class Repository implements IRepository {
 			rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
 			rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
 			rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
+			rs.updateString(PLAYER_CARDS_REGISTER, player.getCardsRegister());
+			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCardsProgram());
 			rs.insertRow();
 		}
 
