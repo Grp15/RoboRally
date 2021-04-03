@@ -186,15 +186,9 @@ public class Player extends Subject {
 
         String[] register = load_register.split(",",-1);
         System.out.println("register = " +register);
-        if (isCommaLast == true){
 
-
-
-
-        }
-
-        else{
-
+        for(String a : register){
+            System.out.println(a);
         }
         return register;
     }
