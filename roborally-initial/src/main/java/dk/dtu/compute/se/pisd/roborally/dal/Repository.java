@@ -374,8 +374,16 @@ class Repository implements IRepository {
 				player.setHeading(Heading.values()[heading]);
 				String load_register = rs.getString(PLAYER_CARDS_REGISTER);
 //insert den splittede string her
-				String load_program = rs.getString(PLAYER_CARDS_PROGRAM);
+				player.splitCardsRegisterString(load_register);
 
+
+				//player.getCardField(1).setCard();
+				//player.getProgramField(1).setCard();
+
+
+//insert den splittede string her
+				String load_program = rs.getString(PLAYER_CARDS_PROGRAM);
+				player.splitCardsRegisterString(load_program);
 
 				// TODO  should also load players program and hand here
 			} else {

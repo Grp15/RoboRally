@@ -182,11 +182,9 @@ public class Player extends Subject {
         return RegisterCards;
     }
 
-    public ArrayList<String> splitCardsRegisterString(String load_register) {
-        boolean isCommaLast = load_register.endsWith(",");
+    public String[] splitCardsRegisterString(String load_register) {
 
-        ArrayList<String> register = new ArrayList<>(Arrays.asList(load_register.split(",")));
-
+        String[] register = load_register.split(",",-1);
         System.out.println("register = " +register);
         if (isCommaLast == true){
 
