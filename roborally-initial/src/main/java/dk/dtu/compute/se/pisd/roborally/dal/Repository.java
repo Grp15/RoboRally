@@ -373,18 +373,34 @@ class Repository implements IRepository {
 				player.setSpace(game.getSpace(x,y));
 				int heading = rs.getInt(PLAYER_HEADING);
 				player.setHeading(Heading.values()[heading]);
+
+				//Indlæser register kort fra DB
 				String load_register = rs.getString(PLAYER_CARDS_REGISTER);
-//insert den splittede string her
-				player.splitCardsRegisterString(load_register);
+				CommandCard[] cardsregister = LoadCommandCardsFromDisplayName(player.splitCardsRegisterString(load_register));
 
-
-				//player.getCardField(1).setCard();
-				//player.getProgramField(1).setCard();
-
-
-//insert den splittede string her
+				//Indlæser programmeringskort fra DB
 				String load_program = rs.getString(PLAYER_CARDS_PROGRAM);
-				player.splitCardsRegisterString(load_program);
+				CommandCard[] cards = LoadCommandCardsFromDisplayName(player.splitCardsProgramString(load_program));
+
+				CommandCard card = new CommandCard(Command.FORWARD);
+
+
+
+
+
+
+				for(int z = 0; z < cards.length - 1; z++){
+
+
+					if(z < cardsregister.length - 1){
+						player.getProgramField(z).setCard(cardsregister[i]);
+					}
+
+					player.getCardField(z).setCard(cards[z]);
+
+				}
+
+
 
 				// TODO  should also load players program and hand here
 			} else {
