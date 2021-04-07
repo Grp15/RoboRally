@@ -113,39 +113,7 @@ public class GameController {
 
     // TODO: Finish LoadCommandCardsFromDisplayName() Maybe rename method
 
-    private CommandCard[] LoadCommandCardsFromDisplayName(String[] Commands){
-        Command[] commands = Command.values();
 
-        CommandCard[] register;
-        register = new CommandCard[5];
-
-
-        for(int i = 0; i < Commands.length; i++) {
-
-            switch (Commands[i]) {
-                case "Fwd":
-                    register[i] = new CommandCard(commands[0]);
-
-                case "Fast Fwd":
-                    register[i] = new CommandCard(commands[3]);
-
-                case "Turn Right":
-                    register[i] = new CommandCard(commands[1]);
-
-                case "Turn Left":
-                    register[i] = new CommandCard(commands[2]);
-
-                case "Left OR Right":
-                    register[i] = new CommandCard(commands[4]);
-
-
-                default:
-                    register[i] = null;
-
-            }
-        }
-        return register;
-    }
 
     private void setCards(CommandCard[] cards, Player player){
         for(int i = 0; i < cards.length; i++){
