@@ -48,8 +48,8 @@ public class Player extends Subject {
     private Space space;
     private Heading heading = SOUTH;
 
-    private CommandCardField[] program;
-    private CommandCardField[] cards;
+    private CommandCardField[] program; // Register
+    private CommandCardField[] cards;  // Kort på hånd
 
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
@@ -185,12 +185,34 @@ public class Player extends Subject {
     public String[] splitCardsRegisterString(String load_register) {
 
         String[] register = load_register.split(",",-1);
-        System.out.println("register = " +register);
+        System.out.println("register = " + register);
 
         for(String a : register){
             System.out.println(a);
         }
         return register;
+    }
+
+
+    //Todo: Skal måske slettes
+
+    public String[] splitCardsProgramString(String load_program) {
+
+        String[] program = load_program.split(",",-1);
+        System.out.println("program = " + program);
+
+        for(String a : program){
+            System.out.println(a);
+        }
+        return program;
+    }
+
+    public void setCardsProgram(CommandCardField[] command){
+            this.program = command;
+    }
+
+    public void setCards(CommandCardField[] command){
+        this.cards = command;
     }
 
 }
