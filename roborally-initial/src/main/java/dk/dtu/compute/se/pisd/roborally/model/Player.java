@@ -182,4 +182,15 @@ public class Player extends Subject {
         return register;
     }
 
+
+    //Todo: Skal måske slettes
+
+    public String[] splitCardsProgramString(String load_program) {
+
+        String[] program = load_program.split(",",-1);
+
+        return program;
+    }
+
+
 }
