@@ -71,15 +71,9 @@ public class GameController {
     }
 
     public void movePlayerToSpace(@NotNull Space space, Player player) {
-        Player current = board.getCurrentPlayer();
-        if (current == null) return;
-        int currentInt = board.getPlayerNumber(current);
-        Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
 
-        if (space.getPlayer() == null) {
-            current.setSpace(space);
-            board.setCurrentPlayer(nextPlayer);
-            board.setCounter(board.getCounter() + 1);
+        if (player == null) {
+            player.setSpace(space);
         }
     }
 
@@ -224,13 +218,7 @@ public class GameController {
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
-                    // TODO : Kald DoAction det rette sted.
-
-                    // Mener det skal kaldes her inden step tælles op, således at der altid bliver kaldt doaction
-                    // Når en spiller lander på et felt, og hvis der så ikke er nogen action sker der ikke noget.
-
-
-                    // currentplayer er måske ikke den rigtige måde at tilgå et felt på. Måske der skal itereres over spillerne
+                    // TODO : Der bliver talt spillere igennem, men doAction bliver ikke kaldt
 
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
@@ -241,9 +229,16 @@ public class GameController {
 
                         GameController gameController = this;
 
-                        currentPlayer.getSpace().doAction(currentPlayer, currentPlayer.getSpace(), gameController);
+                        //currentPlayer.getSpace().doAction(currentPlayer, currentPlayer.getSpace(), gameController);
+
+                        Space space = currentPlayer.getSpace();
+
+                        space.doAction(currentPlayer, space, gameController);
+
+                        System.out.println(space.getSpaceType()); //TODO: Fjern igen
 
                         board.setCurrentPlayer(nextPlayer);
+
 
                     }
 

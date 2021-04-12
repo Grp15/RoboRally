@@ -74,7 +74,7 @@ public class Board extends Subject {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
 
-                if(x == 3 && y == 2){
+                if(x == 4 && y == 2){
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
