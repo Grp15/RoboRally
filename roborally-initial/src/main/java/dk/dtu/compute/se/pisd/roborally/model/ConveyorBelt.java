@@ -26,7 +26,7 @@ public class ConveyorBelt extends Space {
         return type;
     }
 
-    public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
+    public boolean doAction(@NotNull Player player, @NotNull Space space, GameController gameController) {
         // TODO Skub en spiller i den retning ConveyorBelt peger. (Husk at spillet eksekvere 1 register pr. spiller ad gangen)
         // TODO Step by step
         /**
@@ -38,12 +38,13 @@ public class ConveyorBelt extends Space {
          *  5) ellers skal den returnere True
          **/
 
+        //player.setSpace(space.board.getNeighbour(space,heading));
 
-
+        gameController.movePlayerToSpace(space.board.getNeighbour(space,heading), player);
 
         //Ser ud til at virke, kaster bare ikke nogle exceptions såsom impossible move
 
-        gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,heading)); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
+        //gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,heading)); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
 
         return true; // True hvis det lykkedes, false hvis ikke.

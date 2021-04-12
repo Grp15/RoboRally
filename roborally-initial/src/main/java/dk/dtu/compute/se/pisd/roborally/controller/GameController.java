@@ -70,6 +70,19 @@ public class GameController {
         }
     }
 
+    public void movePlayerToSpace(@NotNull Space space, Player player) {
+        Player current = board.getCurrentPlayer();
+        if (current == null) return;
+        int currentInt = board.getPlayerNumber(current);
+        Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
+
+        if (space.getPlayer() == null) {
+            current.setSpace(space);
+            board.setCurrentPlayer(nextPlayer);
+            board.setCounter(board.getCounter() + 1);
+        }
+    }
+
     /**
      * This method initiates the programmingphase
      *
@@ -226,27 +239,13 @@ public class GameController {
                         int currentInt = board.getPlayerNumber(board.getCurrentPlayer());
                         Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
 
-                        Space space = board.getCurrentPlayer().getSpace();
                         GameController gameController = this;
-                        space.doAction(gameController, space);
+
+                        currentPlayer.getSpace().doAction(currentPlayer, currentPlayer.getSpace(), gameController);
 
                         board.setCurrentPlayer(nextPlayer);
+
                     }
-
-
-                    /*
-
-                    ConveyorBelt Conveyorbelt; //space.getActions();
-
-                    Conveyorbelt.doAction(currentPlayer, currentPlayer.getSpace());
-
-                    Space ActionSpace = currentPlayer.getSpace();
-                    FieldAction action  = (FieldAction) ActionSpace.getActions();
-                    action.doAction(GameController controller, action); // Forestiller mig noget i den her stil, det her virker obviously ikke
-
-                     */
-
-
 
                     step++;
                     if (step < Player.NO_REGISTERS) {

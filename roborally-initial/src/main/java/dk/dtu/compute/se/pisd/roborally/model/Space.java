@@ -94,7 +94,7 @@ public class Space extends Subject {
         notifyChange();
     }
 
-    public boolean doAction(GameController gameController, Space space) {
+    public boolean doAction(Player player, Space space, GameController gameController) {
         return false;
     }
 }
