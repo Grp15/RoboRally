@@ -24,9 +24,31 @@ public class Wall extends FieldAction {
         this.heading = heading;
     }
 
+    //Checks if players heading is inverse to wall heading
+    public Heading getInverse(Heading heading) {
+        switch (heading){
+            case EAST:
+                return Heading.WEST;
+            case WEST:
+                return Heading.EAST;
+            case NORTH:
+                return Heading.SOUTH;
+            case SOUTH:
+                return Heading.NORTH;
+            default:
+                //heading.SOUTH;
+                break;
+        }
+        return heading; //Not sure if this works
+    }
+
     @Override
     public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
         // TODO needs to be implemented
+        Board board = gameController.board;
+        Player player = board.getCurrentPlayer();
+
+        //  - - - - - - -  IGNORER NOTER NEDENUNDER - - - - - - -
         //Player player = new Player();
 
         //Hvis players heading er den samme som eller modsat wall heading -> umuligt at skyde
@@ -56,6 +78,29 @@ public class Wall extends FieldAction {
              switch case
              pheading SOUTH & wheading SOUTH
               checkSpace
+
+    Checker om player kan gå ind i wall space
+    public Heading getInverse(Heading heading){
+
+    switch(heading){
+
+    case LEFT:
+
+    return Heading.RIGHT;
+
+    ....
+
+    }
+
+
+
+
+
+    }
+
+    if (wallheading == playerheading){
+        checker om player kan komme ud af wallspace
+    }
 
         */
 
