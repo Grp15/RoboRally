@@ -65,7 +65,7 @@ public class ConveyorBeltController extends FieldAction {
 
         //Player current = space.getPlayer(); // Tror ikke det her skal bruges
 
-        gameController.moveCurrentPlayerToSpace(space.board.getNeighbour(space,conveyorBelt.getHeading())); // TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
+        //gameController.moveToSpace(player, space);// TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
         System.out.println("Du har kaldt doAction"); //TODO: Fjern igen
 

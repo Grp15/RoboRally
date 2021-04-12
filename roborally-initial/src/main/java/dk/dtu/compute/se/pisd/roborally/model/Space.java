@@ -95,6 +95,7 @@ public class Space extends Subject {
     }
 
     public boolean doAction(Player player, Space space, GameController gameController) {
+        System.out.print("Nothing happened");
         return false;
     }
 }
