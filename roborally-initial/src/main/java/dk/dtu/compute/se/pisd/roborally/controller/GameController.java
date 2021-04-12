@@ -111,6 +111,22 @@ public class GameController {
         return new CommandCard(commands[random]);
     }
 
+    // TODO: Finish LoadCommandCardsFromDisplayName() Maybe rename method
+
+
+
+    private void setCards(CommandCard[] cards, Player player){
+        for(int i = 0; i < cards.length; i++){
+            player.getCardField(i).setCard(cards[i]);
+        }
+    }
+
+
+
+
+
+
+
     /**
      * This method ends the programming phase
      */
@@ -385,6 +401,10 @@ public class GameController {
         } else {
             return false;
         }
+    }
+    
+    public Board getBoard(){
+        return board;
     }
 
     /**

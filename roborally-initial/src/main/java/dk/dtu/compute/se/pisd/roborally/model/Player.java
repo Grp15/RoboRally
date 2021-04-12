@@ -24,6 +24,9 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
@@ -45,8 +48,8 @@ public class Player extends Subject {
     private Space space;
     private Heading heading = SOUTH;
 
-    private CommandCardField[] program;
-    private CommandCardField[] cards;
+    private CommandCardField[] program; // Register
+    private CommandCardField[] cards;  // Kort på hånd
 
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
@@ -132,5 +135,62 @@ public class Player extends Subject {
     public CommandCardField getCardField(int i) {
         return cards[i];
     }
+
+    public String getCardsProgram() {
+        String ProgrammingCards = "";
+
+        for (int i = 0; i <= (cards.length - 1); i++) {
+            try {
+
+                ProgrammingCards += getCardField(i).getCard().getCommand().getDisplayName() + ",";
+            }
+            catch(NullPointerException e){
+            ProgrammingCards += " ,";
+            continue;
+        }
+    }
+       // System.out.println("Programming = " + ProgrammingCards);
+        return ProgrammingCards;
+}
+
+
+    public String getCardsRegister() {
+        String RegisterCards = "";
+
+        for (int i = 0; i <= (program.length - 1); i++) {
+
+            try {
+
+
+                RegisterCards += getProgramField(i).getCard().getCommand().getDisplayName() + ",";
+            }
+
+            catch(NullPointerException e){
+                RegisterCards += " ,";
+                continue;
+            }
+
+        }
+        //System.out.println("Register = " + RegisterCards);
+        return RegisterCards;
+    }
+
+    public String[] splitCardsRegisterString(String load_register) {
+
+        String[] register = load_register.split(",",-1);
+
+        return register;
+    }
+
+
+    //Todo: Skal måske slettes
+
+    public String[] splitCardsProgramString(String load_program) {
+
+        String[] program = load_program.split(",",-1);
+
+        return program;
+    }
+
 
 }
