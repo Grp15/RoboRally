@@ -247,7 +247,7 @@ public class GameController {
                         Space space = player.getSpace();
                         space.doAction(player,space,gameController);
 
-                        System.out.println(space.getSpaceType());
+                        //System.out.println(space.getSpaceType());
 
 
                         /*
