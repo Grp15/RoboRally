@@ -24,6 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
+import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains method for all the game logic like initiating phases and moving players
@@ -68,6 +69,13 @@ public class GameController {
             current.setSpace(space);
             board.setCurrentPlayer(nextPlayer);
             board.setCounter(board.getCounter()+1);
+        }
+    }
+
+    public void movePlayerToSpace(@NotNull Space space, Player player) {
+
+        if (player == null) {
+            player.setSpace(space);
         }
     }
 
@@ -221,11 +229,45 @@ public class GameController {
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
                     } else executeCommand(currentPlayer, command);
+
+                    // Kan måske også indsættes her så der checkes efter der er udført en executeCommand
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
+                    // TODO : Af en eller anden grund er det samme spiller hele tiden
+
+                    for(int i = 0; i < board.getPlayersNumber(); i++) {
+
+                        if (currentPlayer == null) return;
+
+                        GameController gameController = this;
+                        Player player = board.getPlayer(i);
+                        Space space = player.getSpace();
+                        space.doAction(player,space,gameController);
+
+                        System.out.println(space.getSpaceType());
+
+
+                        /*
+                        int currentInt = board.getPlayerNumber(board.getPlayer(i));
+
+
+                        Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
+
+
+
+                        System.out.println(nextPlayer.board.getPlayersNumber() +" " + currentInt);
+
+                        space.doAction(board.getPlayer(currentInt), space, gameController);
+
+                         */
+
+
+
+                    }
+
                     step++;
                     if (step < Player.NO_REGISTERS) {
                         makeProgramFieldsVisible(step);
@@ -305,7 +347,7 @@ public class GameController {
 
     }
 
-    class ImpossibleMoveException extends Exception {
+    public class ImpossibleMoveException extends Exception {
         private Player player;
         private Space space;
         private Heading heading;
@@ -326,7 +368,7 @@ public class GameController {
      * @param heading direction player is facing
      * @throws ImpossibleMoveException
      */
-    private void moveToSpace(
+    public void moveToSpace(
             @NotNull Player player,
             @NotNull Space space,
             @NotNull Heading heading) throws ImpossibleMoveException {
@@ -350,7 +392,17 @@ public class GameController {
      */
     public void moveForward(@NotNull Player currentPlayer){
         //Player currentPlayer = board.getCurrentPlayer();
-        Heading heading = currentPlayer.getHeading();
+
+        Heading heading;
+
+        if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
+            ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
+            heading = belt.getHeading();
+        }
+        else {
+            heading = currentPlayer.getHeading();
+        }
+
         Space currentSpace = currentPlayer.getSpace();
         Space newSpace = board.getNeighbour(currentSpace, heading);
 

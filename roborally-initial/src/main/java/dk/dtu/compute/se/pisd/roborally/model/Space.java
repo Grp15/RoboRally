@@ -23,6 +23,11 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +45,7 @@ public class Space extends Subject {
     public final int y;
 
     private Player player;
+    private SpaceType type = SpaceType.SPACE;
 
 
     private List<Heading> walls = new ArrayList<>();
@@ -55,6 +61,10 @@ public class Space extends Subject {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public SpaceType getSpaceType(){
+        return type;
     }
 
     public void setPlayer(Player player) {
@@ -80,6 +90,18 @@ public class Space extends Subject {
         return actions;
     }
 
+    //TODO: Implement these perhaps.
+    /*public List<Heading> getWalls() {
+        return walls;
+
+    }
+
+    public List<FieldAction> getActions() {
+        return actions;
+    }
+
+     */
+
     void playerChanged() {
         // This is a minor hack; since some views that are registered with the space
         // also need to update when some player attributes change, the player can
@@ -87,4 +109,8 @@ public class Space extends Subject {
         notifyChange();
     }
 
+    public boolean doAction(Player player, Space space, GameController gameController) {
+        System.out.print("Nothing happened");
+        return false;
+    }
 }
