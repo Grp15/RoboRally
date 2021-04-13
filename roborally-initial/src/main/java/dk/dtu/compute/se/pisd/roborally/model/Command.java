@@ -35,6 +35,9 @@ public enum Command {
 
     // This is a very simplistic way of realizing different commands.
 
+    /**
+     * Obtained by getting shot, falling of the board, or into a pit
+     */
 
     //   ---DAMAGE CARDS---
     /*
@@ -62,6 +65,10 @@ public enum Command {
 
     //  ---SPECIAL PROGRAMMING CARDS---
 
+    /**
+     * Obtained by installing temprorary upgrades
+     */
+
     //ENERGY_ROUTINE("Energy"),
     //REPEAT_ROUTINE("Repeat"),
     OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
@@ -69,7 +76,6 @@ public enum Command {
     //SPEED_ROUTINE("Speed"),
     OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
 
-    //OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
 
 
 
