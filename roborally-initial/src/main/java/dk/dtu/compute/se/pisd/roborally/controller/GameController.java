@@ -52,13 +52,6 @@ public class GameController {
      * @param space the space to which the current player should move
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
-        // TODO Assignment V1: method should be implemented by the students:
-        //   - the current player should be moved to the given space
-        //     (if it is free()
-        //   - and the current player should be set to the player
-        //     following the current player
-        //   - the counter of moves in the game should be increased by one
-        //     if the player is moved
 
         Player current = board.getCurrentPlayer();
         if(current == null) return;
@@ -223,16 +216,21 @@ public class GameController {
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
+                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (card != null) {
                     Command command = card.getCommand();
                     if(command.isInteractive()){
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
-                    } else executeCommand(currentPlayer, command);
+                    }
+                    //Hvis 1 kort i register er AGAIN Kort springes det over
+                    if(card.getCommand() == Command.AGAIN && step == 0){
+                        board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+
+                    }else executeCommand(currentPlayer, command);
 
 
                 }
-                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
@@ -488,8 +486,13 @@ public class GameController {
     //TODO: Skal opdateres når damage card og special upgrade indføres
 
     public void Again(@NotNull Player player){
+        CommandCardField card = player.getProgramField(board.getStep() -1);
+        Command command = card.getCard().getCommand();
 
-
+        if (board.getStep() == 0){
+            return;
+        }
+        executeCommand(player,command);
     }
 
     /**
