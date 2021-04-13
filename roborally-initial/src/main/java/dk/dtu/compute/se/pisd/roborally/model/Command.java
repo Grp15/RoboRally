@@ -50,7 +50,7 @@ public enum Command {
 
     //  ---PROGRAMMING CARDS---
 
-    //AGAIN("Again"),
+    AGAIN("Again"),
     FORWARD("Fwd"),
     TWOFORWARD("2 Fwd"),
     THREEFOWARD("3 Fwd"),

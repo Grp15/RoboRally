@@ -305,20 +305,33 @@ public class GameController {
                 case FORWARD:
                     this.moveForward(player);
                     break;
-                case RIGHT:
-                    this.turnRight(player);
-                    break;
-                case LEFT:
-                    this.turnLeft(player);
-                    break;
+
                 case TWOFORWARD:
                     this.movetwoForward(player);
                     break;
+
+                case THREEFOWARD:
+                    this.movethreeForward(player);
+                    break;
+
+                case RIGHT:
+                    this.turnRight(player);
+                    break;
+
+                case LEFT:
+                    this.turnLeft(player);
+                    break;
+
                 case BACK_UP:
                     this.Back_Up(player);
                     break;
+
                 case UTURN:
                     this.Uturn(player);
+                    break;
+
+                case AGAIN:
+                    this.Again(player);
                     break;
 
                 default:
@@ -449,6 +462,10 @@ public class GameController {
         } catch (ImpossibleMoveException e) {
             e.printStackTrace();
         }
+    }
+
+    public void Again(@NotNull Player player){
+
     }
 
     /**
