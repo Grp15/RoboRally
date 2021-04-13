@@ -110,8 +110,8 @@ public class Space extends Subject {
         notifyChange();
     }
 
-    public boolean doAction(Player player, Space space, GameController gameController) {
-        System.out.print("Nothing happened");
+    public boolean doAction(Player player, Space space, GameController gameController){
         return false;
     }
 }
+
