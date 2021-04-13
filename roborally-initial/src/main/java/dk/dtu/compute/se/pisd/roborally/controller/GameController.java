@@ -302,6 +302,14 @@ public class GameController {
 
             switch (command) {
 
+                case AGAIN:
+                    this.Again(player);
+                    break;
+
+                case BACK_UP:
+                    this.Back_Up(player);
+                    break;
+
                 case FORWARD:
                     this.moveForward(player);
                     break;
@@ -314,6 +322,10 @@ public class GameController {
                     this.movethreeForward(player);
                     break;
 
+                case POWER_UP:
+                    this.Powerup(player);
+                    break;
+
                 case RIGHT:
                     this.turnRight(player);
                     break;
@@ -322,21 +334,12 @@ public class GameController {
                     this.turnLeft(player);
                     break;
 
-                case BACK_UP:
-                    this.Back_Up(player);
-                    break;
 
                 case UTURN:
                     this.Uturn(player);
                     break;
 
-                case AGAIN:
-                    this.Again(player);
-                    break;
 
-                case POWER_UP:
-                    this.Powerup(player);
-                    break;
 
                 default:
                     // DO NOTHING (for now)
