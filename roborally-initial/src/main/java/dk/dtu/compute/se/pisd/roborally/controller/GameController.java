@@ -300,6 +300,18 @@ public class GameController {
 
             switch (command) {
 
+                /**
+                 *  --- Damage Cards ---
+                 */
+
+                case SPAM:
+                    this.Again(player);
+                    break;
+
+                /**
+                 *  --- Programming Cards ---
+                 */
+
                 case AGAIN:
                     this.Again(player);
                     break;
@@ -336,6 +348,9 @@ public class GameController {
                 case UTURN:
                     this.Uturn(player);
                     break;
+                /**
+                 *  --- Special Programming Cards ---
+                 */
 
                 case ENERGY_ROUTINE:
                     this.Powerup(player);
@@ -344,7 +359,6 @@ public class GameController {
                 case SPEED_ROUTINE:
                     this.movethreeForward(player);
                     break;
-
 
 
                 default:
@@ -529,6 +543,14 @@ public class GameController {
         } else {
             return false;
         }
+    }
+
+
+    // ----------------------------------------- DAMAGE CARDS ---------------------------------------
+
+    public  void Spam(@NotNull Player player){
+        player.getProgramField(0);
+
     }
 
     public Board getBoard(){
