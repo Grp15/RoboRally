@@ -136,8 +136,8 @@ public class Player extends Subject {
     public CommandCardField getCardField(int i) {
         return cards[i];
     }
-    public void setCardField(int i){
-
+    public void setProgramField(CommandCardField commandCardField, int i){
+        program[i] = commandCardField;
     }
 
     public String getCardsProgram() {

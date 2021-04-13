@@ -305,7 +305,7 @@ public class GameController {
                  */
 
                 case SPAM:
-                    this.Again(player);
+                    this.Spam(player);
                     break;
 
                 /**
@@ -548,8 +548,12 @@ public class GameController {
 
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
 
+    //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
+    // over i deres register.
+
     public  void Spam(@NotNull Player player){
-        player.getProgramField(0);
+
+        player.setProgramField(player.getCardField(1), 0);
 
     }
 
