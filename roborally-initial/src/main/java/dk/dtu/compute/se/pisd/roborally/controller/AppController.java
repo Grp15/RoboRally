@@ -26,6 +26,8 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 import dk.dtu.compute.se.pisd.roborally.RoboRally;
 
+import dk.dtu.compute.se.pisd.roborally.dal.IRepository;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
@@ -38,10 +40,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
+
+import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
+import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
 
 /**
  * AppController controls the app and is responsible to create a game controller
+ *
  *
  *
  * @author Ekkart Kindler, ekki@dtu.dk
@@ -51,6 +58,12 @@ public class AppController implements Observer {
 
     final private List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
     final private List<String> PLAYER_COLORS = Arrays.asList("red", "green", "blue", "orange", "grey", "magenta");
+    private List<GameInDB> Game_IDs = new ArrayList<GameInDB>();
+    private List<Integer> GAME_int_IDs = new ArrayList<Integer>();
+
+    //Name of the board according to json file
+    private String boardname = "highway";
+
 
     final private RoboRally roboRally;
 
@@ -82,7 +95,7 @@ public class AppController implements Observer {
 
             // XXX the board should eventually be created programmatically or loaded from a file
             //     here we just create an empty board with the required number of players.
-            Board board = new Board(8,8);
+            Board board = LoadBoard.loadBoard(boardname); //
             gameController = new GameController(board);
             int no = result.get();
             for (int i = 0; i < no; i++) {
@@ -104,7 +117,26 @@ public class AppController implements Observer {
      */
 
     public void saveGame() {
-        // XXX needs to be implemented eventually
+        Board board = gameController.getBoard();
+
+
+        RepositoryAccess rep = new RepositoryAccess();
+        rep.getRepository();
+
+
+        if(board.getGameId() == null) {
+            rep.getRepository().createGameInDB(board);
+        }
+
+        else if(board.getGameId() != null){
+            rep.getRepository().updateGameInDB(board);
+        }
+        else{
+            //Something defensive / error handling
+            //This shouldn't be possible
+        }
+
+
     }
 
     /**
@@ -112,11 +144,43 @@ public class AppController implements Observer {
      */
 
     public void loadGame() {
-        // XXX needs to be implememted eventually
-        // for now, we just create a new game
-        if (gameController == null) {
-            newGame();
+
+        //TODO: Skal ændres når man gemmer spilnavne til at vise navne i stedet for id
+
+        RepositoryAccess rep = new RepositoryAccess();
+
+        Game_IDs = rep.getRepository().getGames();
+
+
+        //This forloop gets the IDs as int
+
+        for (int i = 0; i <= Game_IDs.size()-1; i++) {
+            GAME_int_IDs.add(Game_IDs.get(i).getId());
+            //System.out.println(GAME_int_IDs.get())
         }
+
+        ChoiceDialog<Integer> dialog = new ChoiceDialog<>(Game_IDs.get(0).getId(), GAME_int_IDs);
+        dialog.setTitle("Load game");
+        dialog.setHeaderText("Select board id to load");
+        Optional<Integer> result = dialog.showAndWait();
+
+
+
+        if(result.isPresent()) {
+
+            if (gameController == null) {
+
+                gameController = new GameController(rep.getRepository().loadGameFromDB(result.get()));
+
+                //gameController.startProgrammingPhase();
+
+                roboRally.createBoardView(gameController);
+
+            } else {
+                rep.getRepository().loadGameFromDB(result.get());
+            }
+        }
+
     }
 
     /**

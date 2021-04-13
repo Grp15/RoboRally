@@ -27,7 +27,10 @@ import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 
 import java.util.ArrayList;
 import java.util.List;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  * ...
  *
@@ -43,6 +46,11 @@ public class Space extends Subject {
 
     private Player player;
     private SpaceType type = SpaceType.SPACE;
+
+
+    private List<Heading> walls = new ArrayList<>();
+    private List<FieldAction> actions = new ArrayList<>();
+
 
     public Space(Board board, int x, int y) {
         this.board = board;
@@ -73,6 +81,13 @@ public class Space extends Subject {
             }
             notifyChange();
         }
+    }
+    public List<Heading> getWalls() {
+        return walls;
+    }
+
+    public List<FieldAction> getActions() {
+        return actions;
     }
 
     //TODO: Implement these perhaps.

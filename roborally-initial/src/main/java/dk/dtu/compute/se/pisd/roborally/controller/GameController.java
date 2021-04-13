@@ -20,6 +20,8 @@
  *
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
+
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
@@ -117,6 +119,22 @@ public class GameController {
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
     }
+
+    // TODO: Finish LoadCommandCardsFromDisplayName() Maybe rename method
+
+
+
+    private void setCards(CommandCard[] cards, Player player){
+        for(int i = 0; i < cards.length; i++){
+            player.getCardField(i).setCard(cards[i]);
+        }
+    }
+
+
+
+
+
+
 
     /**
      * This method ends the programming phase
@@ -436,6 +454,10 @@ public class GameController {
         } else {
             return false;
         }
+    }
+
+    public Board getBoard(){
+        return board;
     }
 
     /**
