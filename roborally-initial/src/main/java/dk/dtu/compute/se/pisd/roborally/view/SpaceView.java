@@ -22,10 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.model.SpaceType;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
@@ -64,40 +61,10 @@ public class SpaceView extends StackPane implements ViewObserver {
 
         if ((space.x + space.y) % 2 == 0) {
             this.setStyle("-fx-background-color: white;");
-
-            /*Canvas canvas = new Canvas(SPACE_WIDTH, SPACE_HEIGHT);
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            gc.setStroke(Color.RED);
-            gc.setLineWidth(5);
-            gc.setLineCap(StrokeLineCap.ROUND);
-            gc.strokeLine(2, SPACE_HEIGHT-2,SPACE_WIDTH-2,SPACE_HEIGHT-2);
-
-            this.getChildren().add(canvas);
-              */
-
-            Pane pane = new Pane();
-            Rectangle rectangle = new Rectangle(0.0, 0.0, SPACE_WIDTH, SPACE_HEIGHT);
-            rectangle.setFill(Color.TRANSPARENT);
-            pane.getChildren().add(rectangle);
-// SOUTH
-            Line line =
-                    new Line(2, SPACE_HEIGHT-2, SPACE_WIDTH-2,
-                            SPACE_HEIGHT-2);
-            line.setStroke(Color.RED);
-            line.setStrokeWidth(5);
-            pane.getChildren().add(line);
-            this.getChildren().add(pane);
-
-
         } else {
             this.setStyle("-fx-background-color: black;");
         }
-        if(space.getSpaceType()== SpaceType.CONVEYORBELT){
-            this.setStyle("-fx-background-color: green;");
-        }
-        else if(space.getSpaceType() == SpaceType.GEARS){
-            this.setStyle("-fx-background-color: gray;");
-        }
+
 
         // updatePlayer();
 
@@ -129,6 +96,12 @@ public class SpaceView extends StackPane implements ViewObserver {
     public void updateView(Subject subject) {
         if (subject == this.space) {
             updatePlayer();
+        }
+        if (this.space instanceof Gears) {
+            GearView.drawGear(this, space);
+        }
+        if (this.space instanceof ConveyorBelt) {
+            ConveyorBeltView.drawConveyorBelt(this, space);
         }
     }
 
