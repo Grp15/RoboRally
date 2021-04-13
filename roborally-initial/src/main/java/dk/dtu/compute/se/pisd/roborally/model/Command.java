@@ -39,29 +39,31 @@ public enum Command {
     // PROGRAMMING CARDS
 
     //AGAIN("Again"),
-    BACK_UP("Back up");
-
-    /*
     FORWARD("Fwd"),
     TWOFORWARD("2 Fwd"),
     THREEFOWARD("3 Fwd"),
-    POWER_UP("Power up"),
+    BACK_UP("Back up"),
     RIGHT("Turn Right"),
     LEFT("Turn Left"),
     UTURN("U-turn"),
+    //POWER_UP("Power up"),
+
+
+
+
 
     // SPECIAL PROGRAMMING CARDS
 
-    ENERGY_ROUTINE("Energy"),
-    REPEAT_ROUTINE("Repeat"),
-    SANDBOX_ROUTINE("Sandbox"),
-    SPAM_FOLDER("Spam"),
-    SPEED_ROUTINE("Speed"),
-    OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN),
+    //ENERGY_ROUTINE("Energy"),
+    //REPEAT_ROUTINE("Repeat"),
+    OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
+    //SPAM_FOLDER("Spam"),
+    //SPEED_ROUTINE("Speed"),
+    OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
 
-    OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
+    //OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
 
-     */
+
 
 
 

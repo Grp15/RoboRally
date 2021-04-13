@@ -301,7 +301,7 @@ public class GameController {
             //     (this concerns the way cards are modelled as well as the way they are executed).
 
             switch (command) {
-                /*
+
                 case FORWARD:
                     this.moveForward(player);
                     break;
@@ -314,11 +314,13 @@ public class GameController {
                 case TWOFORWARD:
                     this.movetwoForward(player);
                     break;
-
-                 */
                 case BACK_UP:
                     this.Back_Up(player);
                     break;
+                case UTURN:
+                    this.Uturn(player);
+                    break;
+
                 default:
                     // DO NOTHING (for now)
             }
@@ -467,6 +469,10 @@ public class GameController {
         Player currentPlayer = board.getCurrentPlayer();
         Heading heading = currentPlayer.getHeading();
         currentPlayer.setHeading(heading.prev());
+    }
+
+    public void Uturn(@NotNull Player player){
+        player.setHeading(player.getHeading().next().next());
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
