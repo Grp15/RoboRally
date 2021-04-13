@@ -39,6 +39,8 @@ public enum Command {
      * Obtained by getting shot, falling of the board, or into a pit
      */
 
+    //TODO: Skal gøres så de kun kommer i spillerens bunke når spilleren har taget skade
+
     //   ---DAMAGE CARDS---
     /*
     SPAM("Spam"),
@@ -61,8 +63,7 @@ public enum Command {
     POWER_UP("Power up"),
 
 
-
-
+    //TODO: Skal ændres efter upgrade phase er indført
     //  ---SPECIAL PROGRAMMING CARDS---
 
     /**
