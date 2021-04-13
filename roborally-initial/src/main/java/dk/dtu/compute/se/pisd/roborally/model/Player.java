@@ -193,5 +193,13 @@ public class Player extends Subject {
         return program;
     }
 
+    public void addEnergy(){
+        EnergyCubes = EnergyCubes + 1;
+    }
+
+    public int getEnergyCubes(){
+        return EnergyCubes;
+    }
+
 
 }

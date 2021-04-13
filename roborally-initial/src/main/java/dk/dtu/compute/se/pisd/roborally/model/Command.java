@@ -58,7 +58,7 @@ public enum Command {
     RIGHT("Turn Right"),
     LEFT("Turn Left"),
     UTURN("U-turn"),
-    //POWER_UP("Power up"),
+    POWER_UP("Power up"),
 
 
 

@@ -334,6 +334,10 @@ public class GameController {
                     this.Again(player);
                     break;
 
+                case POWER_UP:
+                    this.Powerup(player);
+                    break;
+
                 default:
                     // DO NOTHING (for now)
             }
@@ -462,6 +466,10 @@ public class GameController {
         } catch (ImpossibleMoveException e) {
             e.printStackTrace();
         }
+    }
+
+    public void Powerup(@NotNull Player player){
+        player.addEnergy();
     }
 
 
