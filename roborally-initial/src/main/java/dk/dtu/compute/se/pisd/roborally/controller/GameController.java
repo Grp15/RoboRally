@@ -464,6 +464,10 @@ public class GameController {
         }
     }
 
+
+    //TODO: Skal køre forrige kort igen, må ikke være første kort i Register
+    //TODO: Skal opdateres når damage card og special upgrade indføres
+
     public void Again(@NotNull Player player){
 
     }
