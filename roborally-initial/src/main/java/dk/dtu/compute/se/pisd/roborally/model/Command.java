@@ -36,7 +36,16 @@ public enum Command {
     // This is a very simplistic way of realizing different commands.
 
 
-    // PROGRAMMING CARDS
+    //   ---DAMAGE CARDS---
+    /*
+    SPAM("Spam"),
+    TROJAN_HORSE("Trojansk Hest"),
+    VIRUS("Virus"),
+    WORMS("Worms"),
+     */
+
+
+    //  ---PROGRAMMING CARDS---
 
     //AGAIN("Again"),
     FORWARD("Fwd"),
@@ -51,8 +60,7 @@ public enum Command {
 
 
 
-
-    // SPECIAL PROGRAMMING CARDS
+    //  ---SPECIAL PROGRAMMING CARDS---
 
     //ENERGY_ROUTINE("Energy"),
     //REPEAT_ROUTINE("Repeat"),
