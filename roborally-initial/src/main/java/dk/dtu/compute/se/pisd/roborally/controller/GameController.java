@@ -21,7 +21,6 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
@@ -302,6 +301,7 @@ public class GameController {
             //     (this concerns the way cards are modelled as well as the way they are executed).
 
             switch (command) {
+                /*
                 case FORWARD:
                     this.moveForward(player);
                     break;
@@ -311,8 +311,13 @@ public class GameController {
                 case LEFT:
                     this.turnLeft(player);
                     break;
-                case FAST_FORWARD:
-                    this.fastForward(player);
+                case TWOFORWARD:
+                    this.movetwoForward(player);
+                    break;
+
+                 */
+                case BACK_UP:
+                    this.Back_Up(player);
                     break;
                 default:
                     // DO NOTHING (for now)
@@ -388,7 +393,8 @@ public class GameController {
 }
 
     /**
-     * Moves a player forward in the direction he is facing.
+     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
+     * in the direction the conveyor belt is facing
      * @param currentPlayer current player
      */
     public void moveForward(@NotNull Player currentPlayer){
@@ -420,9 +426,27 @@ public class GameController {
      * @param player
      */
     // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
-    public void fastForward(@NotNull Player player) {
+    public void movetwoForward(@NotNull Player player) {
         moveForward(player);
         moveForward(player);
+    }
+
+    public void movethreeForward(@NotNull Player player){
+        moveForward(player);
+        moveForward(player);
+        moveForward(player);
+    }
+
+    public void Back_Up(@NotNull Player player){
+        Heading heading = player.getHeading().next().next();
+        Space space = player.getSpace().board.getNeighbour(player.getSpace(),heading);
+
+
+        try {
+            moveToSpace(player, space,heading);
+        } catch (ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

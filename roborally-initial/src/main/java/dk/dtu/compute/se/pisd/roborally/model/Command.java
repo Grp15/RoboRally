@@ -35,13 +35,36 @@ public enum Command {
 
     // This is a very simplistic way of realizing different commands.
 
+
+    // PROGRAMMING CARDS
+
+    //AGAIN("Again"),
+    BACK_UP("Back up");
+
+    /*
     FORWARD("Fwd"),
+    TWOFORWARD("2 Fwd"),
+    THREEFOWARD("3 Fwd"),
+    POWER_UP("Power up"),
     RIGHT("Turn Right"),
     LEFT("Turn Left"),
-    FAST_FORWARD("Fast Fwd"),
+    UTURN("U-turn"),
 
-    // XXX Assignment V3
+    // SPECIAL PROGRAMMING CARDS
+
+    ENERGY_ROUTINE("Energy"),
+    REPEAT_ROUTINE("Repeat"),
+    SANDBOX_ROUTINE("Sandbox"),
+    SPAM_FOLDER("Spam"),
+    SPEED_ROUTINE("Speed"),
+    OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN),
+
     OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
+
+     */
+
+
+
 
     final private String displayName;
 
