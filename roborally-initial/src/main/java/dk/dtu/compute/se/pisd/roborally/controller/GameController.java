@@ -23,6 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
 
@@ -396,7 +397,7 @@ public class GameController {
         Heading heading;
 
         if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
+            dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
             heading = belt.getHeading();
         }
         else {
