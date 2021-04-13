@@ -318,7 +318,7 @@ public class GameController {
                     this.movetwoForward(player);
                     break;
 
-                case THREEFOWARD:
+                case THREEFOWARD :
                     this.movethreeForward(player);
                     break;
 
@@ -337,6 +337,14 @@ public class GameController {
 
                 case UTURN:
                     this.Uturn(player);
+                    break;
+
+                case ENERGY_ROUTINE:
+                    this.Powerup(player);
+                    break;
+
+                case SPEED_ROUTINE:
+                    this.movethreeForward(player);
                     break;
 
 

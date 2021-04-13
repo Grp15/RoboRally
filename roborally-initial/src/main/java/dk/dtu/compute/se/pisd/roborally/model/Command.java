@@ -69,11 +69,11 @@ public enum Command {
      * Obtained by installing temprorary upgrades
      */
 
-    //ENERGY_ROUTINE("Energy"),
+    ENERGY_ROUTINE("Energy"),
     //REPEAT_ROUTINE("Repeat"),
     OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
     //SPAM_FOLDER("Spam"),
-    //SPEED_ROUTINE("Speed"),
+    SPEED_ROUTINE("Speed"),
     OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
 
 
