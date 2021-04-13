@@ -78,6 +78,10 @@ public class Board extends Subject {
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
+                if(x == 5 && y == 2){
+                    Gears gear = new Gears(this,x,y, "RIGHT");
+                    spaces[x][y] = gear;
+                }
 
             }
 
