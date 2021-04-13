@@ -230,7 +230,7 @@ public class GameController {
                         return;
                     } else executeCommand(currentPlayer, command);
 
-                    // Kan måske også indsættes her så der checkes efter der er udført en executeCommand
+
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
