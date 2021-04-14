@@ -39,8 +39,6 @@ public class Gears extends Space {
             gameController.turnLeft(player);
         }
 
-        System.out.print("Du har ramt et gear");
-
         return true;
     }
 
