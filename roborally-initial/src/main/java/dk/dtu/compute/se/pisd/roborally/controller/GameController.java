@@ -23,6 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
@@ -231,11 +232,10 @@ public class GameController {
 
 
                 }
+                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
-                    // TODO : Af en eller anden grund er det samme spiller hele tiden
-
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
@@ -244,23 +244,6 @@ public class GameController {
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
                         space.doAction(player,space,gameController);
-
-                        //System.out.println(space.getSpaceType());
-
-
-                        /*
-                        int currentInt = board.getPlayerNumber(board.getPlayer(i));
-
-
-                        Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
-
-
-
-                        System.out.println(nextPlayer.board.getPlayersNumber() +" " + currentInt);
-
-                        space.doAction(board.getPlayer(currentInt), space, gameController);
-
-                         */
 
 
 
