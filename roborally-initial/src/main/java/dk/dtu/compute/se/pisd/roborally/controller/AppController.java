@@ -105,8 +105,14 @@ public class AppController implements Observer {
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1));
                 board.addPlayer(player);
             }
-            //TODO: Skal nok finpudses lidt, det er ikke meningen spillere bare skal blive sat, de skal selv vælge
-            // Derudover skal en spiller ikke kunne starte på et felt som ikke er StartField
+
+            /**
+             * The code fregment below sets the right starting position for a player
+             *
+             *TODO: Skal nok finpudses lidt, det er ikke meningen spillere bare skal blive sat, de skal selv vælge
+             * Derudover skal en spiller ikke kunne starte på et felt som ikke er StartField
+             **/
+
 
             for (int i = 0; i < no; i++) {
                 Player player = board.getPlayer(i);
