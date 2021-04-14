@@ -23,4 +23,6 @@ public class Energy_Space extends Space {
     public int getEnergy(Player player){
         return Energy;
     }
+
+
 }
