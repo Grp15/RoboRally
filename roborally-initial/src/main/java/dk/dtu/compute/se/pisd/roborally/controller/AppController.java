@@ -31,6 +31,7 @@ import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -45,6 +46,8 @@ import java.util.Optional;
 
 import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
 import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.STARTFIELD;
 
 /**
  * AppController controls the app and is responsible to create a game controller
@@ -103,7 +106,25 @@ public class AppController implements Observer {
                 board.addPlayer(player);
 
                 //TODO: Startfelter skal ændres her
-                player.setSpace(board.getSpace(i % board.width, i));
+                // Herunder er et forsøg, problemet er Space bliver først opdateret efter et Space har fået et
+                // SpaceView, og det kan vi ikke finde hvor sker
+
+                    for(int z = 0; z < board.width;z++){
+
+                        for(int q = 0; q < board.height; q++){
+
+                            if(board.getSpace(z,q).getSpaceType() == STARTFIELD){
+                                player.setSpace(board.getSpace(z,q));
+                                System.out.print("Du har sat en spiller");
+                                i++;
+                            }
+
+                        }
+
+                    }
+                    //player.setSpace(board.getSpace(i % board.width, i));
+                }
+
             }
 
             // XXX: V2
@@ -111,8 +132,9 @@ public class AppController implements Observer {
             gameController.startProgrammingPhase();
 
             roboRally.createBoardView(gameController);
+
         }
-    }
+
 
     /**
      * Savaegame saves a game to be played later
