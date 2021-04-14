@@ -141,7 +141,6 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
-        executeStep(); // V3.5
     }
 
     /**
