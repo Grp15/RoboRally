@@ -4,7 +4,7 @@ import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
-public class ConveyorBelt {
+public class ConveyorBelt extends Space {
 
     private Heading heading;
     private SpaceType type = SpaceType.CONVEYORBELT;

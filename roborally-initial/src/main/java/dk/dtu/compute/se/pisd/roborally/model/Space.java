@@ -23,13 +23,11 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
-import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 
 /**
  * ...
