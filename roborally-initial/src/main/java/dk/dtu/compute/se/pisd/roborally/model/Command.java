@@ -73,6 +73,7 @@ public enum Command {
 
     ENERGY_ROUTINE("Energy"),
     //REPEAT_ROUTINE("Repeat"),
+    //TODO: Skal ændre i udseende for Sandbox
     OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
     //SPAM_FOLDER("Spam"),
     SPEED_ROUTINE("Speed"),
