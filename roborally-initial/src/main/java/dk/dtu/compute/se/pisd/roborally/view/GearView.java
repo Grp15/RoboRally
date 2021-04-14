@@ -1,5 +1,5 @@
 package dk.dtu.compute.se.pisd.roborally.view;
-import dk.dtu.compute.se.pisd.roborally.model.Gears;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;

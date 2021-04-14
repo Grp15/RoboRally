@@ -23,15 +23,12 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.*;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.Pane;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 /**
  * ...

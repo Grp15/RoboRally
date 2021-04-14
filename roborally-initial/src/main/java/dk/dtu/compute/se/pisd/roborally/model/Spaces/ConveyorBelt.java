@@ -1,9 +1,10 @@
-package dk.dtu.compute.se.pisd.roborally.model;
+package dk.dtu.compute.se.pisd.roborally.model.Spaces;
 
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
-public class ConveyorBelt extends Space {
+public class ConveyorBelt {
 
     private Heading heading;
     private SpaceType type = SpaceType.CONVEYORBELT;

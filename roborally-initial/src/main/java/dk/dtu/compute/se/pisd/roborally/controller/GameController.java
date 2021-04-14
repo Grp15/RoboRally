@@ -21,11 +21,10 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
-import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
-import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
+import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains method for all the game logic like initiating phases and moving players
@@ -397,7 +396,7 @@ public class GameController {
         Heading heading;
 
         if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
+            ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
             heading = belt.getHeading();
         }
         else {
