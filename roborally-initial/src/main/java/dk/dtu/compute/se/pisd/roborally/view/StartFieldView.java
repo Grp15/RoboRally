@@ -8,12 +8,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class StartFieldView{
-    public static void drawConveyorBelt(SpaceView spaceView, Space space){
-        ConveyorBelt tempSpace = (ConveyorBelt) space;
+    public static void drawStartField(SpaceView spaceView, Space space){
+        StartField tempSpace = (StartField) space;
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.GREEN);
+        gc.setFill(Color.RED);
         gc.fillOval(25,32,30, 20);
 
         spaceView.getChildren().add(canvas);

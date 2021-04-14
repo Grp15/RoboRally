@@ -24,6 +24,8 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
+import dk.dtu.compute.se.pisd.roborally.view.SpaceView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -81,6 +83,12 @@ public class Board extends Subject {
                     Gears gear = new Gears(this,x,y, "RIGHT");
                     spaces[x][y] = gear;
                 }
+
+                if(x == 0 && y == 0 || x == 5 && y == 4){
+                    StartField start = new StartField(this,x,y);
+                    spaces[x][y] = start;
+                }
+
 
             }
         }
