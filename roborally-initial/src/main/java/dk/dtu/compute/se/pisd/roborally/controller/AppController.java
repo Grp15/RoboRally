@@ -105,9 +105,8 @@ public class AppController implements Observer {
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1));
                 board.addPlayer(player);
             }
-            //TODO: Startfelter skal ændres her
-            // Herunder er et forsøg, problemet er Space bliver først opdateret efter et Space har fået et
-            // SpaceView, og det kan vi ikke finde hvor sker
+            //TODO: Skal nok finpudses lidt, det er ikke meningen spillere bare skal blive sat, de skal selv vælge
+            // Derudover skal en spiller ikke kunne starte på et felt som ikke er StartField
 
             for (int i = 0; i < no; i++) {
                 Player player = board.getPlayer(i);
@@ -120,14 +119,16 @@ public class AppController implements Observer {
 
                             player.setSpace(board.getSpace(z, q));
                             break outerloop;
-                            //System.out.print("Du har sat en spiller");
-
                         }
 
                     }
 
                 }
-                //player.setSpace(board.getSpace(i % board.width, i));
+
+                if(board.getPlayer(i).getSpace() == null){
+                    player.setSpace(board.getSpace(i % board.width, i));
+                }
+
 
             }
 
