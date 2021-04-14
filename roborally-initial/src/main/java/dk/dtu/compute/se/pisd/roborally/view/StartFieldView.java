@@ -2,6 +2,7 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -14,7 +15,6 @@ public class StartFieldView{
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.GREEN);
         gc.fillOval(25,32,30, 20);
-        // TODO lave switch case for forskellige gear retninger
 
         spaceView.getChildren().add(canvas);
 
