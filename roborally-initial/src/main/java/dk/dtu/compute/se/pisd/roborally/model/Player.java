@@ -44,7 +44,7 @@ public class Player extends Subject {
 
     private String name;
     private String color;
-    private int EnergyCubes;
+    private int EnergyCubes = 5;
 
     private Space space;
     private Heading heading = SOUTH;
