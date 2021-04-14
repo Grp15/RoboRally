@@ -97,14 +97,18 @@ public class GameController {
                     field.setVisible(true);
                 }
 
-                // Checks if a player has Drawn a Spam card and Spams him if he has
+                // TODO: SPAM skal nok implementeres her
+
+                /*
 
                 for (int j = 0; j < Player.NO_CARDS; j++){
                     if(player.getCardField(i).getCard().getCommand() == Command.SPAM){
                         Spam(player);
                         player.getCardField(i).setVisible(false);
+                        System.out.println("Du har et spamkort" + board.getPlayerNumber(player));
                     }
                 }
+                */
             }
         }
     }
@@ -543,8 +547,8 @@ public class GameController {
 
     public  void Spam(@NotNull Player player){
 
-        player.setProgramField(player.getCardField(1), 0);
-        player.getProgramField(0).setVisible(false);
+        player.setProgramField(player.getCardField(0), 0);
+        player.getProgramField(0).setVisible(false); //Doesnt seem like to work
 
     }
 
