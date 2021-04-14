@@ -53,13 +53,6 @@ public class GameController {
      * @param space the space to which the current player should move
      */
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
-        // TODO Assignment V1: method should be implemented by the students:
-        //   - the current player should be moved to the given space
-        //     (if it is free()
-        //   - and the current player should be set to the player
-        //     following the current player
-        //   - the counter of moves in the game should be increased by one
-        //     if the player is moved
 
         Player current = board.getCurrentPlayer();
         if(current == null) return;
@@ -148,7 +141,6 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
-        executePrograms(); // V3.5
     }
 
     /**
@@ -230,15 +222,11 @@ public class GameController {
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
                     } else executeCommand(currentPlayer, command);
-
-                    // Kan måske også indsættes her så der checkes efter der er udført en executeCommand
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
-                    // TODO : Af en eller anden grund er det samme spiller hele tiden
-
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
@@ -249,23 +237,6 @@ public class GameController {
                         space.doAction(player,space,gameController);
 
                         System.out.println(space.getSpaceType());
-
-
-                        /*
-                        int currentInt = board.getPlayerNumber(board.getPlayer(i));
-
-
-                        Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
-
-
-
-                        System.out.println(nextPlayer.board.getPlayersNumber() +" " + currentInt);
-
-                        space.doAction(board.getPlayer(currentInt), space, gameController);
-
-                         */
-
-
 
                     }
 
