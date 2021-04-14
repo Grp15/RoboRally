@@ -104,26 +104,30 @@ public class AppController implements Observer {
             for (int i = 0; i < no; i++) {
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1));
                 board.addPlayer(player);
+            }
+            //TODO: Startfelter skal ændres her
+            // Herunder er et forsøg, problemet er Space bliver først opdateret efter et Space har fået et
+            // SpaceView, og det kan vi ikke finde hvor sker
 
-                //TODO: Startfelter skal ændres her
-                // Herunder er et forsøg, problemet er Space bliver først opdateret efter et Space har fået et
-                // SpaceView, og det kan vi ikke finde hvor sker
+            for (int i = 0; i < no; i++) {
+                Player player = board.getPlayer(i);
+                outerloop: //label, the nested loop breaks to here
+                for (int z = 0; z < board.width; z++) {
 
-                    for(int z = 0; z < board.width;z++){
+                    for (int q = 0; q < board.height; q++) {
 
-                        for(int q = 0; q < board.height; q++){
+                        if (board.getSpace(z, q).getSpaceType() == STARTFIELD && board.getSpace(z,q).getPlayer() == null) {
 
-                            if(board.getSpace(z,q).getSpaceType() == STARTFIELD){
-                                player.setSpace(board.getSpace(z,q));
-                                System.out.print("Du har sat en spiller");
-                                i++;
-                            }
+                            player.setSpace(board.getSpace(z, q));
+                            break outerloop;
+                            //System.out.print("Du har sat en spiller");
 
                         }
 
                     }
-                    //player.setSpace(board.getSpace(i % board.width, i));
+
                 }
+                //player.setSpace(board.getSpace(i % board.width, i));
 
             }
 
@@ -134,6 +138,7 @@ public class AppController implements Observer {
             roboRally.createBoardView(gameController);
 
         }
+    }
 
 
     /**
