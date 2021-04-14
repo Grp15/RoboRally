@@ -48,6 +48,10 @@ public class Gears extends Space {
         return type;
     }
 
+    public String getGearDirection(){
+        return direction;
+    }
+
 
 }
 

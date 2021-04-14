@@ -107,7 +107,7 @@ public class AppController implements Observer {
             }
 
             /**
-             * The code fregment below sets the right starting position for a player
+             * The code fragment below sets the right starting position for a player
              *
              *TODO: Skal nok finpudses lidt, det er ikke meningen spillere bare skal blive sat, de skal selv vælge
              * Derudover skal en spiller ikke kunne starte på et felt som ikke er StartField
