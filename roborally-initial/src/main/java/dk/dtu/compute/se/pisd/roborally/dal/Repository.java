@@ -560,40 +560,32 @@ class Repository implements IRepository {
 		CommandCard[] register;
 		register = new CommandCard[Commands.length];
 
-		System.out.println("Commands length " + Commands.length);
-
 
 		for(int i = 0; i < Commands.length - 1 ; i++) {
 
 			switch (Commands[i]) {
 				case "Fwd":
 					register[i] = new CommandCard(commands[0]);
-					System.out.println(i + Commands[i]);
 					break;
 
 				case "Fast Fwd":
 					register[i] = new CommandCard(commands[3]);
-					System.out.println(i + Commands[i]);
 					break;
 
 				case "Turn Right":
 					register[i] = new CommandCard(commands[1]);
-					System.out.println(i + Commands[i]);
 					break;
 
 				case "Turn Left":
 					register[i] = new CommandCard(commands[2]);
-					System.out.println(i + Commands[i]);
 					break;
 
 				case "Left OR Right":
 					register[i] = new CommandCard(commands[4]);
-					System.out.println(i + Commands[i]);
 					break;
 
 				default:
 					register[i] = null;
-					System.out.println(i + Commands[i]);
 					break;
 
 			}
