@@ -110,6 +110,7 @@ public class Space extends Subject {
 
     public boolean doAction(Player player, Space space, GameController gameController) {
         return false;
+
     }
 }
 

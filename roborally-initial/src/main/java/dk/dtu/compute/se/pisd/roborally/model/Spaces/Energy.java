@@ -5,24 +5,30 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
-public class Energy_Space extends Space {
+//TODO: Test om den virker
+public class Energy extends Space {
 
-    private int Energy = 0;
+    private int Energy = 1;
 
-
-    public Energy_Space(Board board, int x, int y) {
+    public Energy(Board board, int x, int y) {
         super(board, x, y);
     }
 
     public boolean doAction(Player player, Space space, GameController gameController){
+        int step = board.getStep();
 
-        player.addEnergy();
+        if(step == player.NO_REGISTERS){
+            player.addEnergy();
+        }
+        if(Energy > 0){
+            player.addEnergy();
+            resetEnergy();
+        }
+
         return true;
     }
 
-    public int getEnergy(Player player){
-        return Energy;
+    public void resetEnergy() {
+        Energy = 0;
     }
-
-
 }
