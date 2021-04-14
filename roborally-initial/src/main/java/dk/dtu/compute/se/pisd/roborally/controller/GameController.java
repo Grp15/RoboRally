@@ -96,6 +96,15 @@ public class GameController {
                     field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
+
+                // Checks if a player has Drawn a Spam card and Spams him if he has
+
+                for (int j = 0; j < Player.NO_CARDS; j++){
+                    if(player.getCardField(i).getCard().getCommand() == Command.SPAM){
+                        Spam(player);
+                        player.getCardField(i).setVisible(false);
+                    }
+                }
             }
         }
     }
