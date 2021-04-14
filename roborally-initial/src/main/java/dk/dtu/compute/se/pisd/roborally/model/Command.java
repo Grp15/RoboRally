@@ -35,13 +35,51 @@ public enum Command {
 
     // This is a very simplistic way of realizing different commands.
 
+    /**
+     * Obtained by getting shot, falling of the board, or into a pit
+     */
+
+    //TODO: Skal gøres så de kun kommer i spillerens bunke når spilleren har taget skade
+
+    //   ---DAMAGE CARDS---
+
+    SPAM("Spam"),
+    /*
+    TROJAN_HORSE("Trojansk Hest"),
+    VIRUS("Virus"),
+    WORMS("Worms"),
+     */
+
+
+    //  ---PROGRAMMING CARDS---
+
+    AGAIN("Again"),
     FORWARD("Fwd"),
+    TWOFORWARD("2 Fwd"),
+    THREEFOWARD("3 Fwd"),
+    BACK_UP("Back up"),
     RIGHT("Turn Right"),
     LEFT("Turn Left"),
-    FAST_FORWARD("Fast Fwd"),
+    UTURN("U-turn"),
+    POWER_UP("Power up"),
 
-    // XXX Assignment V3
-    OPTION_LEFT_RIGHT("Left OR Right", LEFT, RIGHT);
+
+    //TODO: Skal ændres efter upgrade phase er indført
+    //  ---SPECIAL PROGRAMMING CARDS---
+
+    /**
+     * Obtained by installing temprorary upgrades
+     */
+
+    ENERGY_ROUTINE("Energy"),
+    //REPEAT_ROUTINE("Repeat"),
+    //TODO: Skal ændre i udseende for Sandbox
+    OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
+    //SPAM_FOLDER("Spam"),
+    SPEED_ROUTINE("Speed"),
+    OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
+
+
 
     final private String displayName;
 

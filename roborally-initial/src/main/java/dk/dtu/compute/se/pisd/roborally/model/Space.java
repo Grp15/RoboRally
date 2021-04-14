@@ -23,6 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class Space extends Subject {
         return player;
     }
 
-    public SpaceType getSpaceType(){
+    public SpaceType getSpaceType() {
         return type;
     }
 
@@ -81,6 +82,7 @@ public class Space extends Subject {
             notifyChange();
         }
     }
+
     public List<Heading> getWalls() {
         return walls;
     }
@@ -108,7 +110,7 @@ public class Space extends Subject {
         notifyChange();
     }
 
-    public boolean doAction(Player player, Space space, GameController gameController){
+    public boolean doAction(Player player, Space space, GameController gameController) {
         return false;
     }
 }

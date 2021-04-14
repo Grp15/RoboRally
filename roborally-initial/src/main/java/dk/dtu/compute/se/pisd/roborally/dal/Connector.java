@@ -41,7 +41,7 @@ class Connector {
     private static final int    PORT     = 3306;
     private static final String DATABASE = "roborally";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "wi9L5Syg";
+    private static final String PASSWORD = "Yolo";
 
     private static final String DELIMITER = ";;";
     

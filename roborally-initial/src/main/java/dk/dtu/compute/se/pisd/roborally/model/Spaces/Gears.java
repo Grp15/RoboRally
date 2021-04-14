@@ -26,6 +26,8 @@ public class Gears extends Space {
      * @param gameController
      * @return
      */
+
+    //TODO: Gears vender den forkerte spiller om
     public boolean doAction(Player player, Space space, GameController gameController) {
 
 
