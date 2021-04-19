@@ -98,6 +98,15 @@ public class GameController {
                     field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
+
+                // Checks whether a player picked up a spam cards and spam if he did
+                for (int j = 0; j < Player.NO_CARDS; j++){
+                    if(player.getCardField(j).getCard().getCommand() == Command.SPAM){
+                        System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
+
+
+                    }
+                }
             }
         }
     }
@@ -555,7 +564,12 @@ public class GameController {
 
     public  void Spam(@NotNull Player player){
 
-        player.setProgramField(player.getCardField(1), 0);
+        CommandCardField card = player.getProgramField(0);
+
+        player.setProgramField(card, 0);
+
+        System.out.println("Uve been spammed " + board.getPlayerNumber(player));
+
 
     }
 
