@@ -111,7 +111,8 @@ public class GameController {
 
     //TODO: Should move card more elegantly
 
-    //Åbenbart så kan den ikke kende forskel på 1 af de to kort
+    // Åbenbart så kan den ikke kende forskel på 1 af de to kort, dvs. at hvis jeg piller ved card så bliver det ændret
+    // både i register- og i programfield
 
     public  void Spam(@NotNull Player player){
 
