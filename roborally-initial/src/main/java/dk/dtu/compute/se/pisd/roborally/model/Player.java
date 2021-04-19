@@ -44,6 +44,7 @@ public class Player extends Subject {
 
     private String name;
     private String color;
+    private int EnergyCubes;
 
     private Space space;
     private Heading heading = SOUTH;
@@ -135,6 +136,9 @@ public class Player extends Subject {
     public CommandCardField getCardField(int i) {
         return cards[i];
     }
+    public void setProgramField(CommandCardField commandCardField, int i){
+        program[i] = commandCardField;
+    }
 
     public String getCardsProgram() {
         String ProgrammingCards = "";
@@ -190,6 +194,14 @@ public class Player extends Subject {
         String[] program = load_program.split(",",-1);
 
         return program;
+    }
+
+    public void addEnergy(){
+        EnergyCubes = EnergyCubes + 1;
+    }
+
+    public int getEnergyCubes(){
+        return EnergyCubes;
     }
 
 
