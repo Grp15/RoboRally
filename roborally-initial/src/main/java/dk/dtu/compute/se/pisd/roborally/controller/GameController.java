@@ -107,7 +107,6 @@ public class GameController {
      * @return CommandCard
      */
 
-    // XXX: V2
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
@@ -134,7 +133,6 @@ public class GameController {
      * This method ends the programming phase
      */
 
-    // XXX: V2
     public void finishProgrammingPhase() {
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
@@ -148,7 +146,6 @@ public class GameController {
      * @param register
      */
 
-    // XXX: V2
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
             for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -163,7 +160,6 @@ public class GameController {
      * This method makes the programfield invisible
      */
 
-    // XXX: V2
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
@@ -178,7 +174,6 @@ public class GameController {
      * This method execute all programming cards in the register
      */
 
-    // XXX: V2
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
@@ -188,7 +183,6 @@ public class GameController {
      * This method executes the first step in the register
      */
 
-    // XXX: V2
     public void executeStep() {
         board.setStepMode(true);
         continuePrograms();
@@ -198,7 +192,6 @@ public class GameController {
      * Executes program as long as activation phase is on and stepmode is off
      */
 
-    // XXX: V2
     private void continuePrograms() {
         do {
             executeNextStep();
@@ -231,11 +224,9 @@ public class GameController {
 
 
                 }
-                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
-                    // TODO : Af en eller anden grund er det samme spiller hele tiden
 
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
@@ -379,6 +370,10 @@ public class GameController {
 
     }
 
+    /**
+     * Exception which is throwed when a player cant perform asked move
+     */
+
     public class ImpossibleMoveException extends Exception {
         private Player player;
         private Space space;
@@ -419,65 +414,10 @@ public class GameController {
 }
 
     /**
-     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
-     * in the direction the conveyor belt is facing
-     * @param currentPlayer current player
-     */
-    public void moveForward(@NotNull Player currentPlayer){
-        //Player currentPlayer = board.getCurrentPlayer();
-
-        Heading heading;
-
-        if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
-            heading = belt.getHeading();
-        }
-        else {
-            heading = currentPlayer.getHeading();
-        }
-
-        Space currentSpace = currentPlayer.getSpace();
-        Space newSpace = board.getNeighbour(currentSpace, heading);
-
-        //currentPlayer.setSpace(newSpace);
-        try {
-            moveToSpace(currentPlayer, newSpace, heading);
-        } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Moves a player forward 2 spaces towards the direction the player is currently facing
+     *
+     * Implements the Again card, which repeats the previous executed card from the players register
      * @param player
      */
-    // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
-    public void movetwoForward(@NotNull Player player) {
-        moveForward(player);
-        moveForward(player);
-    }
-
-    public void movethreeForward(@NotNull Player player){
-        moveForward(player);
-        moveForward(player);
-        moveForward(player);
-    }
-
-    public void Back_Up(@NotNull Player player){
-        Heading heading = player.getHeading().next().next();
-        Space space = player.getSpace().board.getNeighbour(player.getSpace(),heading);
-
-
-        try {
-            moveToSpace(player, space,heading);
-        } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void Powerup(@NotNull Player player){
-        player.addEnergy();
-    }
 
 
     //TODO: Skal køre forrige kort igen, må ikke være første kort i Register
@@ -532,6 +472,12 @@ public class GameController {
 
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
 
+
+    /**
+     * Implements spam card, which moves 1st card from program field to register field
+     * @param player
+     */
+
     //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
     // over i deres register.
     // Måske det skal implementeres i StartProgrammingPhase();
@@ -541,6 +487,10 @@ public class GameController {
         player.setProgramField(player.getCardField(1), 0);
 
     }
+
+
+
+    // ----------------------------------------- Other ---------------------------------------
 
     public Board getBoard(){
         return board;
