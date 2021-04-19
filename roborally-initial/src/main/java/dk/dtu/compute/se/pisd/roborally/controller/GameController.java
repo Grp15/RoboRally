@@ -109,9 +109,9 @@ public class GameController {
 
         for (int i = 0; i < player.NO_REGISTERS; i++) {
 
-            if (player.getProgramField(i).isVisible() == true) {
-                moveCards(player.getCardField(0), player.getProgramField(0));
-                System.out.println(i);
+            if (player.getProgramField(i).getCard() == null) {
+                moveCards(player.getCardField(i), player.getProgramField(i));
+                //System.out.println("Uve been spammed " + i);
                 return;
             }
         }
@@ -130,7 +130,7 @@ public class GameController {
             Player player = board.getPlayer(i);
 
                 if (player.getCardField(j).getCard().getCommand() == Command.SPAM) {
-                System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
+                //System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
                 executeCommand(player, Command.SPAM);
                 }
             }
@@ -179,7 +179,7 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
-        executePrograms(); // V3.5
+        //executePrograms(); // V3.5
     }
 
     /**
@@ -330,7 +330,7 @@ public class GameController {
                     this.Again(player);
                     break;
 
-                case BACK_UP:
+               /* case BACK_UP:
                     this.Back_Up(player);
                     break;
 
@@ -366,7 +366,7 @@ public class GameController {
                  *  --- Special Programming Cards ---
                  */
 
-                case ENERGY_ROUTINE:
+             /*   case ENERGY_ROUTINE:
                     this.Powerup(player);
                     break;
 
@@ -374,6 +374,8 @@ public class GameController {
                     this.movethreeForward(player);
                     break;
 
+//TODO: Comment back in
+              */
 
                 default:
                     // DO NOTHING (for now)
