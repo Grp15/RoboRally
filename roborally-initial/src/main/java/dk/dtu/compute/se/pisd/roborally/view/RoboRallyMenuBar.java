@@ -48,6 +48,8 @@ public class RoboRallyMenuBar extends MenuBar {
 
     private MenuItem exitApp;
 
+    private MenuItem selectBoard;
+
     public RoboRallyMenuBar(AppController appController) {
         this.appController = appController;
 
