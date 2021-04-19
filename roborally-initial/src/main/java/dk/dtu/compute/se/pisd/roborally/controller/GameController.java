@@ -22,10 +22,11 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
-import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
+import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
@@ -97,6 +98,19 @@ public class GameController {
                     field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
+
+                // TODO: SPAM skal nok implementeres her
+
+                /*
+
+                for (int j = 0; j < Player.NO_CARDS; j++){
+                    if(player.getCardField(i).getCard().getCommand() == Command.SPAM){
+                        Spam(player);
+                        player.getCardField(i).setVisible(false);
+                        System.out.println("Du har et spamkort" + board.getPlayerNumber(player));
+                    }
+                }
+                */
             }
         }
     }
@@ -315,6 +329,7 @@ public class GameController {
                 case RIGHT:
                     this.turnRight(player);
                     break;
+
                 case LEFT:
                     this.turnLeft(player);
                     break;
@@ -448,7 +463,7 @@ public class GameController {
         Heading heading;
 
         if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
+            ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
             heading = belt.getHeading();
         }
         else {
@@ -568,7 +583,8 @@ public class GameController {
 
     public  void Spam(@NotNull Player player){
 
-        player.setProgramField(player.getCardField(1), 0);
+        player.setProgramField(player.getCardField(0), 0);
+        player.getProgramField(0).setVisible(false); //Doesnt seem like to work
 
     }
 

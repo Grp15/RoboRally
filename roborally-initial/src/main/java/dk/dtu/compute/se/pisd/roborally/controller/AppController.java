@@ -31,6 +31,7 @@ import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -45,6 +46,8 @@ import java.util.Optional;
 
 import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
 import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
+
+import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.STARTFIELD;
 
 /**
  * AppController controls the app and is responsible to create a game controller
@@ -101,7 +104,38 @@ public class AppController implements Observer {
             for (int i = 0; i < no; i++) {
                 Player player = new Player(board, PLAYER_COLORS.get(i), "Player " + (i + 1));
                 board.addPlayer(player);
-                player.setSpace(board.getSpace(i % board.width, i));
+            }
+
+            /**
+             * The code fragment below sets the right starting position for a player
+             *
+             *TODO: Skal nok finpudses lidt, det er ikke meningen spillere bare skal blive sat, de skal selv vælge
+             * Derudover skal en spiller ikke kunne starte på et felt som ikke er StartField
+             **/
+
+
+            for (int i = 0; i < no; i++) {
+                Player player = board.getPlayer(i);
+                outerloop: //label, the nested loop breaks to here
+                for (int z = 0; z < board.width; z++) {
+
+                    for (int q = 0; q < board.height; q++) {
+
+                        if (board.getSpace(z, q).getSpaceType() == STARTFIELD && board.getSpace(z,q).getPlayer() == null) {
+
+                            player.setSpace(board.getSpace(z, q));
+                            break outerloop;
+                        }
+
+                    }
+
+                }
+
+                if(board.getPlayer(i).getSpace() == null){
+                    player.setSpace(board.getSpace(i % board.width, i));
+                }
+
+
             }
 
             // XXX: V2
@@ -109,8 +143,10 @@ public class AppController implements Observer {
             gameController.startProgrammingPhase();
 
             roboRally.createBoardView(gameController);
+
         }
     }
+
 
     /**
      * Savaegame saves a game to be played later

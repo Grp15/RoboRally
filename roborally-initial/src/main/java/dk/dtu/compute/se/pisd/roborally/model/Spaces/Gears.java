@@ -1,13 +1,16 @@
-package dk.dtu.compute.se.pisd.roborally.model;
+package dk.dtu.compute.se.pisd.roborally.model.Spaces;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
-import org.jetbrains.annotations.NotNull;
+import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 
 /**
  * Denne klasse implementerer gear feltet, som drejer robotten 90 grader med eller imod uret alt efter geartypen.
  */
 
 
-public class Gears extends  Space {
+public class Gears extends Space {
     private SpaceType type = SpaceType.GEARS;
     private String direction;
 
@@ -36,13 +39,15 @@ public class Gears extends  Space {
             gameController.turnLeft(player);
         }
 
-        System.out.print("Du har ramt et gear");
-
         return true;
     }
 
     public SpaceType getSpaceType(){
         return type;
+    }
+
+    public String getGearDirection(){
+        return direction;
     }
 
 
