@@ -111,7 +111,6 @@ public class GameController {
 
             if (player.getProgramField(i).getCard() == null) {
                 moveCards(player.getCardField(i), player.getProgramField(i));
-                //System.out.println("Uve been spammed " + i);
                 return;
             }
         }
@@ -330,7 +329,7 @@ public class GameController {
                     this.Again(player);
                     break;
 
-               /* case BACK_UP:
+                case BACK_UP:
                     this.Back_Up(player);
                     break;
 
@@ -366,7 +365,7 @@ public class GameController {
                  *  --- Special Programming Cards ---
                  */
 
-             /*   case ENERGY_ROUTINE:
+                case ENERGY_ROUTINE:
                     this.Powerup(player);
                     break;
 
@@ -374,8 +373,7 @@ public class GameController {
                     this.movethreeForward(player);
                     break;
 
-//TODO: Comment back in
-              */
+
 
                 default:
                     // DO NOTHING (for now)

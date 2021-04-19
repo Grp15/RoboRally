@@ -52,10 +52,10 @@ public enum Command {
 
 
     //  ---PROGRAMMING CARDS---
-//TODO COMMENT BACK IN
+
     AGAIN("Again"),
-    FORWARD("Fwd");
-/*    TWOFORWARD("2 Fwd"),
+    FORWARD("Fwd"),
+    TWOFORWARD("2 Fwd"),
     THREEFOWARD("3 Fwd"),
     BACK_UP("Back up"),
     RIGHT("Turn Right"),
@@ -63,7 +63,7 @@ public enum Command {
     UTURN("U-turn"),
     POWER_UP("Power up"),
 
- */
+
 
 
     //TODO: Skal ændres efter upgrade phase er indført
@@ -72,7 +72,7 @@ public enum Command {
     /**
      * Obtained by installing temprorary upgrades
      */
-/*
+
     ENERGY_ROUTINE("Energy"),
     REPEAT_ROUTINE("Repeat"),
 
@@ -82,7 +82,7 @@ public enum Command {
     SPEED_ROUTINE("Speed"),
     OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
 
- */
+
 
 
 
