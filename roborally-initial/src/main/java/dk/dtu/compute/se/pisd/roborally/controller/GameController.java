@@ -24,7 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
-import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
+//import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
