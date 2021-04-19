@@ -216,17 +216,27 @@ public class GameController {
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
+                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (card != null) {
                     Command command = card.getCommand();
                     if(command.isInteractive()){
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
-                    } else executeCommand(currentPlayer, command);
+                    }
+                    //Hvis 1 kort i register er AGAIN Kort springes det over
+                    if(card.getCommand() == Command.AGAIN && step == 0){
+                        board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+
+                    }else executeCommand(currentPlayer, command);
+
+
                 }
                 int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
+                    // TODO : Af en eller anden grund er det samme spiller hele tiden
+
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
@@ -235,6 +245,7 @@ public class GameController {
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
                         space.doAction(player,space,gameController);
+
 
 
 
@@ -273,18 +284,67 @@ public class GameController {
             //     (this concerns the way cards are modelled as well as the way they are executed).
 
             switch (command) {
+
+                /**
+                 *  --- Damage Cards ---
+                 */
+
+                case SPAM:
+                    this.Spam(player);
+                    break;
+
+                /**
+                 *  --- Programming Cards ---
+                 */
+
+                case AGAIN:
+                    this.Again(player);
+                    break;
+
+                case BACK_UP:
+                    this.Back_Up(player);
+                    break;
+
                 case FORWARD:
                     this.moveForward(player);
                     break;
+
+                case TWOFORWARD:
+                    this.movetwoForward(player);
+                    break;
+
+                case THREEFOWARD :
+                    this.movethreeForward(player);
+                    break;
+
+                case POWER_UP:
+                    this.Powerup(player);
+                    break;
+
                 case RIGHT:
                     this.turnRight(player);
                     break;
                 case LEFT:
                     this.turnLeft(player);
                     break;
-                case FAST_FORWARD:
-                    this.fastForward(player);
+
+
+                case UTURN:
+                    this.Uturn(player);
                     break;
+                /**
+                 *  --- Special Programming Cards ---
+                 */
+
+                case ENERGY_ROUTINE:
+                    this.Powerup(player);
+                    break;
+
+                case SPEED_ROUTINE:
+                    this.movethreeForward(player);
+                    break;
+
+
                 default:
                     // DO NOTHING (for now)
             }
@@ -359,7 +419,8 @@ public class GameController {
 }
 
     /**
-     * Moves a player forward in the direction he is facing.
+     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
+     * in the direction the conveyor belt is facing
      * @param currentPlayer current player
      */
     public void moveForward(@NotNull Player currentPlayer){
@@ -391,9 +452,45 @@ public class GameController {
      * @param player
      */
     // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
-    public void fastForward(@NotNull Player player) {
+    public void movetwoForward(@NotNull Player player) {
         moveForward(player);
         moveForward(player);
+    }
+
+    public void movethreeForward(@NotNull Player player){
+        moveForward(player);
+        moveForward(player);
+        moveForward(player);
+    }
+
+    public void Back_Up(@NotNull Player player){
+        Heading heading = player.getHeading().next().next();
+        Space space = player.getSpace().board.getNeighbour(player.getSpace(),heading);
+
+
+        try {
+            moveToSpace(player, space,heading);
+        } catch (ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void Powerup(@NotNull Player player){
+        player.addEnergy();
+    }
+
+
+    //TODO: Skal køre forrige kort igen, må ikke være første kort i Register
+    //TODO: Skal opdateres når damage card og special upgrade indføres
+
+    public void Again(@NotNull Player player){
+        CommandCardField card = player.getProgramField(board.getStep() -1);
+        Command command = card.getCard().getCommand();
+
+        if (board.getStep() == 0){
+            return;
+        }
+        executeCommand(player,command);
     }
 
     /**
@@ -416,6 +513,10 @@ public class GameController {
         currentPlayer.setHeading(heading.prev());
     }
 
+    public void Uturn(@NotNull Player player){
+        player.setHeading(player.getHeading().next().next());
+    }
+
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
         CommandCard sourceCard = source.getCard();
         CommandCard targetCard = target.getCard();
@@ -426,6 +527,19 @@ public class GameController {
         } else {
             return false;
         }
+    }
+
+
+    // ----------------------------------------- DAMAGE CARDS ---------------------------------------
+
+    //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
+    // over i deres register.
+    // Måske det skal implementeres i StartProgrammingPhase();
+
+    public  void Spam(@NotNull Player player){
+
+        player.setProgramField(player.getCardField(1), 0);
+
     }
 
     public Board getBoard(){

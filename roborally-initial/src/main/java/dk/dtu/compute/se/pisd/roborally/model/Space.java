@@ -64,7 +64,7 @@ public class Space extends Subject {
         return player;
     }
 
-    public SpaceType getSpaceType(){
+    public SpaceType getSpaceType() {
         return type;
     }
 
@@ -83,6 +83,7 @@ public class Space extends Subject {
             notifyChange();
         }
     }
+
     public List<Heading> getWalls() {
         return walls;
     }
@@ -110,7 +111,7 @@ public class Space extends Subject {
         notifyChange();
     }
 
-    public boolean doAction(Player player, Space space, GameController gameController){
+    public boolean doAction(Player player, Space space, GameController gameController) {
         return false;
     }
 }
