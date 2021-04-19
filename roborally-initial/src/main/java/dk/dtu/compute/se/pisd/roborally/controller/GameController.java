@@ -118,14 +118,16 @@ public class GameController {
         //Creates new card with same command as in program[0]
 
         CommandCardField card = new CommandCardField(player);
-        card.setCard(new CommandCard(player.getCardField(0).getCard().getCommand()));
+        card.setCard(new CommandCard(Command.FORWARD));
+
+        //card.setCard(new CommandCard(player.getCardField(0).getCard().getCommand()));
 
         // Puts card into players register and makes visible
         player.setProgramField(card, 0);
         card.setVisible(true);
 
         // sets 1 programcard to invisible
-        player.getCardField(0).setVisible(false);
+        //player.getCardField(0).setVisible(false);
 
         System.out.println("Program card is " + player.getCardField(0).getCard());
         System.out.println("New card is " + card.getCard());
@@ -237,7 +239,6 @@ public class GameController {
      * This method execute all programming cards in the register
      */
 
-    // XXX: V2
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
@@ -247,7 +248,6 @@ public class GameController {
      * This method executes the first step in the register
      */
 
-    // XXX: V2
     public void executeStep() {
         board.setStepMode(true);
         continuePrograms();
@@ -257,7 +257,6 @@ public class GameController {
      * Executes program as long as activation phase is on and stepmode is off
      */
 
-    // XXX: V2
     private void continuePrograms() {
         do {
             executeNextStep();
@@ -268,7 +267,6 @@ public class GameController {
      * Executes next step from a players register
      */
 
-    // XXX: V2
     private void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
