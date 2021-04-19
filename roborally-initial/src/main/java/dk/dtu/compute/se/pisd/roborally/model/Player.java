@@ -140,6 +140,9 @@ public class Player extends Subject {
         program[i] = commandCardField;
     }
 
+    public void setCardField(CommandCardField commandCardField, int i){
+        cards[i] = commandCardField;}
+
     public String getCardsProgram() {
         String ProgrammingCards = "";
 
@@ -153,7 +156,6 @@ public class Player extends Subject {
             continue;
         }
     }
-       // System.out.println("Programming = " + ProgrammingCards);
         return ProgrammingCards;
 }
 
@@ -175,7 +177,6 @@ public class Player extends Subject {
             }
 
         }
-        //System.out.println("Register = " + RegisterCards);
         return RegisterCards;
     }
 
@@ -187,7 +188,6 @@ public class Player extends Subject {
     }
 
 
-    //Todo: Skal måske slettes
 
     public String[] splitCardsProgramString(String load_program) {
 

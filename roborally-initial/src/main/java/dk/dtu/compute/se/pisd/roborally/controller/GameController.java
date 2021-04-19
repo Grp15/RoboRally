@@ -100,16 +100,49 @@ public class GameController {
                 }
 
                 // Checks whether a player picked up a spam cards and spam if he did
-                for (int j = 0; j < Player.NO_CARDS; j++){
-                    if(player.getCardField(j).getCard().getCommand() == Command.SPAM){
-                        System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
-                        executeCommand(player, Command.SPAM);
 
 
-                    }
-                }
+
+
             }
         }
+        CheckForTypeCards();
+    }
+
+    /**
+     * Checks if the player has drawn any of following cards
+     * 1) SPAM
+     */
+
+    //TODO : Finish this
+    public void CheckForTypeCards(){
+        for (int j = 0; j < Player.NO_CARDS; j++) {
+            // Skal køre begge spillere igennem
+            Player player = board.getCurrentPlayer();
+            if (player.getCardField(j).getCard().getCommand() == Command.SPAM) {
+                System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
+                executeCommand(player, Command.SPAM);
+            }
+        }
+    }
+
+
+    //TODO: Should move card more elegantly
+
+    public  void Spam(@NotNull Player player){
+
+        CommandCardField card = player.getCardField(0);
+
+        //Should take into account more than 1 spam card can be drawn
+
+        player.setProgramField(card, 0);
+
+        //player.getCardField(0).setVisible(false);
+
+
+        System.out.println("Uve been spammed " + board.getPlayerNumber(player));
+
+
     }
 
     /**
@@ -539,22 +572,7 @@ public class GameController {
 
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
 
-    //TODO: Should move card more elegantly
 
-    public  void Spam(@NotNull Player player){
-
-        CommandCardField card = player.getCardField(0);
-
-        //Should take into account more than 1 spam card can be drawn
-
-        player.setProgramField(card, 0);
-
-        System.out.println(card.getCard().getCommand().getDisplayName());
-
-        System.out.println("Uve been spammed " + board.getPlayerNumber(player));
-
-
-    }
 
     public Board getBoard(){
         return board;
