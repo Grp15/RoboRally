@@ -311,6 +311,11 @@ public class GameController {
                     this.Spam(player);
                     break;
 
+                case TROJAN_HORSE:
+                    this.Trojanhorse(player);
+                    break;
+
+
                 /**
                  *  --- Programming Cards ---
                  */
@@ -569,6 +574,11 @@ public class GameController {
         }
     }
 
+    public void Trojanhorse(@NotNull Player player){
+        executeCommand(player, Command.SPAM);
+
+        //TOOD: Need to implement that the player add 2 SPAM card to his bile
+    }
 
 
     public Board getBoard(){

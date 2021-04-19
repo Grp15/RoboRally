@@ -44,8 +44,9 @@ public enum Command {
     //   ---DAMAGE CARDS---
     //Spam skal ikke kunne gøre noget hvis den lægges i program bunken
     SPAM("Spam"),
-    /*
+
     TROJAN_HORSE("Trojansk Hest"),  // Smid ind igen når SPAM virker
+    /*
     VIRUS("Virus"), // Skal implementeres
     WORMS("Worms"), // Skal implementeres efter reboot er implementeret
      */
