@@ -204,5 +204,13 @@ public class Player extends Subject {
         return EnergyCubes;
     }
 
+    public int CalculateDistanceToPlayer(Player player){
+        int xDistance = Player.this.getSpace().x - player.getSpace().x;
+        int yDistance = Player.this.getSpace().y - player.getSpace().y;
+
+        int distance = Math.abs(xDistance) + Math.abs(yDistance);
+        return distance;
+    }
+
 
 }

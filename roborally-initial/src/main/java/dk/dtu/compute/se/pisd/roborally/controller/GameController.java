@@ -315,6 +315,10 @@ public class GameController {
                     this.Trojanhorse(player);
                     break;
 
+                case VIRUS:
+                    this.Virus(player);
+                    break;
+
 
                 /**
                  *  --- Programming Cards ---
@@ -366,6 +370,10 @@ public class GameController {
 
                 case SPEED_ROUTINE:
                     this.movethreeForward(player);
+                    break;
+
+                case REPEAT_ROUTINE:
+                    this.Again(player);
                     break;
 
 
@@ -505,16 +513,19 @@ public class GameController {
     }
 
 
-    //TODO: Skal køre forrige kort igen, må ikke være første kort i Register
-    //TODO: Skal opdateres når damage card og special upgrade indføres
+    /**
+     * Runs previous card again, if again is 1st card in register nothin happens
+     * @param player
+     */
 
     public void Again(@NotNull Player player){
-        CommandCardField card = player.getProgramField(board.getStep() -1);
-        Command command = card.getCard().getCommand();
-
         if (board.getStep() == 0){
             return;
         }
+        CommandCardField card = player.getProgramField(board.getStep() -1);
+        Command command = card.getCard().getCommand();
+
+
         executeCommand(player,command);
     }
 
@@ -574,10 +585,37 @@ public class GameController {
         }
     }
 
+    //TODO: Need to implement that the player add 2 SPAM card to his bile for now it works like a spam
+
     public void Trojanhorse(@NotNull Player player){
         executeCommand(player, Command.SPAM);
 
-        //TOOD: Need to implement that the player add 2 SPAM card to his bile
+
+    }
+
+    //TODO: Implement players within the radius draw cards
+
+    //Every player within 6 fields gets a virus damage card
+    //Ide er at se hvor spillere er fra 0 til antal spillere, og se hvem der er indenfor 6 felter
+
+    public void Virus(@NotNull Player player){
+
+        for(int i = 0; i < board.getPlayersNumber(); i++){
+            Player otherPlayer = board.getPlayer(i);
+
+            if(otherPlayer != player){
+
+                if (player.CalculateDistanceToPlayer(otherPlayer) < 6){
+                    System.out.println(otherPlayer.getName() + " Du har fået virus");
+                }
+            }
+        }
+
+    }
+
+    //TODO: Reboots the robot
+    public void Worms(@NotNull Player player){
+        notImplemented();
     }
 
 
