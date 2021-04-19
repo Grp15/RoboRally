@@ -104,8 +104,7 @@ public class GameController {
         CheckForTypeCards();
     }
 
-    //TODO: Should move card more elegantly
-    //TODO: Cant be spam card i guess
+    //TODO: Use movecard method...
 
     // Åbenbart så kan den ikke kende forskel på 1 af de to kort, dvs. at hvis jeg piller ved card så bliver det ændret
     // både i register- og i programfield
