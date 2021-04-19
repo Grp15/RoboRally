@@ -73,7 +73,7 @@ public class GameController {
     }
 
     /**
-     * This method initiates the programmingphase
+     * This method initiates the programming phase
      *
      */
 
@@ -98,14 +98,9 @@ public class GameController {
                     field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
-
-                // Checks whether a player picked up a spam cards and spam if he did
-
-
-
-
             }
         }
+        // Checks whether a player picked up a spam cards and spam if he did
         CheckForTypeCards();
     }
 
@@ -118,14 +113,12 @@ public class GameController {
 
         CommandCardField card = player.getCardField(0);
 
+        card.setCard(new CommandCard(Command.LEFT));
+
         //Should take into account more than 1 spam card can be drawn
 
         player.setProgramField(card, 0);
-
-        card.setCard(null);
-
-        player.setCardField(card, 0);
-
+        player.getProgramField(0).setVisible(true);
 
         System.out.println("Uve been spammed " + board.getPlayerNumber(player));
 
@@ -288,7 +281,6 @@ public class GameController {
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
-                    // TODO : Af en eller anden grund er det samme spiller hele tiden
 
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
