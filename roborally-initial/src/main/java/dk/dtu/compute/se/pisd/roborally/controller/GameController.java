@@ -109,25 +109,9 @@ public class GameController {
         CheckForTypeCards();
     }
 
-    /**
-     * Checks if the player has drawn any of following cards
-     * 1) SPAM
-     */
-
-    //TODO : Finish this
-    public void CheckForTypeCards(){
-        for (int j = 0; j < Player.NO_CARDS; j++) {
-            // Skal køre begge spillere igennem
-            Player player = board.getCurrentPlayer();
-            if (player.getCardField(j).getCard().getCommand() == Command.SPAM) {
-                System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
-                executeCommand(player, Command.SPAM);
-            }
-        }
-    }
-
-
     //TODO: Should move card more elegantly
+
+    //Åbenbart så kan den ikke kende forskel på 1 af de to kort
 
     public  void Spam(@NotNull Player player){
 
@@ -137,13 +121,38 @@ public class GameController {
 
         player.setProgramField(card, 0);
 
-        //player.getCardField(0).setVisible(false);
+        card.setCard(null);
+
+        player.setCardField(card, 0);
 
 
         System.out.println("Uve been spammed " + board.getPlayerNumber(player));
 
 
     }
+
+    /**
+     * Checks if the player has drawn any of following cards
+     * 1) SPAM
+     * 2) Kommer senere
+     */
+
+    public void CheckForTypeCards(){
+        for (int i = 0; i < board.getPlayersNumber(); i++){
+
+            for (int j = 0; j < Player.NO_CARDS; j++) {
+            Player player = board.getPlayer(i);
+
+                if (player.getCardField(j).getCard().getCommand() == Command.SPAM) {
+                System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
+                executeCommand(player, Command.SPAM);
+                }
+            }
+        }
+    }
+
+
+
 
     /**
      * This method generates one random of the games command card for the player

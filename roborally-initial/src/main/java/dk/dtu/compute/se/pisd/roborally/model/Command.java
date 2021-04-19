@@ -42,7 +42,7 @@ public enum Command {
     //TODO: Skal gøres så de kun kommer i spillerens bunke når spilleren har taget skade
 
     //   ---DAMAGE CARDS---
-
+    //Spam skal ikke kunne gøre noget hvis den lægges i program bunken
     SPAM("Spam"),
     /*
     TROJAN_HORSE("Trojansk Hest"),  // Smid ind igen når SPAM virker
