@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
 
 /**
- * Gamecontroller conatains method for all the game logic like initiating phases and moving players
+ * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  * @author s205436
@@ -438,6 +438,72 @@ public class GameController {
     }
 
     /**
+     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
+     * in the direction the conveyor belt is facing
+     * @param currentPlayer current player
+     */
+    public void moveForward(@NotNull Player currentPlayer){
+        //Player currentPlayer = board.getCurrentPlayer();
+
+        Heading heading;
+
+        if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
+            dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
+            heading = belt.getHeading();
+        }
+        else {
+            heading = currentPlayer.getHeading();
+        }
+
+        Space currentSpace = currentPlayer.getSpace();
+        Space newSpace = board.getNeighbour(currentSpace, heading);
+
+        //currentPlayer.setSpace(newSpace);
+        try {
+            moveToSpace(currentPlayer, newSpace, heading);
+        } catch (ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Moves a player forward 2 spaces towards the direction the player is currently facing
+     * @param player
+     */
+    public void movetwoForward(@NotNull Player player) {
+        moveForward(player);
+        moveForward(player);
+    }
+
+    /**
+     * Moves a player forward 3 spaces towards the direction the player is currently facing
+     * @param player
+     */
+
+    public void movethreeForward(@NotNull Player player){
+        moveForward(player);
+        moveForward(player);
+        moveForward(player);
+    }
+
+    /**
+     * Moves a player backwards 1 pace towards the opposite direction the player is currently facing
+     * @param player
+     */
+
+    public void Back_Up(@NotNull Player player){
+        Heading heading = player.getHeading().next().next();
+        Space space = player.getSpace().board.getNeighbour(player.getSpace(),heading);
+
+
+        try {
+            moveToSpace(player, space,heading);
+        } catch (ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Set a current players direction to turn right of current heading.
      * @param player current player
      */
@@ -457,8 +523,22 @@ public class GameController {
         currentPlayer.setHeading(heading.prev());
     }
 
+    /**
+     * sets the heading of the player to it's opposite direction
+     * @param player
+     */
+
     public void Uturn(@NotNull Player player){
         player.setHeading(player.getHeading().next().next());
+    }
+
+    /**
+     * Adds energy cube to player
+     * @param player
+     */
+
+    public void Powerup(@NotNull Player player){
+        player.addEnergy();
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
