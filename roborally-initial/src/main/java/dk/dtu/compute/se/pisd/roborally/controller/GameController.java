@@ -105,16 +105,6 @@ public class GameController {
     }
 
 
-    public  void Spam(@NotNull Player player) {
-
-        for (int i = 0; i < player.NO_REGISTERS; i++) {
-
-            if (player.getProgramField(i).getCard() == null) {
-                moveCards(player.getCardField(i), player.getProgramField(i));
-                return;
-            }
-        }
-    }
 
     /**
      * Checks if the player has drawn any of following cards
@@ -561,6 +551,23 @@ public class GameController {
 
 
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
+
+    /**
+     * Spam a plater by moving top card in program card to register
+     * @param player
+     */
+
+
+    public  void Spam(@NotNull Player player) {
+
+        for (int i = 0; i < player.NO_REGISTERS; i++) {
+
+            if (player.getProgramField(i).getCard() == null) {
+                moveCards(player.getCardField(i), player.getProgramField(i));
+                return;
+            }
+        }
+    }
 
 
 
