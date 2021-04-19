@@ -51,6 +51,7 @@ public class Player extends Subject {
 
     private CommandCardField[] program; // Register
     private CommandCardField[] cards;  // Kort på hånd
+    private CommandCardField[] bile; // Kort i bunke der kan trækkes fra
 
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
