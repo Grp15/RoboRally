@@ -77,7 +77,9 @@ public class GameController {
      *
      */
 
-    // XXX: V2
+
+    //TODO: Når spillerne har deres egen kortbunke skal de trække fra denne
+
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
@@ -106,7 +108,6 @@ public class GameController {
      * @return CommandCard
      */
 
-    // XXX: V2
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);

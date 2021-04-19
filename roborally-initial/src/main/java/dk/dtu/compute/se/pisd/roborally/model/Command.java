@@ -45,9 +45,9 @@ public enum Command {
 
     SPAM("Spam"),
     /*
-    TROJAN_HORSE("Trojansk Hest"),
-    VIRUS("Virus"),
-    WORMS("Worms"),
+    TROJAN_HORSE("Trojansk Hest"),  // Smid ind igen når SPAM virker
+    VIRUS("Virus"), // Skal implementeres
+    WORMS("Worms"), // Skal implementeres efter reboot er implementeret
      */
 
 
@@ -72,23 +72,17 @@ public enum Command {
      */
 
     ENERGY_ROUTINE("Energy"),
-    //REPEAT_ROUTINE("Repeat"),
+    REPEAT_ROUTINE("Repeat"),
+
     //TODO: Skal ændre i udseende for Sandbox
     OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
-    //SPAM_FOLDER("Spam"),
+    //SPAM_FOLDER("Spam"),  // Skal implementeres
     SPEED_ROUTINE("Speed"),
     OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
 
 
 
     final private String displayName;
-
-    // XXX Assignment V3
-    // Command(String displayName) {
-    //     this.displayName = displayName;
-    // }
-    //
-    // replaced by the code below:
 
     final private List<Command> options;
 
