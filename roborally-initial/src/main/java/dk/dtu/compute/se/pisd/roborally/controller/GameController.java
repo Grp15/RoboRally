@@ -103,6 +103,7 @@ public class GameController {
                 for (int j = 0; j < Player.NO_CARDS; j++){
                     if(player.getCardField(j).getCard().getCommand() == Command.SPAM){
                         System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
+                        executeCommand(player, Command.SPAM);
 
 
                     }
@@ -254,26 +255,6 @@ public class GameController {
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
                         space.doAction(player,space,gameController);
-
-                        //System.out.println(space.getSpaceType());
-
-
-                        /*
-                        int currentInt = board.getPlayerNumber(board.getPlayer(i));
-
-
-                        Player nextPlayer = board.getPlayer((currentInt + 1) % board.getPlayersNumber());
-
-
-
-                        System.out.println(nextPlayer.board.getPlayersNumber() +" " + currentInt);
-
-                        space.doAction(board.getPlayer(currentInt), space, gameController);
-
-                         */
-
-
-
                     }
 
                     step++;
@@ -558,15 +539,17 @@ public class GameController {
 
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
 
-    //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
-    // over i deres register.
-    // Måske det skal implementeres i StartProgrammingPhase();
+    //TODO: Should move card more elegantly
 
     public  void Spam(@NotNull Player player){
 
-        CommandCardField card = player.getProgramField(0);
+        CommandCardField card = player.getCardField(0);
+
+        //Should take into account more than 1 spam card can be drawn
 
         player.setProgramField(card, 0);
+
+        System.out.println(card.getCard().getCommand().getDisplayName());
 
         System.out.println("Uve been spammed " + board.getPlayerNumber(player));
 
