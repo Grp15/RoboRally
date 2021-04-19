@@ -109,16 +109,20 @@ public class GameController {
     // Åbenbart så kan den ikke kende forskel på 1 af de to kort, dvs. at hvis jeg piller ved card så bliver det ændret
     // både i register- og i programfield
 
+    //Lige nu sætter den kort 1 i register til at være forward hvis der er et spam kort
+
     public  void Spam(@NotNull Player player){
 
-        CommandCardField card = player.getCardField(0);
+        CommandCardField card = new CommandCardField(player);
 
-        card.setCard(new CommandCard(Command.LEFT));
-
-        //Should take into account more than 1 spam card can be drawn
+        card.setCard(new CommandCard(Command.FORWARD));
 
         player.setProgramField(card, 0);
-        player.getProgramField(0).setVisible(true);
+
+        card.setVisible(true);
+
+        System.out.println(player.getProgramField(0).getCard().getCommand().getDisplayName());
+
 
         System.out.println("Uve been spammed " + board.getPlayerNumber(player));
 
