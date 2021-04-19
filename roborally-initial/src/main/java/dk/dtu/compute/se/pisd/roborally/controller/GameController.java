@@ -605,4 +605,14 @@ public class GameController {
         assert false;
     }
 
+    public int DistanceSpacetoPlayer(Space space, Player player){
+
+        int xDistance = space.x - player.getSpace().x;
+        int yDistance = space.y - player.getSpace().y;
+
+        int distance = Math.abs(xDistance) + Math.abs(yDistance);
+
+        return distance;
+    }
+
 }

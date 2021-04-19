@@ -23,7 +23,23 @@ public class PriorityAntenna extends Space {
 
     public boolean doAction(Player player, Space space, GameController gameController){
 
+        int[] playerdistance = new int[board.getPlayersNumber()];
+
+        for(int i = 0; i < board.getPlayersNumber(); i++){
+
+        playerdistance[i] = gameController.DistanceSpacetoPlayer(board.getSpace(this.x,this.y), board.getPlayer(i));
+
+        }
 
         return true;
+    }
+
+    /**
+     * Sorts a distancefromspacetoplayer array using sort algorithm
+     * @param playerDistances
+     */
+
+    public void sort(int[] playerDistances){
+
     }
 }
