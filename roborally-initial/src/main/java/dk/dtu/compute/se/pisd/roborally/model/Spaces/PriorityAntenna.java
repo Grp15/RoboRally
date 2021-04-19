@@ -21,6 +21,8 @@ public class PriorityAntenna extends Space {
      * @return
      */
 
+    // TODO: Need to attach reference from distance array to a player
+
     public boolean doAction(Player player, Space space, GameController gameController){
 
         int[] playerdistance = new int[board.getPlayersNumber()];
@@ -28,6 +30,8 @@ public class PriorityAntenna extends Space {
         for(int i = 0; i < board.getPlayersNumber(); i++){
 
         playerdistance[i] = gameController.DistanceSpacetoPlayer(board.getSpace(this.x,this.y), board.getPlayer(i));
+
+
 
         }
 
