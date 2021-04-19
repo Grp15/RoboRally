@@ -74,6 +74,10 @@ public class RoboRallyMenuBar extends MenuBar {
         exitApp.setOnAction( e -> this.appController.exit());
         controlMenu.getItems().add(exitApp);
 
+        selectBoard = new MenuItem("Select Board");
+        selectBoard.setOnAction( e -> this.appController.selectBoard());
+        controlMenu.getItems().add(selectBoard);
+
         controlMenu.setOnShowing(e -> update());
         controlMenu.setOnShown(e -> this.updateBounds());
         update();

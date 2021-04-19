@@ -228,6 +228,14 @@ public class AppController implements Observer {
         }
     }
 
+
+    public void selectBoard() {
+        if (gameController != null) {
+            File json = new File("src/main/java/resources/boards/defaultboard.json");
+        }
+
+    }
+
     public boolean isGameRunning() {
         return gameController != null;
     }
