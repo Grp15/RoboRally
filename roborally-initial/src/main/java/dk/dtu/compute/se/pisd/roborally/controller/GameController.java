@@ -21,6 +21,7 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
@@ -630,6 +631,23 @@ public class GameController {
     public void notImplemented() {
         // XXX just for now to indicate that the actual method is not yet implemented
         assert false;
+    }
+
+    /**
+     * Used to determine who starts the round
+     * @param space
+     * @param player
+     * @return
+     */
+
+    public int DistanceSpacetoPlayer(Space space, Player player){
+
+        int xDistance = space.x - player.getSpace().x;
+        int yDistance = space.y - player.getSpace().y;
+
+        int distance = Math.abs(xDistance) + Math.abs(yDistance);
+
+        return distance;
     }
 
 }
