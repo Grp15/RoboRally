@@ -105,24 +105,32 @@ public class GameController {
     }
 
     //TODO: Should move card more elegantly
+    //TODO: Cant be spam card i guess
 
     // Åbenbart så kan den ikke kende forskel på 1 af de to kort, dvs. at hvis jeg piller ved card så bliver det ændret
     // både i register- og i programfield
+    //
 
-    //Lige nu sætter den kort 1 i register til at være forward hvis der er et spam kort
+    //Lige nu sætter den kort 1 i register til at være forward hvis der er et spam kort, det går galt når jeg skal til at bytte kort mellem register og programcards
 
     public  void Spam(@NotNull Player player){
 
+        //Creates new card with same command as in program[0]
+
         CommandCardField card = new CommandCardField(player);
+        card.setCard(new CommandCard(player.getCardField(0).getCard().getCommand()));
 
-        card.setCard(new CommandCard(Command.FORWARD));
-
+        // Puts card into players register and makes visible
         player.setProgramField(card, 0);
-
         card.setVisible(true);
 
-        System.out.println(player.getProgramField(0).getCard().getCommand().getDisplayName());
+        // sets 1 programcard to invisible
+        player.getCardField(0).setVisible(false);
 
+        System.out.println("Program card is " + player.getCardField(0).getCard());
+        System.out.println("New card is " + card.getCard());
+
+        System.out.println(player.getProgramField(0).getCard().getCommand().getDisplayName());
 
         System.out.println("Uve been spammed " + board.getPlayerNumber(player));
 
