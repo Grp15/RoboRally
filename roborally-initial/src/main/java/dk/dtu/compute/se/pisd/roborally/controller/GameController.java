@@ -109,8 +109,6 @@ public class GameController {
 
         for (int i = 0; i < player.NO_REGISTERS; i++) {
 
-            System.out.println(player.getProgramField(i).getCard());
-
             if (player.getProgramField(i).isVisible() == true) {
                 moveCards(player.getCardField(0), player.getProgramField(0));
                 System.out.println(i);
