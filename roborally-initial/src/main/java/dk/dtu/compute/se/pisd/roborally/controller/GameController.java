@@ -21,6 +21,7 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
@@ -549,6 +550,20 @@ public class GameController {
 
         player.setProgramField(player.getCardField(0), 0);
         player.getProgramField(0).setVisible(false); //Doesnt seem like to work
+
+    }
+
+
+    /**
+     * Fires a laser in the direction the player is facing
+     * @param player
+     */
+
+    public void FireLaser(Player player){
+        Heading heading = player.getHeading();
+
+        board.getNeighbour(player.getSpace(), heading);
+
 
     }
 
