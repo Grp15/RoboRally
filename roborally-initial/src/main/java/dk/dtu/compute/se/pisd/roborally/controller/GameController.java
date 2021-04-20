@@ -22,10 +22,10 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
-import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
+import static dk.dtu.compute.se.pisd.roborally.model.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains method for all the game logic like initiating phases and moving players
@@ -74,11 +74,13 @@ public class GameController {
     }
 
     /**
-     * This method initiates the programmingphase
+     * This method initiates the programming phase
      *
      */
 
-    // XXX: V2
+
+    //TODO: Når spillerne har deres egen kortbunke skal de trække fra denne
+
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
@@ -97,22 +99,36 @@ public class GameController {
                     field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
+            }
+        }
+        // Checks whether a player picked up a spam cards and spam if he did
+        CheckForTypeCards();
+    }
 
-                // TODO: SPAM skal nok implementeres her
 
-                /*
 
-                for (int j = 0; j < Player.NO_CARDS; j++){
-                    if(player.getCardField(i).getCard().getCommand() == Command.SPAM){
-                        Spam(player);
-                        player.getCardField(i).setVisible(false);
-                        System.out.println("Du har et spamkort" + board.getPlayerNumber(player));
-                    }
+    /**
+     * Checks if the player has drawn any of following cards
+     * 1) SPAM
+     * 2) Kommer senere
+     */
+
+    public void CheckForTypeCards(){
+        for (int i = 0; i < board.getPlayersNumber(); i++){
+
+            for (int j = 0; j < Player.NO_CARDS; j++) {
+            Player player = board.getPlayer(i);
+
+                if (player.getCardField(j).getCard().getCommand() == Command.SPAM) {
+                //System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
+                executeCommand(player, Command.SPAM);
                 }
-                */
             }
         }
     }
+
+
+
 
     /**
      * This method generates one random of the games command card for the player
@@ -120,7 +136,6 @@ public class GameController {
      * @return CommandCard
      */
 
-    // XXX: V2
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
@@ -154,6 +169,7 @@ public class GameController {
         board.setPhase(Phase.ACTIVATION);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
+        //executePrograms(); // V3.5
     }
 
     /**
@@ -191,7 +207,6 @@ public class GameController {
      * This method execute all programming cards in the register
      */
 
-    // XXX: V2
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
@@ -201,7 +216,6 @@ public class GameController {
      * This method executes the first step in the register
      */
 
-    // XXX: V2
     public void executeStep() {
         board.setStepMode(true);
         continuePrograms();
@@ -211,7 +225,6 @@ public class GameController {
      * Executes program as long as activation phase is on and stepmode is off
      */
 
-    // XXX: V2
     private void continuePrograms() {
         do {
             executeNextStep();
@@ -222,7 +235,6 @@ public class GameController {
      * Executes next step from a players register
      */
 
-    // XXX: V2
     private void executeNextStep() {
         Player currentPlayer = board.getCurrentPlayer();
         if (board.getPhase() == Phase.ACTIVATION && currentPlayer != null) {
@@ -247,6 +259,7 @@ public class GameController {
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
+
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
@@ -255,9 +268,6 @@ public class GameController {
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
                         space.doAction(player,space,gameController);
-
-
-
                     }
 
                     step++;
@@ -298,9 +308,18 @@ public class GameController {
                  *  --- Damage Cards ---
                  */
 
-                //case SPAM:
-                //    this.Spam(player);
-                //    break;
+                case SPAM:
+                    this.Spam(player);
+                    break;
+
+                case TROJAN_HORSE:
+                    this.Trojanhorse(player);
+                    break;
+
+                case VIRUS:
+                    this.Virus(player);
+                    break;
+
 
                 /**
                  *  --- Programming Cards ---
@@ -353,6 +372,11 @@ public class GameController {
                 case SPEED_ROUTINE:
                     this.movethreeForward(player);
                     break;
+
+                case REPEAT_ROUTINE:
+                    this.Again(player);
+                    break;
+
 
 
                 default:
@@ -439,7 +463,7 @@ public class GameController {
         Heading heading;
 
         if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
+            dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
             heading = belt.getHeading();
         }
         else {
@@ -490,16 +514,19 @@ public class GameController {
     }
 
 
-    //TODO: Skal køre forrige kort igen, må ikke være første kort i Register
-    //TODO: Skal opdateres når damage card og special upgrade indføres
+    /**
+     * Runs previous card again, if again is 1st card in register nothin happens
+     * @param player
+     */
 
     public void Again(@NotNull Player player){
-        CommandCardField card = player.getProgramField(board.getStep() -1);
-        Command command = card.getCard().getCommand();
-
         if (board.getStep() == 0){
             return;
         }
+        CommandCardField card = player.getProgramField(board.getStep() -1);
+        Command command = card.getCard().getCommand();
+
+
         executeCommand(player,command);
     }
 
@@ -542,30 +569,56 @@ public class GameController {
 
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
 
-    //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
-    // over i deres register.
-    // Måske det skal implementeres i StartProgrammingPhase();
-
-    public  void Spam(@NotNull Player player){
-
-        player.setProgramField(player.getCardField(0), 0);
-        player.getProgramField(0).setVisible(false); //Doesnt seem like to work
-
-    }
-
-
     /**
-     * Fires a laser in the direction the player is facing
+     * Spam a plater by moving top card in program card to register
      * @param player
      */
 
-    public void FireLaser(Player player){
-        Heading heading = player.getHeading();
 
-        board.getNeighbour(player.getSpace(), heading);
+    public  void Spam(@NotNull Player player) {
+
+        for (int i = 0; i < player.NO_REGISTERS; i++) {
+
+            if (player.getProgramField(i).getCard() == null) {
+                moveCards(player.getCardField(i), player.getProgramField(i));
+                return;
+            }
+        }
+    }
+
+    //TODO: Need to implement that the player add 2 SPAM card to his bile for now it works like a spam
+
+    public void Trojanhorse(@NotNull Player player){
+        executeCommand(player, Command.SPAM);
 
 
     }
+
+    //TODO: Implement players within the radius draw cards
+
+    //Every player within 6 fields gets a virus damage card
+    //Ide er at se hvor spillere er fra 0 til antal spillere, og se hvem der er indenfor 6 felter
+
+    public void Virus(@NotNull Player player){
+
+        for(int i = 0; i < board.getPlayersNumber(); i++){
+            Player otherPlayer = board.getPlayer(i);
+
+            if(otherPlayer != player){
+
+                if (player.CalculateDistanceToPlayer(otherPlayer) < 6){
+                    System.out.println(otherPlayer.getName() + " Du har fået virus");
+                }
+            }
+        }
+
+    }
+
+    //TODO: Reboots the robot
+    public void Worms(@NotNull Player player){
+        notImplemented();
+    }
+
 
     public Board getBoard(){
         return board;
@@ -578,6 +631,23 @@ public class GameController {
     public void notImplemented() {
         // XXX just for now to indicate that the actual method is not yet implemented
         assert false;
+    }
+
+    /**
+     * Used to determine who starts the round
+     * @param space
+     * @param player
+     * @return
+     */
+
+    public int DistanceSpacetoPlayer(Space space, Player player){
+
+        int xDistance = space.x - player.getSpace().x;
+        int yDistance = space.y - player.getSpace().y;
+
+        int distance = Math.abs(xDistance) + Math.abs(yDistance);
+
+        return distance;
     }
 
 }
