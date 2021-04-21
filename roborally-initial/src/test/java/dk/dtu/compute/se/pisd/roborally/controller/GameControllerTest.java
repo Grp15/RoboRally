@@ -247,24 +247,24 @@ class GameControllerTest {
     void Spam(){
         Board board = gameController.board;
         Player current = board.getCurrentPlayer();
+        Command card;
 
         gameController.startProgrammingPhase();
 
-        Command card = current.getCardField(0).getCard().getCommand();
 
         // If player has drawn spam card do nothing
-
-        boolean hasdrawn;
-
-        for(int i = 0; i < current.NO_CARDS; i++){
-            if(current.getCardField(i).getCard().getCommand())
+        boolean hasdrawn = false;
+        if(current.getProgramField(0).getCard() != null){
+                hasdrawn = true;
         }
 
-        if(current.getCardField(0) != null) {
+        if(hasdrawn == true) {
+            card = current.getProgramField(0).getCard().getCommand();
+
+        } else{
+            card = current.getCardField(0).getCard().getCommand();
             gameController.Spam(current);
         }
-
-
 
         Assertions.assertEquals(card, current.getProgramField(0).getCard().getCommand());
     }
