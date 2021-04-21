@@ -143,7 +143,7 @@ public class Player extends Subject {
     public void setCardField(CommandCardField commandCardField, int i){
         cards[i] = commandCardField;}
 
-    public String getCardsProgram() {
+    public String getCards() {
         String ProgrammingCards = "";
 
         for (int i = 0; i <= (cards.length - 1); i++) {
@@ -160,7 +160,7 @@ public class Player extends Subject {
 }
 
 
-    public String getCardsRegister() {
+    public String getProgram() {
         String RegisterCards = "";
 
         for (int i = 0; i <= (program.length - 1); i++) {

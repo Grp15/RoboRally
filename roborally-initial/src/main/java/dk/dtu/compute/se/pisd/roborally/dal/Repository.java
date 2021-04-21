@@ -21,7 +21,6 @@
  */
 package dk.dtu.compute.se.pisd.roborally.dal;
 
-import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
@@ -346,8 +345,8 @@ class Repository implements IRepository {
 			rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
 			rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
 			rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
-			rs.updateString(PLAYER_CARDS_REGISTER, player.getCardsRegister());
-			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCardsProgram());
+			rs.updateString(PLAYER_CARDS_REGISTER, player.getProgram());
+			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCards());
 			rs.insertRow();
 		}
 
@@ -416,8 +415,8 @@ class Repository implements IRepository {
 			rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
 			rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
 			rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
-			rs.updateString(PLAYER_CARDS_REGISTER, player.getCardsRegister());
-			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCardsProgram());
+			rs.updateString(PLAYER_CARDS_REGISTER, player.getProgram());
+			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCards());
 
 			// TODO error handling
 			// TODO take care of case when number of players changes, etc

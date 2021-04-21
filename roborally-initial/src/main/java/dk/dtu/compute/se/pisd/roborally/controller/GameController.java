@@ -152,6 +152,22 @@ public class GameController {
         }
     }
 
+    /**
+     *  Sætter kort til et bestemt deck
+     *
+     *
+     */
+
+    //TODO: Finish this
+    private void setDeckTroels(){
+        Command[] commands = Command.values();
+        CommandCard[] kort = new CommandCard[8];
+
+        for(int i = 0; i < kort.length; i++){
+            kort[i] = new CommandCard(commands[i]);
+        }
+    }
+
 
 
 
