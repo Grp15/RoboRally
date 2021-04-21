@@ -88,7 +88,6 @@ public class BoardTest {
      * Test if the gears space works
      */
 
-    //Todo: Fix the gears space
 
     @Test
     void Gears(){

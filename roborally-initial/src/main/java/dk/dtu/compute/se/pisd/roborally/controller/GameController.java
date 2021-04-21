@@ -507,9 +507,8 @@ public class GameController {
      * @param player current player
      */
     public void turnRight(@NotNull Player player) {
-        Player currentPlayer = board.getCurrentPlayer();
-        Heading heading = currentPlayer.getHeading();
-        currentPlayer.setHeading(heading.next());
+
+        player.setHeading(player.getHeading().next());
     }
 
     /**
@@ -517,9 +516,7 @@ public class GameController {
      * @param player current player
      */
     public void turnLeft(@NotNull Player player) {
-        Player currentPlayer = board.getCurrentPlayer();
-        Heading heading = currentPlayer.getHeading();
-        currentPlayer.setHeading(heading.prev());
+        player.setHeading(player.getHeading().prev());
     }
 
     public void Uturn(@NotNull Player player){
