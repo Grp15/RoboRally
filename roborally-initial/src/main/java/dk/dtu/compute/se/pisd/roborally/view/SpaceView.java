@@ -72,7 +72,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
     private void updatePlayer() {
-        this.getChildren().clear();
+        //this.getChildren().clear(); // This clears all elements on the board and if removed the player can be placed on top of the elements
 
         Player player = space.getPlayer();
         if (player != null) {
@@ -93,16 +93,19 @@ public class SpaceView extends StackPane implements ViewObserver {
     @Override
     public void updateView(Subject subject) {
         if (subject == this.space) {
+
+           // updatePlayer(); // if the player if updated here, the other elements are placed over the player
+            if (this.space instanceof Gears) {
+                GearView.drawGear(this, space);
+            }
+            if (this.space instanceof ConveyorBelt) {
+                ConveyorBeltView.drawConveyorBelt(this, space);
+            }
+            if (this.space instanceof StartField) {
+                StartFieldView.drawStartField(this, space);
+            }
             updatePlayer();
-        }
-        if (this.space instanceof Gears) {
-            GearView.drawGear(this, space);
-        }
-        if (this.space instanceof ConveyorBelt) {
-            ConveyorBeltView.drawConveyorBelt(this, space);
-        }
-        if(this.space instanceof StartField) {
-            StartFieldView.drawStartField(this,space);
+
         }
     }
 
