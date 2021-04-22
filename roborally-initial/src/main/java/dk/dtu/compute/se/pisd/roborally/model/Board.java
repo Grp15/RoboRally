@@ -80,7 +80,7 @@ public class Board extends Subject {
                     spaces[x][y] = belt;
                 }
                 if(x == 5 && y == 3){
-                    Gears gear = new Gears(this,x,y, "RIGHT");
+                    Gears gear = new Gears(this,x,y, Direction.Left);
                     spaces[x][y] = gear;
                 }
 
