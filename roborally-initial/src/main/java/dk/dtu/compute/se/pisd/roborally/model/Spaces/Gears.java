@@ -1,6 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.model.Spaces;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
+import dk.dtu.compute.se.pisd.roborally.model.Direction;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
@@ -12,9 +13,9 @@ import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 
 public class Gears extends Space {
     private SpaceType type = SpaceType.GEARS;
-    private String direction;
+    private final Direction direction;
 
-    public Gears(Board board, int x, int y, String direction) {
+    public Gears(Board board, int x, int y, Direction direction) {
         super(board, x, y);
         this.direction = direction;
     }
@@ -32,10 +33,10 @@ public class Gears extends Space {
     public boolean doAction(Player player, Space space, GameController gameController) {
 
 
-        if(this.direction == "RIGHT"){
+        if(this.direction == Direction.Right){
             gameController.turnRight(player);
         }
-        else if(this.direction == "LEFT"){
+        else if(this.direction == Direction.Left){
             gameController.turnLeft(player);
         }
 
@@ -48,7 +49,7 @@ public class Gears extends Space {
         return type;
     }
 
-    public String getGearDirection(){
+    public Direction getGearDirection(){
         return direction;
     }
 
