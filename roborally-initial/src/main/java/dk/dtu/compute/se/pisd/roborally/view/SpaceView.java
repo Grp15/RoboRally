@@ -108,9 +108,6 @@ public class SpaceView extends StackPane implements ViewObserver {
             if (this.space instanceof Energy) {
                 EnergySpaceView.drawEnergySpace(this, space);
             }
-
-            //updatePlayer();
-
         }
     }
 

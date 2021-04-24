@@ -41,9 +41,6 @@ public class ConveyorBeltView {
                 gc.drawImage(ConveyorImageWest, 0, 0);
                 break;
         }
-
-
-
         spaceView.getChildren().add(canvas);
 
     }
