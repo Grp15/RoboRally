@@ -10,3 +10,6 @@
 # Maven
 log/
 target/
+
+# IDEA
+*.iml
