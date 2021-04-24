@@ -27,7 +27,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 /**
- * ...
+ * From here new games and settings are chosen
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -48,6 +48,10 @@ public class RoboRallyMenuBar extends MenuBar {
 
     private MenuItem exitApp;
 
+    /**
+     * This method contains the options and texts for buttons and onEvents for button presses
+     * @param appController
+     */
     public RoboRallyMenuBar(AppController appController) {
         this.appController = appController;
 
@@ -79,6 +83,9 @@ public class RoboRallyMenuBar extends MenuBar {
         update();
     }
 
+    /**
+     * This method checks if game is running and show necessary buttons depending on whether game is running
+     */
     public void update() {
         if (appController.isGameRunning()) {
             newGame.setVisible(false);

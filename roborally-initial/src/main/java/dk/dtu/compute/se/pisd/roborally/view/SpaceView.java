@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 /**
- * ...
+ * Handles the view of different spaces on the board and colors and sizes hereof
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -46,6 +46,10 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     public final Space space;
 
+    /**
+     * Changes sizes and oclors of spaces view
+     * @param space
+     */
 
     public SpaceView(@NotNull Space space) {
         this.space = space;
@@ -73,6 +77,11 @@ public class SpaceView extends StackPane implements ViewObserver {
         update(space);
     }
 
+    /**
+     * Updates the positions of the player on the board
+     *
+     */
+
     private void updatePlayer() {
         this.getChildren().clear();
 
@@ -91,6 +100,11 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.getChildren().add(arrow);
         }
     }
+
+    /**
+     * If player is not on space, then update player
+     * @param subject
+     */
 
     @Override
     public void updateView(Subject subject) {
