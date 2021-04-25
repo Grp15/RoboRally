@@ -31,8 +31,6 @@ public class GearView {
                 break;
         }
 
-        // TODO lave switch case for forskellige gear retninger
-
         spaceView.getChildren().add(canvas);
 
     }
