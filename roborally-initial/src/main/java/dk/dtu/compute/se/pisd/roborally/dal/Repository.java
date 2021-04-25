@@ -555,6 +555,9 @@ class Repository implements IRepository {
 		return select_games_stmt;
 	}
 
+
+	// TODO: Need to find the right card by itself
+
 	private CommandCard[] LoadCommandCardsFromDisplayName(String[] Commands){
 		Command[] commands = Command.values();
 		CommandCard[] register;
