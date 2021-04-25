@@ -76,17 +76,17 @@ public class Board extends Subject {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
 
-                if(x == 4 && y == 2 || x == 4 && y == 3 || x == 4 && y == 4 || x == 4 && y == 5 ){
+                if(x == 4 && y == 2){
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
                 if(x == 5 && y == 3 ){
-                    Gears gear = new Gears(this,x,y, Direction.Left);
+                    Gears gear = new Gears(this,x,y, Direction.Right);
                     spaces[x][y] = gear;
                 }
 
                 if(x == 2 && y == 6 ){
-                    Gears gear = new Gears(this,x,y, Direction.Right);
+                    Gears gear = new Gears(this,x,y, Direction.Left);
                     spaces[x][y] = gear;
                 }
 
