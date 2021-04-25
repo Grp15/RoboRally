@@ -23,6 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.Energy;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
 import dk.dtu.compute.se.pisd.roborally.view.SpaceView;
@@ -75,12 +76,17 @@ public class Board extends Subject {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
 
-                if(x == 4 && y == 2){
+                if(x == 4 && y == 2 || x == 4 && y == 3 || x == 4 && y == 4 || x == 4 && y == 5 ){
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
-                if(x == 5 && y == 3){
-                    Gears gear = new Gears(this,x,y, "RIGHT");
+                if(x == 5 && y == 3 ){
+                    Gears gear = new Gears(this,x,y, Direction.Left);
+                    spaces[x][y] = gear;
+                }
+
+                if(x == 2 && y == 6 ){
+                    Gears gear = new Gears(this,x,y, Direction.Right);
                     spaces[x][y] = gear;
                 }
 
@@ -88,7 +94,10 @@ public class Board extends Subject {
                     StartField start = new StartField(this,x,y);
                     spaces[x][y] = start;
                 }
-
+                if(x == 2 && y == 4){
+                    Energy energy = new Energy(this,x,y);
+                    spaces[x][y] = energy;
+                }
 
             }
         }
