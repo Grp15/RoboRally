@@ -90,7 +90,7 @@ public class Board extends Subject {
                     spaces[x][y] = gear;
                 }
 
-                if(x == 0 && y == 0 || x == 5 && y == 4){
+                if(x == 0 && y == 0){
                     StartField start = new StartField(this,x,y);
                     spaces[x][y] = start;
                 }
