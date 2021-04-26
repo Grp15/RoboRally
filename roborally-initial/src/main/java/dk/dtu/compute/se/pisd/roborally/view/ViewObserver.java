@@ -26,7 +26,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import javafx.application.Platform;
 
 /**
- * ...
+ * Show ViewObserver implementations on updates of view
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -35,6 +35,10 @@ public interface ViewObserver extends Observer {
 
     void updateView(Subject subject);
 
+    /**
+     * Checks whether subject is changed so it should update
+     * @param subject the subject which changed
+     */
     @Override
     default void update(Subject subject) {
         // This default implementation of the update method makes sure that ViewObserver implementations

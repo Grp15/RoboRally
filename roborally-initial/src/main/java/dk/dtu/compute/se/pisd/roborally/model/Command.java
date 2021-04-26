@@ -73,6 +73,8 @@ public enum Command {
      * Obtained by installing temprorary upgrades
      */
 
+    // ---UPGRADE CARDS---
+
     ENERGY_ROUTINE("Energy"),
     REPEAT_ROUTINE("Repeat"),
 
@@ -112,5 +114,6 @@ public enum Command {
     public String getDisplayName(){
         return displayName;
     }
+
 
 }
