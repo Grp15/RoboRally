@@ -44,8 +44,9 @@ public enum Command {
     //   ---DAMAGE CARDS---
 
 
-    /*
+
     SPAM("Spam"),
+    /*
     TROJAN_HORSE("Trojansk Hest"),
     VIRUS("Virus"),
     WORMS("Worms"),
