@@ -72,6 +72,8 @@ public enum Command {
      * Obtained by installing temprorary upgrades
      */
 
+    // ---UPGRADE CARDS---
+
     ENERGY_ROUTINE("Energy"),
     //REPEAT_ROUTINE("Repeat"),
     //TODO: Skal ændre i udseende for Sandbox

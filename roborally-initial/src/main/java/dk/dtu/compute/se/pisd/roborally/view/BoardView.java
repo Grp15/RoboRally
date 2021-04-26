@@ -35,7 +35,7 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * This class stands for handling the physical view of the board which is shown to the players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -53,6 +53,11 @@ public class BoardView extends VBox implements ViewObserver {
 
     private SpaceEventHandler spaceEventHandler;
 
+    /**
+     * Creates view of the game board
+     *
+     * @param gameController
+     */
     public BoardView(@NotNull GameController gameController) {
         board = gameController.board;
 
@@ -82,6 +87,12 @@ public class BoardView extends VBox implements ViewObserver {
         update(board);
     }
 
+    /**
+     * Updates the view of the board at different phases
+     *
+     * @param subject
+     */
+
     @Override
     public void updateView(Subject subject) {
         if (subject == board) {
@@ -89,6 +100,10 @@ public class BoardView extends VBox implements ViewObserver {
             statusLabel.setText(board.getStatusMessage());
         }
     }
+
+    /**
+     * Handles events when players move on the board
+     */
 
     // XXX this handler and its uses should eventually be deleted! This is just to help test the
     //     behaviour of the game by being able to explicitly move the players on the board!
@@ -100,6 +115,10 @@ public class BoardView extends VBox implements ViewObserver {
             this.gameController = gameController;
         }
 
+        /**
+         * Method which handles view upon certain events by player
+         * @param event
+         */
         @Override
         public void handle(MouseEvent event) {
             Object source = event.getSource();

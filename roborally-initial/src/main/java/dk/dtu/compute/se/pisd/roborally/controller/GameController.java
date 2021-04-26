@@ -21,13 +21,14 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
 /**
- * Gamecontroller conatains method for all the game logic like initiating phases and moving players
+ * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  * @author s205436
@@ -119,7 +120,6 @@ public class GameController {
      * @return CommandCard
      */
 
-    // XXX: V2
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
@@ -146,7 +146,6 @@ public class GameController {
      * This method ends the programming phase
      */
 
-    // XXX: V2
     public void finishProgrammingPhase() {
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
@@ -160,7 +159,6 @@ public class GameController {
      * @param register
      */
 
-    // XXX: V2
     private void makeProgramFieldsVisible(int register) {
         if (register >= 0 && register < Player.NO_REGISTERS) {
             for (int i = 0; i < board.getPlayersNumber(); i++) {
@@ -175,7 +173,6 @@ public class GameController {
      * This method makes the programfield invisible
      */
 
-    // XXX: V2
     private void makeProgramFieldsInvisible() {
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
@@ -190,7 +187,6 @@ public class GameController {
      * This method execute all programming cards in the register
      */
 
-    // XXX: V2
     public void executePrograms() {
         board.setStepMode(false);
         continuePrograms();
@@ -200,7 +196,6 @@ public class GameController {
      * This method executes the first step in the register
      */
 
-    // XXX: V2
     public void executeStep() {
         board.setStepMode(true);
         continuePrograms();
@@ -210,7 +205,6 @@ public class GameController {
      * Executes program as long as activation phase is on and stepmode is off
      */
 
-    // XXX: V2
     private void continuePrograms() {
         do {
             executeNextStep();
@@ -246,6 +240,7 @@ public class GameController {
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
                 } else {
+
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
@@ -254,6 +249,7 @@ public class GameController {
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
                         space.doAction(player,space,gameController);
+
 
 
 
@@ -297,9 +293,9 @@ public class GameController {
                  *  --- Damage Cards ---
                  */
 
-                //case SPAM:
-                //    this.Spam(player);
-                //    break;
+                case SPAM:
+                    this.Spam(player);
+                    break;
 
                 /**
                  *  --- Programming Cards ---
@@ -332,7 +328,6 @@ public class GameController {
                 case RIGHT:
                     this.turnRight(player);
                     break;
-
                 case LEFT:
                     this.turnLeft(player);
                     break;
@@ -388,6 +383,10 @@ public class GameController {
 
     }
 
+    /**
+     * Exception which is throwed when a player cant perform asked move
+     */
+
     public class ImpossibleMoveException extends Exception {
         private Player player;
         private Space space;
@@ -426,6 +425,30 @@ public class GameController {
         }
         player.setSpace(space);
 }
+
+
+// ----------------------------------------- Programming Cards ---------------------------------------
+
+
+    /**
+     *
+     * Implements the Again card, which repeats the previous executed card from the players register
+     * @param player
+     */
+
+
+    //TODO: Crasher hvis der ikke er noget forrige kort
+    //TODO: Skal opdateres når damage card og special upgrade indføres
+
+    public void Again(@NotNull Player player){
+        CommandCardField card = player.getProgramField(board.getStep() -1);
+        Command command = card.getCard().getCommand();
+
+        if (board.getStep() == 0){
+            return;
+        }
+        executeCommand(player,command);
+    }
 
     /**
      * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
@@ -466,11 +489,21 @@ public class GameController {
         moveForward(player);
     }
 
+    /**
+     * Moves a player forward 3 spaces towards the direction the player is currently facing
+     * @param player
+     */
+
     public void movethreeForward(@NotNull Player player){
         moveForward(player);
         moveForward(player);
         moveForward(player);
     }
+
+    /**
+     * Moves a player backwards 1 pace towards the opposite direction the player is currently facing
+     * @param player
+     */
 
     public void Back_Up(@NotNull Player player){
         Heading heading = player.getHeading().next().next();
@@ -484,30 +517,11 @@ public class GameController {
         }
     }
 
-    public void Powerup(@NotNull Player player){
-        player.addEnergy();
-    }
-
-
-    //TODO: Skal køre forrige kort igen, må ikke være første kort i Register
-    //TODO: Skal opdateres når damage card og special upgrade indføres
-
-    public void Again(@NotNull Player player){
-        CommandCardField card = player.getProgramField(board.getStep() -1);
-        Command command = card.getCard().getCommand();
-
-        if (board.getStep() == 0){
-            return;
-        }
-        executeCommand(player,command);
-    }
-
     /**
      * Set a current players direction to turn right of current heading.
      * @param player current player
      */
     public void turnRight(@NotNull Player player) {
-
         player.setHeading(player.getHeading().next());
     }
 
@@ -519,8 +533,22 @@ public class GameController {
         player.setHeading(player.getHeading().prev());
     }
 
+    /**
+     * sets the heading of the player to it's opposite direction
+     * @param player
+     */
+
     public void Uturn(@NotNull Player player){
         player.setHeading(player.getHeading().next().next());
+    }
+
+    /**
+     * Adds energy cube to player
+     * @param player
+     */
+
+    public void Powerup(@NotNull Player player){
+        player.addEnergy();
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
@@ -538,6 +566,12 @@ public class GameController {
 
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
 
+
+    /**
+     * Implements spam card, which moves 1st card from program field to register field
+     * @param player
+     */
+
     //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
     // over i deres register.
     // Måske det skal implementeres i StartProgrammingPhase();
@@ -548,6 +582,10 @@ public class GameController {
         player.getProgramField(0).setVisible(false); //Doesnt seem like to work
 
     }
+
+
+
+    // ----------------------------------------- Other ---------------------------------------
 
     public Board getBoard(){
         return board;

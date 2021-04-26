@@ -555,6 +555,9 @@ class Repository implements IRepository {
 		return select_games_stmt;
 	}
 
+
+	// TODO: Needs to find the right card by itself
+
 	private CommandCard[] LoadCommandCardsFromDisplayName(String[] Commands){
 		Command[] commands = Command.values();
 		CommandCard[] register;
@@ -564,24 +567,61 @@ class Repository implements IRepository {
 		for(int i = 0; i < Commands.length - 1 ; i++) {
 
 			switch (Commands[i]) {
-				case "Fwd":
+
+				case "Spam":
 					register[i] = new CommandCard(commands[0]);
 					break;
 
-				case "Fast Fwd":
-					register[i] = new CommandCard(commands[3]);
-					break;
-
-				case "Turn Right":
+				case "Again":
 					register[i] = new CommandCard(commands[1]);
 					break;
 
-				case "Turn Left":
+				case "Fwd":
 					register[i] = new CommandCard(commands[2]);
 					break;
 
-				case "Left OR Right":
+				case "2 Fwd":
+					register[i] = new CommandCard(commands[3]);
+					break;
+
+				case "3 Fwd":
 					register[i] = new CommandCard(commands[4]);
+					break;
+
+				case "Back up":
+					register[i] = new CommandCard(commands[4]);
+					break;
+
+				case "Turn Right":
+					register[i] = new CommandCard(commands[5]);
+					break;
+
+				case "Turn Left":
+					register[i] = new CommandCard(commands[6]);
+					break;
+
+				case "U-turn":
+					register[i] = new CommandCard(commands[7]);
+					break;
+
+				case "Power up":
+					register[i] = new CommandCard(commands[8]);
+					break;
+
+				case "Energy":
+					register[i] = new CommandCard(commands[9]);
+					break;
+
+				case "Sandbox":
+					register[i] = new CommandCard(commands[10]);
+					break;
+
+				case "Speed":
+					register[i] = new CommandCard(commands[11]);
+					break;
+
+				case "Left, Right or U-turn":
+					register[i] = new CommandCard(commands[12]);
 					break;
 
 				default:
