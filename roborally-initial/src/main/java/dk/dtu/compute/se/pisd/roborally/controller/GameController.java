@@ -485,18 +485,19 @@ public class GameController {
      */
 
 
-    //TODO: Crasher hvis der ikke er noget forrige kort
-    //TODO: Skal opdateres når damage card og special upgrade indføres
-
     public void Again(@NotNull Player player){
-        CommandCardField card = player.getProgramField(board.getStep() -1);
-        Command command = card.getCard().getCommand();
-
         if (board.getStep() == 0){
             return;
         }
+        CommandCardField card = player.getProgramField(board.getStep() -1);
+        Command command = card.getCard().getCommand();
+
+
         executeCommand(player,command);
     }
+
+
+
 
     /**
      * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
@@ -564,26 +565,6 @@ public class GameController {
         }
     }
 
-    public void Powerup(@NotNull Player player){
-        player.addEnergy();
-    }
-
-
-    /**
-     * Runs previous card again, if again is 1st card in register nothin happens
-     * @param player
-     */
-
-    public void Again(@NotNull Player player){
-        if (board.getStep() == 0){
-            return;
-        }
-        CommandCardField card = player.getProgramField(board.getStep() -1);
-        Command command = card.getCard().getCommand();
-
-
-        executeCommand(player,command);
-    }
 
     /**
      * Set a current players direction to turn right of current heading.
