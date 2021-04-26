@@ -21,7 +21,6 @@
  */
 package dk.dtu.compute.se.pisd.roborally.dal;
 
-import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.model.Command;
@@ -284,52 +283,6 @@ class Repository implements IRepository {
 	}
 
 
-
-
-
-	/**
-	 * /Todo:
-	 * 1) Få fat i spillerens korts displayname
-	 * 2) Gem displayname i DB som String
-	 *
-	 *
-	 *
-	 *
-	 * @param game
-	 * @throws SQLException
-	 */
-
-/*
-	private void createCardFieldsInDB(Board game) throws SQLException {
-
-	PreparedStatement ps = select_cards_stmt();
-	ps.setInt(1, game.getGameId());
-
-	ResultSet rs = ps.executeQuery();
-		for (int i = 0; i < game.getPlayersNumber(); i++) {
-		Player player = game.getPlayer(i);
-		rs.moveToInsertRow();
-		rs.updateInt(PLAYER_GAMEID, game.getGameId());
-		rs.updateInt(PLAYER_PLAYERID, i);
-		rs.updateString(PLAYER_NAME, player.getName());
-		rs.updateString(PLAYER_COLOUR, player.getColor());
-		rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
-		rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
-		rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
-
-		rs.insertRow();
-	}
-
-		rs.close();
-}
-
- */
-
-
-
-
-
-
 	private void createPlayersInDB(Board game) throws SQLException {
 		// TODO code should be more defensive
 		PreparedStatement ps = getSelectPlayersStatementU();
@@ -346,8 +299,8 @@ class Repository implements IRepository {
 			rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
 			rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
 			rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
-			rs.updateString(PLAYER_CARDS_REGISTER, player.getCardsRegister());
-			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCardsProgram());
+			rs.updateString(PLAYER_CARDS_REGISTER, player.getProgram());
+			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCards());
 			rs.insertRow();
 		}
 
@@ -416,8 +369,8 @@ class Repository implements IRepository {
 			rs.updateInt(PLAYER_POSITION_X, player.getSpace().x);
 			rs.updateInt(PLAYER_POSITION_Y, player.getSpace().y);
 			rs.updateInt(PLAYER_HEADING, player.getHeading().ordinal());
-			rs.updateString(PLAYER_CARDS_REGISTER, player.getCardsRegister());
-			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCardsProgram());
+			rs.updateString(PLAYER_CARDS_REGISTER, player.getProgram());
+			rs.updateString(PLAYER_CARDS_PROGRAM, player.getCards());
 
 			// TODO error handling
 			// TODO take care of case when number of players changes, etc

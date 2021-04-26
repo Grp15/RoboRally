@@ -45,11 +45,12 @@ public enum Command {
 
 
 
+    //Spam skal ikke kunne gøre noget hvis den lægges i program bunken
     SPAM("Spam"),
-    /*
     TROJAN_HORSE("Trojansk Hest"),
     VIRUS("Virus"),
-    WORMS("Worms"),
+
+    /*WORMS("Worms"), // Skal implementeres efter reboot er implementeret
      */
 
 
@@ -66,6 +67,8 @@ public enum Command {
     POWER_UP("Power up"),
 
 
+
+
     //TODO: Skal ændres efter upgrade phase er indført
     //  ---SPECIAL PROGRAMMING CARDS---
 
@@ -76,23 +79,19 @@ public enum Command {
     // ---UPGRADE CARDS---
 
     ENERGY_ROUTINE("Energy"),
-    //REPEAT_ROUTINE("Repeat"),
+    REPEAT_ROUTINE("Repeat"),
+
     //TODO: Skal ændre i udseende for Sandbox
     OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
-    //SPAM_FOLDER("Spam"),
+    //SPAM_FOLDER("Spam"),  // Skal implementeres når hver spiller har sin egen kortbunke
     SPEED_ROUTINE("Speed"),
     OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
 
 
 
-    final private String displayName;
 
-    // XXX Assignment V3
-    // Command(String displayName) {
-    //     this.displayName = displayName;
-    // }
-    //
-    // replaced by the code below:
+
+    final private String displayName;
 
     final private List<Command> options;
 

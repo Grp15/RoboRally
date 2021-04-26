@@ -140,7 +140,10 @@ public class Player extends Subject {
         program[i] = commandCardField;
     }
 
-    public String getCardsProgram() {
+    public void setCardField(CommandCardField commandCardField, int i){
+        cards[i] = commandCardField;}
+
+    public String getCards() {
         String ProgrammingCards = "";
 
         for (int i = 0; i <= (cards.length - 1); i++) {
@@ -153,12 +156,11 @@ public class Player extends Subject {
             continue;
         }
     }
-       // System.out.println("Programming = " + ProgrammingCards);
         return ProgrammingCards;
 }
 
 
-    public String getCardsRegister() {
+    public String getProgram() {
         String RegisterCards = "";
 
         for (int i = 0; i <= (program.length - 1); i++) {
@@ -175,7 +177,6 @@ public class Player extends Subject {
             }
 
         }
-        //System.out.println("Register = " + RegisterCards);
         return RegisterCards;
     }
 
@@ -187,7 +188,6 @@ public class Player extends Subject {
     }
 
 
-    //Todo: Skal måske slettes
 
     public String[] splitCardsProgramString(String load_program) {
 
@@ -202,6 +202,14 @@ public class Player extends Subject {
 
     public int getEnergyCubes(){
         return EnergyCubes;
+    }
+
+    public int CalculateDistanceToPlayer(Player player){
+        int xDistance = Player.this.getSpace().x - player.getSpace().x;
+        int yDistance = Player.this.getSpace().y - player.getSpace().y;
+
+        int distance = Math.abs(xDistance) + Math.abs(yDistance);
+        return distance;
     }
 
 
