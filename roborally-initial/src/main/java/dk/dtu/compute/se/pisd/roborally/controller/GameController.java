@@ -80,6 +80,8 @@ public class GameController {
      */
 
     // XXX: V2
+
+    // TODO: Needs to implement priority antenna here
     public void startProgrammingPhase() {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
