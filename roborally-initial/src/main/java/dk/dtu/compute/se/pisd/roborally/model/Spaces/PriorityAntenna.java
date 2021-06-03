@@ -45,12 +45,23 @@ public class PriorityAntenna extends Space {
     }
 
     /**
-     * Sorts a distancefromspacetoplayer array using sort algorithm
+     * Sorts a distancefromspacetoplayer array using bubblesort algorithm
      *
      * @param playerDistances
      */
 
     public void sort(int[] playerDistances) {
+        int temprorayInt = 0;
 
+        for(int i = 0; i < playerDistances.length; i++){
+            for(int j = 1; j < playerDistances.length -1; j++){
+                if(playerDistances[j-1] > playerDistances[j]){
+                    //byt om på elementer
+                    temprorayInt = playerDistances[j-1];
+                    playerDistances[j-1] = playerDistances[j];
+                    playerDistances[j] = temprorayInt;
+                }
+            }
+        }
     }
 }
