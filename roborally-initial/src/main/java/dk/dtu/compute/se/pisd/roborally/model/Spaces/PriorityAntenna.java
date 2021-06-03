@@ -29,10 +29,9 @@ public class PriorityAntenna extends Space {
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
 
-        playerdistance[i] = gameController.DistanceSpacetoPlayer(board.getSpace(this.x,this.y), board.getPlayer(i));
+        playerdistance[i] = gameController.DistanceSpacetoPlayer(board.getSpace(this.x,this.y), board.getPlayer(i+1));
 
-
-
+        sort(playerdistance);
         }
 
         return true;
