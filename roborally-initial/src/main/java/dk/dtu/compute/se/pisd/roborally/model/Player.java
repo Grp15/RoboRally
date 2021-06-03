@@ -179,6 +179,7 @@ public class Player extends Subject {
         return RegisterCards;
     }
 
+
     public String[] splitCardsRegisterString(String load_register) {
 
         String[] register = load_register.split(",",-1);
