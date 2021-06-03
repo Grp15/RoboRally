@@ -45,6 +45,7 @@ public class Player extends Subject {
     private String name;
     private String color;
     private int EnergyCubes = 5;
+    private int DistancetoAntenna = 0;
 
     private Space space;
     private Heading heading = SOUTH;
@@ -94,6 +95,14 @@ public class Player extends Subject {
         if (space != null) {
             space.playerChanged();
         }
+    }
+
+    public int getDistancetoAntenna(){
+        return DistancetoAntenna;
+    }
+
+    public void setDistancetoAntenna(int i){
+        DistancetoAntenna = i;
     }
 
     public Space getSpace() {

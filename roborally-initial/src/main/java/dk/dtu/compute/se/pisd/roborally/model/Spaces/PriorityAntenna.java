@@ -6,6 +6,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
+import java.util.ArrayList;
+
 public class PriorityAntenna extends Space {
 
     public PriorityAntenna(Board board, int x, int y) {
@@ -23,6 +25,8 @@ public class PriorityAntenna extends Space {
      */
 
     // TODO: Need to attach reference from distance array to a player
+    // TODO: Needs to set which players turn it is
+    // TODO: Needs to be called at start of each turn, for now it only does anything if a player stands on the field.
     public boolean doAction(Player player, Space space, GameController gameController) {
 
         int[] playerdistance = new int[board.getPlayersNumber()];
@@ -31,7 +35,8 @@ public class PriorityAntenna extends Space {
 
             playerdistance[i] = gameController.DistanceSpacetoPlayer(board.getSpace(this.x, this.y), board.getPlayer(i));
 
-            //Need to assign each player to a distance before sorting
+            //Sets the players distance to antenna
+            gameController.getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
 
             sort(playerdistance);
         }
