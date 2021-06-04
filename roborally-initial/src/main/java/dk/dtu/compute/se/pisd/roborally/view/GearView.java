@@ -30,7 +30,7 @@ public class GearView {
                 gc.drawImage(gearImageLeft, 0, 0);
                 break;
         }
-
+        canvas.setOpacity(0.6);
         spaceView.getChildren().add(canvas);
 
     }
