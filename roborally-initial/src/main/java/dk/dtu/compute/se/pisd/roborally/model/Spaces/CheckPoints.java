@@ -29,7 +29,7 @@ public class CheckPoints extends Space {
         // TODO Skal indeholde logik for at en spiller har checkpoints i den rigtige rækkefølge
 
         if(player.getCheckPoints() == Number-1){
-            player.setCheckPoints(Number);
+            player.progressCheckpoint();
         }
 
         return true; // True hvis det lykkedes, false hvis ikke.

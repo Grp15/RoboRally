@@ -217,8 +217,8 @@ public class Player extends Subject {
         return CheckPoints;
     }
 
-    public void setCheckPoints(int i){
-        CheckPoints = i;
+    public void progressCheckpoint(){
+        CheckPoints++;
     }
 
 
