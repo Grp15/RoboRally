@@ -15,6 +15,7 @@ public class EnergySpaceView {
 
         Image energyImage = new Image("/EnergySpace.png", 75, 75, false, false);
         gc.drawImage(energyImage, 0, 0);
+        canvas.setOpacity(0.6);
         spaceView.getChildren().add(canvas);
     }
 

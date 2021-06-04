@@ -17,6 +17,7 @@ public class StartFieldView{
 
         Image startImage = new Image("/startfield.png", 75, 75, false, false);
         gc.drawImage(startImage, 0, 0);
+        canvas.setOpacity(0.6);
         spaceView.getChildren().add(canvas);
 
     }
