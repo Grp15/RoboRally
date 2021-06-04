@@ -22,10 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.Energy;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import dk.dtu.compute.se.pisd.roborally.view.SpaceView;
 import org.jetbrains.annotations.NotNull;
 
@@ -81,8 +78,8 @@ public class Board extends Subject {
                     spaces[x][y] = belt;
                 }
                 if(x== 4 && y == 1){
-                    ConveyorBelt belt = new ConveyorBelt(this,x,y,NORTH);
-                    spaces[x][y] = belt;
+                    CheckPoints checkPoints = new CheckPoints(this,x,y,1);
+                    spaces[x][y] = checkPoints;
                 }
                 if(x == 5 && y == 3 ){
                     Gears gear = new Gears(this,x,y, Direction.Right);
