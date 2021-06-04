@@ -23,7 +23,6 @@ package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
-import dk.dtu.compute.se.pisd.roborally.view.SpaceView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -78,8 +77,8 @@ public class Board extends Subject {
                     spaces[x][y] = belt;
                 }
                 if(x== 4 && y == 1){
-                    CheckPoints checkPoints = new CheckPoints(this,x,y,1);
-                    spaces[x][y] = checkPoints;
+                    CheckPoint checkPoint = new CheckPoint(this,x,y,1);
+                    spaces[x][y] = checkPoint;
                 }
                 if(x == 5 && y == 3 ){
                     Gears gear = new Gears(this,x,y, Direction.Right);

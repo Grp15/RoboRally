@@ -6,11 +6,11 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
-public class CheckPoints extends Space {
+public class CheckPoint extends Space {
     private SpaceType CHECKPOINT;
     private int Number; // Skal have et nr. op til det max antal der kan være hvilket er 5
 
-    public CheckPoints(Board board, int x, int y, int Number) {
+    public CheckPoint(Board board, int x, int y, int Number) {
         super(board, x, y);
         this.Number = Number;
     }
