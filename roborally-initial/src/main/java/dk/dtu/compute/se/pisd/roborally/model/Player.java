@@ -221,5 +221,9 @@ public class Player extends Subject {
         CheckPoints++;
     }
 
+    public void RebootRobot(){
+        CheckPoints = 0;
+    }
+
 
 }
