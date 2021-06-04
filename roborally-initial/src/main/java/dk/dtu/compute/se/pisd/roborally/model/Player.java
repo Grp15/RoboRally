@@ -213,5 +213,13 @@ public class Player extends Subject {
         return distance;
     }
 
+    public int getCheckPoints(){
+        return CheckPoints;
+    }
+
+    public void setCheckPoints(int i){
+        CheckPoints = i;
+    }
+
 
 }
