@@ -9,11 +9,14 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import java.util.ArrayList;
 
 public class PriorityAntenna extends Space {
+    private int[] PlayerDistances = new int[board.getPlayersNumber()];
+
 
     public PriorityAntenna(Board board, int x, int y) {
         super(board, x, y);
 
     }
+
 
     /**
      * Create in which order players turn is
@@ -40,8 +43,13 @@ public class PriorityAntenna extends Space {
             //Sets the players distance to antenna
             gameController.getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
 
-            sort(playerdistance);
+            //sort(playerdistance);
 
+        }
+
+        for (int i = 0; i < board.getPlayersNumber(); i++) {
+
+            System.out.print(playerdistance[i] + "  ");
         }
 
         return true;
@@ -53,6 +61,7 @@ public class PriorityAntenna extends Space {
      * @param playerDistances
      */
 
+    //TODO: Sort algorithm does not work
     public void sort(int[] playerDistances) {
         int temprorayInt = 0;
 
