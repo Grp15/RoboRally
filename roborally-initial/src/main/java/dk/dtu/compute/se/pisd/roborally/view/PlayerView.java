@@ -33,7 +33,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 /**
- * ...
+ * Handles the view which the Player sees with the different Labels and button panels
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -61,6 +61,13 @@ public class PlayerView extends Tab implements ViewObserver {
     private VBox playerInteractionPanel;
 
     private GameController gameController;
+
+    /**
+     * Checks for dependencies from GameController and updates the view of player according to the GameController
+     *
+     * @param gameController
+     * @param player
+     */
 
     public PlayerView(@NotNull GameController gameController, @NotNull Player player) {
         super(player.getName());
@@ -133,6 +140,12 @@ public class PlayerView extends Tab implements ViewObserver {
         }
     }
 
+    /**
+     * Updates the view of the board depending on the different individual views of the current player
+     *
+     * @param subject
+     */
+
     @Override
     public void updateView(Subject subject) {
         if (subject == player.board) {
@@ -202,10 +215,8 @@ public class PlayerView extends Tab implements ViewObserver {
 
                 // Creates buttons from commands listed in options
                 if (player.board.getCurrentPlayer() == player) {
-                    // TODO Assignment V3: these buttons should be shown only when there is
-                    //      an interactive command card, and the buttons should represent
-                    //      the player's choices of the interactive command card. The
-                    //      following is just a mockup showing two options
+
+                    // TODO: Should take into account many possibilites for instance when players have sandbox card
 
                     Command command = player.getProgramField(player.board.getStep()).getCard().getCommand();
                     int cardOptions = command.getOptions().size();

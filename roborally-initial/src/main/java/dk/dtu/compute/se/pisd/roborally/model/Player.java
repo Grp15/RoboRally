@@ -45,6 +45,7 @@ public class Player extends Subject {
     private String name;
     private String color;
     private int EnergyCubes = 5;
+    private int CheckPoints = 0;
     private int DistancetoAntenna = 0;
 
     private Space space;
@@ -149,7 +150,10 @@ public class Player extends Subject {
         program[i] = commandCardField;
     }
 
-    public String getCardsProgram() {
+    public void setCardField(CommandCardField commandCardField, int i){
+        cards[i] = commandCardField;}
+
+    public String getCards() {
         String ProgrammingCards = "";
 
         for (int i = 0; i <= (cards.length - 1); i++) {
@@ -167,7 +171,7 @@ public class Player extends Subject {
 }
 
 
-    public String getCardsRegister() {
+    public String getProgram() {
         String RegisterCards = "";
 
         for (int i = 0; i <= (program.length - 1); i++) {
@@ -212,6 +216,26 @@ public class Player extends Subject {
 
     public int getEnergyCubes(){
         return EnergyCubes;
+    }
+
+    public int CalculateDistanceToPlayer(Player player){
+        int xDistance = Player.this.getSpace().x - player.getSpace().x;
+        int yDistance = Player.this.getSpace().y - player.getSpace().y;
+
+        int distance = Math.abs(xDistance) + Math.abs(yDistance);
+        return distance;
+    }
+
+    public int getCheckPoints(){
+        return CheckPoints;
+    }
+
+    public void progressCheckpoint(){
+        CheckPoints++;
+    }
+
+    public void RebootRobot(){
+        CheckPoints = 0;
     }
 
 

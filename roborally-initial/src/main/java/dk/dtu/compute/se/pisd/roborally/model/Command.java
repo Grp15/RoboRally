@@ -45,10 +45,13 @@ public enum Command {
 
 
 
+    //Spam skal ikke kunne gøre noget hvis den lægges i program bunken
+
     SPAM("Spam"),
     /*TROJAN_HORSE("Trojansk Hest"),
     VIRUS("Virus"),
-    WORMS("Worms"),
+
+    /*WORMS("Worms"), // Skal implementeres efter reboot er implementeret
      */
 
 
@@ -63,6 +66,8 @@ public enum Command {
     LEFT("Turn Left"),
     UTURN("U-turn"),
     POWER_UP("Power up"),
+
+
 
 
     //TODO: Skal ændres efter upgrade phase er indført
@@ -81,6 +86,8 @@ public enum Command {
     //SPAM_FOLDER("Spam"),
     SPEED_ROUTINE("Speed"),
     OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
+
+
 
 
 

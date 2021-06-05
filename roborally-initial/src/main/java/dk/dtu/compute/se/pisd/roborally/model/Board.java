@@ -22,10 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
-import dk.dtu.compute.se.pisd.roborally.view.SpaceView;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -79,16 +76,28 @@ public class Board extends Subject {
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
-                if(x == 5 && y == 3){
-                    Gears gear = new Gears(this,x,y, "RIGHT");
+                if(x== 4 && y == 1){
+                    CheckPoint checkPoint = new CheckPoint(this,x,y,1);
+                    spaces[x][y] = checkPoint;
+                }
+                if(x == 5 && y == 3 ){
+                    Gears gear = new Gears(this,x,y, Direction.Right);
                     spaces[x][y] = gear;
                 }
 
-                if(x == 0 && y == 0 || x == 5 && y == 4){
+                if(x == 2 && y == 6 ){
+                    Gears gear = new Gears(this,x,y, Direction.Left);
+                    spaces[x][y] = gear;
+                }
+
+                if(x == 0 && y == 0){
                     StartField start = new StartField(this,x,y);
                     spaces[x][y] = start;
                 }
-
+                if(x == 2 && y == 4){
+                    Energy energy = new Energy(this,x,y);
+                    spaces[x][y] = energy;
+                }
 
             }
         }

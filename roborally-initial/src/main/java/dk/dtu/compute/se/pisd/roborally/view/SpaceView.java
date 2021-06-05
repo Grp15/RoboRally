@@ -24,6 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.view;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.Energy;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
 import javafx.scene.layout.StackPane;
@@ -32,7 +33,7 @@ import javafx.scene.shape.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * Handles the view of different spaces on the board and colors and sizes hereof
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
@@ -44,6 +45,10 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     public final Space space;
 
+    /**
+     * Changes sizes and oclors of spaces view
+     * @param space
+     */
 
     public SpaceView(@NotNull Space space) {
         this.space = space;
@@ -71,8 +76,13 @@ public class SpaceView extends StackPane implements ViewObserver {
         update(space);
     }
 
+    /**
+     * Updates the positions of the player on the board
+     *
+     */
+
     private void updatePlayer() {
-        this.getChildren().clear();
+        this.getChildren().clear(); // This clears all elements on the board and if removed the player can be placed on top of the elements
 
         Player player = space.getPlayer();
         if (player != null) {
@@ -90,19 +100,28 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
 
+    /**
+     * If player is not on space, then update player
+     * @param subject
+     */
+
     @Override
     public void updateView(Subject subject) {
         if (subject == this.space) {
-            updatePlayer();
-        }
-        if (this.space instanceof Gears) {
-            GearView.drawGear(this, space);
-        }
-        if (this.space instanceof ConveyorBelt) {
-            ConveyorBeltView.drawConveyorBelt(this, space);
-        }
-        if(this.space instanceof StartField) {
-            StartFieldView.drawStartField(this,space);
+
+            updatePlayer(); // if the player if updated here, the other elements are placed over the player
+            if (this.space instanceof Gears) {
+                GearView.drawGear(this, space);
+            }
+            if (this.space instanceof ConveyorBelt) {
+                ConveyorBeltView.drawConveyorBelt(this, space);
+            }
+            if (this.space instanceof StartField) {
+                StartFieldView.drawStartField(this, space);
+            }
+            if (this.space instanceof Energy) {
+                EnergySpaceView.drawEnergySpace(this, space);
+            }
         }
     }
 
