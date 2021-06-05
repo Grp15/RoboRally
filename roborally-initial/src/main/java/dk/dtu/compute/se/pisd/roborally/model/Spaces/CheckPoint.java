@@ -30,10 +30,14 @@ public class CheckPoint extends Space {
 
         if(player.getCheckPoints() == Number-1){
             player.progressCheckpoint();
+            System.out.println("You win!!!");
         }
 
         return true; // True hvis det lykkedes, false hvis ikke.
 
     }
 
+    public int getNumber() {
+        return Number;
+    }
 }
