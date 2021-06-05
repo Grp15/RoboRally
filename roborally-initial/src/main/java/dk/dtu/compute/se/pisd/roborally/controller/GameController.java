@@ -173,7 +173,7 @@ public class GameController {
         makeProgramFieldsVisible(0);
 
         //Experimenting with getting the distance from the priority antenna to the players
-        board.getSpace(3,3).doAction(board.getPlayer(0), board.getSpace(3,3), GameController.this);
+        board.getSpace(3,3).doAction(board.getPlayer(1), board.getSpace(3,3), GameController.this);
 
 
         board.setPhase(Phase.ACTIVATION);

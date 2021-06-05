@@ -36,21 +36,30 @@ public class PriorityAntenna extends Space {
 
         int[] playerdistance = new int[board.getPlayersNumber()];
 
+
         for (int i = 0; i < playerdistance.length; i++) {
 
             playerdistance[i] = gameController.DistanceSpacetoPlayer(board.getSpace(this.x, this.y), board.getPlayer(i));
 
-            //Sets the players distance to antenna
-            gameController.getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
 
-            //sort(playerdistance);
+            //Sets the players distance to antenna
+            //gameController.getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
+
+
+            //Et eller andet går galt her
+            sort(playerdistance);
+
+
+
 
         }
 
         for (int i = 0; i < board.getPlayersNumber(); i++) {
 
             System.out.print(playerdistance[i] + "  ");
+
         }
+        System.out.println();
 
         return true;
     }
@@ -58,11 +67,24 @@ public class PriorityAntenna extends Space {
     /**
      * Sorts a distancefromspacetoplayer array using bubblesort algorithm
      *
-     * @param playerDistances
+     * @param playerDistance
      */
 
     //TODO: Sort algorithm does not work
-    public void sort(int[] playerDistances) {
+    public void sort(int[] playerDistance) {
+        int n = playerDistance.length;
+        int temp = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n - i); j++) {
+                if (playerDistance[j - 1] > playerDistance[j]) {
+                    //swap elements
+                    temp = playerDistance[j - 1];
+                    playerDistance[j - 1] = playerDistance[j];
+                    playerDistance[j] = temp;
+                }
+
+            }
+        }
 
     }
 }
