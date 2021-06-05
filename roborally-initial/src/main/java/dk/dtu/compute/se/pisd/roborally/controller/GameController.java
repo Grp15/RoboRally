@@ -172,7 +172,8 @@ public class GameController {
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
 
-        //Experimenting with getting the distance from the priority antenna to the players
+        //Array with the distances from antenna to player
+        //TODO: Priority Antenna needs to not be hardcoded
         int[] playerorder = findPlayerOrder(3,3);
 
 
