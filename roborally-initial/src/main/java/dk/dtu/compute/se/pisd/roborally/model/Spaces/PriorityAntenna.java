@@ -63,17 +63,6 @@ public class PriorityAntenna extends Space {
 
     //TODO: Sort algorithm does not work
     public void sort(int[] playerDistances) {
-        int temprorayInt = 0;
 
-        for(int i = 0; i < playerDistances.length; i++){
-            for(int j = 1; j < playerDistances.length -1; j++){
-                if(playerDistances[j-1] > playerDistances[j]){
-                    //byt om på elementer
-                    temprorayInt = playerDistances[j-1];
-                    playerDistances[j-1] = playerDistances[j];
-                    playerDistances[j] = temprorayInt;
-                }
-            }
-        }
     }
 }
