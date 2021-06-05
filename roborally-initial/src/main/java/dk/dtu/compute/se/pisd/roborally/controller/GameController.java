@@ -176,6 +176,7 @@ public class GameController {
         int[] playerorder = findPlayerOrder(3,3);
 
 
+
         board.setPhase(Phase.ACTIVATION);
 
         //Needs to set the right player turns here
@@ -733,19 +734,9 @@ public class GameController {
             //Sets the players distance to antenna
             getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
 
-
-            //Et eller andet går galt her
-            sort(playerdistance);
-
-
         }
-
-        for (int i = 0; i < board.getPlayersNumber(); i++) {
-
-            System.out.print(playerdistance[i] + "  ");
-
-        }
-        System.out.println();
+        //Sorts Playerdistance
+        sort(playerdistance);
 
         return playerdistance;
     }
@@ -755,12 +746,11 @@ public class GameController {
      * @param playerDistance
      */
 
-    //TODO: Sort algorithm does not work
     public void sort(int[] playerDistance) {
-        int n = playerDistance.length;
+
         int temp = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n - i); j++) {
+        for (int i = 0; i < playerDistance.length; i++) {
+            for (int j = 1; j < (playerDistance.length - i); j++) {
                 if (playerDistance[j - 1] > playerDistance[j]) {
                     //swap elements
                     temp = playerDistance[j - 1];
