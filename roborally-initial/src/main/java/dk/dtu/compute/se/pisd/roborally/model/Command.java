@@ -48,7 +48,7 @@ public enum Command {
     //Spam skal ikke kunne gøre noget hvis den lægges i program bunken
 
     SPAM("Spam"),
-    /*TROJAN_HORSE("Trojansk Hest"),
+    TROJAN_HORSE("Trojansk Hest"),
     VIRUS("Virus"),
 
     /*WORMS("Worms"), // Skal implementeres efter reboot er implementeret
@@ -80,7 +80,7 @@ public enum Command {
     // ---UPGRADE CARDS---
 
     ENERGY_ROUTINE("Energy"),
-    //REPEAT_ROUTINE("Repeat"),
+    REPEAT_ROUTINE("Repeat"),
     //TODO: Skal ændre i udseende for Sandbox
     OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
     //SPAM_FOLDER("Spam"),

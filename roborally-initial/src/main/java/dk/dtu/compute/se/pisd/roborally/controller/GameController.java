@@ -128,7 +128,7 @@ public class GameController {
                 //System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
                 executeCommand(player, Command.SPAM);
                 }
-                */
+
             }
         }
     }
