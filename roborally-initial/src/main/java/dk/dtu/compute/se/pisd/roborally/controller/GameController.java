@@ -177,6 +177,8 @@ public class GameController {
 
 
         board.setPhase(Phase.ACTIVATION);
+
+        //Needs to set the right player turns here
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
         //executePrograms(); // V3.5
