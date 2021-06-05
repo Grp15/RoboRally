@@ -76,6 +76,12 @@ public class Board extends Subject {
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
+
+                if(x == 3 && y == 3){
+                    PriorityAntenna priorityAntenna = new PriorityAntenna(this, x,y);
+                    spaces[x][y] = priorityAntenna;
+                }
+
                 if(x== 4 && y == 1){
                     CheckPoint checkPoint = new CheckPoint(this,x,y,1);
                     spaces[x][y] = checkPoint;

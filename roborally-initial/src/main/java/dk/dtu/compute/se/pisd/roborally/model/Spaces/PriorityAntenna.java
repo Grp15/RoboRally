@@ -27,6 +27,8 @@ public class PriorityAntenna extends Space {
     // TODO: Need to attach reference from distance array to a player
     // TODO: Needs to set which players turn it is
     // TODO: Needs to be called at start of each turn, for now it only does anything if a player stands on the field.
+    // TODO: For now this is just an ordinary space, should be executed in a different way than other spaces and not hardcoded
+    // TODO: Skal bruge en test
     public boolean doAction(Player player, Space space, GameController gameController) {
 
         int[] playerdistance = new int[board.getPlayersNumber()];
@@ -39,6 +41,7 @@ public class PriorityAntenna extends Space {
             gameController.getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
 
             sort(playerdistance);
+
         }
 
         return true;
