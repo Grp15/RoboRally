@@ -294,7 +294,12 @@ public class Board extends Subject {
     }
 
     public Player getPlayerfromPlayerOrder(int i){
-        return playerOrder[i];
+        if(i < players.size()){
+            return playerOrder[i];
+        }
+        else {
+            return playerOrder[i];
+        }
     }
 
     public int getPlayerNumberfromPlayerOrder(Player player){

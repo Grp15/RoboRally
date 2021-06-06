@@ -271,14 +271,14 @@ public class GameController {
                     }
                     //Hvis 1 kort i register er AGAIN Kort springes det over
                     if(card.getCommand() == Command.AGAIN && step == 0){
-                        board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+                        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
 
                     }else executeCommand(currentPlayer, command);
 
 
                 }
                 if (nextPlayerNumber < board.getPlayersNumber()) {
-                    board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+                    board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
                 } else {
 
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
@@ -299,7 +299,8 @@ public class GameController {
                     if (step < Player.NO_REGISTERS) {
                         makeProgramFieldsVisible(step);
                         board.setStep(step);
-                        board.setCurrentPlayer(board.getPlayer(0));
+                       // board.setCurrentPlayer(board.getPlayer(0)); // Gammel metode
+                        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(0)); // Ny metode
                     } else {
                         startProgrammingPhase();
                     }
@@ -423,13 +424,14 @@ public class GameController {
         //int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1; // Gammel metode som virker
         int nextPlayerNumber = board.getPlayerNumberfromPlayerOrder(currentPlayer) +1; // Ny metode
         if (nextPlayerNumber < board.getPlayersNumber()) {
-            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+            board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
         } else {
             int step = board.getStep() + 1;
             if (step < Player.NO_REGISTERS) {
                 makeProgramFieldsVisible(step);
                 board.setStep(step);
-                board.setCurrentPlayer(board.getPlayer(0));
+                //board.setCurrentPlayer(board.getPlayer(0)); // Gammel metode
+                board.setCurrentPlayer(board.getPlayerfromPlayerOrder(0)); // Ny metode
             } else {
                 startProgrammingPhase();
             }
