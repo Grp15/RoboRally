@@ -174,7 +174,16 @@ public class GameController {
 
         //Array with the distances from antenna to player
         //TODO: Priority Antenna needs to not be hardcoded
-        int[] playerorder = findPlayerOrder(3,3);
+
+        Player[] playerOrder = new Player[board.getPlayersNumber()];
+
+        findPlayerOrder(playerOrder, 3,3);
+
+        for(int i = 0; i < board.getPlayersNumber(); i++){
+            //System.out.println(playerOrder[0].getDistancetoAntenna());
+        }
+
+
 
 
 
@@ -722,22 +731,28 @@ public class GameController {
     // TODO: Needs to be called at start of each turn, for now it only does anything if a player stands on the field.
     // TODO: For now this is just an ordinary space, should be executed in a different way than other spaces and not hardcoded
     // TODO: Skal bruge en test
-    public int[] findPlayerOrder(int x, int y) {
+    public Player[] findPlayerOrder(Player[] players, int x, int y) {
 
-        int[] playerdistance = new int[board.getPlayersNumber()];
+        Player[] playerdistance =players;
+
+        for(int i = 0; i < board.getPlayersNumber(); i++){
+            playerdistance[i] = board.getPlayer(i);
+
+        }
 
 
         for (int i = 0; i < playerdistance.length; i++) {
 
-            playerdistance[i] = DistanceSpacetoPlayer(board.getSpace(x, y), board.getPlayer(i));
+            playerdistance[i].setDistancetoAntenna(DistanceSpacetoPlayer(board.getSpace(x, y), playerdistance[i]));
 
 
             //Sets the players distance to antenna
-            getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
+            //getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
 
         }
         //Sorts Playerdistance
         sort(playerdistance);
+
 
         return playerdistance;
     }
@@ -747,12 +762,12 @@ public class GameController {
      * @param playerDistance
      */
 
-    public void sort(int[] playerDistance) {
+    public void sort(Player[] playerDistance) {
 
-        int temp = 0;
+        Player temp;
         for (int i = 0; i < playerDistance.length; i++) {
             for (int j = 1; j < (playerDistance.length - i); j++) {
-                if (playerDistance[j - 1] > playerDistance[j]) {
+                if (playerDistance[j - 1].getDistancetoAntenna() > playerDistance[j].getDistancetoAntenna()) {
                     //swap elements
                     temp = playerDistance[j - 1];
                     playerDistance[j - 1] = playerDistance[j];
