@@ -180,11 +180,8 @@ public class GameController {
         findPlayerOrder(playerOrder, 3,3);
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
-            //System.out.println(playerOrder[0].getDistancetoAntenna());
+            System.out.println(playerOrder[i].getName());
         }
-
-
-
 
 
         board.setPhase(Phase.ACTIVATION);
