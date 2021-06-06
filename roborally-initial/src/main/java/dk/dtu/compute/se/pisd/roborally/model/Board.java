@@ -297,6 +297,18 @@ public class Board extends Subject {
         return playerOrder[i];
     }
 
+    public int getPlayerNumberfromPlayerOrder(Player player){
+        //return players.indexOf(player); // virker ikke
+
+        for(int i = 0; i < players.size(); i++){
+            if (player == playerOrder[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     public void setPlayerOrder(Player[] playerOrder){
         this.playerOrder = playerOrder;
     }

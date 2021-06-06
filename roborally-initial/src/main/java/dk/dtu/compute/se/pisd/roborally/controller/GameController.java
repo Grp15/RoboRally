@@ -261,7 +261,8 @@ public class GameController {
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
-                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+                //int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1; // Gammel metode som virker
+                int nextPlayerNumber = board.getPlayerNumberfromPlayerOrder(currentPlayer) +1;
                 if (card != null) {
                     Command command = card.getCommand();
                     if(command.isInteractive()){
@@ -419,7 +420,8 @@ public class GameController {
         Player currentPlayer = board.getCurrentPlayer();
         executeCommand(currentPlayer, command);
 
-        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        //int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1; // Gammel metode som virker
+        int nextPlayerNumber = board.getPlayerNumberfromPlayerOrder(currentPlayer) +1; // Ny metode
         if (nextPlayerNumber < board.getPlayersNumber()) {
             board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
         } else {
