@@ -51,6 +51,8 @@ public class Board extends Subject {
 
     private final List<Player> players = new ArrayList<>();
 
+    private Player[] playerOrder = new Player[players.size()];
+
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -289,6 +291,14 @@ public class Board extends Subject {
             this.counter = counter;
             notifyChange();
         }
+    }
+
+    public Player getPlayerfromPlayerOrder(int i){
+        return playerOrder[i];
+    }
+
+    public void setPlayerOrder(Player[] playerOrder){
+        this.playerOrder = playerOrder;
     }
 
 }

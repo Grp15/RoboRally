@@ -176,20 +176,20 @@ public class GameController {
         //TODO: Priority Antenna needs to not be hardcoded
         //TODO: playerOrder should be put in Board class
 
-        Player[] playerOrder = new Player[board.getPlayersNumber()];
+        Player[] printOrder = new Player[board.getPlayersNumber()]; //board.getPlayerOrder();
 
-        findPlayerOrder(playerOrder, 3,3); // Finds the playerorder from the priority antenna, in this case it is at (3,3)
-
-        //TODO: This eventually needs to be deleted
-        for(int i = 0; i < board.getPlayersNumber(); i++){
-            //System.out.println(playerOrder[i].getName());
+        for(int i = 0; i < board.getPlayersNumber(); i++ ){
+            printOrder[i] = board.getPlayer(i);
         }
+        findPlayerOrder(printOrder,3,3);
+        board.setPlayerOrder(printOrder);
 
 
         board.setPhase(Phase.ACTIVATION);
 
         //Needs to set the right player turns here
-        board.setCurrentPlayer(board.getPlayer(0));
+        //board.setCurrentPlayer(board.getPlayer(0)); // Old method
+        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(0));
         board.setStep(0);
         //executePrograms(); // V3.5
     }
