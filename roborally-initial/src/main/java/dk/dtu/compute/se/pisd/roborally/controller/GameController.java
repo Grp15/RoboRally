@@ -177,10 +177,11 @@ public class GameController {
 
         Player[] playerOrder = new Player[board.getPlayersNumber()];
 
-        findPlayerOrder(playerOrder, 3,3);
+        findPlayerOrder(playerOrder, 3,3); // Finds the playerorder from the priority antenna, in this case it is at (3,3)
 
+        //TODO: This eventually needs to be deleted
         for(int i = 0; i < board.getPlayersNumber(); i++){
-            System.out.println(playerOrder[i].getName());
+            //System.out.println(playerOrder[i].getName());
         }
 
 
