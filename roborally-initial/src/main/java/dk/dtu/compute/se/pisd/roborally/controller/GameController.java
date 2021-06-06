@@ -174,6 +174,7 @@ public class GameController {
 
         //Array with the distances from antenna to player
         //TODO: Priority Antenna needs to not be hardcoded
+        //TODO: playerOrder should be put in Board class
 
         Player[] playerOrder = new Player[board.getPlayersNumber()];
 
