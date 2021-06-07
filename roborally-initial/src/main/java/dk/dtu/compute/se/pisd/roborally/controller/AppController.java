@@ -113,7 +113,7 @@ public class AppController implements Observer {
              * Derudover skal en spiller ikke kunne starte på et felt som ikke er StartField
              **/
 
-
+            /**
             for (int i = 0; i < no; i++) {
                 Player player = board.getPlayer(i);
                 outerloop: //label, the nested loop breaks to here
@@ -137,7 +137,10 @@ public class AppController implements Observer {
 
 
             }
+             **/
 
+
+            gameController.startInitiliasationPhase();
             // XXX: V2
             // board.setCurrentPlayer(board.getPlayer(0));
             gameController.startProgrammingPhase();

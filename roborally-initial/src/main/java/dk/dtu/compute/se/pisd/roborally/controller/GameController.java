@@ -75,6 +75,10 @@ public class GameController {
         }
     }
 
+    public void startInitiliasationPhase(){
+        board.setPhase(Phase.STARTUP);
+    }
+
     /**
      * This method initiates the programmingphase
      *
