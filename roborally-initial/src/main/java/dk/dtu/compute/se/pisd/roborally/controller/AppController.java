@@ -118,6 +118,12 @@ public class AppController implements Observer {
             boardname = "defaultboard";
         }
 
+        int numOfBoards = GAME_BOARDS.size();
+        for (int i = 0; i < numOfBoards; i++) {
+            if (selectedBoard == GAME_BOARDS.get(i)) {
+                boardname = GAME_BOARDS.get(i);
+            }
+        }
 
         if (result.isPresent()) {
             if (gameController != null) {
