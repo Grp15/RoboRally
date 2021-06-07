@@ -83,6 +83,19 @@ public class AppController implements Observer {
      */
 
     public void newGame() {
+        File folder= new File("roborally-initial/src/main/resources/boards");
+        File[] listOfFiles = folder.listFiles();
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+
+                GAME_BOARDS.add(file.getName());
+            }
+        }
+        // Remove .json from filenames
+        GAME_BOARDS = GAME_BOARDS.stream().map(s -> s.replaceAll("\\.json", ""))
+                .collect(Collectors.toList());
+        System.out.println(GAME_BOARDS);
+
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
         dialog.setHeaderText("Select number of players");
