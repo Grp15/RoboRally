@@ -262,7 +262,7 @@ public class Board extends Subject {
         // status of the game
 
         // TODO: Can be updated so the string shows the selected player
-        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter() +" " + "Number of checkpoints= " + getCurrentPlayer().getCheckPoints();
+        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter() +" " + ", Number of checkpoints= " + getCurrentPlayer().getCheckPoints();
     }
 
     public int getCounter() {
