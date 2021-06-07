@@ -89,7 +89,6 @@ public class AppController implements Observer {
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             if (file.isFile()) {
-
                 GAME_BOARDS.add(file.getName());
             }
         }
