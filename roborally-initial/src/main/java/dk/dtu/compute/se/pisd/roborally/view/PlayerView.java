@@ -60,7 +60,7 @@ public class PlayerView extends Tab implements ViewObserver {
 
     private VBox playerInteractionPanel;
 
-    private VBox StartGame;
+    private VBox startgamePanel;
 
     private Button startGameButton;
 
@@ -114,7 +114,7 @@ public class PlayerView extends Tab implements ViewObserver {
         stepButton = new Button("Execute Current Register");
         stepButton.setOnAction( e-> gameController.executeStep());
 
-        buttonPanel = new VBox(finishButton, executeButton, stepButton, startGameButton);
+        buttonPanel = new VBox(finishButton, executeButton, stepButton);
         buttonPanel.setAlignment(Pos.CENTER_LEFT);
         buttonPanel.setSpacing(3.0);
         // programPane.add(buttonPanel, Player.NO_REGISTERS, 0); done in update now
@@ -123,11 +123,12 @@ public class PlayerView extends Tab implements ViewObserver {
         playerInteractionPanel.setAlignment(Pos.CENTER_LEFT);
         playerInteractionPanel.setSpacing(3.0);
 
-        //StartGame = new VBox(startGameButton);
-        //StartGame.setAlignment(Pos.CENTER_LEFT);
-        //StartGame.setSpacing(3.0);
-        //startGameButton = new Button("Start Game");
-        //startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
+        startgamePanel = new VBox(startGameButton);
+        startgamePanel.setAlignment(Pos.CENTER_LEFT);
+        startgamePanel.setSpacing(3.0);
+
+        startGameButton = new Button("Start Game");
+        startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
 
         cardsLabel = new Label("Command Cards");
         cardsPane = new GridPane();
@@ -185,9 +186,20 @@ public class PlayerView extends Tab implements ViewObserver {
                 }
             }
 
-            if (player.board.getPhase() != Phase.PLAYER_INTERACTION) {
+
+            if (player.board.getPhase() == Phase.INITIALISATION){
+                if(!programPane.getChildren().contains(startgamePanel)){
+                    programPane.getChildren().remove(playerInteractionPanel);
+                    programPane.getChildren().remove(buttonPanel);
+                    programPane.add(startgamePanel, Player.NO_REGISTERS,0);
+                }
+            }
+
+
+            else if (player.board.getPhase() != Phase.PLAYER_INTERACTION) {
                 if (!programPane.getChildren().contains(buttonPanel)) {
                     programPane.getChildren().remove(playerInteractionPanel);
+                    programPane.getChildren().remove(startgamePanel);
                     programPane.add(buttonPanel, Player.NO_REGISTERS, 0);
                 }
                 switch (player.board.getPhase()) {
@@ -225,6 +237,7 @@ public class PlayerView extends Tab implements ViewObserver {
             } else {
                 if (!programPane.getChildren().contains(playerInteractionPanel)) {
                     programPane.getChildren().remove(buttonPanel);
+                    programPane.getChildren().remove(startgamePanel);
                     programPane.add(playerInteractionPanel, Player.NO_REGISTERS, 0);
                 }
                 playerInteractionPanel.getChildren().clear();
@@ -250,6 +263,8 @@ public class PlayerView extends Tab implements ViewObserver {
 
 
             }
+
+
         }
     }
 
