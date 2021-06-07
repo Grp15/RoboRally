@@ -95,7 +95,6 @@ public class AppController implements Observer {
         // Remove .json from filenames
         GAME_BOARDS = GAME_BOARDS.stream().map(s -> s.replaceAll("\\.json", ""))
                 .collect(Collectors.toList());
-        System.out.println(GAME_BOARDS);
 
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
