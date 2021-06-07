@@ -107,6 +107,11 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
 
             updatePlayer(); // if the player if updated here, the other elements are placed over the player
+
+            if(this.space instanceof PriorityAntenna){
+                PriorityAntennaView.drawPriorityAntenna(this,space);
+            }
+
             if (this.space instanceof Gears) {
                 GearView.drawGear(this, space);
             }
