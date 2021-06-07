@@ -66,7 +66,7 @@ public class AppController implements Observer {
     private List<Integer> GAME_int_IDs = new ArrayList<Integer>();
 
     //Name of the board according to json file
-    private String boardname = "deafaultboard";
+    private String boardname = "defaultboard";
 
 
     final private RoboRally roboRally;
