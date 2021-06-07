@@ -61,7 +61,7 @@ public class AppController implements Observer {
 
     final private List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
     final private List<String> PLAYER_COLORS = Arrays.asList("red", "green", "blue", "orange", "grey", "magenta");
-    final private List<String> GAME_BOARDS = Arrays.asList("Default", "Highway", "Parking lot");
+    private List<String> GAME_BOARDS = new ArrayList<>();
     private List<GameInDB> Game_IDs = new ArrayList<GameInDB>();
     private List<Integer> GAME_int_IDs = new ArrayList<Integer>();
 
