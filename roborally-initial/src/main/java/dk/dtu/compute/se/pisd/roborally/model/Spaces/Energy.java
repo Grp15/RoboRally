@@ -28,6 +28,10 @@ public class Energy extends Space {
         return true;
     }
 
+    public int getEnergy() {
+        return Energy;
+    }
+
     public void resetEnergy() {
         Energy = 0;
     }
