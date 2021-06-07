@@ -46,6 +46,7 @@ public class Player extends Subject {
     private String color;
     private int EnergyCubes = 5;
     private int CheckPoints = 0;
+    private int DistancetoAntenna = 0;
 
     private Space space;
     private Heading heading = SOUTH;
@@ -95,6 +96,14 @@ public class Player extends Subject {
         if (space != null) {
             space.playerChanged();
         }
+    }
+
+    public int getDistancetoAntenna(){
+        return DistancetoAntenna;
+    }
+
+    public void setDistancetoAntenna(int i){
+        DistancetoAntenna = i;
     }
 
     public Space getSpace() {
@@ -157,6 +166,7 @@ public class Player extends Subject {
             continue;
         }
     }
+       // System.out.println("Programming = " + ProgrammingCards);
         return ProgrammingCards;
 }
 
@@ -178,8 +188,10 @@ public class Player extends Subject {
             }
 
         }
+        //System.out.println("Register = " + RegisterCards);
         return RegisterCards;
     }
+
 
     public String[] splitCardsRegisterString(String load_register) {
 
@@ -189,6 +201,7 @@ public class Player extends Subject {
     }
 
 
+    //Todo: Skal måske slettes
 
     public String[] splitCardsProgramString(String load_program) {
 

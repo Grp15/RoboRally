@@ -25,6 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
+//import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
 import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
@@ -75,10 +76,13 @@ public class GameController {
     }
 
     /**
-     * This method initiates the programming phase
+     * This method initiates the programmingphase
      *
      */
 
+    // XXX: V2
+
+    // TODO: Needs to implement priority antenna here
 
     //TODO: Når spillerne har deres egen kortbunke skal de trække fra denne
 
@@ -124,6 +128,7 @@ public class GameController {
                 //System.out.println("Ur bout to get spammed " + board.getPlayerNumber(player));
                 executeCommand(player, Command.SPAM);
                 }
+
             }
         }
     }
@@ -155,6 +160,10 @@ public class GameController {
 
 
 
+
+
+
+
     /**
      * This method ends the programming phase
      */
@@ -162,8 +171,25 @@ public class GameController {
     public void finishProgrammingPhase() {
         makeProgramFieldsInvisible();
         makeProgramFieldsVisible(0);
+
+        //Array with the distances from antenna to player
+        //TODO: Priority Antenna needs to not be hardcoded
+        //TODO: playerOrder should be put in Board class
+
+        Player[] printOrder = new Player[board.getPlayersNumber()]; //board.getPlayerOrder();
+
+        for(int i = 0; i < board.getPlayersNumber(); i++ ){
+            printOrder[i] = board.getPlayer(i);
+        }
+        findPlayerOrder(printOrder,3,3);
+        board.setPlayerOrder(printOrder);
+
+
         board.setPhase(Phase.ACTIVATION);
-        board.setCurrentPlayer(board.getPlayer(0));
+
+        //Needs to set the right player turns here
+        //board.setCurrentPlayer(board.getPlayer(0)); // Old method
+        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(0));
         board.setStep(0);
         //executePrograms(); // V3.5
     }
@@ -235,7 +261,8 @@ public class GameController {
             int step = board.getStep();
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
-                int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+                //int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1; // Gammel metode som virker
+                int nextPlayerNumber = board.getPlayerNumberfromPlayerOrder(currentPlayer) +1;
                 if (card != null) {
                     Command command = card.getCommand();
                     if(command.isInteractive()){
@@ -244,14 +271,14 @@ public class GameController {
                     }
                     //Hvis 1 kort i register er AGAIN Kort springes det over
                     if(card.getCommand() == Command.AGAIN && step == 0){
-                        board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+                        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
 
                     }else executeCommand(currentPlayer, command);
 
 
                 }
                 if (nextPlayerNumber < board.getPlayersNumber()) {
-                    board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+                    board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
                 } else {
 
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
@@ -272,7 +299,8 @@ public class GameController {
                     if (step < Player.NO_REGISTERS) {
                         makeProgramFieldsVisible(step);
                         board.setStep(step);
-                        board.setCurrentPlayer(board.getPlayer(0));
+                       // board.setCurrentPlayer(board.getPlayer(0)); // Gammel metode
+                        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(0)); // Ny metode
                     } else {
                         startProgrammingPhase();
                     }
@@ -393,15 +421,17 @@ public class GameController {
         Player currentPlayer = board.getCurrentPlayer();
         executeCommand(currentPlayer, command);
 
-        int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1;
+        //int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1; // Gammel metode som virker
+        int nextPlayerNumber = board.getPlayerNumberfromPlayerOrder(currentPlayer) +1; // Ny metode
         if (nextPlayerNumber < board.getPlayersNumber()) {
-            board.setCurrentPlayer(board.getPlayer(nextPlayerNumber));
+            board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
         } else {
             int step = board.getStep() + 1;
             if (step < Player.NO_REGISTERS) {
                 makeProgramFieldsVisible(step);
                 board.setStep(step);
-                board.setCurrentPlayer(board.getPlayer(0));
+                //board.setCurrentPlayer(board.getPlayer(0)); // Gammel metode
+                board.setCurrentPlayer(board.getPlayerfromPlayerOrder(0)); // Ny metode
             } else {
                 startProgrammingPhase();
             }
@@ -472,7 +502,9 @@ public class GameController {
         CommandCardField card = player.getProgramField(board.getStep() -1);
         Command command = card.getCard().getCommand();
 
-
+        if (board.getStep() == 0){
+            return;
+        }
         executeCommand(player,command);
     }
 
@@ -691,4 +723,64 @@ public class GameController {
         return distance;
     }
 
+    /**
+     * Create in which order players turn is
+     *
+     * @return player order
+     */
+
+    // TODO: Need to attach reference from distance array to a player
+    // TODO: Needs to set which players turn it is
+    // TODO: Needs to be called at start of each turn, for now it only does anything if a player stands on the field.
+    // TODO: For now this is just an ordinary space, should be executed in a different way than other spaces and not hardcoded
+    // TODO: Skal bruge en test
+    public Player[] findPlayerOrder(Player[] players, int x, int y) {
+
+        Player[] playerdistance =players;
+
+        for(int i = 0; i < board.getPlayersNumber(); i++){
+            playerdistance[i] = board.getPlayer(i);
+
+        }
+
+
+        for (int i = 0; i < playerdistance.length; i++) {
+
+            playerdistance[i].setDistancetoAntenna(DistanceSpacetoPlayer(board.getSpace(x, y), playerdistance[i]));
+
+
+            //Sets the players distance to antenna
+            //getBoard().getPlayer(i).setDistancetoAntenna(playerdistance[i]);
+
+        }
+        //Sorts Playerdistance
+        sort(playerdistance);
+
+
+        return playerdistance;
+    }
+    /**
+     * Sorts a distancefromspacetoplayer array using bubblesort algorithm
+     *
+     * @param playerDistance
+     */
+
+    public void sort(Player[] playerDistance) {
+
+        Player temp;
+        for (int i = 0; i < playerDistance.length; i++) {
+            for (int j = 1; j < (playerDistance.length - i); j++) {
+                if (playerDistance[j - 1].getDistancetoAntenna() > playerDistance[j].getDistancetoAntenna()) {
+                    //swap elements
+                    temp = playerDistance[j - 1];
+                    playerDistance[j - 1] = playerDistance[j];
+                    playerDistance[j] = temp;
+                }
+
+            }
+        }
+
+    }
+
 }
+

@@ -51,6 +51,8 @@ public class Board extends Subject {
 
     private final List<Player> players = new ArrayList<>();
 
+    private Player[] playerOrder = new Player[players.size()];
+
     private Player current;
 
     private Phase phase = INITIALISATION;
@@ -78,6 +80,12 @@ public class Board extends Subject {
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
+
+                if(x == 3 && y == 3){
+                    PriorityAntenna priorityAntenna = new PriorityAntenna(this, x,y);
+                    spaces[x][y] = priorityAntenna;
+                }
+
                 if(x== 4 && y == 1){
                     CheckPoint checkPoint = new CheckPoint(this,x,y,1);
                     spaces[x][y] = checkPoint;
@@ -271,10 +279,18 @@ public class Board extends Subject {
         // the students, this method gives a string representation of the current
         // status of the game
 
-        // TODO: Can be updated so the string shows the selected player
-        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter() +" " + ", Number of checkpoints= " + getCurrentPlayer().getCheckPoints();
+        // TODO Assignment V1: this string could eventually be refined
+        //      The status line should show more information based on
+        //      situation; for now, introduce a counter to the Board,
+        //      which is counted up every time a player makes a move; the
+        //      status line should show the current player and the number
+        //      of the current move!
+        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter();
     }
 
+    // TODO Assignment V1: add a counter along with a getter and a setter, so the
+    //      state the board (game) contains the number of moves, which then can
+    //      be used to extend the status message including the number of
     public int getCounter() {
         return counter;
     }
@@ -285,6 +301,31 @@ public class Board extends Subject {
             this.counter = counter;
             notifyChange();
         }
+    }
+
+    public Player getPlayerfromPlayerOrder(int i){
+        if(i < players.size()){
+            return playerOrder[i];
+        }
+        else {
+            return playerOrder[i];
+        }
+    }
+
+    public int getPlayerNumberfromPlayerOrder(Player player){
+        //return players.indexOf(player); // virker ikke
+
+        for(int i = 0; i < players.size(); i++){
+            if (player == playerOrder[i]) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+
+    public void setPlayerOrder(Player[] playerOrder){
+        this.playerOrder = playerOrder;
     }
 
     public int getNumbOfCheckPoints() {
