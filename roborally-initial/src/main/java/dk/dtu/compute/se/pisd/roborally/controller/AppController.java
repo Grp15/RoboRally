@@ -88,6 +88,22 @@ public class AppController implements Observer {
         dialog.setHeaderText("Select number of players");
         Optional<Integer> result = dialog.showAndWait();
 
+        ChoiceDialog<String> dialogBoard = new ChoiceDialog<>(GAME_BOARDS.get(0), GAME_BOARDS);
+        dialogBoard.setTitle("Board selection");
+        dialogBoard.setHeaderText("Select board");
+        Optional<String> resultBoard = dialogBoard.showAndWait();
+        String selectedBoard = resultBoard.get();
+
+
+        if (selectedBoard == "Highway") {
+            boardname = "highway";
+        } else if (selectedBoard == "Parking lot") {
+            boardname = "parkinglot";
+        } else {
+            boardname = "defaultboard";
+        }
+
+
         if (result.isPresent()) {
             if (gameController != null) {
                 // The UI should not allow this, but in case this happens anyway.
