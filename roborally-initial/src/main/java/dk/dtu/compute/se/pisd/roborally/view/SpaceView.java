@@ -23,10 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.model.*;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.Energy;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.Gears;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
@@ -121,6 +118,9 @@ public class SpaceView extends StackPane implements ViewObserver {
             }
             if (this.space instanceof Energy) {
                 EnergySpaceView.drawEnergySpace(this, space);
+            }
+            if(this.space instanceof CheckPoint){
+                CheckpointView.drawCheckpoint(this,space);
             }
         }
     }

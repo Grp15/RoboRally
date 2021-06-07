@@ -61,6 +61,8 @@ public class Board extends Subject {
 
     private int counter;
 
+    private int numbOfCheckPoints = 0;
+
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
         this.width = width;
@@ -79,7 +81,15 @@ public class Board extends Subject {
                 if(x== 4 && y == 1){
                     CheckPoint checkPoint = new CheckPoint(this,x,y,1);
                     spaces[x][y] = checkPoint;
+                    numbOfCheckPoints++;
                 }
+
+                if(x== 5 && y == 1){
+                    CheckPoint checkPoint = new CheckPoint(this,x,y,2);
+                    spaces[x][y] = checkPoint;
+                    numbOfCheckPoints++;
+                }
+
                 if(x == 5 && y == 3 ){
                     Gears gear = new Gears(this,x,y, Direction.Right);
                     spaces[x][y] = gear;
@@ -261,18 +271,10 @@ public class Board extends Subject {
         // the students, this method gives a string representation of the current
         // status of the game
 
-        // TODO Assignment V1: this string could eventually be refined
-        //      The status line should show more information based on
-        //      situation; for now, introduce a counter to the Board,
-        //      which is counted up every time a player makes a move; the
-        //      status line should show the current player and the number
-        //      of the current move!
-        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter();
+        // TODO: Can be updated so the string shows the selected player
+        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter() +" " + ", Number of checkpoints= " + getCurrentPlayer().getCheckPoints();
     }
 
-    // TODO Assignment V1: add a counter along with a getter and a setter, so the
-    //      state the board (game) contains the number of moves, which then can
-    //      be used to extend the status message including the number of
     public int getCounter() {
         return counter;
     }
@@ -285,4 +287,7 @@ public class Board extends Subject {
         }
     }
 
+    public int getNumbOfCheckPoints() {
+        return numbOfCheckPoints;
+    }
 }
