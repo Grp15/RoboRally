@@ -102,6 +102,9 @@ public class PlayerView extends Tab implements ViewObserver {
         //      refactored.
 
         // XXX the respective GameController operations are not yet implemented
+        startGameButton = new Button("Start Game");
+        startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
+
         finishButton = new Button("Finish Programming");
         finishButton.setOnAction( e -> gameController.finishProgrammingPhase());
 
@@ -111,7 +114,7 @@ public class PlayerView extends Tab implements ViewObserver {
         stepButton = new Button("Execute Current Register");
         stepButton.setOnAction( e-> gameController.executeStep());
 
-        buttonPanel = new VBox(finishButton, executeButton, stepButton);
+        buttonPanel = new VBox(finishButton, executeButton, stepButton, startGameButton);
         buttonPanel.setAlignment(Pos.CENTER_LEFT);
         buttonPanel.setSpacing(3.0);
         // programPane.add(buttonPanel, Player.NO_REGISTERS, 0); done in update now
@@ -120,11 +123,11 @@ public class PlayerView extends Tab implements ViewObserver {
         playerInteractionPanel.setAlignment(Pos.CENTER_LEFT);
         playerInteractionPanel.setSpacing(3.0);
 
-        StartGame = new VBox(startGameButton);
-        StartGame.setAlignment(Pos.CENTER_LEFT);
-        StartGame.setSpacing(3.0);
-        startGameButton = new Button("Start Game");
-        startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
+        //StartGame = new VBox(startGameButton);
+        //StartGame.setAlignment(Pos.CENTER_LEFT);
+        //StartGame.setSpacing(3.0);
+        //startGameButton = new Button("Start Game");
+        //startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
 
         cardsLabel = new Label("Command Cards");
         cardsPane = new GridPane();
@@ -194,24 +197,28 @@ public class PlayerView extends Tab implements ViewObserver {
                         //     from the initialization phase to the programming phase somehow!
                         executeButton.setDisable(false);
                         stepButton.setDisable(true);
+                        startGameButton.setDisable(false);
                         break;
 
                     case PROGRAMMING:
                         finishButton.setDisable(false);
                         executeButton.setDisable(true);
                         stepButton.setDisable(true);
+                        startGameButton.setDisable(true);
                         break;
 
                     case ACTIVATION:
                         finishButton.setDisable(true);
                         executeButton.setDisable(false);
                         stepButton.setDisable(false);
+                        startGameButton.setDisable(true);
                         break;
 
                     default:
                         finishButton.setDisable(true);
                         executeButton.setDisable(true);
                         stepButton.setDisable(true);
+                        startGameButton.setDisable(true);
                 }
 
 
