@@ -116,6 +116,10 @@ public class Board extends Subject {
                     Energy energy = new Energy(this,x,y);
                     spaces[x][y] = energy;
                 }
+                if(x == 7 && y == 7){
+                    StartField field = new StartField(this,x,y);
+                    spaces[x][y] = field;
+                }
 
             }
         }
