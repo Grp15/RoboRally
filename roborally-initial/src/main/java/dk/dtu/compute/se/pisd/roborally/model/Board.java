@@ -61,6 +61,8 @@ public class Board extends Subject {
 
     private int counter;
 
+    private int numbOfCheckPoints = 0;
+
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
         this.width = width;
@@ -79,7 +81,15 @@ public class Board extends Subject {
                 if(x== 4 && y == 1){
                     CheckPoint checkPoint = new CheckPoint(this,x,y,1);
                     spaces[x][y] = checkPoint;
+                    numbOfCheckPoints++;
                 }
+
+                if(x== 5 && y == 1){
+                    CheckPoint checkPoint = new CheckPoint(this,x,y,2);
+                    spaces[x][y] = checkPoint;
+                    numbOfCheckPoints++;
+                }
+
                 if(x == 5 && y == 3 ){
                     Gears gear = new Gears(this,x,y, Direction.Right);
                     spaces[x][y] = gear;
@@ -277,4 +287,7 @@ public class Board extends Subject {
         }
     }
 
+    public int getNumbOfCheckPoints() {
+        return numbOfCheckPoints;
+    }
 }
