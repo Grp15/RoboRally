@@ -110,14 +110,6 @@ public class AppController implements Observer {
         String selectedBoard = resultBoard.get();
 
 
-        if (selectedBoard == "Highway") {
-            boardname = "highway";
-        } else if (selectedBoard == "Parking lot") {
-            boardname = "parkinglot";
-        } else {
-            boardname = "defaultboard";
-        }
-
         int numOfBoards = GAME_BOARDS.size();
         for (int i = 0; i < numOfBoards; i++) {
             if (selectedBoard == GAME_BOARDS.get(i)) {
