@@ -88,6 +88,7 @@ public class GameController {
             if(board.getPlayer(i).getSpace() == null){
                 return;
             }
+            board.setCounter(0);
             startProgrammingPhase();
 
         }
