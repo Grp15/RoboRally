@@ -285,7 +285,7 @@ public class Board extends Subject {
         //      which is counted up every time a player makes a move; the
         //      status line should show the current player and the number
         //      of the current move!
-        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter() +" " + ", Number of checkpoints= " + getCurrentPlayer().getCheckPoints();
+        return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter() +" " + ", Number of checkpoints = " + getCurrentPlayer().getCheckPoints() + ", "  + "Number of Energy cubes = " + getCurrentPlayer().getEnergyCubes();
     }
 
     // TODO Assignment V1: add a counter along with a getter and a setter, so the
