@@ -83,6 +83,16 @@ public class GameController {
         board.setCurrentPlayer(board.getPlayer(0));
     }
 
+    public void startGame(){
+        for (int i = 0; i < board.getPlayersNumber(); i++){
+            if(board.getPlayer(i).getSpace() == null){
+                return;
+            }
+            startProgrammingPhase();
+
+        }
+    }
+
     /**
      * This method initiates the programmingphase
      *

@@ -103,7 +103,7 @@ public class PlayerView extends Tab implements ViewObserver {
 
         // XXX the respective GameController operations are not yet implemented
         startGameButton = new Button("Start Game");
-        startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
+        startGameButton.setOnAction(e -> gameController.startGame());
 
         finishButton = new Button("Finish Programming");
         finishButton.setOnAction( e -> gameController.finishProgrammingPhase());
