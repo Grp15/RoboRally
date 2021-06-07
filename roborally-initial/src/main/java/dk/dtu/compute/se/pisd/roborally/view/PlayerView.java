@@ -60,6 +60,10 @@ public class PlayerView extends Tab implements ViewObserver {
 
     private VBox playerInteractionPanel;
 
+    private VBox StartGame;
+
+    private Button startGameButton;
+
     private GameController gameController;
 
     /**
@@ -115,6 +119,12 @@ public class PlayerView extends Tab implements ViewObserver {
         playerInteractionPanel = new VBox();
         playerInteractionPanel.setAlignment(Pos.CENTER_LEFT);
         playerInteractionPanel.setSpacing(3.0);
+
+        StartGame = new VBox(startGameButton);
+        StartGame.setAlignment(Pos.CENTER_LEFT);
+        StartGame.setSpacing(3.0);
+        startGameButton = new Button("Start Game");
+        startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
 
         cardsLabel = new Label("Command Cards");
         cardsPane = new GridPane();

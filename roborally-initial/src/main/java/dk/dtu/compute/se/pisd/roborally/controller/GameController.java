@@ -75,8 +75,12 @@ public class GameController {
         }
     }
 
+
+
     public void startInitiliasationPhase(){
-        board.setPhase(Phase.STARTUP);
+        board.setPhase(Phase.INITIALISATION);
+
+        board.setCurrentPlayer(board.getPlayer(0));
     }
 
     /**

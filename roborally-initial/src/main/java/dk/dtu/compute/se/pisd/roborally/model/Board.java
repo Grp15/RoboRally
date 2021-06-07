@@ -120,6 +120,10 @@ public class Board extends Subject {
                     StartField field = new StartField(this,x,y);
                     spaces[x][y] = field;
                 }
+                if(x == 7 && y == 0){
+                    StartField field = new StartField(this,x,y);
+                    spaces[x][y] = field;
+                }
 
             }
         }
