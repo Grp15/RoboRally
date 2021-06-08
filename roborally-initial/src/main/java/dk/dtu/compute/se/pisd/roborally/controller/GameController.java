@@ -75,8 +75,23 @@ public class GameController {
         }
     }
 
+
+
     public void startInitiliasationPhase(){
-        board.setPhase(Phase.STARTUP);
+        board.setPhase(Phase.INITIALISATION);
+
+        board.setCurrentPlayer(board.getPlayer(0));
+    }
+
+    public void startGame(){
+        for (int i = 0; i < board.getPlayersNumber(); i++){
+            if(board.getPlayer(i).getSpace() == null){
+                return;
+            }
+            board.setCounter(0);
+            startProgrammingPhase();
+
+        }
     }
 
     /**

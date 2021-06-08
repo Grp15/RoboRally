@@ -60,6 +60,10 @@ public class PlayerView extends Tab implements ViewObserver {
 
     private VBox playerInteractionPanel;
 
+    private VBox startgamePanel;
+
+    private Button startGameButton;
+
     private GameController gameController;
 
     /**
@@ -98,6 +102,9 @@ public class PlayerView extends Tab implements ViewObserver {
         //      refactored.
 
         // XXX the respective GameController operations are not yet implemented
+        startGameButton = new Button("Start Game");
+        startGameButton.setOnAction(e -> gameController.startGame());
+
         finishButton = new Button("Finish Programming");
         finishButton.setOnAction( e -> gameController.finishProgrammingPhase());
 
@@ -115,6 +122,13 @@ public class PlayerView extends Tab implements ViewObserver {
         playerInteractionPanel = new VBox();
         playerInteractionPanel.setAlignment(Pos.CENTER_LEFT);
         playerInteractionPanel.setSpacing(3.0);
+
+        startgamePanel = new VBox(startGameButton);
+        startgamePanel.setAlignment(Pos.CENTER_LEFT);
+        startgamePanel.setSpacing(3.0);
+
+        startGameButton = new Button("Start Game");
+        startGameButton.setOnAction(e -> gameController.startProgrammingPhase());
 
         cardsLabel = new Label("Command Cards");
         cardsPane = new GridPane();
@@ -172,9 +186,20 @@ public class PlayerView extends Tab implements ViewObserver {
                 }
             }
 
-            if (player.board.getPhase() != Phase.PLAYER_INTERACTION) {
+
+            if (player.board.getPhase() == Phase.INITIALISATION){
+                if(!programPane.getChildren().contains(startgamePanel)){
+                    programPane.getChildren().remove(playerInteractionPanel);
+                    programPane.getChildren().remove(buttonPanel);
+                    programPane.add(startgamePanel, Player.NO_REGISTERS,0);
+                }
+            }
+
+
+            else if (player.board.getPhase() != Phase.PLAYER_INTERACTION) {
                 if (!programPane.getChildren().contains(buttonPanel)) {
                     programPane.getChildren().remove(playerInteractionPanel);
+                    programPane.getChildren().remove(startgamePanel);
                     programPane.add(buttonPanel, Player.NO_REGISTERS, 0);
                 }
                 switch (player.board.getPhase()) {
@@ -184,30 +209,35 @@ public class PlayerView extends Tab implements ViewObserver {
                         //     from the initialization phase to the programming phase somehow!
                         executeButton.setDisable(false);
                         stepButton.setDisable(true);
+                        startGameButton.setDisable(false);
                         break;
 
                     case PROGRAMMING:
                         finishButton.setDisable(false);
                         executeButton.setDisable(true);
                         stepButton.setDisable(true);
+                        startGameButton.setDisable(true);
                         break;
 
                     case ACTIVATION:
                         finishButton.setDisable(true);
                         executeButton.setDisable(false);
                         stepButton.setDisable(false);
+                        startGameButton.setDisable(true);
                         break;
 
                     default:
                         finishButton.setDisable(true);
                         executeButton.setDisable(true);
                         stepButton.setDisable(true);
+                        startGameButton.setDisable(true);
                 }
 
 
             } else {
                 if (!programPane.getChildren().contains(playerInteractionPanel)) {
                     programPane.getChildren().remove(buttonPanel);
+                    programPane.getChildren().remove(startgamePanel);
                     programPane.add(playerInteractionPanel, Player.NO_REGISTERS, 0);
                 }
                 playerInteractionPanel.getChildren().clear();
@@ -233,6 +263,8 @@ public class PlayerView extends Tab implements ViewObserver {
 
 
             }
+
+
         }
     }
 
