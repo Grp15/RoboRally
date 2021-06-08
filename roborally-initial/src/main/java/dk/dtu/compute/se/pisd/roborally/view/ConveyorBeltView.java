@@ -14,11 +14,11 @@ public class ConveyorBeltView {
 
 
     public static void drawConveyorBelt(SpaceView spaceView, Space space){
-        ConveyorBelt tempSpace = (ConveyorBelt) space;
+        //ConveyorBelt tempSpace =  space;
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        Heading h = tempSpace.getHeading();
+        Heading h = ((ConveyorBelt)space).getHeading();
 
         switch (h) {
             case NORTH:
