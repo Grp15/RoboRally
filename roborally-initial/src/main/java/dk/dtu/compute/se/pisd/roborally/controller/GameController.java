@@ -273,13 +273,6 @@ public class GameController {
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
                     }
-                    //Hvis 1 kort i register er AGAIN Kort springes det over
-                    if(card.getCommand() == Command.AGAIN && step == 0){
-                        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
-
-                    }else executeCommand(currentPlayer, command);
-
-
                 }
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
