@@ -285,6 +285,9 @@ public class AppController implements Observer {
 
             if (!result.isPresent() || result.get() != ButtonType.OK) {
                 return; // return without exiting the application
+            } else {
+                Platform.exit();
+                System.exit(0);
             }
         }
 
@@ -292,6 +295,7 @@ public class AppController implements Observer {
         // after the option to save the game
         if (gameController == null || stopGame()) {
             Platform.exit();
+            System.exit(0);
         }
     }
 
