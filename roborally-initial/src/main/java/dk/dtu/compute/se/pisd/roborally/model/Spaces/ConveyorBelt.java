@@ -12,6 +12,7 @@ public class ConveyorBelt extends Space {
 
     public ConveyorBelt(Board board, int x, int y, Heading heading) {
         super(board, x, y);
+        super.setType(SpaceType.CONVEYORBELT);
         this.heading = heading;
     }
 

@@ -140,7 +140,7 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
 
             updatePlayer(); // if the player if updated here, the other elements are placed over the player
-
+/*
             for (Space fieldAction: space.getActions()) {
 
 
@@ -163,6 +163,14 @@ public class SpaceView extends StackPane implements ViewObserver {
                 if (fieldAction instanceof CheckPoint) {
                     CheckpointView.drawCheckpoint(this, fieldAction);
                 }
+            }
+
+ */
+            if (this.space instanceof ConveyorBelt) {
+                ConveyorBeltView.drawConveyorBelt(this, space);
+            }
+            if (this.space instanceof StartField) {
+                StartFieldView.drawStartField(this, space);
             }
         }
     }
