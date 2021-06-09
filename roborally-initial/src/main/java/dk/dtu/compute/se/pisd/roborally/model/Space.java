@@ -45,6 +45,9 @@ public class Space extends Subject {
     private Player player;
     private SpaceType type = SpaceType.SPACE;
 
+    public void setType(SpaceType type) {
+        this.type = type;
+    }
 
     private List<Heading> walls = new ArrayList<>();
     private List<Space> actions = new ArrayList<>();
