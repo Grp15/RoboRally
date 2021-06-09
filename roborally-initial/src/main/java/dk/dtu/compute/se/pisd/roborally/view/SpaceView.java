@@ -98,7 +98,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
 
-
+/*
     public void drawSpaces () {
 
         //For heading set wall
@@ -128,6 +128,8 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
 
+ */
+
     /**
      * If player is not on space, then update player
      * @param subject
@@ -143,23 +145,23 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
                 if (fieldAction instanceof PriorityAntenna) {
-                    PriorityAntennaView.drawPriorityAntenna(this, space);
+                    PriorityAntennaView.drawPriorityAntenna(this, fieldAction);
                 }
 
                 if (fieldAction instanceof Gears) {
-                    GearView.drawGear(this, space);
+                    GearView.drawGear(this, fieldAction);
                 }
                 if (fieldAction instanceof ConveyorBelt) {
                     ConveyorBeltView.drawConveyorBelt(this, fieldAction);
                 }
                 if (fieldAction instanceof StartField) {
-                    StartFieldView.drawStartField(this, space);
+                    StartFieldView.drawStartField(this, fieldAction);
                 }
                 if (fieldAction instanceof Energy) {
-                    EnergySpaceView.drawEnergySpace(this, space);
+                    EnergySpaceView.drawEnergySpace(this, fieldAction);
                 }
                 if (fieldAction instanceof CheckPoint) {
-                    CheckpointView.drawCheckpoint(this, space);
+                    CheckpointView.drawCheckpoint(this, fieldAction);
                 }
             }
         }
