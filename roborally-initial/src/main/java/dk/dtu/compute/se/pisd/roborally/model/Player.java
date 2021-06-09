@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ public class Player extends Subject {
     private int EnergyCubes = 5;
     private int CheckPoints = 0;
     private int DistancetoAntenna = 0;
+    private Space StartSpace;
 
     private Space space;
     private Heading heading = SOUTH;
@@ -236,6 +238,14 @@ public class Player extends Subject {
 
     public void RebootRobot(){
         CheckPoints = 0;
+    }
+
+    public void setStartSpace(Space space){
+        StartSpace = space;
+    }
+
+    public Space getStartSpace(){
+        return StartSpace;
     }
 
 

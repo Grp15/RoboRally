@@ -84,14 +84,18 @@ public class GameController {
     }
 
     public void startGame(){
-        for (int i = 0; i < board.getPlayersNumber(); i++){
-            if(board.getPlayer(i).getSpace() == null){
+        for (int i = 0; i < board.getPlayersNumber(); i++) {
+            if (board.getPlayer(i).getSpace() == null) {
                 return;
             }
-            board.setCounter(0);
-            startProgrammingPhase();
-
         }
+        for (int i = 0; i < board.getPlayersNumber(); i++){
+            board.getPlayer(i).setStartSpace(board.getPlayer(i).getSpace());
+        }
+                board.setCounter(0);
+
+                startProgrammingPhase();
+
     }
 
     /**
