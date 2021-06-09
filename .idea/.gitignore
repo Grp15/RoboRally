@@ -121,4 +121,4 @@ target/*
 
 # Maven
 log/
-~/roborally-initial/target
+roborally-initial/target
