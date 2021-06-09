@@ -76,6 +76,10 @@ public class Board extends Subject {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
 
+                if(x == 1 && y == 1){
+                    space.setWalls(Heading.SOUTH);
+                }
+
                 if(x == 4 && y == 2){
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
@@ -120,6 +124,7 @@ public class Board extends Subject {
                     StartField field = new StartField(this,x,y);
                     spaces[x][y] = field;
                 }
+
 
             }
         }
