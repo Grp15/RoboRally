@@ -10,7 +10,6 @@ import javafx.scene.paint.Color;
 
 public class StartFieldView{
     public static void drawStartField(SpaceView spaceView, Space space){
-        StartField tempSpace = (StartField) space;
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
