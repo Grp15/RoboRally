@@ -28,6 +28,7 @@ import com.google.gson.stream.JsonWriter;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
@@ -58,7 +59,7 @@ public class LoadBoard {
 
 		// In simple cases, we can create a Gson object with new Gson():
         GsonBuilder simpleBuilder = new GsonBuilder().
-                registerTypeAdapter(Space.class, new Adapter<Space>());
+                registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>());
         Gson gson = simpleBuilder.create();
 
 		Board result;
@@ -75,8 +76,19 @@ public class LoadBoard {
 			    if (space != null) {
                     space.getActions().addAll(spaceTemplate.actions);
                     space.getWalls().addAll(spaceTemplate.walls);
+
+                    for(FieldAction action : space.getActions()){
+                        if(action instanceof PriorityAntenna){
+                            result.setPriorityAntenna(space);
+                        }
+                        if(action instanceof CheckPoint){
+                            result.setNumbOfCheckPoints(result.getNumberOfCheckpoints() + 1);
+                        }
+                    }
+
                 }
             }
+
 			reader.close();
 			return result;
 		} catch (IOException e1) {
@@ -129,7 +141,7 @@ public class LoadBoard {
         // a builder (here, we want to configure the JSON serialisation with
         // a pretty printer):
         GsonBuilder simpleBuilder = new GsonBuilder().
-                registerTypeAdapter(Space.class, new Adapter<Space>()).
+                registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>()).
                 setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 

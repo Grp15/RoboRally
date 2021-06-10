@@ -21,13 +21,10 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
 import dk.dtu.compute.se.pisd.roborally.model.*;
-//import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
-import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
@@ -205,7 +202,9 @@ public class GameController {
         for(int i = 0; i < board.getPlayersNumber(); i++ ){
             printOrder[i] = board.getPlayer(i);
         }
-        findPlayerOrder(printOrder,3,3);
+
+        Space space = board.getPriorityAntenna();
+        findPlayerOrder(printOrder, space.x , space.y);
         board.setPlayerOrder(printOrder);
 
 
@@ -299,6 +298,8 @@ public class GameController {
                     board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
                 } else {
 
+
+
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
@@ -306,12 +307,41 @@ public class GameController {
                         GameController gameController = this;
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
-                        space.doAction(player,space,gameController);
+
+                        for(FieldAction action : space.getActions()) {
+
+                            if (action instanceof ConveyorBelt) {
+                                action.doAction(gameController, space, player);
+                            }
+                            else if (action instanceof Gears){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof CheckPoint){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof Energy){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof StartField){
+                                action.doAction(gameController, space,player);
+                            }
+                            else if (action instanceof PriorityAntenna){
+                                action.doAction(gameController, space,player);
+                            }
+
+
+                        }
+
+
+
+
+                        //space.doAction(player,space,gameController);
 
 
 
 
                     }
+
 
                     step++;
                     if (step < Player.NO_REGISTERS) {
@@ -535,22 +565,10 @@ public class GameController {
      * @param currentPlayer current player
      */
     public void moveForward(@NotNull Player currentPlayer){
-        //Player currentPlayer = board.getCurrentPlayer();
-
-        Heading heading;
-
-        if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            ConveyorBelt belt =(ConveyorBelt) currentPlayer.getSpace().getActions().get(0);
-            heading = belt.getHeading();
-        }
-        else {
-            heading = currentPlayer.getHeading();
-        }
-
+        Heading heading = currentPlayer.getHeading();
         Space currentSpace = currentPlayer.getSpace();
         Space newSpace = board.getNeighbour(currentSpace, heading);
 
-        //currentPlayer.setSpace(newSpace);
         try {
             moveToSpace(currentPlayer, newSpace, heading);
         } catch (ImpossibleMoveException e) {

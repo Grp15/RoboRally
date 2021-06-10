@@ -23,8 +23,9 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
-import dk.dtu.compute.se.pisd.roborally.model.*;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
@@ -109,48 +110,39 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
 
             updatePlayer(); // if the player if updated here, the other elements are placed over the player
-
-            for (Space fieldAction: space.getActions()) {
-
-
-                if (fieldAction instanceof PriorityAntenna) {
-                    PriorityAntennaView.drawPriorityAntenna(this, fieldAction);
-                    this.space.setType(SpaceType.PRIORITY_ANTENNA);
+/*
+            for(FieldAction fieldAction: space.getWalls()){
+                if (fieldAction instanceof Wall) {
+                    WallView.drawWall(this,space);
                 }
-
-                if (fieldAction instanceof Gears) {
-                    GearView.drawGear(this, fieldAction);
-                    this.space.setType(SpaceType.GEARS);
-                }
-                if (fieldAction instanceof ConveyorBelt) {
-                    ConveyorBeltView.drawConveyorBelt(this, fieldAction);
-                    this.space.setType(SpaceType.CONVEYORBELT);
-                }
-                if (fieldAction instanceof StartField) {
-                    StartFieldView.drawStartField(this, fieldAction);
-                    this.space.setType(SpaceType.STARTFIELD);
-                }
-                if (fieldAction instanceof Energy) {
-                    EnergySpaceView.drawEnergySpace(this, fieldAction);
-                    this.space.setType(SpaceType.ENERGY);
-
-                }
-                if (fieldAction instanceof CheckPoint) {
-                    CheckpointView.drawCheckpoint(this, fieldAction);
-                    this.space.setType(SpaceType.CHECKPOINT);
-
-                }
-            }
-
- /*
-            if (this.space instanceof ConveyorBelt) {
-                ConveyorBeltView.drawConveyorBelt(this, space);
-            }
-            if (this.space instanceof StartField) {
-                StartFieldView.drawStartField(this, space);
-            }
-
   */
+
+            for (FieldAction fieldAction: space.getActions()) {
+
+                if (fieldAction instanceof ConveyorBelt) {
+                    ConveyorBeltView.drawConveyorBelt(this, space);
+                }
+                if (fieldAction instanceof Gears) {
+                    GearView.drawGear(this, space);
+                }
+
+                if (fieldAction instanceof CheckPoint) {
+                    CheckpointView.drawCheckpoint(this, space);
+                }
+
+                if (fieldAction instanceof Energy) {
+                    EnergyView.drawEnergy(this, space);
+                }
+
+                if (fieldAction instanceof StartField) {
+                    StartFieldView.drawStartField(this, space);
+
+                }
+                if (fieldAction instanceof PriorityAntenna) {
+                    PriorityAntennaView.drawPriorityAntenna(this, space);
+                }
+
+            }
         }
     }
 

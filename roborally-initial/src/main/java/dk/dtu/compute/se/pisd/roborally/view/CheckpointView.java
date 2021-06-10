@@ -1,20 +1,28 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
+import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.CheckPoint;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class CheckpointView {
+
     public static void drawCheckpoint(SpaceView spaceView, Space space) {
-        CheckPoint tempSpace = (CheckPoint) space;
+        int d = 0;
+
+        for (FieldAction c : space.getActions()){
+            if (c instanceof CheckPoint){
+                d =((CheckPoint) c).getNumber();
+            }
+        }
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        int d = tempSpace.getNumber();
-
+    if (d != 0) {
         switch (d) {
             case 1:
                 Image checkpoint1 = new Image("/pictures/checkpoint1.png", 75, 75, false, false);
@@ -41,9 +49,9 @@ public class CheckpointView {
                 gc.drawImage(checkpoint5, 0, 0);
                 break;
 
-        }
+                }
         canvas.setOpacity(0.6);
         spaceView.getChildren().add(canvas);
-
+        }
     }
 }

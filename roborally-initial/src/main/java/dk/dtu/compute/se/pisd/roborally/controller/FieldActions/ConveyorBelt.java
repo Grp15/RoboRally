@@ -19,8 +19,10 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
-package dk.dtu.compute.se.pisd.roborally.controller;
+package dk.dtu.compute.se.pisd.roborally.controller.FieldActions;
 
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -45,10 +47,25 @@ public class ConveyorBelt extends FieldAction {
         this.heading = heading;
     }
 
-    @Override
-    public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        // TODO needs to be implemented
-        return false;
+    public boolean doAction(GameController gameController, @NotNull Space space, @NotNull Player player) {
+
+        Board board = gameController.board;
+
+        Space target = board.getNeighbour(space, heading);
+
+        try {
+            gameController.moveToSpace(player,target, heading);
+        } catch (GameController.ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
+
+
+        return true; // True hvis det lykkedes, false hvis ikke.
     }
+
+
+
+
+
 
 }

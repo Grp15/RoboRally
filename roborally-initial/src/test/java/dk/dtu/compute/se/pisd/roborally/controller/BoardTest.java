@@ -1,5 +1,7 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -21,7 +23,7 @@ public class BoardTest {
      */
     @BeforeEach
     void setUp() {
-        Board board = new Board(TEST_WIDTH, TEST_HEIGHT);
+        Board board = LoadBoard.loadBoard("defaultboard");
         gameController = new GameController(board);
         for (int i = 0; i < 6; i++) {
             Player player = new Player(board, null,"Player " + i);
@@ -45,11 +47,35 @@ public class BoardTest {
      */
 
     @Test
+    void TestTest(){
+        Board board = gameController.board;
+
+        Space space = board.getSpace(3,4);
+        Player player = board.getCurrentPlayer();
+
+        System.out.println(player.getCheckPoints());
+
+        System.out.println(space.getActions());
+
+        for (FieldAction c : space.getActions()){
+            if (c instanceof CheckPoint){
+
+            }
+        }
+
+
+
+    }
+
+
+
+    @Test
     void ConveyorBeltFromSouth(){
 
         // Står på (4,2)
 
         Board board = gameController.board;
+        //ConveyorBelt space = new ConveyorBelt(board, 4,2, Heading.NORTH);
 
         Player player = board.getCurrentPlayer();
         player.setHeading(Heading.NORTH);
@@ -58,9 +84,9 @@ public class BoardTest {
         gameController.moveCurrentPlayerToSpace(board.getSpace(4, 3));
         gameController.moveForward(player);
 
-        Space space = board.getSpace(4,2);
+        System.out.println(player.getSpace().getSpaceType());
 
-        space.doAction(space.getPlayer(),space,gameController);
+        board.getSpace(4,2).doAction(player, board.getSpace(4,2), gameController);
 
         Assertions.assertEquals(board.getSpace(4, 1), player.getSpace());
     }
