@@ -23,18 +23,13 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
-import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
-import jdk.internal.dynalink.linker.ConversionComparator;
 import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Field;
 
 /**
  * Handles the view of different spaces on the board and colors and sizes hereof

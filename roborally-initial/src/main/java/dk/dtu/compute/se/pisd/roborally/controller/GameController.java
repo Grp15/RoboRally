@@ -21,13 +21,10 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
-import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 //import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
-import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
@@ -308,7 +305,23 @@ public class GameController {
                         GameController gameController = this;
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
-                        space.doAction(player,space,gameController);
+
+                        for(FieldAction action : space.getActions()) {
+
+                            if (action instanceof ConveyorBelt) {
+                                action.doAction(gameController, space, player);
+                            }
+                            else if (action instanceof Gears){
+                                action.doAction(gameController,space,player);
+                            }
+
+
+                        }
+
+
+
+
+                        //space.doAction(player,space,gameController);
 
 
 
