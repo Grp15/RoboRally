@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
@@ -23,7 +24,7 @@ public class BoardTest {
      */
     @BeforeEach
     void setUp() {
-        Board board = new Board(TEST_WIDTH, TEST_HEIGHT);
+        Board board = LoadBoard.loadBoard("defaultboad");
         gameController = new GameController(board);
         for (int i = 0; i < 6; i++) {
             Player player = new Player(board, null,"Player " + i);
@@ -52,7 +53,7 @@ public class BoardTest {
         // Står på (4,2)
 
         Board board = gameController.board;
-        ConveyorBelt space = new ConveyorBelt(board, 4,2, Heading.NORTH);
+        //ConveyorBelt space = new ConveyorBelt(board, 4,2, Heading.NORTH);
 
         Player player = board.getCurrentPlayer();
         player.setHeading(Heading.NORTH);
@@ -60,6 +61,8 @@ public class BoardTest {
         // ----- If player is below -----
         gameController.moveCurrentPlayerToSpace(board.getSpace(4, 3));
         gameController.moveForward(player);
+
+        System.out.println(player.getSpace().getSpaceType());
 
         board.getSpace(4,2).doAction(player, board.getSpace(4,2), gameController);
 

@@ -178,6 +178,21 @@
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt",
           "INSTANCE": {
+            "heading": "NORTH"
+          }
+        }
+      ],
+      "x": 4,
+      "y": 2
+    },
+    {
+      "walls": [
+        "SOUTH"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt",
+          "INSTANCE": {
             "heading": "WEST"
           }
         }
