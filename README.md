@@ -1,7 +1,6 @@
 # RoboRally
 
- * @author Hildibjørg Didriksen,
- * @author Marcus Rappenborg Kjærsgaard
+ * @author Hildibjørg Didriksen
  * @author Frederik Lundsbjerg
  * @author Troels Christoffersen
  * @author Gülsen
