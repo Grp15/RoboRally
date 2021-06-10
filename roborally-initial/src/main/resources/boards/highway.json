@@ -74,21 +74,6 @@
           }
         }
       ],
-      "x": 9,
-      "y": 0
-    },
-    {
-      "walls": [
-        "SOUTH"
-      ],
-      "actions": [
-        {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField",
-          "INSTANCE": {
-
-          }
-        }
-      ],
       "x": 0,
       "y": 1
     },
@@ -104,8 +89,8 @@
           }
         }
       ],
-      "x": 1,
-      "y": 0
+      "x": 2,
+      "y": 1
     }
   ,
     {
