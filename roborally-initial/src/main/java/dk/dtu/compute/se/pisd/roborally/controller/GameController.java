@@ -299,6 +299,8 @@ public class GameController {
                     board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
                 } else {
 
+
+
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
@@ -312,6 +314,7 @@ public class GameController {
 
 
                     }
+
 
                     step++;
                     if (step < Player.NO_REGISTERS) {
@@ -535,22 +538,10 @@ public class GameController {
      * @param currentPlayer current player
      */
     public void moveForward(@NotNull Player currentPlayer){
-        //Player currentPlayer = board.getCurrentPlayer();
-
-        Heading heading;
-
-        if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            ConveyorBelt belt =(ConveyorBelt) currentPlayer.getSpace().getActions().get(0);
-            heading = belt.getHeading();
-        }
-        else {
-            heading = currentPlayer.getHeading();
-        }
-
+        Heading heading = currentPlayer.getHeading();
         Space currentSpace = currentPlayer.getSpace();
         Space newSpace = board.getNeighbour(currentSpace, heading);
 
-        //currentPlayer.setSpace(newSpace);
         try {
             moveToSpace(currentPlayer, newSpace, heading);
         } catch (ImpossibleMoveException e) {
