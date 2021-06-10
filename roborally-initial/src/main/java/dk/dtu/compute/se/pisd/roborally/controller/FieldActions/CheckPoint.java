@@ -28,7 +28,7 @@ public class CheckPoint extends FieldAction {
             System.out.println("Yo u progressed");
         }
 
-        if(player.getCheckPoints() == board.getNumbOfCheckPoints()){
+        if(player.getCheckPoints() == board.getNumberOfCheckpoints()){
             System.out.println("You win!!");
         }
 

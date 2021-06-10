@@ -367,7 +367,9 @@ public class Board extends Subject {
         this.playerOrder = playerOrder;
     }
 
-    public int getNumbOfCheckPoints() {
+    public int getNumberOfCheckpoints() {
         return numbOfCheckPoints;
     }
+
+    public void setNumbOfCheckPoints(int i){ numbOfCheckPoints = i;}
 }

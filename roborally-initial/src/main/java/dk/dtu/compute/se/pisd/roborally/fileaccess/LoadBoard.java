@@ -33,7 +33,6 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.io.*;
-import java.text.Format;
 
 /**
  * ...
@@ -81,6 +80,9 @@ public class LoadBoard {
                     for(FieldAction action : space.getActions()){
                         if(action instanceof PriorityAntenna){
                             result.setPriorityAntenna(space);
+                        }
+                        if(action instanceof CheckPoint){
+                            result.setNumbOfCheckPoints(result.getNumberOfCheckpoints() + 1);
                         }
                     }
 
