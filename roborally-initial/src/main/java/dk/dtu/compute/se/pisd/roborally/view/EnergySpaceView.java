@@ -13,13 +13,13 @@ public class EnergySpaceView {
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         if(tempSpace.getEnergy() > 0){
-            Image energyImage = new Image("/EnergySpace_w_cube.png", 75, 75, false, false);
+            Image energyImage = new Image("/pictures/EnergySpace_w_cube.png", 75, 75, false, false);
             gc.drawImage(energyImage, 0, 0);
             canvas.setOpacity(0.6);
             spaceView.getChildren().add(canvas);
         }
         else {
-            Image energyImage = new Image("/EnergySpace.png", 75, 75, false, false);
+            Image energyImage = new Image("/pictures/EnergySpace.png", 75, 75, false, false);
             gc.drawImage(energyImage, 0, 0);
             canvas.setOpacity(0.6);
             spaceView.getChildren().add(canvas);
