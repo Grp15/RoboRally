@@ -113,7 +113,7 @@ public class GameController {
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
 
-        System.out.println(board.getPlayer(0).getSpace().getSpaceType());
+        //System.out.println(board.getPlayer(0).getSpace().getSpaceType());
 
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
