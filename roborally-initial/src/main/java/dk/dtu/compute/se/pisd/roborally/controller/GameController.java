@@ -544,6 +544,7 @@ public class GameController {
 
         Heading heading;
 
+
         if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
             ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
             heading = belt.getHeading();
@@ -557,7 +558,8 @@ public class GameController {
 
         //currentPlayer.setSpace(newSpace);
         try {
-            moveToSpace(currentPlayer, newSpace, heading);
+                moveToSpace(currentPlayer, newSpace, heading);
+
         } catch (ImpossibleMoveException e) {
             e.printStackTrace();
         }
@@ -591,6 +593,8 @@ public class GameController {
 
     public void Back_Up(@NotNull Player player){
         Heading heading = player.getHeading().next().next();
+
+
         Space space = player.getSpace().board.getNeighbour(player.getSpace(),heading);
 
 
@@ -694,6 +698,7 @@ public class GameController {
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
             Player otherPlayer = board.getPlayer(i);
+
 /*
             if(otherPlayer != player){
 

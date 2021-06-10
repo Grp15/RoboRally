@@ -238,6 +238,8 @@ public class Player extends Subject {
 
     public void RebootRobot(){
         CheckPoints = 0;
+        setSpace(StartSpace);
+
     }
 
     public void setStartSpace(Space space){
