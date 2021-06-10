@@ -78,6 +78,7 @@ public class LoadBoard {
                     space.getWalls().addAll(spaceTemplate.walls);
                 }
             }
+
 			reader.close();
 			return result;
 		} catch (IOException e1) {

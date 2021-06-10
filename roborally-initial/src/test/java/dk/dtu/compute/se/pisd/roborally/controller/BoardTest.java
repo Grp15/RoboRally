@@ -23,7 +23,7 @@ public class BoardTest {
      */
     @BeforeEach
     void setUp() {
-        Board board = LoadBoard.loadBoard("defaultboad");
+        Board board = LoadBoard.loadBoard("defaultboard");
         gameController = new GameController(board);
         for (int i = 0; i < 6; i++) {
             Player player = new Player(board, null,"Player " + i);
@@ -55,6 +55,8 @@ public class BoardTest {
         System.out.println(board.getSpace(1,1).getActions());
 
         System.out.println(board.getSpace(1,1).getWalls());
+
+        System.out.println(board.getSpace(0,2).getActions());
     }
 
 

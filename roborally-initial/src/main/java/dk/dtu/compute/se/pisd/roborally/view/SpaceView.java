@@ -115,6 +115,12 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
 
             updatePlayer(); // if the player if updated here, the other elements are placed over the player
+/*
+            for(FieldAction fieldAction: space.getWalls()){
+                if (fieldAction instanceof Wall) {
+                    WallView.drawWall(this,space);
+                }
+  */
 
             for (FieldAction fieldAction: space.getActions()) {
 
