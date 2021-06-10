@@ -8,14 +8,17 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 public class Energy extends FieldAction {
 
-    private int Energy = 1;
+    private int energy = 1;
 
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
     public int getEnergy() {
-        return Energy;
+        return energy;
     }
 
     public void resetEnergy() {
-        Energy = 0;
+        energy = 0;
     }
 
     @Override
@@ -27,7 +30,7 @@ public class Energy extends FieldAction {
         if(step == player.NO_REGISTERS){
             player.addEnergy();
         }
-        if(Energy > 0){
+        if(energy > 0){
             player.addEnergy();
             resetEnergy();
         }
