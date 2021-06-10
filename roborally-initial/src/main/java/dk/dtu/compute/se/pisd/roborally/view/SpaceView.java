@@ -23,7 +23,7 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
-import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.layout.StackPane;
@@ -122,6 +122,13 @@ public class SpaceView extends StackPane implements ViewObserver {
                 if (fieldAction instanceof ConveyorBelt) {
                     ConveyorBeltView.drawConveyorBelt(this, space);
                 }
+                if (fieldAction instanceof Gears) {
+                    GearView.drawGear(this, space);
+                }
+
+                if (fieldAction instanceof CheckPoint) {
+                    CheckpointView.drawCheckpoint(this, space);
+                }
 
                 /*
                 if (fieldAction instanceof PriorityAntenna) {
@@ -129,14 +136,11 @@ public class SpaceView extends StackPane implements ViewObserver {
                     this.space.setType(SpaceType.PRIORITY_ANTENNA);
                 }
 
-                if (fieldAction instanceof Gears) {
-                    GearView.drawGear(this, fieldAction);
-                    this.space.setType(SpaceType.GEARS);
-                }
                 if (fieldAction instanceof StartField) {
-                    StartFieldView.drawStartField(this, fieldAction);
-                    this.space.setType(SpaceType.STARTFIELD);
+                    StartFieldView.drawCheckpoint(this, fieldAction);
+
                 }
+
                 if (fieldAction instanceof Energy) {
                     EnergySpaceView.drawEnergySpace(this, fieldAction);
                     this.space.setType(SpaceType.ENERGY);

@@ -1,11 +1,11 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,13 +50,21 @@ public class BoardTest {
     void TestTest(){
         Board board = gameController.board;
 
-        //board.getSpace(1,1).getWalls().add(Heading.SOUTH);
+        Space space = board.getSpace(3,4);
+        Player player = board.getCurrentPlayer();
 
-        System.out.println(board.getSpace(1,1).getActions());
+        System.out.println(player.getCheckPoints());
 
-        System.out.println(board.getSpace(1,1).getWalls());
+        System.out.println(space.getActions());
 
-        System.out.println(board.getSpace(0,2).getActions());
+        for (FieldAction c : space.getActions()){
+            if (c instanceof CheckPoint){
+
+            }
+        }
+
+
+
     }
 
 

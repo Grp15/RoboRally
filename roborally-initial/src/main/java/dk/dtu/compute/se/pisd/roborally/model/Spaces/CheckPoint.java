@@ -6,6 +6,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
+/*
 public class CheckPoint extends Space {
     private SpaceType CHECKPOINT;
     private int Number; // Skal have et nr. op til det max antal der kan være hvilket er 5
@@ -22,7 +23,7 @@ public class CheckPoint extends Space {
      * @param gameController
      * @return
      */
-
+/*
     //TODO: Test this method
 
     public boolean doAction(@NotNull Player player, @NotNull Space space, GameController gameController) {
@@ -44,3 +45,5 @@ public class CheckPoint extends Space {
         return Number;
     }
 }
+
+ */

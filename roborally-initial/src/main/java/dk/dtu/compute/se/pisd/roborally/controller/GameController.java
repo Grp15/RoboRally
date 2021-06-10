@@ -23,7 +23,6 @@ package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
 import dk.dtu.compute.se.pisd.roborally.model.*;
-//import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -312,6 +311,9 @@ public class GameController {
                                 action.doAction(gameController, space, player);
                             }
                             else if (action instanceof Gears){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof CheckPoint){
                                 action.doAction(gameController,space,player);
                             }
 

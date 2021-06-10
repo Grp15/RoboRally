@@ -1,6 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.PriorityAntenna;
+import dk.dtu.compute.se.pisd.roborally.model.PriorityAntenna;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

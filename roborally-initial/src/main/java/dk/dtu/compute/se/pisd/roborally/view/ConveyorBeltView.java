@@ -12,6 +12,7 @@ public class ConveyorBeltView {
 
 
     public static void drawConveyorBelt(SpaceView spaceView, Space space){
+
         Heading h = null;
         for (FieldAction c : space.getActions()){
             if (c instanceof ConveyorBelt){
