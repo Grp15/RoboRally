@@ -28,10 +28,12 @@ public class ConveyorBelt extends Space {
 
 
     public boolean doAction(@NotNull Player player, @NotNull Space space, GameController gameController) {
-        // TODO Skub en spiller i den retning ConveyorBelt peger. (Husk at spillet eksekvere 1 register pr. spiller ad gangen)
+
+
+        Space target = board.getNeighbour(space, heading);
 
         try {
-            gameController.moveToSpace(player,space, heading);
+            gameController.moveToSpace(player,target, heading);
         } catch (GameController.ImpossibleMoveException e) {
             e.printStackTrace();
         }

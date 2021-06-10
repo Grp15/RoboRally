@@ -4,6 +4,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,6 +52,7 @@ public class BoardTest {
         // Står på (4,2)
 
         Board board = gameController.board;
+        ConveyorBelt space = new ConveyorBelt(board, 4,2, Heading.NORTH);
 
         Player player = board.getCurrentPlayer();
         player.setHeading(Heading.NORTH);
@@ -58,9 +61,7 @@ public class BoardTest {
         gameController.moveCurrentPlayerToSpace(board.getSpace(4, 3));
         gameController.moveForward(player);
 
-        Space space = board.getSpace(4,2);
-
-        space.doAction(space.getPlayer(),space,gameController);
+        board.getSpace(4,2).doAction(player, board.getSpace(4,2), gameController);
 
         Assertions.assertEquals(board.getSpace(4, 1), player.getSpace());
     }
