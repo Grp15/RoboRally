@@ -1,5 +1,5 @@
 package dk.dtu.compute.se.pisd.roborally.model.Spaces;
 
 public enum SpaceType {
-    CONVEYORBELT, SPACE, GEARS, STARTFIELD, PRIORITY_ANTENNA,CHECKPOINT
+    CONVEYORBELT, SPACE, GEARS, STARTFIELD, PRIORITY_ANTENNA,CHECKPOINT, ENERGY
 }

@@ -168,10 +168,11 @@ public class AppController implements Observer {
              **/
 
 
+            // TODO: Eventually a new game has to start with initilasationphase and not programmingphase
             gameController.startInitiliasationPhase();
             // XXX: V2
             // board.setCurrentPlayer(board.getPlayer(0));
-            gameController.startProgrammingPhase();
+            //gameController.startProgrammingPhase();
 
             roboRally.createBoardView(gameController);
 

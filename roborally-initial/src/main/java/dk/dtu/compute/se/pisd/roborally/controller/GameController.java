@@ -48,12 +48,14 @@ public class GameController {
         this.board = board;
     }
 
+
     /**
      * This is just some dummy controller operation to make a simple move to see something
      * happening on the board. This method should eventually be deleted!
      *
      * @param space the space to which the current player should move
      */
+
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
 
         Player current = board.getCurrentPlayer();
@@ -68,6 +70,7 @@ public class GameController {
         }
     }
 
+
     public void movePlayerToSpace(@NotNull Space space, Player player) {
 
         if (player == null) {
@@ -75,8 +78,23 @@ public class GameController {
         }
     }
 
+
+
     public void startInitiliasationPhase(){
-        board.setPhase(Phase.STARTUP);
+        board.setPhase(Phase.INITIALISATION);
+
+        board.setCurrentPlayer(board.getPlayer(0));
+    }
+
+    public void startGame(){
+        for (int i = 0; i < board.getPlayersNumber(); i++){
+            if(board.getPlayer(i).getSpace() == null){
+                return;
+            }
+            board.setCounter(0);
+            startProgrammingPhase();
+
+        }
     }
 
     /**
@@ -94,6 +112,8 @@ public class GameController {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
+
+        //System.out.println(board.getPlayer(0).getSpace().getSpaceType());
 
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
@@ -520,7 +540,7 @@ public class GameController {
         Heading heading;
 
         if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
+            ConveyorBelt belt =(ConveyorBelt) currentPlayer.getSpace().getActions().get(0);
             heading = belt.getHeading();
         }
         else {

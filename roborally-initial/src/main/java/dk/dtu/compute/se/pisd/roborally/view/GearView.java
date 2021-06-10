@@ -21,12 +21,12 @@ public class GearView {
 
         switch (d) {
             case Right:
-                Image gearImageRight = new Image("/GearImageRight.png", 75, 75, false, false);
+                Image gearImageRight = new Image("/pictures/GearImageRight.png", 75, 75, false, false);
                 gc.drawImage(gearImageRight, 0, 0);
                 break;
 
             case Left:
-                Image gearImageLeft = new Image("/GearImageLeft.png", 75, 75, false, false);
+                Image gearImageLeft = new Image("/pictures/GearImageLeft.png", 75, 75, false, false);
                 gc.drawImage(gearImageLeft, 0, 0);
                 break;
         }

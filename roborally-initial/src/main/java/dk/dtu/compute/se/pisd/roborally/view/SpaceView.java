@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import javafx.scene.layout.StackPane;
@@ -65,7 +66,6 @@ public class SpaceView extends StackPane implements ViewObserver {
             this.setStyle("-fx-background-color: black;");
         }
 
-
         // updatePlayer();
 
         // This space view should listen to changes of the space
@@ -97,6 +97,8 @@ public class SpaceView extends StackPane implements ViewObserver {
         }
     }
 
+
+
     /**
      * If player is not on space, then update player
      * @param subject
@@ -108,25 +110,47 @@ public class SpaceView extends StackPane implements ViewObserver {
 
             updatePlayer(); // if the player if updated here, the other elements are placed over the player
 
-            if(this.space instanceof PriorityAntenna){
-                PriorityAntennaView.drawPriorityAntenna(this,space);
+            for (Space fieldAction: space.getActions()) {
+
+
+                if (fieldAction instanceof PriorityAntenna) {
+                    PriorityAntennaView.drawPriorityAntenna(this, fieldAction);
+                    this.space.setType(SpaceType.PRIORITY_ANTENNA);
+                }
+
+                if (fieldAction instanceof Gears) {
+                    GearView.drawGear(this, fieldAction);
+                    this.space.setType(SpaceType.GEARS);
+                }
+                if (fieldAction instanceof ConveyorBelt) {
+                    ConveyorBeltView.drawConveyorBelt(this, fieldAction);
+                    this.space.setType(SpaceType.CONVEYORBELT);
+                }
+                if (fieldAction instanceof StartField) {
+                    StartFieldView.drawStartField(this, fieldAction);
+                    this.space.setType(SpaceType.STARTFIELD);
+                }
+                if (fieldAction instanceof Energy) {
+                    EnergySpaceView.drawEnergySpace(this, fieldAction);
+                    this.space.setType(SpaceType.ENERGY);
+
+                }
+                if (fieldAction instanceof CheckPoint) {
+                    CheckpointView.drawCheckpoint(this, fieldAction);
+                    this.space.setType(SpaceType.CHECKPOINT);
+
+                }
             }
 
-            if (this.space instanceof Gears) {
-                GearView.drawGear(this, space);
-            }
+ /*
             if (this.space instanceof ConveyorBelt) {
                 ConveyorBeltView.drawConveyorBelt(this, space);
             }
             if (this.space instanceof StartField) {
                 StartFieldView.drawStartField(this, space);
             }
-            if (this.space instanceof Energy) {
-                EnergySpaceView.drawEnergySpace(this, space);
-            }
-            if(this.space instanceof CheckPoint){
-                CheckpointView.drawCheckpoint(this,space);
-            }
+
+  */
         }
     }
 

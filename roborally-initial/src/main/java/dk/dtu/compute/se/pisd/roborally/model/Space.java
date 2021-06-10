@@ -45,9 +45,12 @@ public class Space extends Subject {
     private Player player;
     private SpaceType type = SpaceType.SPACE;
 
+    public void setType(SpaceType type) {
+        this.type = type;
+    }
 
     private List<Heading> walls = new ArrayList<>();
-    private List<FieldAction> actions = new ArrayList<>();
+    private List<Space> actions = new ArrayList<>();
 
 
     public Space(Board board, int x, int y) {
@@ -85,7 +88,7 @@ public class Space extends Subject {
         return walls;
     }
 
-    public List<FieldAction> getActions() {
+    public List<Space> getActions() {
         return actions;
     }
 

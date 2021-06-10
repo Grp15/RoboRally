@@ -58,7 +58,7 @@ public class LoadBoard {
 
 		// In simple cases, we can create a Gson object with new Gson():
         GsonBuilder simpleBuilder = new GsonBuilder().
-                registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>());
+                registerTypeAdapter(Space.class, new Adapter<Space>());
         Gson gson = simpleBuilder.create();
 
 		Board result;
@@ -129,7 +129,7 @@ public class LoadBoard {
         // a builder (here, we want to configure the JSON serialisation with
         // a pretty printer):
         GsonBuilder simpleBuilder = new GsonBuilder().
-                registerTypeAdapter(FieldAction.class, new Adapter<FieldAction>()).
+                registerTypeAdapter(Space.class, new Adapter<Space>()).
                 setPrettyPrinting();
         Gson gson = simpleBuilder.create();
 
