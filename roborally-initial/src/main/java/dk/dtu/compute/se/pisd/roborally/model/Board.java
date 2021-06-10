@@ -46,7 +46,7 @@ public class Board extends Subject {
 
     public final int height;
 
-    public final String boardName;
+    public String boardName;
 
     private Integer gameId;
 
@@ -362,6 +362,13 @@ public class Board extends Subject {
         return 0;
     }
 
+    public String getBoardName() {
+        return boardName;
+    }
+
+    public void setBoardName(String boardName) {
+        this.boardName = boardName;
+    }
 
     public void setPlayerOrder(Player[] playerOrder){
         this.playerOrder = playerOrder;
