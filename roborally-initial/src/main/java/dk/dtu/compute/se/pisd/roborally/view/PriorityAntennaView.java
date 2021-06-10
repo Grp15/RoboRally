@@ -12,7 +12,7 @@ public class PriorityAntennaView {
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        Image antennaImage = new Image("/antenna.png", 75, 75, false, false);
+        Image antennaImage = new Image("/pictures/antenna.png", 75, 75, false, false);
         gc.drawImage(antennaImage, 0, 0);
         canvas.setOpacity(0.6);
         spaceView.getChildren().add(canvas);
