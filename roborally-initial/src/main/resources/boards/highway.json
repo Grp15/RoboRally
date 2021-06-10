@@ -507,5 +507,20 @@
       "x": 5,
       "y": 5
     }
+  ,
+    {
+      "walls": [
+        "SOUTH"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.PriorityAntenna",
+          "INSTANCE": {
+          }
+        }
+      ],
+      "x": 5,
+      "y": 3
+    }
   ]
 }
