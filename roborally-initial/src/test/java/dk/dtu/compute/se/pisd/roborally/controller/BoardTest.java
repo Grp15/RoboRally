@@ -5,7 +5,6 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -46,6 +45,19 @@ public class BoardTest {
     /**
      * Tests if the conveyorbelt pushes the player upwards
      */
+
+    @Test
+    void TestTest(){
+        Board board = gameController.board;
+
+        //board.getSpace(1,1).getWalls().add(Heading.SOUTH);
+
+        System.out.println(board.getSpace(1,1).getActions());
+
+        System.out.println(board.getSpace(1,1).getWalls());
+    }
+
+
 
     @Test
     void ConveyorBeltFromSouth(){

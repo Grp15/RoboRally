@@ -25,6 +25,7 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -45,10 +46,24 @@ public class ConveyorBelt extends FieldAction {
         this.heading = heading;
     }
 
-    @Override
-    public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
-        // TODO needs to be implemented
-        return false;
+    public boolean doAction(GameController gameController,@NotNull Space space, @NotNull Player player) {
+
+        Board board = gameController.board;
+
+        Space target = board.getNeighbour(space, heading);
+
+        try {
+            gameController.moveToSpace(player,target, heading);
+        } catch (GameController.ImpossibleMoveException e) {
+            e.printStackTrace();
+        }
+
+
+        return true; // True hvis det lykkedes, false hvis ikke.
     }
+
+
+
+
 
 }

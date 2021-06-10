@@ -41,7 +41,8 @@ public abstract class FieldAction {
      * @param space the space this action should be executed for
      * @return whether the action was successfully executed
      */
-    public abstract boolean doAction(GameController gameController, Space space);
+    public abstract boolean doAction(GameController gameController, Space space, Player player);
+
 
 
 }

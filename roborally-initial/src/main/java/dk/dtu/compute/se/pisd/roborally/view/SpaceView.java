@@ -23,12 +23,18 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
-import dk.dtu.compute.se.pisd.roborally.model.*;
+import dk.dtu.compute.se.pisd.roborally.controller.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.model.Heading;
+import dk.dtu.compute.se.pisd.roborally.model.Player;
+import dk.dtu.compute.se.pisd.roborally.model.Space;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import jdk.internal.dynalink.linker.ConversionComparator;
 import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.Field;
 
 /**
  * Handles the view of different spaces on the board and colors and sizes hereof
@@ -110,9 +116,13 @@ public class SpaceView extends StackPane implements ViewObserver {
 
             updatePlayer(); // if the player if updated here, the other elements are placed over the player
 
-            for (Space fieldAction: space.getActions()) {
+            for (FieldAction fieldAction: space.getActions()) {
 
+                if (fieldAction instanceof ConveyorBelt) {
+                    ConveyorBeltView.drawConveyorBelt(this, space);
+                }
 
+                /*
                 if (fieldAction instanceof PriorityAntenna) {
                     PriorityAntennaView.drawPriorityAntenna(this, fieldAction);
                     this.space.setType(SpaceType.PRIORITY_ANTENNA);
@@ -121,10 +131,6 @@ public class SpaceView extends StackPane implements ViewObserver {
                 if (fieldAction instanceof Gears) {
                     GearView.drawGear(this, fieldAction);
                     this.space.setType(SpaceType.GEARS);
-                }
-                if (fieldAction instanceof ConveyorBelt) {
-                    ConveyorBeltView.drawConveyorBelt(this, fieldAction);
-                    this.space.setType(SpaceType.CONVEYORBELT);
                 }
                 if (fieldAction instanceof StartField) {
                     StartFieldView.drawStartField(this, fieldAction);
@@ -140,6 +146,8 @@ public class SpaceView extends StackPane implements ViewObserver {
                     this.space.setType(SpaceType.CHECKPOINT);
 
                 }
+
+                 */
             }
 
  /*

@@ -19,6 +19,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
+
+
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import com.sun.xml.internal.bind.v2.TODO;
@@ -32,6 +34,8 @@ import org.jetbrains.annotations.NotNull;
  * @author Ekkart Kindler, ekki@dtu.dk
  *
  */
+
+/*
 public class ConveyorBeltController extends FieldAction {
 
     ConveyorBelt conveyorBelt;
@@ -50,8 +54,14 @@ public class ConveyorBeltController extends FieldAction {
         conveyorBelt.setHeading(heading);
     }
 
+
+
     @Override
-    public boolean doAction(@NotNull GameController gameController, @NotNull Space space) {
+    public boolean doAction(@NotNull GameController gameController, @NotNull Space space, Player palyer) {
+
+
+ */
+
         // TODO Skub en spiller i den retning ConveyorBelt peger. (Husk at spillet eksekvere 1 register pr. spiller ad gangen)
         // TODO Step by step
         /**
@@ -67,9 +77,12 @@ public class ConveyorBeltController extends FieldAction {
 
         //gameController.moveToSpace(player, space);// TODO : Der skal findes det rigtige space at smide spilleren hen, kaster også en exception
 
+/*
         System.out.println("Du har kaldt doAction"); //TODO: Fjern igen
 
         return true; // True hvis det lykkedes, false hvis ikke.
     }
 
 }
+
+ */

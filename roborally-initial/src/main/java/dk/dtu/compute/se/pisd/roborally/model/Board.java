@@ -132,6 +132,9 @@ public class Board extends Subject {
 
 
             }
+
+
+
         }
         this.stepMode = false;
     }
