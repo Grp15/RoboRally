@@ -77,6 +77,13 @@ public class LoadBoard {
 			    if (space != null) {
                     space.getActions().addAll(spaceTemplate.actions);
                     space.getWalls().addAll(spaceTemplate.walls);
+
+                    for(FieldAction action : space.getActions()){
+                        if(action instanceof PriorityAntenna){
+                            result.setPriorityAntenna(space);
+                        }
+                    }
+
                 }
             }
 

@@ -130,40 +130,19 @@ public class SpaceView extends StackPane implements ViewObserver {
                     CheckpointView.drawCheckpoint(this, space);
                 }
 
-                /*
-                if (fieldAction instanceof PriorityAntenna) {
-                    PriorityAntennaView.drawPriorityAntenna(this, fieldAction);
-                    this.space.setType(SpaceType.PRIORITY_ANTENNA);
+                if (fieldAction instanceof Energy) {
+                    EnergyView.drawEnergy(this, space);
                 }
 
                 if (fieldAction instanceof StartField) {
-                    StartFieldView.drawCheckpoint(this, fieldAction);
+                    StartFieldView.drawStartField(this, space);
 
                 }
-
-                if (fieldAction instanceof Energy) {
-                    EnergySpaceView.drawEnergySpace(this, fieldAction);
-                    this.space.setType(SpaceType.ENERGY);
-
-                }
-                if (fieldAction instanceof CheckPoint) {
-                    CheckpointView.drawCheckpoint(this, fieldAction);
-                    this.space.setType(SpaceType.CHECKPOINT);
-
+                if (fieldAction instanceof PriorityAntenna) {
+                    PriorityAntennaView.drawPriorityAntenna(this, space);
                 }
 
-                 */
             }
-
- /*
-            if (this.space instanceof ConveyorBelt) {
-                ConveyorBeltView.drawConveyorBelt(this, space);
-            }
-            if (this.space instanceof StartField) {
-                StartFieldView.drawStartField(this, space);
-            }
-
-  */
         }
     }
 

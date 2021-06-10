@@ -161,6 +161,22 @@
       ],
       "actions": [
         {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "INSTANCE": {
+
+          }
+        }
+      ],
+      "x": 3,
+      "y" : 7
+    }
+  ,
+    {
+      "walls": [
+        "SOUTH"
+      ],
+      "actions": [
+        {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint",
           "INSTANCE": {
             "number": 1
@@ -185,6 +201,54 @@
       ],
       "x": 3,
       "y" : 5
+    }
+  ,
+    {
+      "walls": [
+        "SOUTH"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Energy",
+          "INSTANCE": {
+            "energy": 1
+          }
+        }
+      ],
+      "x": 3,
+      "y" : 6
+    }
+  ,
+    {
+      "walls": [
+        "SOUTH"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "INSTANCE": {
+
+          }
+        }
+      ],
+      "x": 3,
+      "y" : 7
+    }
+  ,
+    {
+      "walls": [
+        "SOUTH"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna",
+          "INSTANCE": {
+          "posX" : 4, "posY": 0
+          }
+        }
+      ],
+      "x": 4,
+      "y" : 0
     }
   ]
 }

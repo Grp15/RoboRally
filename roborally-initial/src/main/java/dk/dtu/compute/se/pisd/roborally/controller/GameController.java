@@ -22,6 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -201,7 +202,9 @@ public class GameController {
         for(int i = 0; i < board.getPlayersNumber(); i++ ){
             printOrder[i] = board.getPlayer(i);
         }
-        findPlayerOrder(printOrder,3,3);
+
+        Space space = board.getPriorityAntenna();
+        findPlayerOrder(printOrder, space.x , space.y);
         board.setPlayerOrder(printOrder);
 
 
@@ -315,6 +318,15 @@ public class GameController {
                             }
                             else if (action instanceof CheckPoint){
                                 action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof Energy){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof StartField){
+                                action.doAction(gameController, space,player);
+                            }
+                            else if (action instanceof PriorityAntenna){
+                                action.doAction(gameController, space,player);
                             }
 
 

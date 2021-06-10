@@ -6,8 +6,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class EnergySpaceView {
-    public static void drawEnergySpace(SpaceView spaceView, Space space){
+public class EnergyView {
+    public static void drawEnergy(SpaceView spaceView, Space space){
         int energy = 0;
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);

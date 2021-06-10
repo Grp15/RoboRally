@@ -22,6 +22,9 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -64,6 +67,7 @@ public class Board extends Subject {
     private int counter;
 
     private int numbOfCheckPoints = 0;
+    public Space priorityAntenna;
 
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
@@ -75,6 +79,16 @@ public class Board extends Subject {
             for(int y = 0; y < height; y++) {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
+
+
+                for(FieldAction action : space.getActions()){
+                    if(action instanceof PriorityAntenna){
+                        priorityAntenna = space;
+                        System.out.println("YO");
+                    }
+                }
+
+
 
                 /*
                 if(x == 4 && y == 2){
@@ -164,6 +178,14 @@ public class Board extends Subject {
         } else {
             return null;
         }
+    }
+
+    public Space getPriorityAntenna(){
+        return priorityAntenna;
+    }
+
+    public void setPriorityAntenna(Space space){
+        priorityAntenna = space;
     }
 
     public int getPlayersNumber() {
