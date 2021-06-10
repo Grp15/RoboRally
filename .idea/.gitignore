@@ -123,4 +123,4 @@ target/*
 log/
 roborally-initial/target/
 /target/
-*/target/**
+*/target
