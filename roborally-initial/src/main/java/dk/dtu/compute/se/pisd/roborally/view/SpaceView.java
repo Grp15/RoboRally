@@ -98,37 +98,6 @@ public class SpaceView extends StackPane implements ViewObserver {
     }
 
 
-/*
-    public void drawSpaces () {
-
-        //For heading set wall
-
-        for (Space fieldAction: space.getActions()) {
-
-
-            if (fieldAction instanceof PriorityAntenna) {
-                PriorityAntennaView.drawPriorityAntenna(this, space);
-            }
-
-            if (fieldAction instanceof Gears) {
-                GearView.drawGear(this, space);
-            }
-            if (fieldAction instanceof ConveyorBelt) {
-                ConveyorBeltView.drawConveyorBelt(this, fieldAction);
-            }
-            if (fieldAction instanceof StartField) {
-                StartFieldView.drawStartField(this, space);
-            }
-            if (fieldAction instanceof Energy) {
-                EnergySpaceView.drawEnergySpace(this, space);
-            }
-            if (fieldAction instanceof CheckPoint) {
-                CheckpointView.drawCheckpoint(this, space);
-            }
-        }
-    }
-
- */
 
     /**
      * If player is not on space, then update player
