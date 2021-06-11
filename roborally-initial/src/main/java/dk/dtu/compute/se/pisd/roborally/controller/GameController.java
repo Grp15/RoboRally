@@ -827,9 +827,8 @@ public class GameController {
      *  @author S194612
      */
 
-    //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
-    // over i deres register.
-    // Måske det skal implementeres i StartProgrammingPhase();
+    //TODO: Ikke den rigtige metode
+
 
     public  void Spam(@NotNull Player player) {
 
