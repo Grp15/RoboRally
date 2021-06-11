@@ -8,7 +8,7 @@
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
           "INSTANCE": {
 
           }
@@ -23,7 +23,7 @@
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
           "INSTANCE": {
 
           }
@@ -38,7 +38,7 @@
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
           "INSTANCE": {
 
           }
@@ -53,7 +53,7 @@
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
           "INSTANCE": {
 
           }
@@ -68,7 +68,7 @@
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
           "INSTANCE": {
 
           }
@@ -83,7 +83,7 @@
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.model.Spaces.StartField",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
           "INSTANCE": {
 
           }
