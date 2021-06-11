@@ -22,6 +22,8 @@
 package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Phase;
@@ -117,6 +119,7 @@ public class BoardView extends VBox implements ViewObserver {
 
         /**
          * Method which handles view upon certain events by player
+         *
          * @param event
          */
         @Override
@@ -129,12 +132,15 @@ public class BoardView extends VBox implements ViewObserver {
 
                 if (board == gameController.board) {
 
-                    //if( space.getSpaceType() == SpaceType.STARTFIELD && board.getPhase() == Phase.INITIALISATION){
+                    for(FieldAction action : space.getActions())
+                    if (action instanceof StartField) {
+                        if (board.getPhase() == Phase.INITIALISATION) {
                             gameController.moveCurrentPlayerToSpace(space);
                             event.consume();
                         }
+                    }
                 }
-
             }
         }
+    }
 }
