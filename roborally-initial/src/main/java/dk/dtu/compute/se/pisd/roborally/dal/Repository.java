@@ -80,10 +80,6 @@ class Repository implements IRepository {
 	 * @param game instance of Board class
 	 * @return true or false whether action succeeded or not
 	 *
-	 * @author S164539
-	 * @author S154780
-	 * @author S205472
-	 * @author S194612
 	 */
 	@Override
 	public boolean createGameInDB(Board game) {
@@ -177,10 +173,6 @@ class Repository implements IRepository {
 	 * @param game instance of Board class
 	 * @return true or false depending on the outcome of the actions success
 	 *
-	 * @author S164539
-	 * @author S154780
-	 * @author S205472
-	 * @author S194612
 	 */
 	@Override
 	public boolean updateGameInDB(Board game) {
@@ -237,10 +229,6 @@ class Repository implements IRepository {
 	 * @param id
 	 * @return game id of game session to be loaded
 	 *
-	 * @author S164539
-	 * @author S154780
-	 * @author S205472
-	 * @author S194612
 	 */
 	@Override
 	public Board loadGameFromDB(int id) {
@@ -305,10 +293,6 @@ class Repository implements IRepository {
 	 *
 	 * @return list of games saved in database
 	 *
-	 * @author S164539
-	 * @author S154780
-	 * @author S205472
-	 * @author S194612
 	 */
 	@Override
 	public List<GameInDB> getGames() {
