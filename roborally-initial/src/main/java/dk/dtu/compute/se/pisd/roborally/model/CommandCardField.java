@@ -24,7 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 
 /**
- * ...
+ * Command Card Field class for implementation of command card fields
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *

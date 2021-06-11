@@ -22,7 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
+ * Model for handling the four possible headings, which are North, South, West, East.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
