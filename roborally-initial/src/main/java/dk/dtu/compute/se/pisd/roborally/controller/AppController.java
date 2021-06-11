@@ -184,7 +184,7 @@ public class AppController implements Observer {
      */
 
     public void saveGame() {
-        Board board = gameController.getBoard();
+        Board board = gameController.board;
 
 
         RepositoryAccess rep = new RepositoryAccess();

@@ -22,12 +22,12 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
 //import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
-import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
@@ -100,7 +100,6 @@ public class GameController {
                 startProgrammingPhase();
 
         }
-    }
 
     /**
      * This method initiates the programmingphase
@@ -291,24 +290,22 @@ public class GameController {
             if (step >= 0 && step < Player.NO_REGISTERS) {
                 CommandCard card = currentPlayer.getProgramField(step).getCard();
                 //int nextPlayerNumber = board.getPlayerNumber(currentPlayer) + 1; // Gammel metode som virker
-                int nextPlayerNumber = board.getPlayerNumberfromPlayerOrder(currentPlayer) +1;
+                int nextPlayerNumber = board.getPlayerNumberfromPlayerOrder(currentPlayer) + 1;
                 if (card != null) {
                     Command command = card.getCommand();
-                    if(command.isInteractive()){
+                    if (command.isInteractive()) {
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
-                    }
-                    else executeCommand(currentPlayer, command);}
-
-
+                    } else executeCommand(currentPlayer, command);
                 }
+
+
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
                 } else {
 
 
-
-                    for(int i = 0; i < board.getPlayersNumber(); i++) {
+                    for (int i = 0; i < board.getPlayersNumber(); i++) {
 
                         if (currentPlayer == null) return;
 
@@ -316,36 +313,27 @@ public class GameController {
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
 
-                        for(FieldAction action : space.getActions()) {
+                        for (FieldAction action : space.getActions()) {
 
                             if (action instanceof ConveyorBelt) {
                                 action.doAction(gameController, space, player);
-                            }
-                            else if (action instanceof Gears){
-                                action.doAction(gameController,space,player);
-                            }
-                            else if (action instanceof CheckPoint){
-                                action.doAction(gameController,space,player);
-                            }
-                            else if (action instanceof Energy){
-                                action.doAction(gameController,space,player);
-                            }
-                            else if (action instanceof StartField){
-                                action.doAction(gameController, space,player);
-                            }
-                            else if (action instanceof PriorityAntenna){
-                                action.doAction(gameController, space,player);
+                            } else if (action instanceof Gears) {
+                                action.doAction(gameController, space, player);
+                            } else if (action instanceof CheckPoint) {
+                                action.doAction(gameController, space, player);
+                            } else if (action instanceof Energy) {
+                                action.doAction(gameController, space, player);
+                            } else if (action instanceof StartField) {
+                                action.doAction(gameController, space, player);
+                            } else if (action instanceof PriorityAntenna) {
+                                action.doAction(gameController, space, player);
                             }
 
 
                         }
 
 
-
-
                         //space.doAction(player,space,gameController);
-
-
 
 
                     }
@@ -355,7 +343,7 @@ public class GameController {
                     if (step < Player.NO_REGISTERS) {
                         makeProgramFieldsVisible(step);
                         board.setStep(step);
-                       // board.setCurrentPlayer(board.getPlayer(0)); // Gammel metode
+                        // board.setCurrentPlayer(board.getPlayer(0)); // Gammel metode
                         board.setCurrentPlayer(board.getPlayerfromPlayerOrder(0)); // Ny metode
                     } else {
                         startProgrammingPhase();
@@ -370,6 +358,7 @@ public class GameController {
             assert false;
         }
     }
+
 
     // XXX: V2
 
@@ -536,9 +525,7 @@ public class GameController {
 
         if (other != null){
             Space target = board.getNeighbour(space, heading);
-            if(target == player.getSpace()){
-                System.out.println("Du falder ud over banen");
-            }
+
             if (target != null) {
                 // XXX Note that there might be additional problems
                 // with infinite recursion here!
