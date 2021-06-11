@@ -413,8 +413,8 @@ public class Player extends Subject {
         return Damage;
     }
 
-    public void setDamage(int i ){
-        Damage = i;
+    public void addDamage(int i ){
+        Damage = Damage + i;
     }
 
 
