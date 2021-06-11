@@ -10,10 +10,8 @@ import javafx.scene.image.Image;
 /**
  * EnerguView is a class that loads the energy spaces png's from the picture resource folder and draws it on the spaces using canvas
  *
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 public class EnergyView {
 
@@ -22,10 +20,8 @@ public class EnergyView {
      *
      * @param spaceView
      * @param space
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public static void drawEnergy(SpaceView spaceView, Space space){
         int energy = 0;

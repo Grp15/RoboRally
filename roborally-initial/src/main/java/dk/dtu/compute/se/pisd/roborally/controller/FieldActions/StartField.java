@@ -8,10 +8,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 /**
  * Class which implements the Startfield on the game board
  *
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 
 public class StartField extends FieldAction {

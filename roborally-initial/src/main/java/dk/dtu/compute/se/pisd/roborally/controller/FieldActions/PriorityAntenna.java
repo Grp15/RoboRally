@@ -9,10 +9,8 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 /**
  * Class implements the Priority antennae on the board
  *
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 public class PriorityAntenna extends FieldAction {
 
@@ -22,10 +20,8 @@ int posX,posY;
      * get method for the position of the priority antenna
      * @return pos array containing posx og posY
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public int[] getPos() {
         int[] pos = {posX,posY};
@@ -37,10 +33,8 @@ int posX,posY;
      * @param posX which is the position on the x axis
      * @param posY which is the position on the y axis
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public void setPos(int posX, int posY) {
         this.posX = posX;
@@ -55,10 +49,8 @@ int posX,posY;
      * @param player
      * @return return true if action succeeded
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     @Override
     public boolean doAction(GameController gameController, Space space, Player player) {
