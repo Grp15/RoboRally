@@ -51,6 +51,7 @@ public class Player extends Subject {
     private int CheckPoints = 0;
     private int DistancetoAntenna = 0;
     private Space StartSpace;
+    private int Damage = 0;
 
     private Space space;
     private Heading heading = SOUTH;
@@ -406,6 +407,14 @@ public class Player extends Subject {
      */
     public Space getStartSpace(){
         return StartSpace;
+    }
+
+    public int getDamage(){
+        return Damage;
+    }
+
+    public void setDamage(int i ){
+        Damage = i;
     }
 
 
