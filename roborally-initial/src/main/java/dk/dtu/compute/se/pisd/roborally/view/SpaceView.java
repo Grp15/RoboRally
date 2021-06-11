@@ -36,10 +36,8 @@ import org.jetbrains.annotations.NotNull;
  * Handles the view of different spaces on the board and colors and sizes hereof
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  *
  */
 public class SpaceView extends StackPane implements ViewObserver {
@@ -50,7 +48,7 @@ public class SpaceView extends StackPane implements ViewObserver {
     public final Space space;
 
     /**
-     * Changes sizes and colors of spaces view
+     * Changes sizes and colours of spaces view
      *
      * @param space
      */
@@ -105,13 +103,11 @@ public class SpaceView extends StackPane implements ViewObserver {
 
 
     /**
-     * If player is not on space, then update player
+     * Updates the view of the board by inserting the given spaces and players
      *
      * @param subject
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
 
     @Override
