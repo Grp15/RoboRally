@@ -134,12 +134,8 @@ public class BoardView extends VBox implements ViewObserver {
                             gameController.moveCurrentPlayerToSpace(space);
                             event.consume();
                         }
-                    }
-
                 }
+
             }
         }
-
-    }
-
 }
