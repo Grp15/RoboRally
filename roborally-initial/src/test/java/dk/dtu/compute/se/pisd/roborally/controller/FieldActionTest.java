@@ -1,5 +1,6 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.Adapter;
@@ -164,7 +165,7 @@ public class FieldActionTest {
 
 
     @Test
-    void Gears(){
+    void GearsLeft(){
 
         Board board = gameController.board;
 
@@ -205,7 +206,7 @@ public class FieldActionTest {
 
 
     @Test
-    void GearsTest(){
+    void GearsRight(){
 
         Board board = gameController.board;
 
@@ -234,4 +235,57 @@ public class FieldActionTest {
 
         Assertions.assertEquals(previous, player.getHeading());
     }
+
+    /**
+     * Checks if the checkpoint FieldAction works
+     * @Author Hildibjørg
+     * @Author Troels
+     */
+
+    @Test
+    void Checkpoint(){
+        Board board = gameController.board;
+
+        //Picks a space and turns it to a Checkpoint1
+        Space space = board.getSpace(1, 1);
+        CheckPoint Checkpoint = new CheckPoint();
+        Checkpoint.setNumber(1);
+        space.getActions().add(Checkpoint);
+
+        //Pick a player and places him below Checkpoint
+        Player player = board.getPlayer(0);
+        player.setHeading(Heading.NORTH);
+        player.setSpace(board.getSpace(1,2));
+        Heading previous = player.getHeading().prev();
+
+        Assertions.assertEquals(0,player.getCheckPoints());
+
+        gameController.moveForward(player);
+
+        //Executes Checkpoint Action
+        for (FieldAction action : space.getActions()) {
+
+            if (action instanceof CheckPoint) {
+                action.doAction(gameController, space, player);
+
+            }
+        }
+
+        Assertions.assertEquals(1,player.getCheckPoints());
+
+    }
+
+    /**
+     * Checks if Player can land on checkpoint 2
+     * @Author Hildibjørg
+     * @Author Troels
+     */
+
+    /**
+     * Checks if the player has reached max checkpoint
+     * @Author Hildibjørg
+     * @Author Troels
+     */
+
+
 }
