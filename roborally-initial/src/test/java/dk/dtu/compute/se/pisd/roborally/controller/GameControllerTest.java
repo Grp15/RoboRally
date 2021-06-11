@@ -41,6 +41,16 @@ class GameControllerTest {
         gameController = null;
     }
 
+
+    @Test
+    void RightCard(){
+        Board board = gameController.board;
+
+        Command[] command = Command.values();
+
+        System.out.println(command[0]);
+    }
+
     /**
      * Tests a player moving to a specific space on the board
      */

@@ -22,9 +22,13 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * ...
+ * Model for creation of the four phases of the game state
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  *
  */
 public enum Phase {

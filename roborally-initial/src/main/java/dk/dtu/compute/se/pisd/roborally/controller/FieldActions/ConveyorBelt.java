@@ -30,23 +30,49 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * ...
+ * Conveyor belt class which extends FieldAction controller class
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 public class ConveyorBelt extends FieldAction {
 
     private Heading heading;
 
+    /**
+     * Get method for heading
+     * @return heading
+     *
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
+     */
     public Heading getHeading() {
         return heading;
     }
 
+    /**
+     * Set method for heading
+     * @param heading
+     *
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
+     */
     public void setHeading(Heading heading) {
         this.heading = heading;
     }
 
+    /**
+     * Method to perform actions with the players on the spaces in the gamecontroller
+     *
+     * @param gameController the gameController of the respective game
+     * @param space the space this action should be executed for
+     * @param player
+     * @return return true if action succeeded
+     *
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
+     */
     public boolean doAction(GameController gameController, @NotNull Space space, @NotNull Player player) {
 
         Board board = gameController.board;

@@ -8,10 +8,29 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 import java.util.ArrayList;
 
+/**
+ * Model class to handle Priority antenna
+ *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
+ */
+
 public class PriorityAntenna extends Space {
     private int[] PlayerDistances = new int[board.getPlayersNumber()];
 
-
+    /**
+     * The priority antenna is on the board with x and y coordinates
+     *
+     * @param board
+     * @param x
+     * @param y
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public PriorityAntenna(Board board, int x, int y) {
         super(board, x, y);
 

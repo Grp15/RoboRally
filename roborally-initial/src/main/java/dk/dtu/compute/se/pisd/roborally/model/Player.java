@@ -30,10 +30,13 @@ import java.util.Arrays;
 import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
 
 /**
- * ...
+ * Model class handling states of the players.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  */
 public class Player extends Subject {
 
@@ -48,12 +51,15 @@ public class Player extends Subject {
     private int CheckPoints = 0;
     private int DistancetoAntenna = 0;
     private Space StartSpace;
+    private int Damage = 0;
 
     private Space space;
     private Heading heading = SOUTH;
 
     private CommandCardField[] program; // Register
     private CommandCardField[] cards;  // Kort på hånd
+
+
 
     public Player(@NotNull Board board, String color, @NotNull String name) {
         this.board = board;
@@ -72,6 +78,8 @@ public class Player extends Subject {
             cards[i] = new CommandCardField(this);
         }
     }
+
+
 
     public String getName() {
         return name;
@@ -99,10 +107,28 @@ public class Player extends Subject {
         }
     }
 
+    /**
+     * Get method for antenna distance
+     *
+     * @return distance to priority antenna
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public int getDistancetoAntenna(){
         return DistancetoAntenna;
     }
 
+    /**
+     * Set method for distance to antenna
+     *
+     * @param i
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setDistancetoAntenna(int i){
         DistancetoAntenna = i;
     }
@@ -147,12 +173,44 @@ public class Player extends Subject {
     public CommandCardField getCardField(int i) {
         return cards[i];
     }
+
+    /**
+     * Sets the program field for the command card field in the program
+     *
+     * @param commandCardField
+     * @param i
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setProgramField(CommandCardField commandCardField, int i){
         program[i] = commandCardField;
     }
 
+
+    /**
+     * Gets the card field for the command card field in the cards
+     *
+     * @param commandCardField
+     * @param i
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setCardField(CommandCardField commandCardField, int i){
         cards[i] = commandCardField;}
+
+    /**
+     * Get all programming cards
+     *
+     * @return Programmingcards
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
 
     public String getCards() {
         String ProgrammingCards = "";
@@ -171,7 +229,15 @@ public class Player extends Subject {
         return ProgrammingCards;
 }
 
-
+    /**
+     * Get all cards placed in register
+     *
+     * @return cards placed in register
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public String getProgram() {
         String RegisterCards = "";
 
@@ -193,6 +259,16 @@ public class Player extends Subject {
         return RegisterCards;
     }
 
+    /**
+     * Splits cards in register into string array
+     *
+     * @param load_register
+     * @return register
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
 
     public String[] splitCardsRegisterString(String load_register) {
 
@@ -202,7 +278,16 @@ public class Player extends Subject {
     }
 
 
-    //Todo: Skal måske slettes
+    /**
+     * Splits cards in programming card section into string array
+     *
+     * @param load_program
+     * @return program
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
 
     public String[] splitCardsProgramString(String load_program) {
 
@@ -211,14 +296,43 @@ public class Player extends Subject {
         return program;
     }
 
+    /**
+     * Add 1 energy cube to the energy cubes
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
+
     public void addEnergy(){
         EnergyCubes = EnergyCubes + 1;
     }
 
+    /**
+     * Get method for energycubes
+     *
+     * @return EnergyCubes
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public int getEnergyCubes(){
         return EnergyCubes;
     }
 
+
+    /**
+     * Determines the distance to a player from a
+     *
+     * @param player
+     * @return distance
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public int CalculateDistanceToPlayer(Player player){
         int xDistance = Player.this.getSpace().x - player.getSpace().x;
         int yDistance = Player.this.getSpace().y - player.getSpace().y;
@@ -227,13 +341,41 @@ public class Player extends Subject {
         return distance;
     }
 
+    /**
+     * Get method for checkpoints
+     *
+     * @return checkpoints
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public int getCheckPoints(){
         return CheckPoints;
     }
 
+
+    /**
+     * Increment checkpoints one time
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
+
     public void progressCheckpoint(){
         CheckPoints++;
     }
+
+    /**
+     * Return robot to start space and set checkpoint counter back to 0
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
 
     public void RebootRobot(){
         CheckPoints = 0;
@@ -241,12 +383,38 @@ public class Player extends Subject {
 
     }
 
+    /**
+     * Set method for startspace to be space
+     *
+     * @param space
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setStartSpace(Space space){
         StartSpace = space;
     }
 
+    /**
+     * Get method for startspace
+     *
+     * @return StartSpace
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public Space getStartSpace(){
         return StartSpace;
+    }
+
+    public int getDamage(){
+        return Damage;
+    }
+
+    public void addDamage(int i ){
+        Damage = Damage + i;
     }
 
 

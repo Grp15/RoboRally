@@ -8,9 +8,24 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+
+/**
+ * ConveyorBeltView is a class that loads the conveyour belt png's from the picture resource folder and draws it on the spaces using canvas
+ *
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
+ */
+
 public class ConveyorBeltView {
 
-
+    /**
+     * Draw conveyour belts on spaces and loading the assets from resource folder
+     *
+     * @param spaceView
+     * @param space
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
+     */
     public static void drawConveyorBelt(SpaceView spaceView, Space space){
 
         Heading h = null;

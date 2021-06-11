@@ -4,108 +4,178 @@
   "spaces": [
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
           "INSTANCE": {
-            "heading": "EAST"
+
           }
         }
       ],
       "x": 0,
-      "y": 0
-    },
-    {
-    "walls": [
-      "NORTH"
-    ],
-    "actions": [
-      {
-        "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
-        "INSTANCE": {
-          "heading": "SOUTH"
-        }
-      }
-    ],
-    "x": 1,
-    "y": 1
-  },
-    {
-    "walls": [
-
-    ],
-    "actions": [
-      {
-        "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
-        "INSTANCE": {
-          "heading": "SOUTH"
-        }
-      }
-    ],
-    "x": 0,
-    "y": 2
-  },
+      "y": 7
+    }
+  ,
     {
       "walls": [
 
       ],
       "actions": [
         {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "INSTANCE": {
+
+          }
+        }
+      ],
+      "x": 1,
+      "y": 6
+    }
+  ,
+    {
+      "walls": [
+
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "INSTANCE": {
+
+          }
+        }
+      ],
+      "x": 2,
+      "y": 7
+    }
+  ,
+    {
+      "walls": [
+
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "INSTANCE": {
+
+          }
+        }
+      ],
+      "x": 5,
+      "y": 7
+    }
+  ,
+    {
+      "walls": [
+
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "INSTANCE": {
+
+          }
+        }
+      ],
+      "x": 6,
+      "y": 6
+    }
+  ,
+    {
+      "walls": [
+
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "INSTANCE": {
+
+          }
+        }
+      ],
+      "x": 7,
+      "y": 7
+    }
+  ,
+    {
+      "walls": [
+        "EAST"
+      ],
+      "actions": [
+        {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
           "INSTANCE": {
-            "heading": "NORTH"
+            "heading" : "NORTH"
+          }
+        }
+      ],
+      "x": 1,
+      "y": 4
+    }
+  ,
+    {
+      "walls": [
+        "WEST"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
+          "INSTANCE": {
+            "heading" : "NORTH"
+          }
+        }
+      ],
+      "x": 3,
+      "y": 4
+    }
+  ,
+    {
+      "walls": [
+        "EAST"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
+          "INSTANCE": {
+            "heading" : "NORTH"
+          }
+        }
+      ],
+      "x": 5,
+      "y": 4
+    }
+  ,
+    {
+      "walls": [
+        "WEST"
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
+          "INSTANCE": {
+            "heading" : "NORTH"
+          }
+        }
+      ],
+      "x": 7,
+      "y": 4
+    }
+  ,
+    {
+      "walls": [
+
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears",
+          "INSTANCE": {
+            "direction" : "Right"
           }
         }
       ],
       "x": 0,
       "y": 3
-    },
-    {
-      "walls": [
-
-      ],
-      "actions": [
-        {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
-          "INSTANCE": {
-            "heading": "WEST"
-          }
-        }
-      ],
-      "x": 0,
-      "y": 4
-    },
-    {
-      "walls": [
-
-      ],
-      "actions": [
-        {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
-          "INSTANCE": {
-            "heading": "EAST"
-          }
-        }
-      ],
-      "x": 0,
-      "y": 5
-    },
-    {
-      "walls": [
-
-      ],
-      "actions": [
-        {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
-          "INSTANCE": {
-            "heading": "NORTH"
-          }
-        }
-      ],
-      "x": 0,
-      "y" : 6
     }
   ,
     {
@@ -114,29 +184,30 @@
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears",
           "INSTANCE": {
-            "heading": "NORTH"
+            "direction" : "Left"
+          }
+        }
+      ],
+      "x": 2,
+      "y": 3
+    }
+  ,
+    {
+      "walls": [
+
+      ],
+      "actions": [
+        {
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears",
+          "INSTANCE": {
+            "direction" : "Right"
           }
         }
       ],
       "x": 4,
-      "y" : 2
-    },
-    {
-      "walls": [
-
-      ],
-      "actions": [
-        {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears",
-          "INSTANCE": {
-            "direction": "Right"
-          }
-        }
-      ],
-      "x": 3,
-      "y" : 1
+      "y": 3
     }
   ,
     {
@@ -147,108 +218,92 @@
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears",
           "INSTANCE": {
-            "direction": "Left"
+            "direction" : "Left"
           }
         }
       ],
-      "x": 3,
-      "y" : 2
+      "x": 6,
+      "y": 3
     }
   ,
     {
       "walls": [
-
-      ],
-      "actions": [
-        {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
-          "INSTANCE": {
-
-          }
-        }
-      ],
-      "x": 3,
-      "y" : 7
-    }
-  ,
-    {
-      "walls": [
-
+          "SOUTH"
       ],
       "actions": [
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint",
           "INSTANCE": {
-            "number": 1
+            "number" : "1"
           }
         }
       ],
-      "x": 3,
-      "y" : 4
+      "x": 1,
+      "y": 1
     }
   ,
     {
       "walls": [
-
+        "SOUTH"
       ],
       "actions": [
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint",
           "INSTANCE": {
-            "number": 2
+            "number" : "2"
           }
         }
       ],
-      "x": 3,
-      "y" : 5
+      "x": 5,
+      "y": 1
     }
   ,
     {
       "walls": [
-
+        "SOUTH"
       ],
       "actions": [
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Energy",
           "INSTANCE": {
-            "energy": 1
+            "number" : "1"
           }
         }
       ],
-      "x": 3,
-      "y" : 6
+      "x": 0,
+      "y": 5
     }
   ,
     {
       "walls": [
-
+        "SOUTH"
       ],
       "actions": [
         {
-          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.StartField",
+          "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Energy",
           "INSTANCE": {
-
+            "number" : "1"
           }
         }
       ],
-      "x": 3,
-      "y" : 7
+      "x": 4,
+      "y": 5
     }
   ,
     {
       "walls": [
-
+        "SOUTH"
       ],
       "actions": [
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna",
           "INSTANCE": {
-          "posX" : 4, "posY": 0
+            "posX" : 3, "posY": 0
           }
         }
       ],
-      "x": 4,
-      "y" : 0
+      "x": 3,
+      "y": 0
     }
   ]
 }

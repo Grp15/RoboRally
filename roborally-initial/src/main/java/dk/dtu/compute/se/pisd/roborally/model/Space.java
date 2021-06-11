@@ -30,10 +30,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ...
+ * Model class for handling general settings about players positions on spaces and their calling of fieldactions
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  */
 public class Space extends Subject {
 
@@ -78,14 +81,43 @@ public class Space extends Subject {
         }
     }
 
+    /**
+     * Get method for wall headings
+     *
+     * @return walls
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public List<Heading> getWalls() {
         return walls;
     }
 
+
+    /**
+     * Get method for actions
+     *
+     * @return actions
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     *
+     */
     public List<FieldAction> getActions() {
         return actions;
     }
 
+    /**
+     * Set method for appointing heading to walls
+     *
+     * @param heading
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setWalls(Heading heading){
         walls.add(heading);
     }
@@ -99,6 +131,18 @@ public class Space extends Subject {
         notifyChange();
     }
 
+    /**
+     * Method for performing an action on spaces
+     *
+     * @param player
+     * @param space
+     * @param gameController
+     * @return false
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public boolean doAction(Player player, Space space, GameController gameController) {
         return false;
 

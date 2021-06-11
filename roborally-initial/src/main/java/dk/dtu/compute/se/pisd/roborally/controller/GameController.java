@@ -30,10 +30,9 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
+ * Gamecontroller contains methods for all the game logic like initiating phases and moving players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author s205436
  * @author s164539
  * @author s152780
  * @author s205472
@@ -44,6 +43,11 @@ public class GameController {
 
     final public Board board;
 
+    /**
+     * Set board for GameController
+     * @param board
+     *
+     */
     public GameController(@NotNull Board board) {
         this.board = board;
     }
@@ -54,6 +58,11 @@ public class GameController {
      * happening on the board. This method should eventually be deleted!
      *
      * @param space the space to which the current player should move
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
@@ -70,7 +79,17 @@ public class GameController {
         }
     }
 
-
+    /**
+     * Moves a player to a given space
+     *
+     * @param space
+     * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     public void movePlayerToSpace(@NotNull Space space, Player player) {
 
         if (player != null) {
@@ -79,13 +98,28 @@ public class GameController {
     }
 
 
-
+    /**
+     * Begins the initialization phase of the Roborally game
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     public void startInitiliasationPhase(){
         board.setPhase(Phase.INITIALISATION);
 
         board.setCurrentPlayer(board.getPlayer(0));
     }
 
+    /**
+     *  Starts game in GameController
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     public void startGame(){
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             if (board.getPlayer(i).getSpace() == null) {
@@ -102,8 +136,12 @@ public class GameController {
         }
 
     /**
-     * This method initiates the programmingphase
+     * This method initiates the programming phase
      *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     // XXX: V2
@@ -127,21 +165,34 @@ public class GameController {
                 }
                 for (int j = 0; j < Player.NO_CARDS; j++) {
                     CommandCardField field = player.getCardField(j);
-                    field.setCard(generateRandomCommandCard());
+
+                    int Chance = (int) Math.random()*100;
+                    Chance = Chance + player.getDamage();
+
+                    if(Chance > 80){
+                        field.setCard(generateDamageCommandCard());
+                    }
+                    else if(Chance < 80){
+                        field.setCard(generateProgrammingCommandCard());
+                    }
+                    else field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
             }
         }
         // Checks whether a player picked up a spam cards and spam if he did
-        CheckForTypeCards();
+        //CheckForTypeCards();
     }
 
 
 
     /**
-     * Checks if the player has drawn any of following cards
-     * 1) SPAM
-     * 2) Kommer senere
+     * Checks if the player has drawn any SPAM cards
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void CheckForTypeCards(){
@@ -166,12 +217,36 @@ public class GameController {
      * This method generates one random of the games command card for the player
      *
      * @return CommandCard
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
         return new CommandCard(commands[random]);
+    }
+
+
+    private CommandCard generateProgrammingCommandCard(){
+        Command[] commands = Command.values();
+        int programCard = (int)(Math.random() * commands.length);
+
+        if(programCard < 3){
+            programCard = programCard + 3;
+        }
+
+        return new CommandCard(commands[programCard]);
+    }
+
+    private CommandCard generateDamageCommandCard(){
+        Command[] commands =Command.values();
+        int damageCard = (int) (Math.random() * 3);
+
+        return new CommandCard(commands[damageCard]);
     }
 
     // TODO: Finish LoadCommandCardsFromDisplayName() Maybe rename method
@@ -192,6 +267,11 @@ public class GameController {
 
     /**
      * This method ends the programming phase
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void finishProgrammingPhase() {
@@ -224,6 +304,11 @@ public class GameController {
     /**
      * This method makes the programfield visible
      * @param register
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     private void makeProgramFieldsVisible(int register) {
@@ -237,7 +322,12 @@ public class GameController {
     }
 
     /**
-     * This method makes the programfield invisible
+     * This method makes the program field invisible
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     private void makeProgramFieldsInvisible() {
@@ -252,6 +342,11 @@ public class GameController {
 
     /**
      * This method execute all programming cards in the register
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void executePrograms() {
@@ -261,6 +356,11 @@ public class GameController {
 
     /**
      * This method executes the first step in the register
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void executeStep() {
@@ -269,7 +369,12 @@ public class GameController {
     }
 
     /**
-     * Executes program as long as activation phase is on and stepmode is off
+     * Executes program as long as activation phase is on and step mode is off
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     private void continuePrograms() {
@@ -280,6 +385,11 @@ public class GameController {
 
     /**
      * Executes next step from a players register
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     private void executeNextStep() {
@@ -365,6 +475,11 @@ public class GameController {
      * Runs the method connected to the command card
      * @param player
      * @param command
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
@@ -459,6 +574,12 @@ public class GameController {
      * .....
      * Changes the phrase to Activation (with options) and executes command card
      * @param command executed option
+     *
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     public void executeCommandAndContinue(Command command) {
         board.setPhase(Phase.ACTIVATION);
@@ -487,6 +608,11 @@ public class GameController {
 
     /**
      * Exception which is throwed when a player cant perform asked move
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public class ImpossibleMoveException extends Exception {
@@ -504,11 +630,17 @@ public class GameController {
     }
 
     /**
-     * .....
+     * Moves player to a given space
+     *
      * @param player player which is moved
      * @param space space to move to
      * @param heading direction player is facing
      * @throws ImpossibleMoveException
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     public void moveToSpace(
             @NotNull Player player,
@@ -546,6 +678,11 @@ public class GameController {
      *
      * Implements the Again card, which repeats the previous executed card from the players register
      * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
 
@@ -569,6 +706,11 @@ public class GameController {
      * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
      * in the direction the conveyor belt is facing
      * @param currentPlayer current player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     public void moveForward(@NotNull Player currentPlayer){
         Heading heading = currentPlayer.getHeading();
@@ -586,6 +728,11 @@ public class GameController {
     /**
      * Moves a player forward 2 spaces towards the direction the player is currently facing
      * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
     public void movetwoForward(@NotNull Player player) {
@@ -596,6 +743,11 @@ public class GameController {
     /**
      * Moves a player forward 3 spaces towards the direction the player is currently facing
      * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void movethreeForward(@NotNull Player player){
@@ -607,6 +759,11 @@ public class GameController {
     /**
      * Moves a player backwards 1 pace towards the opposite direction the player is currently facing
      * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void Back_Up(@NotNull Player player){
@@ -627,6 +784,11 @@ public class GameController {
     /**
      * Set a current players direction to turn right of current heading.
      * @param player current player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     public void turnRight(@NotNull Player player) {
         player.setHeading(player.getHeading().next());
@@ -635,6 +797,11 @@ public class GameController {
     /**
      * Set a current players direction to turn left of current heading.
      * @param player current player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     public void turnLeft(@NotNull Player player) {
         player.setHeading(player.getHeading().prev());
@@ -643,6 +810,11 @@ public class GameController {
     /**
      * sets the heading of the player to it's opposite direction
      * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void Uturn(@NotNull Player player){
@@ -652,6 +824,11 @@ public class GameController {
     /**
      * Adds energy cube to player
      * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void Powerup(@NotNull Player player){
@@ -674,35 +851,56 @@ public class GameController {
     // ----------------------------------------- DAMAGE CARDS ---------------------------------------
 
     /**
-     * Spam a plater by moving top card in program card to register
-     * @param player
-     */
-
-
-    /**
      * Implements spam card, which moves 1st card from program field to register field
      * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
-    //TODO: Implementer i ExecuteNextStep at spillere der har SPAM kort på hånden automatisk får flyttet 1 kort fra hånden
-    // over i deres register.
-    // Måske det skal implementeres i StartProgrammingPhase();
+    //TODO: Ikke den rigtige metode
+
 
     public  void Spam(@NotNull Player player) {
+        GameController gameController = GameController.this;
+        Command[] command = Command.values();
+        int random = (int) Math.random()* command.length;
 
-        for (int i = 0; i < player.NO_REGISTERS; i++) {
+        int Chance = (int) Math.random()*100;
+        Chance = Chance + player.getDamage();
 
-            if (player.getProgramField(i).getCard() == null) {
-                moveCards(player.getCardField(i), player.getProgramField(i));
-                return;
-            }
+        if(Chance > 80){
+            int i = (int) Math.random() * 3;
+            gameController.executeCommand(player, command[i]);
         }
+        else if(Chance < 80){
+            int i = (int) Math.random() * command.length;
+            if(i < 3){
+                i = i + 3;
+            }
+            gameController.executeCommand(player, command[i]);
+        }
+        else gameController.executeCommand(player, command[random]);
+
+        player.addDamage(1);
     }
 
     //TODO: Need to implement that the player add 2 SPAM card to his bile for now it works like a spam
-
+    /**
+     * Implementation of the Trojan horse programming card
+     * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     public void Trojanhorse(@NotNull Player player){
         executeCommand(player, Command.SPAM);
+
+        player.addDamage(2);
 
 
     }
@@ -711,24 +909,39 @@ public class GameController {
 
     //Every player within 6 fields gets a virus damage card
     //Ide er at se hvor spillere er fra 0 til antal spillere, og se hvem der er indenfor 6 felter
-
+    /**
+     * Implementation of the Virus programming card
+     * @param player
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     public void Virus(@NotNull Player player){
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
             Player otherPlayer = board.getPlayer(i);
 
-/*
+
             if(otherPlayer != player){
 
                 if (player.CalculateDistanceToPlayer(otherPlayer) < 6){
-                    System.out.println(otherPlayer.getName() + " Du har fået virus");
+                    player.addDamage(1);
                 }
             }
-            */
         }
 
     }
-
+    /**
+     *  Worms - not currently implemented
+     *
+     *  @param player
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     //TODO: Reboots the robot
     public void Worms(@NotNull Player player){
         notImplemented();
@@ -738,7 +951,15 @@ public class GameController {
 
 
     // ----------------------------------------- Other ---------------------------------------
-
+    /**
+     *  Gets current board which it returns
+     * @return board
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     public Board getBoard(){
         return board;
     }
@@ -746,6 +967,7 @@ public class GameController {
     /**
      * A method called when no corresponding controller operation is implemented yet. This
      * should eventually be removed.
+     *
      */
     public void notImplemented() {
         // XXX just for now to indicate that the actual method is not yet implemented
@@ -757,6 +979,11 @@ public class GameController {
      * @param space
      * @param player
      * @return
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public int DistanceSpacetoPlayer(Space space, Player player){
@@ -773,6 +1000,11 @@ public class GameController {
      * Create in which order players turn is
      *
      * @return player order
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     // TODO: Need to attach reference from distance array to a player
@@ -806,9 +1038,14 @@ public class GameController {
         return playerdistance;
     }
     /**
-     * Sorts a distancefromspacetoplayer array using bubblesort algorithm
+     * Sorts a distance from space to player array using bubblesort algorithm
      *
      * @param playerDistance
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void sort(Player[] playerDistance) {

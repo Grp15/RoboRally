@@ -54,9 +54,11 @@ import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
  * AppController controls the app and is responsible to create a game controller
  *
  *
- *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  */
 public class AppController implements Observer {
 
@@ -80,7 +82,11 @@ public class AppController implements Observer {
 
 
     /**
-     * newGame creates a new instance of a game controller
+     * newGame creates a new instance of a game controller and prompts users for how many players and board selection
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
      */
 
     public void newGame() {
@@ -180,7 +186,12 @@ public class AppController implements Observer {
 
 
     /**
-     * Savaegame saves a game to be played later
+     * SaveGame saves a game to be played later
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void saveGame() {
@@ -208,6 +219,10 @@ public class AppController implements Observer {
 
     /**
      * LoadGame loads a saved game
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
 
     public void loadGame() {
@@ -274,6 +289,12 @@ public class AppController implements Observer {
 
     /**
      * Exits the game and gives the player an opportunity to save
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     *
      */
 
     public void exit() {
@@ -299,6 +320,10 @@ public class AppController implements Observer {
         }
     }
 
+    /**
+     * Public attribute which tells whether the game is running
+     * @return sets gameController to not null, which means game is running
+     */
     public boolean isGameRunning() {
         return gameController != null;
     }
@@ -309,6 +334,15 @@ public class AppController implements Observer {
         // XXX do nothing for now
     }
 
+    /**
+     * Returns gameController
+     * @return gameController
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
     public GameController getGameController(){
         return gameController;
     }

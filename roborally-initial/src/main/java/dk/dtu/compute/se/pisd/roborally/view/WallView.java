@@ -1,7 +1,4 @@
 package dk.dtu.compute.se.pisd.roborally.view;
-
-import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
-import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears;
 import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
@@ -9,10 +6,23 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeLineCap;
 
-import java.net.NoRouteToHostException;
-
+/**
+ * WallView is a class that draws wall lines on the spaces using canvas
+ *
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
+ */
 public class WallView {
 
+
+    /**
+     * Draw walls on spaces using x and y coordinates and size of spaces
+     *
+     * @param spaceView
+     * @param space
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
+     */
     public static void drawWall(SpaceView spaceView, Space space) {
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);

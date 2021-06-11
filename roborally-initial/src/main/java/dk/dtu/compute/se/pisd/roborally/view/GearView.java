@@ -7,9 +7,24 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+/**
+ * GearView is a class that loads the gear fields png's from the picture resource folder and draws it on the spaces using canvas
+ *
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
+ */
 
 public class GearView {
 
+
+    /**
+     * Draw gears on spaces and loading the assets from resource folder
+     *
+     * @param spaceView
+     * @param space
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
+     */
     public static void drawGear(SpaceView spaceView, Space space){
 
         Direction d = null;

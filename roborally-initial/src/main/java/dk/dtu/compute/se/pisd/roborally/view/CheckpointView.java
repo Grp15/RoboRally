@@ -2,13 +2,28 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+/**
+ * CheckpointView is a class that loads the checkpoints png's from the picture resource folder and draws it on the spaces using canvas
+ *
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
+ */
+
 public class CheckpointView {
+
+    /**
+     * Draw checkpoints on spaces and loading the assets from resource folder
+     *
+     * @param spaceView
+     * @param space
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
+     */
 
     public static void drawCheckpoint(SpaceView spaceView, Space space) {
         int d = 0;

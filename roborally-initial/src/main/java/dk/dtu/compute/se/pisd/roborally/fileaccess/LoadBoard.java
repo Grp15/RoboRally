@@ -35,9 +35,13 @@ import dk.dtu.compute.se.pisd.roborally.model.Space;
 import java.io.*;
 
 /**
- * ...
+ * Utility class to load a json board into be used as the game board
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  */
 public class LoadBoard {
 
@@ -45,6 +49,18 @@ public class LoadBoard {
     private static final String DEFAULTBOARD = "default";
     private static final String JSON_EXT = "json";
 
+
+    /**
+     * Method to load the selected board
+     *
+     * @param boardname to be loaded
+     * @return loaded board
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public static Board loadBoard(String boardname) {
         if (boardname == null) {
             boardname = DEFAULTBOARD;
@@ -107,6 +123,17 @@ public class LoadBoard {
 		return null;
     }
 
+
+    /**
+     * Saves board to a Json file
+     * @param board
+     * @param name
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public static void saveBoard(Board board, String name) {
         BoardTemplate template = new BoardTemplate();
         template.width = board.width;
