@@ -602,7 +602,7 @@ public class GameController {
     }
 
     /**
-     * Exception which is throwed when a player cant perform asked move
+     * Exception which is thrown when a player can't perform asked move
      *
      *  @author S164539
      *  @author S154780
@@ -698,8 +698,8 @@ public class GameController {
 
 
     /**
-     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
-     * in the direction the conveyor belt is facing
+     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyorbelt moves the player
+     * in the direction the conveyorbelt is facing
      * @param currentPlayer current player
      *
      *  @author S164539
@@ -803,7 +803,7 @@ public class GameController {
     }
 
     /**
-     * sets the heading of the player to it's opposite direction
+     * sets the heading of the player to its opposite direction
      * @param player
      *
      *  @author S164539

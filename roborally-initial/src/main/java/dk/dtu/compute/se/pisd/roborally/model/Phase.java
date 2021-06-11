@@ -22,7 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 /**
- * Model for creation of the four phases of the game state
+ * Model for creation of the five phases of the game state
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *

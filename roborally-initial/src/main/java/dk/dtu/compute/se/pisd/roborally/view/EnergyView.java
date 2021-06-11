@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 
 
 /**
- * EnerguView is a class that loads the energy spaces png's from the picture resource folder and draws it on the spaces using canvas
+ * EnergyView is a class that loads the energy spaces png's from the picture resource folder and draws it on the spaces using canvas
  *
  * @author S164539 Hildibjørg
  * @author S154780 Troels
