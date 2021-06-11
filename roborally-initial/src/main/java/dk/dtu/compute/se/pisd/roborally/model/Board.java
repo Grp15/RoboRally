@@ -290,8 +290,9 @@ public class Board extends Subject {
                 if((y+1)% height == 0){
                     break;
                 }
-               y = (y + 1) % height;
-                break;
+
+                    y = (y + 1) % height;
+                    break;
             case WEST:
                 x = (x + width - 1) % width;
                 break;
