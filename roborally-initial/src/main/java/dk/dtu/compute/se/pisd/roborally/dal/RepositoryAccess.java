@@ -22,7 +22,7 @@
 package dk.dtu.compute.se.pisd.roborally.dal;
 
 /**
- * ...
+ * Create access to the repository in relation to the database connection
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *

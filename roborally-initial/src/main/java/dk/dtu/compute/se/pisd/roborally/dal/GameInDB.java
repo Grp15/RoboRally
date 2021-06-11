@@ -22,26 +22,50 @@
 package dk.dtu.compute.se.pisd.roborally.dal;
 
 /**
- * ...
+ * Class to handle the game saved as an id in the database
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  */
 public class GameInDB {
 
+    /**
+     * id attribute for a saved game in database
+     */
     public final int id;
+
+    /**
+     * name attribute for a saved game in database
+     */
     public final String name;
 
+    /**
+     * Game in database has id and name as string
+     * @param id
+     * @param name
+     *
+     */
     public GameInDB(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    /**
+     * Saves id and game name as string
+     * @return id and name of database game
+     */
     @Override
     public String toString() {
         return id + ": " + name;
     }
 
+    /**
+     * get method for game id from database
+     * @return id of database game
+     */
     public int getId(){return id;}
 
 }
