@@ -528,6 +528,9 @@ public class GameController {
 
         if (other != null){
             Space target = board.getNeighbour(space, heading);
+            if(target == player.getSpace()){
+                System.out.println("Du falder ud over banen");
+            }
             if (target != null) {
                 // XXX Note that there might be additional problems
                 // with infinite recursion here!

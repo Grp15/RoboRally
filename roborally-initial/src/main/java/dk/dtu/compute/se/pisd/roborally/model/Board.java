@@ -25,7 +25,6 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -288,17 +287,37 @@ public class Board extends Subject {
         int y = space.y;
         switch (heading) {
             case SOUTH:
-                y = (y + 1) % height;
-                break;
+                if ((y + 1) % height == 0) {
+                    break;
+                }
+                else {
+                    y = y + 1;
+                    break;
+                }
             case WEST:
-                x = (x + width - 1) % width;
-                break;
+                if((x + 1) % width == 0){
+                    break;
+                }
+                else {
+                    x = (x + width - 1) % width;
+                    break;
+                }
             case NORTH:
-                y = (y + height - 1) % height;
-                break;
+                if((y + height - 1) % height == 0){
+                    break;
+                }
+                else {
+                    y = y + height - 1;
+                    break;
+                }
             case EAST:
-                x = (x + 1) % width;
-                break;
+                if((x+1) % width == 0){
+                    break;
+                }
+                else{
+                    x = (x + 1);
+                    break;
+                }
         }
         Heading reverse = Heading.values()[(heading.ordinal() + 2)% Heading.values().length];
         Space result = getSpace(x, y);
