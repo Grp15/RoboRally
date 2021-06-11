@@ -84,7 +84,6 @@ public class BoardTest {
         gameController.moveCurrentPlayerToSpace(board.getSpace(4, 3));
         gameController.moveForward(player);
 
-        System.out.println(player.getSpace().getSpaceType());
 
         board.getSpace(4,2).doAction(player, board.getSpace(4,2), gameController);
 
