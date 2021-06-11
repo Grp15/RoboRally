@@ -34,10 +34,13 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.NORTH;
 import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
 
 /**
- * ...
+ * BoardModel class uses the observer design pattern and contains the attributes for the board.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  */
 public class Board extends Subject {
 
@@ -179,10 +182,29 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * get method for priority antenna
+     *
+     * @return priorityAntenna
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public Space getPriorityAntenna(){
         return priorityAntenna;
     }
 
+    /**
+     * set method for priority antenna
+     * @param space
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setPriorityAntenna(Space space){
         priorityAntenna = space;
     }
@@ -267,6 +289,12 @@ public class Board extends Subject {
      * @param space the space for which the neighbour should be computed
      * @param heading the heading of the neighbour
      * @return the space in the given direction; null if there is no (reachable) neighbour
+     *
+     * @author Ekkart Kindler
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
      */
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading) {
         /* /TODO:
@@ -316,6 +344,17 @@ public class Board extends Subject {
         return result;
     }
 
+    /**
+     * Method returns status message for a player
+     *
+     * @return player number, counter of moves taken, checkpoints visited, count of energy cubes
+     *
+     * @author Ekkart Kindler
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public String getStatusMessage() {
         // This is actually a view aspect, but for making the first task easy for
         // the students, this method gives a string representation of the current
@@ -330,6 +369,16 @@ public class Board extends Subject {
         return "Player = " + getCurrentPlayer().getName() + ", Number of moves = " + getCounter() +" " + ", Number of checkpoints = " + getCurrentPlayer().getCheckPoints() + ", "  + "Number of Energy cubes = " + getCurrentPlayer().getEnergyCubes();
     }
 
+    /**
+     * Get method for counter
+     *
+     * @return counter
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     // TODO Assignment V1: add a counter along with a getter and a setter, so the
     //      state the board (game) contains the number of moves, which then can
     //      be used to extend the status message including the number of
@@ -337,6 +386,17 @@ public class Board extends Subject {
         return counter;
     }
 
+
+    /**
+     * Changes value of counter if value changes
+     *
+     * @param counter
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     // NOTE: if-statement? -> notifyChange() is only needed if counter value changes.
     public void setCounter(int counter) {
         if (this.counter != counter) {
@@ -345,6 +405,18 @@ public class Board extends Subject {
         }
     }
 
+
+    /**
+     * Get a specific player from the array of players
+     *
+     * @param i
+     * @return playerorder array
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public Player getPlayerfromPlayerOrder(int i){
         if(i < players.size()){
             return playerOrder[i];
@@ -354,6 +426,17 @@ public class Board extends Subject {
         }
     }
 
+    /**
+     * Gets the number of players from the playerOrder
+     *
+     * @param player
+     * @return
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public int getPlayerNumberfromPlayerOrder(Player player){
         //return players.indexOf(player); // virker ikke
 
@@ -365,21 +448,69 @@ public class Board extends Subject {
         return 0;
     }
 
+    /**
+     * Get method for boardname
+     *
+     * @return boardname
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public String getBoardName() {
         return boardName;
     }
 
+    /**
+     * Set method for boardname
+     *
+     * @param boardName
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setBoardName(String boardName) {
         this.boardName = boardName;
     }
 
+    /**
+     * Sets the value of the playerorder
+     *
+     * @param playerOrder
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setPlayerOrder(Player[] playerOrder){
         this.playerOrder = playerOrder;
     }
 
+    /**
+     *Get method for number of checkpoints on the board
+     *
+     * @return number of checkpoints
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public int getNumberOfCheckpoints() {
         return numbOfCheckPoints;
     }
 
+    /**
+     * Set method for number of checkpoints on the board
+     *
+     * @param i
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setNumbOfCheckPoints(int i){ numbOfCheckPoints = i;}
 }
