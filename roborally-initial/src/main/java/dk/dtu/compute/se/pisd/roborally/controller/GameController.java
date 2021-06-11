@@ -215,6 +215,25 @@ public class GameController {
         return new CommandCard(commands[random]);
     }
 
+
+    private CommandCard generateProgrammingCommandCard(){
+        Command[] commands = Command.values();
+        int programCard = (int)(Math.random() * commands.length);
+
+        if(programCard < 3){
+            programCard = programCard + 3;
+        }
+
+        return new CommandCard(commands[programCard]);
+    }
+
+    private CommandCard generateDamageCommandCard(){
+        Command[] commands =Command.values();
+        int damageCard = (int) (Math.random() * 3);
+
+        return new CommandCard(commands[damageCard]);
+    }
+
     // TODO: Finish LoadCommandCardsFromDisplayName() Maybe rename method
 
 
