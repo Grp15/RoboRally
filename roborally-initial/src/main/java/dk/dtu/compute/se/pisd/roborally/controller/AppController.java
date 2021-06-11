@@ -79,10 +79,10 @@ public class AppController implements Observer {
 
     /**
      * newGame creates a new instance of a game controller and prompts users for how many players and board selection
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     *  @author S205472
+     *  @author S164539
+     *  @author S154780
+     *  @author S194612
      */
 
     public void newGame() {
@@ -184,10 +184,7 @@ public class AppController implements Observer {
     /**
      * SaveGame saves a game to be played later
      *
-     *  @author S164539
-     *  @author S154780
      *  @author S205472
-     *  @author S194612
      */
 
     public void saveGame() {
@@ -215,9 +212,9 @@ public class AppController implements Observer {
 
     /**
      * LoadGame loads a saved game
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -286,9 +283,9 @@ public class AppController implements Observer {
     /**
      * Exits the game and gives the player an opportunity to save
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      *
      */

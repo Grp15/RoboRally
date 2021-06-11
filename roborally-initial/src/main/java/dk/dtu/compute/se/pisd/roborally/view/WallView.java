@@ -11,6 +11,7 @@ import javafx.scene.shape.StrokeLineCap;
  *
  * @author S164539 Hildibjørg
  * @author S154780 Troels
+ * @author S205472
  */
 public class WallView {
 
@@ -22,6 +23,7 @@ public class WallView {
      * @param space
      * @author S164539 Hildibjørg
      * @author S154780 Troels
+     * @author S205472
      */
     public static void drawWall(SpaceView spaceView, Space space) {
 
