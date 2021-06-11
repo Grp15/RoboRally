@@ -581,7 +581,8 @@ public class GameController {
         try {
             moveToSpace(currentPlayer, newSpace, heading);
         } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
+
+            //e.printStackTrace();
         }
     }
 
