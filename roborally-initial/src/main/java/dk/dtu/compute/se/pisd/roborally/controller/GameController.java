@@ -98,7 +98,6 @@ public class GameController {
      * @Author s164539 Hildibjørg
      * @return
      */
-
     public void startInitiliasationPhase(){
         board.setPhase(Phase.INITIALISATION);
 
@@ -110,7 +109,6 @@ public class GameController {
      * @Author s164539 Hildibjørg
      * @return
      */
-
     public void startGame(){
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             if (board.getPlayer(i).getSpace() == null) {
@@ -203,6 +201,18 @@ public class GameController {
 
 
 
+
+    /**
+     * This method generates one random of the games command card for the player
+     *
+     * @return CommandCard
+     *
+     *  @author S164539
+     *  @author S154780
+     *  @author S205472
+     *  @author S194612
+     */
+
     private CommandCard generateRandomCommandCard() {
         Command[] commands = Command.values();
         int random = (int) (Math.random() * commands.length);
@@ -267,6 +277,7 @@ public class GameController {
 
         Space space = board.getPriorityAntenna();
         findPlayerOrder(printOrder, space.x , space.y);
+
         board.setPlayerOrder(printOrder);
 
 
@@ -449,6 +460,8 @@ public class GameController {
      * @author Ekkart Kindler
      *  @author S164539
      *  @author S154780
+     *  @author S205472
+     *  @author S194612
      */
     private void executeCommand(@NotNull Player player, Command command) {
         if (player != null && player.board == board && command != null) {
@@ -576,7 +589,7 @@ public class GameController {
     }
 
     /**
-     * Exception which is throwed when a player cant perform asked move
+     * Exception which is thrown when a player can't perform asked move
      *
      *  @author S164539 Hildibjørg
      *  @author S154780 Troels
@@ -670,8 +683,8 @@ public class GameController {
 
 
     /**
-     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyerbelt moves the player
-     * in the direction the conveyor belt is facing
+     * Moves a player forward in the direction he is facing. Or if he is standing on a conveyorbelt moves the player
+     * in the direction the conveyorbelt is facing
      * @param currentPlayer current player
      *
      *  @author S164539
@@ -769,7 +782,7 @@ public class GameController {
     }
 
     /**
-     * sets the heading of the player to it's opposite direction
+     * sets the heading of the player to its opposite direction
      * @param player
      *
      *  @author S164539 Hildibjørg
@@ -823,7 +836,7 @@ public class GameController {
      *  @author S154780 Troels
      */
 
-    //TODO: Ikke den rigtige metode
+
 
 
     public  void Spam(@NotNull Player player) {
@@ -887,6 +900,7 @@ public class GameController {
                     player.addDamage(1);
                 }
             }
+            */
         }
 
     }
@@ -950,7 +964,7 @@ public class GameController {
 
     public Player[] findPlayerOrder(Player[] players, int x, int y) {
 
-        Player[] playerdistance =players;
+        Player[] playerdistance = players;
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
             playerdistance[i] = board.getPlayer(i);

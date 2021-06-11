@@ -63,6 +63,8 @@ public class ConveyorBelt extends FieldAction {
 
         Space target = board.getNeighbour(space, heading);
 
+
+
         try {
             gameController.moveToSpace(player,target, heading);
         } catch (GameController.ImpossibleMoveException e) {

@@ -25,6 +25,7 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +89,7 @@ public class Space extends Subject {
     public void setWalls(Heading heading){
         walls.add(heading);
     }
+
 
 
     void playerChanged() {

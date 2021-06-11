@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
- * PriorityAnetnnaView is a class that loads the antenna png from the picture resource folder and draws it on the spaces using canvas
+ * PriorityAntennaView is a class that loads the antenna png from the picture resource folder and draws it on the spaces using canvas
  *
  * @author S164539 Hildibjørg
  * @author S154780 Troels

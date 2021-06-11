@@ -250,7 +250,7 @@ public class Player extends Subject {
 
 
     /**
-     * Determines the distance to a player from a
+     * Determines the distance to a player from a space
      *
      * @param player
      * @return distance
