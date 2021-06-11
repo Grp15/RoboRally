@@ -26,7 +26,7 @@ import java.util.List;
 
 
 /**
- * ...
+ * A template class as for what properties the board should have
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *

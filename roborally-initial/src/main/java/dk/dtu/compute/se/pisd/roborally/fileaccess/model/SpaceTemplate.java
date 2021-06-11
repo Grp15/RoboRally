@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ...
+ * A template class as for what properties the spaces on the board should have in array lists
  *
  * @author Ekkart Kindler, ekki@dtu.dk
  *
