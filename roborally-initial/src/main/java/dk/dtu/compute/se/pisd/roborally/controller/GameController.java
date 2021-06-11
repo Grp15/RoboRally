@@ -181,7 +181,7 @@ public class GameController {
             }
         }
         // Checks whether a player picked up a spam cards and spam if he did
-        CheckForTypeCards();
+        //CheckForTypeCards();
     }
 
 
@@ -865,14 +865,27 @@ public class GameController {
 
 
     public  void Spam(@NotNull Player player) {
+        GameController gameController = GameController.this;
+        Command[] command = Command.values();
+        int random = (int) Math.random()* command.length;
 
-        for (int i = 0; i < player.NO_REGISTERS; i++) {
+        int Chance = (int) Math.random()*100;
+        Chance = Chance + player.getDamage();
 
-            if (player.getProgramField(i).getCard() == null) {
-                moveCards(player.getCardField(i), player.getProgramField(i));
-                return;
-            }
+        if(Chance > 80){
+            int i = (int) Math.random() * 3;
+            gameController.executeCommand(player, command[i]);
         }
+        else if(Chance < 80){
+            int i = (int) Math.random() * command.length;
+            if(i < 3){
+                i = i + 3;
+            }
+            gameController.executeCommand(player, command[i]);
+        }
+        else gameController.executeCommand(player, command[random]);
+
+        player.addDamage(1);
     }
 
     //TODO: Need to implement that the player add 2 SPAM card to his bile for now it works like a spam
@@ -887,6 +900,8 @@ public class GameController {
      */
     public void Trojanhorse(@NotNull Player player){
         executeCommand(player, Command.SPAM);
+
+        player.addDamage(2);
 
 
     }
@@ -909,14 +924,13 @@ public class GameController {
         for(int i = 0; i < board.getPlayersNumber(); i++){
             Player otherPlayer = board.getPlayer(i);
 
-/*
+
             if(otherPlayer != player){
 
                 if (player.CalculateDistanceToPlayer(otherPlayer) < 6){
-                    System.out.println(otherPlayer.getName() + " Du har fået virus");
+                    player.addDamage(1);
                 }
             }
-            */
         }
 
     }
