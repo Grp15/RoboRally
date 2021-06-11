@@ -286,9 +286,6 @@ public class AppController implements Observer {
      * Exits the game and gives the player an opportunity to save
      *
      *  @author S205472
-     *  @author S164539
-     *  @author S154780
-     *  @author S194612
      *
      */
 
