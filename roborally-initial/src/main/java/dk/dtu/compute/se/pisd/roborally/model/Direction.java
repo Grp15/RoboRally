@@ -5,6 +5,7 @@ package dk.dtu.compute.se.pisd.roborally.model;
  *
  * @author S164539 Hildibjørg
  * @author S154780 Troels
+ * @author S205472
  */
 
 public enum Direction {
@@ -17,6 +18,7 @@ public enum Direction {
      * @return next
      * @author S164539 Hildibjørg
      * @author S154780 Troels
+     * @author S205472
      */
     public Direction next() {
         return values()[(this.ordinal() + 1) % values().length];
@@ -28,6 +30,7 @@ public enum Direction {
      * @return prev
      * @author S164539 Hildibjørg
      * @author S154780 Troels
+     * @author S205472
      */
     public Direction prev() {
         return values()[(this.ordinal() + values().length - 1) % values().length];

@@ -52,10 +52,10 @@ public class LoadBoard {
      * @param boardname to be loaded
      * @return loaded board
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     *  @author S205472
+     *  @author S164539
+     *  @author S154780
+     *  @author S194612
      */
     public static Board loadBoard(String boardname) {
         if (boardname == null) {
@@ -125,9 +125,9 @@ public class LoadBoard {
      * @param board
      * @param name
      *
+     * @author S205472
      * @author S164539
      * @author S154780
-     * @author S205472
      * @author S194612
      */
     public static void saveBoard(Board board, String name) {

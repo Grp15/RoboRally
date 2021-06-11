@@ -106,6 +106,7 @@ public class SpaceView extends StackPane implements ViewObserver {
      * @param subject
      * @author S164539 Hildibjørg
      * @author S154780 Troels
+     * @author S205472
      */
 
     @Override

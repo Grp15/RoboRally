@@ -53,10 +53,9 @@ public class GameController {
      * happening on the board. This method should eventually be deleted!
      *
      * @param space the space to which the current player should move
-     *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -80,9 +79,9 @@ public class GameController {
      * @param space
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void movePlayerToSpace(@NotNull Space space, Player player) {
@@ -96,9 +95,9 @@ public class GameController {
     /**
      * Begins the initialization phase of the Roborally game
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void startInitiliasationPhase(){
@@ -110,9 +109,9 @@ public class GameController {
     /**
      *  Starts game in GameController
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void startGame(){
@@ -133,9 +132,9 @@ public class GameController {
     /**
      * This method initiates the programming phase
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -184,9 +183,9 @@ public class GameController {
     /**
      * Checks if the player has drawn any SPAM cards
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -213,9 +212,9 @@ public class GameController {
      *
      * @return CommandCard
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -263,9 +262,9 @@ public class GameController {
     /**
      * This method ends the programming phase
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -300,9 +299,9 @@ public class GameController {
      * This method makes the programfield visible
      * @param register
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -319,9 +318,9 @@ public class GameController {
     /**
      * This method makes the program field invisible
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -338,9 +337,9 @@ public class GameController {
     /**
      * This method execute all programming cards in the register
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -352,9 +351,9 @@ public class GameController {
     /**
      * This method executes the first step in the register
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -366,9 +365,9 @@ public class GameController {
     /**
      * Executes program as long as activation phase is on and step mode is off
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -381,9 +380,9 @@ public class GameController {
     /**
      * Executes next step from a players register
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -471,9 +470,9 @@ public class GameController {
      * @param player
      * @param command
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     private void executeCommand(@NotNull Player player, Command command) {
@@ -571,9 +570,9 @@ public class GameController {
      * @param command executed option
      *
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void executeCommandAndContinue(Command command) {
@@ -604,9 +603,9 @@ public class GameController {
     /**
      * Exception which is thrown when a player can't perform asked move
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -632,9 +631,9 @@ public class GameController {
      * @param heading direction player is facing
      * @throws ImpossibleMoveException
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void moveToSpace(
@@ -674,9 +673,9 @@ public class GameController {
      * Implements the Again card, which repeats the previous executed card from the players register
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -702,9 +701,9 @@ public class GameController {
      * in the direction the conveyorbelt is facing
      * @param currentPlayer current player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void moveForward(@NotNull Player currentPlayer){
@@ -724,9 +723,9 @@ public class GameController {
      * Moves a player forward 2 spaces towards the direction the player is currently facing
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     // TODO Assignment V2 - NOTE: is there a better option? is it always two spaces?
@@ -739,9 +738,9 @@ public class GameController {
      * Moves a player forward 3 spaces towards the direction the player is currently facing
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -755,9 +754,9 @@ public class GameController {
      * Moves a player backwards 1 pace towards the opposite direction the player is currently facing
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -780,9 +779,9 @@ public class GameController {
      * Set a current players direction to turn right of current heading.
      * @param player current player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void turnRight(@NotNull Player player) {
@@ -793,9 +792,9 @@ public class GameController {
      * Set a current players direction to turn left of current heading.
      * @param player current player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void turnLeft(@NotNull Player player) {
@@ -806,9 +805,9 @@ public class GameController {
      * sets the heading of the player to its opposite direction
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -820,9 +819,9 @@ public class GameController {
      * Adds energy cube to player
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -849,9 +848,9 @@ public class GameController {
      * Implements spam card, which moves 1st card from program field to register field
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -887,9 +886,9 @@ public class GameController {
      * Implementation of the Trojan horse programming card
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void Trojanhorse(@NotNull Player player){
@@ -908,9 +907,9 @@ public class GameController {
      * Implementation of the Virus programming card
      * @param player
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public void Virus(@NotNull Player player){
@@ -932,9 +931,9 @@ public class GameController {
      *  Worms - not currently implemented
      *
      *  @param player
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     //TODO: Reboots the robot
@@ -950,9 +949,9 @@ public class GameController {
      *  Gets current board which it returns
      * @return board
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
     public Board getBoard(){
@@ -975,9 +974,9 @@ public class GameController {
      * @param player
      * @return
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -996,9 +995,9 @@ public class GameController {
      *
      * @return player order
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 
@@ -1037,9 +1036,9 @@ public class GameController {
      *
      * @param playerDistance
      *
+     *  @author S205472
      *  @author S164539
      *  @author S154780
-     *  @author S205472
      *  @author S194612
      */
 

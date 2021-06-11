@@ -210,9 +210,9 @@ public class Board extends Subject {
      * @return the space in the given direction; null if there is no (reachable) neighbour
      *
      * @author Ekkart Kindler
+     * @author S205472
      * @author S164539
      * @author S154780
-     * @author S205472
      * @author S194612
      */
     public Space getNeighbour(@NotNull Space space, @NotNull Heading heading) {
