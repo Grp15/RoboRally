@@ -184,7 +184,9 @@ public class AppController implements Observer {
     /**
      * SaveGame saves a game to be played later
      *
-     *  @author S205472
+     *
+     *  @author Troels
+     *  @Author Hildibjørg
      */
 
     public void saveGame() {
