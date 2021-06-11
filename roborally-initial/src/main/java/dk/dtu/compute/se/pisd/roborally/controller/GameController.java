@@ -199,8 +199,6 @@ public class GameController {
         makeProgramFieldsVisible(0);
 
         //Array with the distances from antenna to player
-        //TODO: Priority Antenna needs to not be hardcoded
-        //TODO: playerOrder should be put in Board class
 
         Player[] printOrder = new Player[board.getPlayersNumber()]; //board.getPlayerOrder();
 
@@ -783,7 +781,7 @@ public class GameController {
     // TODO: Skal bruge en test
     public Player[] findPlayerOrder(Player[] players, int x, int y) {
 
-        Player[] playerdistance =players;
+        Player[] playerdistance = players;
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
             playerdistance[i] = board.getPlayer(i);
