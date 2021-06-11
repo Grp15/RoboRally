@@ -1,10 +1,10 @@
 package dk.dtu.compute.se.pisd.roborally.controller;
 
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.ConveyorBelt;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.Gears;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.Adapter;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
-import dk.dtu.compute.se.pisd.roborally.model.Board;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
-import dk.dtu.compute.se.pisd.roborally.model.Player;
-import dk.dtu.compute.se.pisd.roborally.model.Space;
+import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,9 +15,9 @@ public class FieldActionTest {
 
     @BeforeEach
     void setUp() {
-        Board board = LoadBoard.loadBoard("defaultboard");
+        Board board = LoadBoard.loadBoard("test");
         gameController = new GameController(board);
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 3; i++) {
             Player player = new Player(board, null,"Player " + i);
             board.addPlayer(player);
             player.setSpace(board.getSpace(1,i));
@@ -35,71 +35,203 @@ public class FieldActionTest {
     }
 
 
+    /**
+     * Tests if the right order of players is set
+     * @Author Troels
+     * @Author Hildibjørg
+     *
+     */
 
-/**
- * Tests if the conveyorbelt pushes the player upwards
- */
-@Test
-void ConveyorBeltFromSouth(){
+    @Test
+    void PriorityAntenna(){
+        Board board = gameController.board;
 
-    // Står på (4,2)
-
-    Board board = gameController.board;
-    //ConveyorBelt space = new ConveyorBelt(board, 4,2, Heading.NORTH);
-
-    Player player = board.getCurrentPlayer();
-    player.setHeading(Heading.NORTH);
-
-    // ----- If player is below -----
-    gameController.moveCurrentPlayerToSpace(board.getSpace(4, 3));
-    gameController.moveForward(player);
+        //Picks a space and turns it to a Priority Antenna
+        Space space = board.getSpace(5, 4);
+        board.setPriorityAntenna(space);
 
 
-    board.getSpace(4,2).doAction(player, board.getSpace(4,2), gameController);
+        //Pick a player and places him 5 from antenna
+        Player player1 = board.getPlayer(1);
+        player1.setSpace(board.getSpace(2,2));
 
-    Assertions.assertEquals(board.getSpace(4, 1), player.getSpace());
+        //Pick a player and places him 4 from antenna
+        Player player2 = board.getPlayer(0);
+        player2.setSpace(board.getSpace(3,2));
+
+        //Pick a player and places him 1 from antenna
+        Player player3 = board.getPlayer(2);
+        player3.setSpace(board.getSpace(5,3));
+
+
+        Player[] playerOrder = new Player[board.getPlayersNumber()];
+
+        for(int i = 0; i < board.getPlayersNumber(); i++){
+            playerOrder[i] = board.getPlayer(i);
+        }
+
+        gameController.findPlayerOrder(playerOrder, board.getPriorityAntenna().x, board.getPriorityAntenna().y);
+
+
+
+        Assertions.assertEquals(playerOrder[0], board.getPlayer(2));
+        Assertions.assertEquals(playerOrder[1], board.getPlayer(0));
+        Assertions.assertEquals(playerOrder[2], board.getPlayer(1));
+
+    }
+
+    /**
+     * Tests whether the ConveyorBelt pushes a player towards west
+     * @Author Troels
+     * @Author Hildibjørg
+     */
+
+    @Test
+    void ConveyorBeltFromSouth() {
+
+        Board board = gameController.board;
+
+        //Picks a space and turns it to a Conveyorbelt
+        Space space = board.getSpace(1, 1);
+        ConveyorBelt ConveyorBelt = new ConveyorBelt();
+        ConveyorBelt.setHeading(Heading.EAST);
+        space.getActions().add(ConveyorBelt);
+
+        //Pick a player and places him below belt
+        Player player = board.getPlayer(0);
+        player.setHeading(Heading.NORTH);
+        player.setSpace(board.getSpace(1,2));
+
+        //Executes Conveyorbelt Action
+        for (FieldAction action : space.getActions()) {
+
+            if (action instanceof ConveyorBelt) {
+            action.doAction(gameController, space, player);
+
+        }
+    }
+
+    Assertions.assertEquals(board.getSpace(2, 1), player.getSpace());
+    Assertions.assertEquals(Heading.NORTH, player.getHeading());
 }
+
+    /**
+     * Tests if a conveyorbelt can push a player through a wall
+     * @Author Troels
+     * @Author Hildibjørg
+     */
+
+
+
 
     @Test
     void ConveyorBeltFromWest(){
         Board board = gameController.board;
 
-        Player player = board.getCurrentPlayer();
+        //Picks a space and turns it to a Conveyorbelt
+        //Add an eastern wall to space
+        Space space = board.getSpace(1, 1);
+        ConveyorBelt ConveyorBelt = new ConveyorBelt();
+        ConveyorBelt.setHeading(Heading.EAST);
+        space.getActions().add(ConveyorBelt);
+        space.getWalls().add(Heading.EAST);
+
+        //Pick a player and places him below belt
+        Player player = board.getPlayer(0);
         player.setHeading(Heading.NORTH);
+        player.setSpace(board.getSpace(1,2));
 
-        // ----- If player is left -----
-        gameController.moveCurrentPlayerToSpace(board.getSpace(3, 2));
-        player.setHeading(Heading.EAST);
-        gameController.moveForward(player);
+        //Executes Conveyorbelt Action
+        for (FieldAction action : space.getActions()) {
 
-        Space conveyor = player.getSpace();
-        conveyor.doAction(conveyor.getPlayer(),conveyor,gameController);
+            if (action instanceof ConveyorBelt) {
+                action.doAction(gameController, space, player);
 
-        Assertions.assertEquals(board.getSpace(4, 1), player.getSpace());
+            }
+        }
+
+        Assertions.assertEquals(board.getSpace(1, 1), player.getSpace());
     }
 
 
     /**
-     * Test if the gears space works
+     * Tests if the Gears Fieldaction works
+     *
+     * @Author Hildibjørg
+     * @Author Troels
+     *
      */
 
 
     @Test
     void Gears(){
 
-        // Står på (5,3)
+        Board board = gameController.board;
+
+        //Picks a space and turns it to a Conveyorbelt
+        //Add an eastern wall to space
+        Space space = board.getSpace(1, 1);
+        Gears Gear = new Gears();
+        Gear.setDirection(Direction.Right);
+        space.getActions().add(Gear);
+
+        //Pick a player and places him below belt
+        Player player = board.getPlayer(0);
+        player.setHeading(Heading.NORTH);
+        player.setSpace(board.getSpace(1,2));
+        Heading next = player.getHeading().next();
+
+        //Executes Conveyorbelt Action
+        for (FieldAction action : space.getActions()) {
+
+            if (action instanceof Gears) {
+                action.doAction(gameController, space, player);
+
+            }
+        }
+
+
+        Assertions.assertEquals(next, player.getHeading());
+    }
+
+
+    /**
+     * Tests if the Gears Fieldaction works
+     *
+     * @Author Hildibjørg
+     * @Author Troels
+     *
+     */
+
+
+    @Test
+    void GearsTest(){
 
         Board board = gameController.board;
 
-        Player player = board.getCurrentPlayer();
+        //Picks a space and turns it to a Conveyorbelt
+        //Add an eastern wall to space
+        Space space = board.getSpace(1, 1);
+        Gears Gear = new Gears();
+        Gear.setDirection(Direction.Left);
+        space.getActions().add(Gear);
+
+        //Pick a player and places him below belt
+        Player player = board.getPlayer(0);
         player.setHeading(Heading.NORTH);
-        gameController.moveCurrentPlayerToSpace(board.getSpace(5,3));
-        Heading playerheading = player.getHeading();
+        player.setSpace(board.getSpace(1,2));
+        Heading previous = player.getHeading().prev();
+
+        //Executes Conveyorbelt Action
+        for (FieldAction action : space.getActions()) {
+
+            if (action instanceof Gears) {
+                action.doAction(gameController, space, player);
+
+            }
+        }
 
 
-        player.getSpace().doAction(player, player.getSpace(), gameController);
-
-
-        Assertions.assertEquals(playerheading.next(), player.getHeading());
+        Assertions.assertEquals(previous, player.getHeading());
     }
 }

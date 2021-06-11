@@ -208,6 +208,7 @@ public class GameController {
 
         Space space = board.getPriorityAntenna();
         findPlayerOrder(printOrder, space.x , space.y);
+
         board.setPlayerOrder(printOrder);
 
 
