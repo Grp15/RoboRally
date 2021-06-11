@@ -42,9 +42,7 @@ public class BoardTest {
         gameController = null;
     }
 
-    /**
-     * Tests if the conveyorbelt pushes the player upwards
-     */
+
 
     @Test
     void TestTest(){
@@ -69,69 +67,6 @@ public class BoardTest {
 
 
 
-    @Test
-    void ConveyorBeltFromSouth(){
-
-        // Står på (4,2)
-
-        Board board = gameController.board;
-        //ConveyorBelt space = new ConveyorBelt(board, 4,2, Heading.NORTH);
-
-        Player player = board.getCurrentPlayer();
-        player.setHeading(Heading.NORTH);
-
-        // ----- If player is below -----
-        gameController.moveCurrentPlayerToSpace(board.getSpace(4, 3));
-        gameController.moveForward(player);
-
-
-        board.getSpace(4,2).doAction(player, board.getSpace(4,2), gameController);
-
-        Assertions.assertEquals(board.getSpace(4, 1), player.getSpace());
-    }
-
-    @Test
-    void ConveyorBeltFromWest(){
-        Board board = gameController.board;
-
-        Player player = board.getCurrentPlayer();
-        player.setHeading(Heading.NORTH);
-
-        // ----- If player is left -----
-        gameController.moveCurrentPlayerToSpace(board.getSpace(3, 2));
-        player.setHeading(Heading.EAST);
-        gameController.moveForward(player);
-
-        Space conveyor = player.getSpace();
-        conveyor.doAction(conveyor.getPlayer(),conveyor,gameController);
-
-        Assertions.assertEquals(board.getSpace(4, 1), player.getSpace());
-    }
-
-
-    /**
-     * Test if the gears space works
-     */
-
-
-    @Test
-    void Gears(){
-
-        // Står på (5,3)
-
-        Board board = gameController.board;
-
-        Player player = board.getCurrentPlayer();
-        player.setHeading(Heading.NORTH);
-        gameController.moveCurrentPlayerToSpace(board.getSpace(5,3));
-        Heading playerheading = player.getHeading();
-
-
-        player.getSpace().doAction(player, player.getSpace(), gameController);
-
-
-        Assertions.assertEquals(playerheading.next(), player.getHeading());
-    }
 
 
 }
