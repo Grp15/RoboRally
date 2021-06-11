@@ -165,7 +165,17 @@ public class GameController {
                 }
                 for (int j = 0; j < Player.NO_CARDS; j++) {
                     CommandCardField field = player.getCardField(j);
-                    field.setCard(generateRandomCommandCard());
+
+                    int Chance = (int) Math.random()*100;
+                    Chance = Chance + player.getDamage();
+
+                    if(Chance > 80){
+                        field.setCard(generateDamageCommandCard());
+                    }
+                    else if(Chance < 80){
+                        field.setCard(generateProgrammingCommandCard());
+                    }
+                    else field.setCard(generateRandomCommandCard());
                     field.setVisible(true);
                 }
             }
