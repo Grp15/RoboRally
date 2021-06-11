@@ -116,44 +116,6 @@ public class FieldActionTest {
     Assertions.assertEquals(Heading.NORTH, player.getHeading());
 }
 
-    /**
-     * Tests if a conveyorbelt can push a player through a wall
-     * @Author Troels
-     * @Author Hildibjørg
-     */
-
-
-
-
-    @Test
-    void ConveyorBeltFromWest(){
-        Board board = gameController.board;
-
-        //Picks a space and turns it to a Conveyorbelt
-        //Add an eastern wall to space
-        Space space = board.getSpace(1, 1);
-        ConveyorBelt ConveyorBelt = new ConveyorBelt();
-        ConveyorBelt.setHeading(Heading.EAST);
-        space.getActions().add(ConveyorBelt);
-        space.getWalls().add(Heading.EAST);
-
-        //Pick a player and places him below belt
-        Player player = board.getPlayer(0);
-        player.setHeading(Heading.NORTH);
-        player.setSpace(board.getSpace(1,2));
-
-        //Executes Conveyorbelt Action
-        for (FieldAction action : space.getActions()) {
-
-            if (action instanceof ConveyorBelt) {
-                action.doAction(gameController, space, player);
-
-            }
-        }
-
-        Assertions.assertEquals(board.getSpace(1, 1), player.getSpace());
-    }
-
 
     /**
      * Tests if the Gears Fieldaction works
