@@ -28,10 +28,6 @@ import org.jetbrains.annotations.NotNull;
  * CommandCard class for model implementation of command cards commands
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  */
 public class CommandCard extends Subject {
 
@@ -45,15 +41,6 @@ public class CommandCard extends Subject {
         return command.getDisplayName();
     }
 
-    /**
-     * Get method for getting command value
-     *
-     * @return command
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public Command getCommand() {
         return command;
     }

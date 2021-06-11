@@ -33,31 +33,15 @@ import org.jetbrains.annotations.NotNull;
  * Conveyor belt class which extends FieldAction controller class
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539 Hildibjørg
- * @author S154780 Troels
  */
 public class ConveyorBelt extends FieldAction {
 
     private Heading heading;
 
-    /**
-     * Get method for heading
-     * @return heading
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
     public Heading getHeading() {
         return heading;
     }
 
-    /**
-     * Set method for heading
-     * @param heading
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
     public void setHeading(Heading heading) {
         this.heading = heading;
     }

@@ -11,10 +11,8 @@ import java.util.ArrayList;
 /**
  * Model class to handle Priority antenna
  *
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 
 public class PriorityAntenna extends Space {
@@ -26,10 +24,8 @@ public class PriorityAntenna extends Space {
      * @param board
      * @param x
      * @param y
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public PriorityAntenna(Board board, int x, int y) {
         super(board, x, y);

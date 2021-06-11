@@ -29,10 +29,6 @@ import java.util.List;
  * Interface class to be used with the database. Using this interface it is possible to save and load games in the database
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  *
  */
 public interface IRepository {

@@ -16,24 +16,11 @@ public class Energy extends FieldAction {
 
     private int energy = 1;
 
-    /**
-     * Set method for energy int
-     * @param energy
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
+
     public void setEnergy(int energy) {
         this.energy = energy;
     }
 
-    /**
-     * Get method for energy int
-     * @return energy
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
     public int getEnergy() {
         return energy;
     }

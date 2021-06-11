@@ -38,10 +38,6 @@ import java.io.*;
  * Utility class to load a json board into be used as the game board
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  */
 public class LoadBoard {
 

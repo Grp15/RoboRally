@@ -29,10 +29,6 @@ import java.util.List;
  * Command class to realize different commands
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  */
 public enum Command {
 
@@ -48,14 +44,10 @@ public enum Command {
 
 
 
-    //Spam skal ikke kunne gøre noget hvis den lægges i program bunken
-
     SPAM("Spam"),
     TROJAN_HORSE("Trojansk Hest"),
     VIRUS("Virus"),
 
-    /*WORMS("Worms"), // Skal implementeres efter reboot er implementeret
-     */
 
 
     //  ---PROGRAMMING CARDS---
@@ -129,27 +121,10 @@ public enum Command {
         return !options.isEmpty();
     }
 
-    /**
-     * Get method for options list
-     *
-     * @return options list
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public List<Command> getOptions() {
         return options;
     }
 
-    /**
-     * Get method for displayname
-     * @return displayName
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public String getDisplayName(){
         return displayName;
     }

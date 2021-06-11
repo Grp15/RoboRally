@@ -16,24 +16,10 @@ import org.jetbrains.annotations.NotNull;
 public class Gears extends FieldAction {
     private Direction direction;
 
-    /**
-     * Get method for direction
-     * @return direction
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
     public Direction getDirection(){
         return direction;
     }
 
-    /**
-     * Set method for direction
-     * @param direction
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }

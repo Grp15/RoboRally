@@ -36,8 +36,6 @@ import org.jetbrains.annotations.NotNull;
  * Handles the view of different spaces on the board and colors and sizes hereof
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539 Hildibjørg
- * @author S154780 Troels
  *
  */
 public class SpaceView extends StackPane implements ViewObserver {

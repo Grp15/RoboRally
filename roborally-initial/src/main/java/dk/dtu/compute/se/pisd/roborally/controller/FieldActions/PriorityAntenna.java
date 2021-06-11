@@ -16,26 +16,12 @@ public class PriorityAntenna extends FieldAction {
 
 int posX,posY;
 
-    /**
-     * get method for the position of the priority antenna
-     * @return pos array containing posx og posY
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
+
     public int[] getPos() {
         int[] pos = {posX,posY};
         return pos;
     }
 
-    /**
-     * Set method for the position of the priority antenna
-     * @param posX which is the position on the x axis
-     * @param posY which is the position on the y axis
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
     public void setPos(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;

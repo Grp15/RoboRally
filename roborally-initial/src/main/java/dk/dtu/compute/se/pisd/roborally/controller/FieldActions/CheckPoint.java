@@ -16,25 +16,11 @@ import org.jetbrains.annotations.NotNull;
 public class CheckPoint extends FieldAction {
     private int number; // Skal have et nr. op til det max antal der kan være hvilket er 5
 
-    /**
-     * Int attribute which is used for maximum number of Checkpoints in the game
-     * @return number, which is amount of checkpoints
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
+
     public int getNumber() {
         return number;
     }
 
-    /**
-     *  Set method for number attribute
-     *
-     * @param number
-     *
-     * @author S164539 Hildibjørg
-     * @author S154780 Troels
-     */
     public void setNumber(int number) {
         this.number = number;
     }

@@ -26,17 +26,12 @@ import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
 import dk.dtu.compute.se.pisd.roborally.model.*;
-//import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Gamecontroller contains methods for all the game logic like initiating phases and moving players
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author s164539
- * @author s152780
- * @author s205472
- * @author s194612
  *
  */
 public class GameController {
