@@ -49,7 +49,6 @@ import java.util.stream.Collectors;
 import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
 import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
 
-import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.STARTFIELD;
 
 /**
  * AppController controls the app and is responsible to create a game controller
