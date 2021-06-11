@@ -707,14 +707,14 @@ public class GameController {
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
             Player otherPlayer = board.getPlayer(i);
-/*
+
             if(otherPlayer != player){
 
                 if (player.CalculateDistanceToPlayer(otherPlayer) < 6){
                     System.out.println(otherPlayer.getName() + " Du har fået virus");
                 }
             }
-            */
+
         }
 
     }

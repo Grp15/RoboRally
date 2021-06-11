@@ -84,7 +84,6 @@ public class Board extends Subject {
                 for(FieldAction action : space.getActions()){
                     if(action instanceof PriorityAntenna){
                         priorityAntenna = space;
-                        System.out.println("YO");
                     }
                 }
 
