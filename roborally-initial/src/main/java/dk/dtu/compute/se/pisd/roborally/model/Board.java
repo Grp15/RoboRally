@@ -287,8 +287,12 @@ public class Board extends Subject {
         int y = space.y;
         switch (heading) {
             case SOUTH:
-               y = (y + 1) % height;
-                break;
+                if((y+1)% height == 0){
+                    break;
+                }
+
+                    y = (y + 1) % height;
+                    break;
             case WEST:
                 x = (x + width - 1) % width;
                 break;
