@@ -50,9 +50,8 @@ public enum Command {
     SPAM("Spam"),
     TROJAN_HORSE("Trojansk Hest"),
     VIRUS("Virus"),
+    WORMS("Worms"),
 
-    /*WORMS("Worms"), // Skal implementeres efter reboot er implementeret
-     */
 
 
     //  ---PROGRAMMING CARDS---

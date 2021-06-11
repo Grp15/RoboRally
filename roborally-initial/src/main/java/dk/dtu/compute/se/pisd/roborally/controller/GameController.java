@@ -391,6 +391,10 @@ public class GameController {
                     this.Virus(player);
                     break;
 
+                case WORMS:
+                    this.Worms(player);
+                    break;
+
 
                 /**
                  *  --- Programming Cards ---
@@ -517,6 +521,8 @@ public class GameController {
             @NotNull Heading heading) throws ImpossibleMoveException {
 
 
+
+
         Player other = space.getPlayer();
 
         if(player.getSpace().getWalls().contains(heading) || space.getWalls().contains(heading.next().next())){
@@ -525,6 +531,7 @@ public class GameController {
 
         if (other != null){
             Space target = board.getNeighbour(space, heading);
+
 
             if (target != null) {
                 // XXX Note that there might be additional problems
@@ -732,7 +739,7 @@ public class GameController {
 
     //TODO: Reboots the robot
     public void Worms(@NotNull Player player){
-        notImplemented();
+        player.RebootRobot();
     }
 
 

@@ -239,6 +239,8 @@ public class Player extends Subject {
         CheckPoints = 0;
         setSpace(StartSpace);
 
+        System.out.println(StartSpace.x + "" + StartSpace.y);
+
     }
 
     public void setStartSpace(Space space){
