@@ -34,10 +34,6 @@ import java.util.List;
  * Class implementing the interface IRepository. This class contains the attributes which constitutes the game state at all times
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  */
 class Repository implements IRepository {
 	

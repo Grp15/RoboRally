@@ -55,10 +55,6 @@ import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
  *
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  */
 public class AppController implements Observer {
 
@@ -334,15 +330,6 @@ public class AppController implements Observer {
         // XXX do nothing for now
     }
 
-    /**
-     * Returns gameController
-     * @return gameController
-     *
-     *  @author S164539
-     *  @author S154780
-     *  @author S205472
-     *  @author S194612
-     */
     public GameController getGameController(){
         return gameController;
     }

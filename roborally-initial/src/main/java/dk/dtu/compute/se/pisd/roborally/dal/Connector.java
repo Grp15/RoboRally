@@ -33,10 +33,6 @@ import java.sql.Statement;
  * Class to connect to the database running on localhost port 3306
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  */
 class Connector {
 	

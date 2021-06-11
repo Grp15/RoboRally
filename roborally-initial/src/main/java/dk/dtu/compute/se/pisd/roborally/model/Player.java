@@ -33,10 +33,6 @@ import static dk.dtu.compute.se.pisd.roborally.model.Heading.SOUTH;
  * Model class handling states of the players.
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
  */
 public class Player extends Subject {
 
@@ -106,28 +102,11 @@ public class Player extends Subject {
         }
     }
 
-    /**
-     * Get method for antenna distance
-     *
-     * @return distance to priority antenna
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
+
     public int getDistancetoAntenna(){
         return DistancetoAntenna;
     }
 
-    /**
-     * Set method for distance to antenna
-     *
-     * @param i
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public void setDistancetoAntenna(int i){
         DistancetoAntenna = i;
     }
@@ -173,43 +152,13 @@ public class Player extends Subject {
         return cards[i];
     }
 
-    /**
-     * Sets the program field for the command card field in the program
-     *
-     * @param commandCardField
-     * @param i
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public void setProgramField(CommandCardField commandCardField, int i){
         program[i] = commandCardField;
     }
 
-
-    /**
-     * Gets the card field for the command card field in the cards
-     *
-     * @param commandCardField
-     * @param i
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public void setCardField(CommandCardField commandCardField, int i){
         cards[i] = commandCardField;}
 
-    /**
-     * Get all programming cards
-     *
-     * @return Programmingcards
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
 
     public String getCards() {
         String ProgrammingCards = "";
@@ -228,15 +177,7 @@ public class Player extends Subject {
         return ProgrammingCards;
 }
 
-    /**
-     * Get all cards placed in register
-     *
-     * @return cards placed in register
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
+
     public String getProgram() {
         String RegisterCards = "";
 
@@ -263,10 +204,8 @@ public class Player extends Subject {
      *
      * @param load_register
      * @return register
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
 
     public String[] splitCardsRegisterString(String load_register) {
@@ -282,10 +221,8 @@ public class Player extends Subject {
      *
      * @param load_program
      * @return program
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
 
     public String[] splitCardsProgramString(String load_program) {
@@ -298,25 +235,14 @@ public class Player extends Subject {
     /**
      * Add 1 energy cube to the energy cubes
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
 
     public void addEnergy(){
         EnergyCubes = EnergyCubes + 1;
     }
 
-    /**
-     * Get method for energycubes
-     *
-     * @return EnergyCubes
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public int getEnergyCubes(){
         return EnergyCubes;
     }
@@ -327,10 +253,8 @@ public class Player extends Subject {
      *
      * @param player
      * @return distance
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public int CalculateDistanceToPlayer(Player player){
         int xDistance = Player.this.getSpace().x - player.getSpace().x;
@@ -340,15 +264,6 @@ public class Player extends Subject {
         return distance;
     }
 
-    /**
-     * Get method for checkpoints
-     *
-     * @return checkpoints
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public int getCheckPoints(){
         return CheckPoints;
     }
@@ -357,10 +272,8 @@ public class Player extends Subject {
     /**
      * Increment checkpoints one time
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
 
     public void progressCheckpoint(){
@@ -370,10 +283,8 @@ public class Player extends Subject {
     /**
      * Return robot to start space and set checkpoint counter back to 0
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
 
     public void RebootRobot(){
@@ -382,28 +293,10 @@ public class Player extends Subject {
 
     }
 
-    /**
-     * Set method for startspace to be space
-     *
-     * @param space
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public void setStartSpace(Space space){
         StartSpace = space;
     }
 
-    /**
-     * Get method for startspace
-     *
-     * @return StartSpace
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
-     */
     public Space getStartSpace(){
         return StartSpace;
     }
