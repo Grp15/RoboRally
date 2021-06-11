@@ -25,7 +25,6 @@ import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
