@@ -19,7 +19,7 @@
     },
     {
     "walls": [
-      "SOUTH"
+      "NORTH"
     ],
     "actions": [
       {
@@ -34,7 +34,7 @@
   },
     {
     "walls": [
-      "SOUTH"
+
     ],
     "actions": [
       {
@@ -49,7 +49,7 @@
   },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -64,7 +64,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -79,7 +79,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -94,7 +94,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -110,7 +110,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -125,7 +125,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -141,7 +141,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -157,7 +157,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -173,7 +173,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -189,7 +189,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -205,7 +205,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -221,7 +221,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -237,7 +237,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
