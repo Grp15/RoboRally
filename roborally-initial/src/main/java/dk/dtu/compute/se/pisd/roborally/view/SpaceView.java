@@ -24,6 +24,7 @@ package dk.dtu.compute.se.pisd.roborally.view;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
+import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.layout.StackPane;
@@ -46,6 +47,7 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     /**
      * Changes sizes and oclors of spaces view
+     *
      * @param space
      */
 
@@ -76,7 +78,6 @@ public class SpaceView extends StackPane implements ViewObserver {
 
     /**
      * Updates the positions of the player on the board
-     *
      */
 
     private void updatePlayer() {
@@ -86,22 +87,22 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (player != null) {
             Polygon arrow = new Polygon(0.0, 0.0,
                     10.0, 20.0,
-                    20.0, 0.0 );
+                    20.0, 0.0);
             try {
                 arrow.setFill(Color.valueOf(player.getColor()));
             } catch (Exception e) {
                 arrow.setFill(Color.MEDIUMPURPLE);
             }
 
-            arrow.setRotate((90*player.getHeading().ordinal())%360);
+            arrow.setRotate((90 * player.getHeading().ordinal()) % 360);
             this.getChildren().add(arrow);
         }
     }
 
 
-
     /**
      * If player is not on space, then update player
+     *
      * @param subject
      */
 
@@ -110,40 +111,40 @@ public class SpaceView extends StackPane implements ViewObserver {
         if (subject == this.space) {
 
             updatePlayer(); // if the player if updated here, the other elements are placed over the player
-/*
-            for(FieldAction fieldAction: space.getWalls()){
-                if (fieldAction instanceof Wall) {
-                    WallView.drawWall(this,space);
-                }
-  */
 
-            for (FieldAction fieldAction: space.getActions()) {
 
-                if (fieldAction instanceof ConveyorBelt) {
-                    ConveyorBeltView.drawConveyorBelt(this, space);
-                }
-                if (fieldAction instanceof Gears) {
-                    GearView.drawGear(this, space);
-                }
+                for (FieldAction fieldAction : space.getActions()) {
 
-                if (fieldAction instanceof CheckPoint) {
-                    CheckpointView.drawCheckpoint(this, space);
-                }
+                    if (fieldAction instanceof ConveyorBelt) {
+                        ConveyorBeltView.drawConveyorBelt(this, space);
+                    }
+                    if (fieldAction instanceof Gears) {
+                        GearView.drawGear(this, space);
+                    }
 
-                if (fieldAction instanceof Energy) {
-                    EnergyView.drawEnergy(this, space);
-                }
+                    if (fieldAction instanceof CheckPoint) {
+                        CheckpointView.drawCheckpoint(this, space);
+                    }
 
-                if (fieldAction instanceof StartField) {
-                    StartFieldView.drawStartField(this, space);
+                    if (fieldAction instanceof Energy) {
+                        EnergyView.drawEnergy(this, space);
+                    }
+
+                    if (fieldAction instanceof StartField) {
+                        StartFieldView.drawStartField(this, space);
+
+                    }
+                    if (fieldAction instanceof PriorityAntenna) {
+                        PriorityAntennaView.drawPriorityAntenna(this, space);
+                    }
 
                 }
-                if (fieldAction instanceof PriorityAntenna) {
-                    PriorityAntennaView.drawPriorityAntenna(this, space);
+            for (Heading heading : space.getWalls()) {
+                if (heading instanceof Heading) {
+                    WallView.drawWall(this, space);
                 }
-
             }
         }
-    }
 
+    }
 }
