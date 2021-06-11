@@ -10,7 +10,8 @@ import javafx.scene.image.Image;
 /**
  * CheckpointView is a class that loads the checkpoints png's from the picture resource folder and draws it on the spaces using canvas
  *
- * @author S164539
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 
 public class CheckpointView {
@@ -20,7 +21,8 @@ public class CheckpointView {
      *
      * @param spaceView
      * @param space
-     * @author S164539
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
 
     public static void drawCheckpoint(SpaceView spaceView, Space space) {

@@ -9,22 +9,18 @@ import javafx.scene.image.Image;
 /**
  * StartFieldView is a class that loads the startfield png from the picture resource folder and draws it on the spaces using canvas
  *
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 public class StartFieldView{
 
     /**
-     * Draw startfields on spaces using x and y coordinates and loading the assets from resource folder
+     * Draw startfields on spaces and loading the assets from resource folder
      *
      * @param spaceView
      * @param space
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public static void drawStartField(SpaceView spaceView, Space space){
 

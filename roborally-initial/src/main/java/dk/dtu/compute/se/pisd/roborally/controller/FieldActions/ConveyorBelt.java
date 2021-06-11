@@ -33,10 +33,8 @@ import org.jetbrains.annotations.NotNull;
  * Conveyor belt class which extends FieldAction controller class
  *
  * @author Ekkart Kindler, ekki@dtu.dk
- * @author S164539
- * @author S154780
- * @author S205472
- * @author S194612
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 public class ConveyorBelt extends FieldAction {
 
@@ -46,10 +44,8 @@ public class ConveyorBelt extends FieldAction {
      * Get method for heading
      * @return heading
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public Heading getHeading() {
         return heading;
@@ -59,10 +55,8 @@ public class ConveyorBelt extends FieldAction {
      * Set method for heading
      * @param heading
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public void setHeading(Heading heading) {
         this.heading = heading;
@@ -76,10 +70,8 @@ public class ConveyorBelt extends FieldAction {
      * @param player
      * @return return true if action succeeded
      *
-     * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public boolean doAction(GameController gameController, @NotNull Space space, @NotNull Player player) {
 

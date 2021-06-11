@@ -7,7 +7,8 @@ import javafx.scene.image.Image;
 /**
  * PriorityAnetnnaView is a class that loads the antenna png from the picture resource folder and draws it on the spaces using canvas
  *
- * @author S164539
+ * @author S164539 Hildibjørg
+ * @author S154780 Troels
  */
 
 public class PriorityAntennaView {
@@ -17,7 +18,8 @@ public class PriorityAntennaView {
      *
      * @param spaceView
      * @param space
-     * @author S164539
+     * @author S164539 Hildibjørg
+     * @author S154780 Troels
      */
     public static void drawPriorityAntenna(SpaceView spaceView, Space space){
 
