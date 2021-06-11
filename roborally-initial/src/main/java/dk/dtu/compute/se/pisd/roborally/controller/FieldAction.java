@@ -26,10 +26,13 @@ import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
 /**
- * ...
+ * Class handles fieldActions for the spaces on the boards
  *
- * @author Ekkart Kindler, ekki@dtu.dk
- *
+ *  @author Ekkart Kindler, ekki@dtu.dk
+ *  @author S164539
+ *  @author S154780
+ *  @author S205472
+ *  @author S194612
  */
 public abstract class FieldAction {
 
