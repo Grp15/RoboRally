@@ -36,6 +36,10 @@ import javafx.scene.layout.VBox;
  * Handles the view which the Player sees with the different Labels and button panels
  *
  * @author Ekkart Kindler, ekki@dtu.dk
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  *
  */
 public class PlayerView extends Tab implements ViewObserver {
@@ -71,6 +75,11 @@ public class PlayerView extends Tab implements ViewObserver {
      *
      * @param gameController
      * @param player
+     * @author Ekkart Kindler
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
      */
 
     public PlayerView(@NotNull GameController gameController, @NotNull Player player) {
@@ -158,6 +167,11 @@ public class PlayerView extends Tab implements ViewObserver {
      * Updates the view of the board depending on the different individual views of the current player
      *
      * @param subject
+     * @author Ekkart Kindler
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
      */
 
     @Override

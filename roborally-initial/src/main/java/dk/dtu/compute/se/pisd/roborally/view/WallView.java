@@ -11,8 +11,27 @@ import javafx.scene.shape.StrokeLineCap;
 
 import java.net.NoRouteToHostException;
 
+/**
+ * WallView is a class that draws wall lines on the spaces using canvas
+ *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
+ */
 public class WallView {
 
+
+    /**
+     * Draw walls on spaces using x and y coordinates and size of spaces
+     *
+     * @param spaceView
+     * @param space
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public static void drawWall(SpaceView spaceView, Space space) {
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);
