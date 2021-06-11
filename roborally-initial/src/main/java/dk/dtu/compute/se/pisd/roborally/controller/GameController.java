@@ -21,10 +21,13 @@
  */
 package dk.dtu.compute.se.pisd.roborally.controller;
 
-import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
-import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
+import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.fileaccess.LoadBoard;
+import dk.dtu.compute.se.pisd.roborally.model.Spaces.ConveyorBelt;
 import dk.dtu.compute.se.pisd.roborally.model.*;
+//import dk.dtu.compute.se.pisd.roborally.model.ConveyorBelt;
 import org.jetbrains.annotations.NotNull;
+import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.CONVEYORBELT;
 
 /**
  * Gamecontroller conatains methods for all the game logic like initiating phases and moving players
@@ -84,12 +87,17 @@ public class GameController {
     }
 
     public void startGame(){
-        for (int i = 0; i < board.getPlayersNumber(); i++){
-            if(board.getPlayer(i).getSpace() == null){
+        for (int i = 0; i < board.getPlayersNumber(); i++) {
+            if (board.getPlayer(i).getSpace() == null) {
                 return;
             }
-            board.setCounter(0);
-            startProgrammingPhase();
+        }
+        for (int i = 0; i < board.getPlayersNumber(); i++){
+            board.getPlayer(i).setStartSpace(board.getPlayer(i).getSpace());
+        }
+                board.setCounter(0);
+
+                startProgrammingPhase();
 
         }
     }
@@ -109,8 +117,6 @@ public class GameController {
         board.setPhase(Phase.PROGRAMMING);
         board.setCurrentPlayer(board.getPlayer(0));
         board.setStep(0);
-
-        //System.out.println(board.getPlayer(0).getSpace().getSpaceType());
 
         for (int i = 0; i < board.getPlayersNumber(); i++) {
             Player player = board.getPlayer(i);
@@ -294,6 +300,8 @@ public class GameController {
                     }
                     else executeCommand(currentPlayer, command);}
 
+
+                }
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
                 } else {
@@ -614,6 +622,8 @@ public class GameController {
 
     public void Back_Up(@NotNull Player player){
         Heading heading = player.getHeading().next().next();
+
+
         Space space = player.getSpace().board.getNeighbour(player.getSpace(),heading);
 
 
@@ -717,6 +727,7 @@ public class GameController {
 
         for(int i = 0; i < board.getPlayersNumber(); i++){
             Player otherPlayer = board.getPlayer(i);
+
 /*
             if(otherPlayer != player){
 

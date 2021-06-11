@@ -47,6 +47,7 @@ public class Player extends Subject {
     private int EnergyCubes = 5;
     private int CheckPoints = 0;
     private int DistancetoAntenna = 0;
+    private Space StartSpace;
 
     private Space space;
     private Heading heading = SOUTH;
@@ -236,6 +237,16 @@ public class Player extends Subject {
 
     public void RebootRobot(){
         CheckPoints = 0;
+        setSpace(StartSpace);
+
+    }
+
+    public void setStartSpace(Space space){
+        StartSpace = space;
+    }
+
+    public Space getStartSpace(){
+        return StartSpace;
     }
 
 
