@@ -281,11 +281,94 @@ public class FieldActionTest {
      * @Author Troels
      */
 
+    @Test
+    void CheckpointWrong(){
+        Board board = gameController.board;
+
+        //Picks a space and turns it to a Checkpoint1
+        Space space = board.getSpace(1, 1);
+        CheckPoint Checkpoint = new CheckPoint();
+        Checkpoint.setNumber(2);
+        space.getActions().add(Checkpoint);
+
+        //Pick a player and places him below Checkpoint
+        Player player = board.getPlayer(0);
+        player.setHeading(Heading.NORTH);
+        player.setSpace(board.getSpace(1,2));
+        Heading previous = player.getHeading().prev();
+
+        Assertions.assertEquals(0,player.getCheckPoints());
+
+        gameController.moveForward(player);
+
+        //Executes Checkpoint Action
+        for (FieldAction action : space.getActions()) {
+
+            if (action instanceof CheckPoint) {
+                action.doAction(gameController, space, player);
+
+            }
+        }
+
+        Assertions.assertEquals(0,player.getCheckPoints());
+
+    }
+
     /**
      * Checks if the player has reached max checkpoint
      * @Author Hildibjørg
      * @Author Troels
      */
+
+    @Test
+    void CheckpointWin(){
+        Board board = gameController.board;
+        board.setNumbOfCheckPoints(2);
+
+        //Picks a space and turns it to a Checkpoint1
+        Space space = board.getSpace(1, 1);
+        CheckPoint Checkpoint = new CheckPoint();
+        Checkpoint.setNumber(1);
+        space.getActions().add(Checkpoint);
+
+        //Pick a player and places him below Checkpoint
+        Player player = board.getPlayer(0);
+        player.setHeading(Heading.NORTH);
+        player.setSpace(board.getSpace(1,2));
+        Heading previous = player.getHeading().prev();
+
+        Assertions.assertEquals(0,player.getCheckPoints());
+
+        gameController.moveForward(player);
+
+        //Executes Checkpoint Action
+        for (FieldAction action : space.getActions()) {
+
+            if (action instanceof CheckPoint) {
+                action.doAction(gameController, space, player);
+
+            }
+        }
+
+        Assertions.assertEquals(1,player.getCheckPoints());
+
+        Checkpoint.setNumber(2);
+        Space space1 = board.getSpace(2,2);
+        space1.getActions().add(Checkpoint);
+
+        player.setSpace(space1);
+
+        //Executes Checkpoint Action
+        for (FieldAction action : space.getActions()) {
+
+            if (action instanceof CheckPoint) {
+                action.doAction(gameController, space, player);
+
+            }
+        }
+
+        Assertions.assertEquals(2,player.getCheckPoints());
+    }
 
 
 }
