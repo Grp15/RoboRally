@@ -900,7 +900,7 @@ public class GameController {
                     player.addDamage(1);
                 }
             }
-            */
+
         }
 
     }
