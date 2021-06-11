@@ -85,7 +85,7 @@ public enum Command {
     OPTION_SANDBOX_ROUTINE("Sandbox",FORWARD,TWOFORWARD,THREEFOWARD,BACK_UP,LEFT,RIGHT,UTURN),
     //SPAM_FOLDER("Spam"),
     SPEED_ROUTINE("Speed"),
-    OPTION_WEASELROUTINE("Left, Right or U-turn", LEFT, RIGHT, UTURN);
+    OPTION_WEASELROUTINE("Left or Right or U-turn", LEFT, RIGHT, UTURN);
 
 
 

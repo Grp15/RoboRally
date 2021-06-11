@@ -22,6 +22,9 @@
 package dk.dtu.compute.se.pisd.roborally.model;
 
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna;
 import dk.dtu.compute.se.pisd.roborally.model.Spaces.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +46,7 @@ public class Board extends Subject {
 
     public final int height;
 
-    public final String boardName;
+    public String boardName;
 
     private Integer gameId;
 
@@ -64,6 +67,7 @@ public class Board extends Subject {
     private int counter;
 
     private int numbOfCheckPoints = 0;
+    public Space priorityAntenna;
 
     public Board(int width, int height, @NotNull String boardName) {
         this.boardName = boardName;
@@ -76,10 +80,22 @@ public class Board extends Subject {
                 Space space = new Space(this, x, y);
                 spaces[x][y] = space;
 
+
+                for(FieldAction action : space.getActions()){
+                    if(action instanceof PriorityAntenna){
+                        priorityAntenna = space;
+                        System.out.println("YO");
+                    }
+                }
+
+
+
+                /*
                 if(x == 4 && y == 2){
                     ConveyorBelt belt = new ConveyorBelt(this, x, y, NORTH);
                     spaces[x][y] = belt;
                 }
+
 
                 if(x == 3 && y == 3){
                     PriorityAntenna priorityAntenna = new PriorityAntenna(this, x,y);
@@ -125,7 +141,14 @@ public class Board extends Subject {
                     spaces[x][y] = field;
                 }
 
+
+ */
+
+
             }
+
+
+
         }
         this.stepMode = false;
     }
@@ -155,6 +178,14 @@ public class Board extends Subject {
         } else {
             return null;
         }
+    }
+
+    public Space getPriorityAntenna(){
+        return priorityAntenna;
+    }
+
+    public void setPriorityAntenna(Space space){
+        priorityAntenna = space;
     }
 
     public int getPlayersNumber() {
@@ -331,12 +362,21 @@ public class Board extends Subject {
         return 0;
     }
 
+    public String getBoardName() {
+        return boardName;
+    }
+
+    public void setBoardName(String boardName) {
+        this.boardName = boardName;
+    }
 
     public void setPlayerOrder(Player[] playerOrder){
         this.playerOrder = playerOrder;
     }
 
-    public int getNumbOfCheckPoints() {
+    public int getNumberOfCheckpoints() {
         return numbOfCheckPoints;
     }
+
+    public void setNumbOfCheckPoints(int i){ numbOfCheckPoints = i;}
 }

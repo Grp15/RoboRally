@@ -24,7 +24,6 @@ package dk.dtu.compute.se.pisd.roborally.model;
 import dk.dtu.compute.se.pisd.designpatterns.observer.Subject;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.GameController;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,6 @@ public class Space extends Subject {
     public final int y;
 
     private Player player;
-    private SpaceType type = SpaceType.SPACE;
 
 
     private List<Heading> walls = new ArrayList<>();
@@ -61,9 +59,7 @@ public class Space extends Subject {
         return player;
     }
 
-    public SpaceType getSpaceType() {
-        return type;
-    }
+
 
     public void setPlayer(Player player) {
         Player oldPlayer = this.player;
@@ -89,17 +85,10 @@ public class Space extends Subject {
         return actions;
     }
 
-    //TODO: Implement these perhaps.
-    /*public List<Heading> getWalls() {
-        return walls;
-
+    public void setWalls(Heading heading){
+        walls.add(heading);
     }
 
-    public List<FieldAction> getActions() {
-        return actions;
-    }
-
-     */
 
     void playerChanged() {
         // This is a minor hack; since some views that are registered with the space

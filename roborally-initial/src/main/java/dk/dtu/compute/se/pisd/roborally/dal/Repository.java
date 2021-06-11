@@ -47,6 +47,8 @@ class Repository implements IRepository {
 	private static final String GAME_PHASE = "phase";
 
 	private static final String GAME_STEP = "step";
+
+	private static final String BOARD_NAME = "boardName";
 	
 	private static final String PLAYER_PLAYERID = "playerID";
 	
@@ -65,6 +67,7 @@ class Repository implements IRepository {
 	private static final String PLAYER_CARDS_REGISTER = "cardRegister";
 
 	private static final String PLAYER_CARDS_PROGRAM = "cardProgram";
+
 
 	private Connector connector;
 	
@@ -91,6 +94,7 @@ class Repository implements IRepository {
 				ps.setNull(2, Types.TINYINT); // game.getPlayerNumber(game.getCurrentPlayer())); is inserted after players!
 				ps.setInt(3, game.getPhase().ordinal());
 				ps.setInt(4, game.getStep());
+				ps.setString(5, game.getBoardName());
 
 				// If you have a foreign key constraint for current players,
 				// the check would need to be temporarily disabled, since
@@ -172,6 +176,7 @@ class Repository implements IRepository {
 				rs.updateInt(GAME_CURRENTPLAYER, game.getPlayerNumber(game.getCurrentPlayer()));
 				rs.updateInt(GAME_PHASE, game.getPhase().ordinal());
 				rs.updateInt(GAME_STEP, game.getStep());
+				rs.updateString(BOARD_NAME, game.getBoardName());
 				rs.updateRow();
 			} else {
 				// TODO error handling
@@ -222,7 +227,7 @@ class Repository implements IRepository {
 				// game = new Board(width,height);
 				// TODO and we should also store the used game board in the database
 				//      for now, we use the default game board
-				game = LoadBoard.loadBoard(null);
+				game = LoadBoard.loadBoard(rs.getString(BOARD_NAME));
 				if (game == null) {
 					return null;
 				}
@@ -230,6 +235,7 @@ class Repository implements IRepository {
 				// TODO currently we do not set the games name (needs to be added)
 				game.setPhase(Phase.values()[rs.getInt(GAME_PHASE)]);
 				game.setStep(rs.getInt(GAME_STEP));
+				game.setBoardName(rs.getString(BOARD_NAME));
 			} else {
 				// TODO error handling
 				return null;
@@ -382,7 +388,7 @@ class Repository implements IRepository {
 	}
 
 	private static final String SQL_INSERT_GAME =
-			"INSERT INTO Game(name, currentPlayer, phase, step) VALUES (?, ?, ?, ?)";
+			"INSERT INTO Game(name, currentPlayer, phase, step, boardName) VALUES (?, ?, ?, ?, ?)";
 
 	private PreparedStatement insert_game_stmt = null;
 
@@ -525,56 +531,68 @@ class Repository implements IRepository {
 					register[i] = new CommandCard(commands[0]);
 					break;
 
-				case "Again":
+				case "Trojansk Hest" :
 					register[i] = new CommandCard(commands[1]);
 					break;
 
-				case "Fwd":
+				case "Virus" :
 					register[i] = new CommandCard(commands[2]);
 					break;
 
-				case "2 Fwd":
+				case "Again":
 					register[i] = new CommandCard(commands[3]);
 					break;
 
-				case "3 Fwd":
+				case "Fwd":
 					register[i] = new CommandCard(commands[4]);
 					break;
 
-				case "Back up":
-					register[i] = new CommandCard(commands[4]);
-					break;
-
-				case "Turn Right":
+				case "2 Fwd":
 					register[i] = new CommandCard(commands[5]);
 					break;
 
-				case "Turn Left":
+				case "3 Fwd":
 					register[i] = new CommandCard(commands[6]);
 					break;
 
-				case "U-turn":
+				case "Back Up" :
 					register[i] = new CommandCard(commands[7]);
 					break;
 
-				case "Power up":
+				case "Turn Right":
 					register[i] = new CommandCard(commands[8]);
 					break;
 
-				case "Energy":
+				case "Turn Left":
 					register[i] = new CommandCard(commands[9]);
 					break;
 
-				case "Sandbox":
+				case "U-turn":
 					register[i] = new CommandCard(commands[10]);
 					break;
 
-				case "Speed":
+				case "Power Up" :
 					register[i] = new CommandCard(commands[11]);
 					break;
 
-				case "Left, Right or U-turn":
+				case "Energy":
 					register[i] = new CommandCard(commands[12]);
+					break;
+
+				case "Repeat" :
+					register[i] = new CommandCard(commands[13]);
+					break;
+
+				case "Sandbox":
+					register[i] = new CommandCard(commands[14]);
+					break;
+
+				case "Speed":
+					register[i] = new CommandCard(commands[15]);
+					break;
+
+				case "Left or Right or U-turn":
+					register[i] = new CommandCard(commands[16]);
 					break;
 
 				default:

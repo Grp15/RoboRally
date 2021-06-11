@@ -48,12 +48,14 @@ public class GameController {
         this.board = board;
     }
 
+
     /**
      * This is just some dummy controller operation to make a simple move to see something
      * happening on the board. This method should eventually be deleted!
      *
      * @param space the space to which the current player should move
      */
+
     public void moveCurrentPlayerToSpace(@NotNull Space space)  {
 
         Player current = board.getCurrentPlayer();
@@ -68,9 +70,10 @@ public class GameController {
         }
     }
 
+
     public void movePlayerToSpace(@NotNull Space space, Player player) {
 
-        if (player == null) {
+        if (player != null) {
             player.setSpace(space);
         }
     }
@@ -96,6 +99,7 @@ public class GameController {
 
                 startProgrammingPhase();
 
+        }
     }
 
     /**
@@ -204,7 +208,9 @@ public class GameController {
         for(int i = 0; i < board.getPlayersNumber(); i++ ){
             printOrder[i] = board.getPlayer(i);
         }
-        findPlayerOrder(printOrder,3,3);
+
+        Space space = board.getPriorityAntenna();
+        findPlayerOrder(printOrder, space.x , space.y);
         board.setPlayerOrder(printOrder);
 
 
@@ -292,17 +298,15 @@ public class GameController {
                         board.setPhase(Phase.PLAYER_INTERACTION);
                         return;
                     }
-                    //Hvis 1 kort i register er AGAIN Kort springes det over
-                    if(card.getCommand() == Command.AGAIN && step == 0){
-                        board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
-
-                    }else executeCommand(currentPlayer, command);
+                    else executeCommand(currentPlayer, command);}
 
 
                 }
                 if (nextPlayerNumber < board.getPlayersNumber()) {
                     board.setCurrentPlayer(board.getPlayerfromPlayerOrder(nextPlayerNumber));
                 } else {
+
+
 
                     for(int i = 0; i < board.getPlayersNumber(); i++) {
 
@@ -311,12 +315,41 @@ public class GameController {
                         GameController gameController = this;
                         Player player = board.getPlayer(i);
                         Space space = player.getSpace();
-                        space.doAction(player,space,gameController);
+
+                        for(FieldAction action : space.getActions()) {
+
+                            if (action instanceof ConveyorBelt) {
+                                action.doAction(gameController, space, player);
+                            }
+                            else if (action instanceof Gears){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof CheckPoint){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof Energy){
+                                action.doAction(gameController,space,player);
+                            }
+                            else if (action instanceof StartField){
+                                action.doAction(gameController, space,player);
+                            }
+                            else if (action instanceof PriorityAntenna){
+                                action.doAction(gameController, space,player);
+                            }
+
+
+                        }
+
+
+
+
+                        //space.doAction(player,space,gameController);
 
 
 
 
                     }
+
 
                     step++;
                     if (step < Player.NO_REGISTERS) {
@@ -493,14 +526,23 @@ public class GameController {
             @NotNull Player player,
             @NotNull Space space,
             @NotNull Heading heading) throws ImpossibleMoveException {
+
+
         Player other = space.getPlayer();
+
+        if(player.getSpace().getWalls().contains(heading) || space.getWalls().contains(heading.next().next())){
+            throw new ImpossibleMoveException(player,space,heading);
+        }
+
         if (other != null){
             Space target = board.getNeighbour(space, heading);
             if (target != null) {
                 // XXX Note that there might be additional problems
                 // with infinite recursion here!
                 moveToSpace(other, target, heading);
-            } else {
+            }
+
+            else {
                 throw new ImpossibleMoveException(player, space, heading);
             }
         }
@@ -540,28 +582,15 @@ public class GameController {
      * @param currentPlayer current player
      */
     public void moveForward(@NotNull Player currentPlayer){
-        //Player currentPlayer = board.getCurrentPlayer();
-
-        Heading heading;
-
-
-        if(currentPlayer.getSpace().getSpaceType() == CONVEYORBELT){
-            ConveyorBelt belt = (ConveyorBelt) currentPlayer.getSpace();
-            heading = belt.getHeading();
-        }
-        else {
-            heading = currentPlayer.getHeading();
-        }
-
+        Heading heading = currentPlayer.getHeading();
         Space currentSpace = currentPlayer.getSpace();
         Space newSpace = board.getNeighbour(currentSpace, heading);
 
-        //currentPlayer.setSpace(newSpace);
         try {
-                moveToSpace(currentPlayer, newSpace, heading);
-
+            moveToSpace(currentPlayer, newSpace, heading);
         } catch (ImpossibleMoveException e) {
-            e.printStackTrace();
+
+            //e.printStackTrace();
         }
     }
 

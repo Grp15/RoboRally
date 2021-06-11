@@ -28,6 +28,7 @@ import com.google.gson.stream.JsonWriter;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.BoardTemplate;
 import dk.dtu.compute.se.pisd.roborally.fileaccess.model.SpaceTemplate;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
+import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
 import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 
@@ -75,8 +76,19 @@ public class LoadBoard {
 			    if (space != null) {
                     space.getActions().addAll(spaceTemplate.actions);
                     space.getWalls().addAll(spaceTemplate.walls);
+
+                    for(FieldAction action : space.getActions()){
+                        if(action instanceof PriorityAntenna){
+                            result.setPriorityAntenna(space);
+                        }
+                        if(action instanceof CheckPoint){
+                            result.setNumbOfCheckPoints(result.getNumberOfCheckpoints() + 1);
+                        }
+                    }
+
                 }
             }
+
 			reader.close();
 			return result;
 		} catch (IOException e1) {

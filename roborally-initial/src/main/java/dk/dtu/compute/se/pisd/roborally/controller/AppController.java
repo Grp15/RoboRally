@@ -39,15 +39,16 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import dk.dtu.compute.se.pisd.roborally.dal.RepositoryAccess;
 import dk.dtu.compute.se.pisd.roborally.dal.GameInDB;
 
-import static dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType.STARTFIELD;
 
 /**
  * AppController controls the app and is responsible to create a game controller
@@ -61,11 +62,12 @@ public class AppController implements Observer {
 
     final private List<Integer> PLAYER_NUMBER_OPTIONS = Arrays.asList(2, 3, 4, 5, 6);
     final private List<String> PLAYER_COLORS = Arrays.asList("red", "green", "blue", "orange", "grey", "magenta");
+    private List<String> GAME_BOARDS = new ArrayList<>();
     private List<GameInDB> Game_IDs = new ArrayList<GameInDB>();
     private List<Integer> GAME_int_IDs = new ArrayList<Integer>();
 
     //Name of the board according to json file
-    private String boardname = "deafaultboard";
+    private String boardname = "defaultboard";
 
 
     final private RoboRally roboRally;
@@ -82,10 +84,35 @@ public class AppController implements Observer {
      */
 
     public void newGame() {
+        File folder= new File("roborally-initial/src/main/resources/boards");
+        File[] listOfFiles = folder.listFiles();
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                GAME_BOARDS.add(file.getName());
+            }
+        }
+        // Remove .json from filenames
+        GAME_BOARDS = GAME_BOARDS.stream().map(s -> s.replaceAll("\\.json", ""))
+                .collect(Collectors.toList());
+
         ChoiceDialog<Integer> dialog = new ChoiceDialog<>(PLAYER_NUMBER_OPTIONS.get(0), PLAYER_NUMBER_OPTIONS);
         dialog.setTitle("Player number");
         dialog.setHeaderText("Select number of players");
         Optional<Integer> result = dialog.showAndWait();
+
+        ChoiceDialog<String> dialogBoard = new ChoiceDialog<>(GAME_BOARDS.get(0), GAME_BOARDS);
+        dialogBoard.setTitle("Board selection");
+        dialogBoard.setHeaderText("Select board");
+        Optional<String> resultBoard = dialogBoard.showAndWait();
+        String selectedBoard = resultBoard.get();
+
+
+        int numOfBoards = GAME_BOARDS.size();
+        for (int i = 0; i < numOfBoards; i++) {
+            if (selectedBoard == GAME_BOARDS.get(i)) {
+                boardname = GAME_BOARDS.get(i);
+            }
+        }
 
         if (result.isPresent()) {
             if (gameController != null) {
@@ -258,6 +285,9 @@ public class AppController implements Observer {
 
             if (!result.isPresent() || result.get() != ButtonType.OK) {
                 return; // return without exiting the application
+            } else {
+                Platform.exit();
+                System.exit(0);
             }
         }
 
@@ -265,6 +295,7 @@ public class AppController implements Observer {
         // after the option to save the game
         if (gameController == null || stopGame()) {
             Platform.exit();
+            System.exit(0);
         }
     }
 

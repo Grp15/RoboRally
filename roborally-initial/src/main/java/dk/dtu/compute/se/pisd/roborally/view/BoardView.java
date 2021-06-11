@@ -27,7 +27,6 @@ import dk.dtu.compute.se.pisd.roborally.model.Board;
 import dk.dtu.compute.se.pisd.roborally.model.Phase;
 import dk.dtu.compute.se.pisd.roborally.model.Player;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
-import dk.dtu.compute.se.pisd.roborally.model.Spaces.SpaceType;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -130,15 +129,12 @@ public class BoardView extends VBox implements ViewObserver {
 
                 if (board == gameController.board) {
 
-                    if( space.getSpaceType() == SpaceType.STARTFIELD && board.getPhase() == Phase.INITIALISATION){
+                    //if( space.getSpaceType() == SpaceType.STARTFIELD && board.getPhase() == Phase.INITIALISATION){
                             gameController.moveCurrentPlayerToSpace(space);
                             event.consume();
-                    }
-
+                        }
                 }
+
             }
         }
-
-    }
-
 }
