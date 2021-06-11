@@ -70,7 +70,7 @@ public class GameController {
 
     public void movePlayerToSpace(@NotNull Space space, Player player) {
 
-        if (player == null) {
+        if (player != null) {
             player.setSpace(space);
         }
     }
@@ -518,14 +518,23 @@ public class GameController {
             @NotNull Player player,
             @NotNull Space space,
             @NotNull Heading heading) throws ImpossibleMoveException {
+
+
         Player other = space.getPlayer();
+
+        if(player.getSpace().getWalls().contains(heading) || space.getWalls().contains(heading.next().next())){
+            throw new ImpossibleMoveException(player,space,heading);
+        }
+
         if (other != null){
             Space target = board.getNeighbour(space, heading);
             if (target != null) {
                 // XXX Note that there might be additional problems
                 // with infinite recursion here!
                 moveToSpace(other, target, heading);
-            } else {
+            }
+
+            else {
                 throw new ImpossibleMoveException(player, space, heading);
             }
         }

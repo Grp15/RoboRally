@@ -54,6 +54,71 @@ class GameControllerTest {
         Assertions.assertEquals(player, board.getSpace(0, 4).getPlayer(), "Player " + player.getName() + " should beSpace (0,4)!");
     }
 
+    @Test
+    void wallMoveForwardTest() throws GameController.ImpossibleMoveException {
+        Board board = gameController.board;
+        Space space = board.getSpace(5,1);
+        space.setWalls(Heading.SOUTH);
+        Player player = board.getPlayer(0);
+        player.setHeading(Heading.SOUTH);
+
+        board.setCurrentPlayer(player);
+
+
+        gameController.moveCurrentPlayerToSpace(space);
+        gameController.moveForward(player);
+
+
+        Assertions.assertEquals(board.getSpace(5,1), player.getSpace() );
+
+    }
+
+    @Test
+    void wallMoveBackTest(){
+        Board board = gameController.board;
+
+        Space space = board.getSpace(6,1);
+        space.setWalls(Heading.NORTH);
+
+        Player player = board.getPlayer(0);
+        player.setHeading(Heading.SOUTH);
+
+        board.setCurrentPlayer(player);
+
+
+        gameController.moveCurrentPlayerToSpace(space);
+        gameController.Back_Up(player);
+
+        System.out.println(player.getSpace().x + " " + player.getSpace().y);
+
+        Assertions.assertEquals(board.getSpace(6,1), player.getSpace());
+
+    }
+
+    @Test
+    void wallMovePlayerThroughWallTest(){
+        Board board = gameController.board;
+
+        Space space = board.getSpace(5,1);
+        space.setWalls(Heading.SOUTH);
+
+        Player player1 = board.getPlayer(1);
+        player1.setHeading(Heading.SOUTH);
+
+        Player player2 = board.getPlayer(2);
+        player2.setHeading(Heading.SOUTH);
+
+
+        gameController.movePlayerToSpace(space, player1);
+        gameController.movePlayerToSpace(board.getSpace(5,0), player2);
+        gameController.moveForward(player2);
+
+
+
+
+        Assertions.assertEquals(board.getSpace(5,1), player1.getSpace());
+    }
+
     /**
      * Tests the moveForward() method, where
      * the player moves exactly one space in the heading SOUTH

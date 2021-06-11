@@ -133,7 +133,8 @@ public class BoardView extends VBox implements ViewObserver {
                     //if( space.getSpaceType() == SpaceType.STARTFIELD && board.getPhase() == Phase.INITIALISATION){
                             gameController.moveCurrentPlayerToSpace(space);
                             event.consume();
-                    //}
+                        }
+                    }
 
                 }
             }
