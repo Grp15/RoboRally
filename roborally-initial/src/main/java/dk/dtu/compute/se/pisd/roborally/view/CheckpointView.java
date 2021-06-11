@@ -2,7 +2,6 @@ package dk.dtu.compute.se.pisd.roborally.view;
 
 import dk.dtu.compute.se.pisd.roborally.controller.FieldAction;
 import dk.dtu.compute.se.pisd.roborally.controller.FieldActions.*;
-import dk.dtu.compute.se.pisd.roborally.model.Heading;
 import dk.dtu.compute.se.pisd.roborally.model.Space;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,9 +21,6 @@ public class CheckpointView {
      * @param spaceView
      * @param space
      * @author S164539
-     * @author S154780
-     * @author S205472
-     * @author S194612
      */
 
     public static void drawCheckpoint(SpaceView spaceView, Space space) {
