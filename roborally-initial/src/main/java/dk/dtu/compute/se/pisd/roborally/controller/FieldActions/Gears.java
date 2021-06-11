@@ -6,22 +6,58 @@ import dk.dtu.compute.se.pisd.roborally.model.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Denne klasse implementerer gear feltet, som drejer robotten 90 grader med eller imod uret alt efter geartypen.
+ * Class implements the gear field which turns the robot 90 degrees either clock or counter clock wise depending on the gear type.
+ *
+ * @author S164539
+ * @author S154780
+ * @author S205472
+ * @author S194612
  */
 
 
 public class Gears extends FieldAction {
     private Direction direction;
 
-
+    /**
+     * Get method for direction
+     * @return direction
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public Direction getDirection(){
         return direction;
     }
 
+    /**
+     * Set method for direction
+     * @param direction
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
+
+    /**
+     * Method to perform actions with the players on the spaces in the gamecontroller
+     *
+     * @param gameController the gameController of the respective game
+     * @param space the space this action should be executed for
+     * @param player
+     * @return return true if action succeeded
+     *
+     * @author S164539
+     * @author S154780
+     * @author S205472
+     * @author S194612
+     */
     @Override
     public boolean doAction(GameController gameController, @NotNull Space space, @NotNull Player player) {
 
