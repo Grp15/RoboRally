@@ -13,14 +13,7 @@ import java.net.NoRouteToHostException;
 
 public class WallView {
 
-    public static void drawWall(SpaceView spaceView, Space space){
-        Heading h = null;
-
-        for (Heading c : space.getWalls()){
-            if (c instanceof Heading){
-                h =((Heading) c).getHeading();
-            }
-        }
+    public static void drawWall(SpaceView spaceView, Space space) {
 
         Canvas canvas = new Canvas(SpaceView.SPACE_WIDTH, SpaceView.SPACE_HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -28,28 +21,27 @@ public class WallView {
         gc.setLineWidth(5);
         gc.setLineCap(StrokeLineCap.ROUND);
 
-        for(Heading h : tempSpace.getHeading){
-            switch (h):
-            case SOUTH:
-                gc.strokeLine(2, SpaceView.SPACE_HEIGHT-2,SpaceView.SPACE_WIDTH-2,SpaceView.SPACE_HEIGHT-2);
-                break;
+        for (Heading h : space.getWalls()) {
+            switch (h) {
+                case SOUTH:
+                    gc.strokeLine(2, SpaceView.SPACE_HEIGHT - 2, SpaceView.SPACE_WIDTH - 2, SpaceView.SPACE_HEIGHT - 2);
+                    break;
 
-            case NORTH:
-                gc.strokeLine(2, SpaceView.SPACE_HEIGHT-72,SpaceView.SPACE_WIDTH-2,SpaceView.SPACE_HEIGHT-72);
-                break;
+                case NORTH:
+                    gc.strokeLine(2, SpaceView.SPACE_HEIGHT - 72, SpaceView.SPACE_WIDTH - 2, SpaceView.SPACE_HEIGHT - 72);
+                    break;
 
-            case EAST:
-                gc.strokeLine(72, SpaceView.SPACE_HEIGHT-2,SpaceView.SPACE_WIDTH-2,SpaceView.SPACE_HEIGHT-72);
-                break;
+                case EAST:
+                    gc.strokeLine(72, SpaceView.SPACE_HEIGHT - 2, SpaceView.SPACE_WIDTH - 2, SpaceView.SPACE_HEIGHT - 72);
+                    break;
 
-            case WEST:
-                gc.strokeLine(2, SpaceView.SPACE_HEIGHT-2,SpaceView.SPACE_WIDTH-72,SpaceView.SPACE_HEIGHT-72);
-                break;
+                case WEST:
+                    gc.strokeLine(2, SpaceView.SPACE_HEIGHT - 2, SpaceView.SPACE_WIDTH - 72, SpaceView.SPACE_HEIGHT - 72);
+                    break;
 
-            default
-                break;
-
+            }
+            spaceView.getChildren().add(canvas);
         }
-    }
 
+    }
 }
