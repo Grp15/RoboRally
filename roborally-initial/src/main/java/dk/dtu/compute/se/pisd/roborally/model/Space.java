@@ -92,17 +92,10 @@ public class Space extends Subject {
         return actions;
     }
 
-    //TODO: Implement these perhaps.
-    /*public List<Heading> getWalls() {
-        return walls;
-
+    public void setWalls(Heading heading){
+        walls.add(heading);
     }
 
-    public List<FieldAction> getActions() {
-        return actions;
-    }
-
-     */
 
     void playerChanged() {
         // This is a minor hack; since some views that are registered with the space

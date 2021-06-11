@@ -4,7 +4,7 @@
   "spaces": [
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -19,7 +19,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -34,7 +34,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -49,7 +49,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -64,7 +64,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -79,7 +79,7 @@
     },
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -95,7 +95,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -111,7 +111,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -127,7 +127,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -143,7 +143,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -159,7 +159,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -175,7 +175,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -191,7 +191,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -207,7 +207,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -223,7 +223,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -239,7 +239,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -255,7 +255,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -271,7 +271,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -287,7 +287,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -303,7 +303,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -319,7 +319,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -335,7 +335,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -351,7 +351,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -367,7 +367,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -383,7 +383,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -399,7 +399,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -415,7 +415,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -431,7 +431,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -447,7 +447,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -463,7 +463,7 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
@@ -479,13 +479,13 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.CheckPoint",
           "INSTANCE": {
-            "Number" : "1"
+            "number" : "1"
           }
         }
       ],
@@ -495,12 +495,13 @@
   ,
     {
       "walls": [
-        "SOUTH"
+
       ],
       "actions": [
         {
           "CLASSNAME": "dk.dtu.compute.se.pisd.roborally.controller.FieldActions.PriorityAntenna",
           "INSTANCE": {
+            "posX" : 4, "posY": 0
           }
         }
       ],
