@@ -670,13 +670,29 @@ public class GameController {
         if (board.getStep() == 0){
             return;
         }
+
+        if (player.getProgramField(board.getStep()-1 ) == null){
+            return;
+        }
         CommandCardField card = player.getProgramField(board.getStep() -1);
         Command command = card.getCard().getCommand();
 
         if (board.getStep() == 0){
             return;
         }
-        executeCommand(player,command);
+
+
+        // DOESNT WORK YET TODO: (THIS)
+
+        if (command.isInteractive()){
+            player.setProgramField(card, board.getStep());
+            System.out.println(player.getProgramField(board.getStep()).getCard().getCommand().getDisplayName());
+            board.setPhase(Phase.PLAYER_INTERACTION);
+            return;
+        }
+        else {
+            executeCommand(player,command);
+        }
     }
 
 
@@ -701,6 +717,7 @@ public class GameController {
             moveToSpace(currentPlayer, newSpace, heading);
         } catch (ImpossibleMoveException e) {
 
+            System.out.println(e.getMessage());
             //e.printStackTrace();
         }
     }

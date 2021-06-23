@@ -47,6 +47,7 @@ public class CheckPoint extends FieldAction {
 
         if(player.getCheckPoints() == board.getNumberOfCheckpoints()){
             System.out.println("You win!!");
+
         }
 
         return true; // True hvis det lykkedes, false hvis ikke.
